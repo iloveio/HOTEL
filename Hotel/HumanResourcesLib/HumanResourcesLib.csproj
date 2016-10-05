@@ -51,8 +51,6 @@
     <Compile Include="Subordinate.cs" />
     <Compile Include="Supervisor.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="Waiter.cs" />
-    <Compile Include="WaiterSupervisor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="testdiagram.cd" />
