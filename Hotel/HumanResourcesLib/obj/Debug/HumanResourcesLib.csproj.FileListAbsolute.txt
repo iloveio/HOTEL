@@ -1,5 +1,0 @@
-C:\Users\user\Source\Repos\HOTEL\Hotel\HumanResourcesLib\obj\Debug\HumanResourcesLib.csprojResolveAssemblyReference.cache
-C:\Users\user\Source\Repos\HOTEL\Hotel\HumanResourcesLib\bin\Debug\HumanResourcesLib.dll
-C:\Users\user\Source\Repos\HOTEL\Hotel\HumanResourcesLib\bin\Debug\HumanResourcesLib.pdb
-C:\Users\user\Source\Repos\HOTEL\Hotel\HumanResourcesLib\obj\Debug\HumanResourcesLib.dll
-C:\Users\user\Source\Repos\HOTEL\Hotel\HumanResourcesLib\obj\Debug\HumanResourcesLib.pdb
