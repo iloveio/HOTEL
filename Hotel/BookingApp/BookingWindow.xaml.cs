@@ -9,28 +9,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hotel.BookingApp.Views;
 
 namespace Hotel
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BookingWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BookingWindow : Window
     {
-        public MainWindow()
+        public BookingWindow()
         {
             InitializeComponent();
-        }
-
-        private void OpenBookingButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            BookingWindow bookingWindow = new BookingWindow();
-            Application.Current.MainWindow = bookingWindow;
-
-            this.Close();
-            bookingWindow.Show();
         }
     }
 }

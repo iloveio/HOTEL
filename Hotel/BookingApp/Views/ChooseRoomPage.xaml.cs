@@ -12,25 +12,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hotel
+namespace Hotel.BookingApp.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ChooseRoomPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ChooseRoomPage : Page
     {
-        public MainWindow()
+        public ChooseRoomPage()
         {
             InitializeComponent();
-        }
-
-        private void OpenBookingButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            BookingWindow bookingWindow = new BookingWindow();
-            Application.Current.MainWindow = bookingWindow;
-
-            this.Close();
-            bookingWindow.Show();
         }
     }
 }
