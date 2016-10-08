@@ -3,27 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BookingApp" 
+        xmlns:local="clr-namespace:BookingApp"
         xmlns:view="clr-namespace:BookingApp.Views"
         mc:Ignorable="d"
         DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
         Title="BookingWindow" Height="484" Width="819.949">
-   
- <Window.Resources>
-     <DataTemplate x:Key="ChooseRoomDataTemplate">
-            <view:ChooseRoomView/>
+
+    <Window.Resources>
+        <DataTemplate x:Key="ChooseRoomDataTemplate">
+            <view:ChooseRoomView />
         </DataTemplate>
- </Window.Resources>   
- 
+    </Window.Resources>
+
     <Grid>
-        <ContentControl ContentTemplate="{StaticResource ChooseRoomDataTemplate}" Margin="43,42,302,157" >
+        <ContentControl ContentTemplate="{StaticResource ChooseRoomDataTemplate}" Margin="43,42,302,157">
             <!--<ComboBox x:Name="TempRoomComboBox" HorizontalAlignment="Left" Height="32" Margin="159,99,0,0" VerticalAlignment="Top" Width="240"/>-->
         </ContentControl>
-        <Button x:Name="BookButton" Content="Rezerwuj" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="148" Margin="100,384,0,0"/>
-        <Button x:Name="PayButton" Content="Zapłać" HorizontalAlignment="Right" Height="34" VerticalAlignment="Top" Width="148" Margin="0,384,302,0"/>
-        <Calendar HorizontalAlignment="Left" Height="168" Margin="585,60,0,0" VerticalAlignment="Top" Width="180"/>
+        <Button x:Name="BookButton" Content="Rezerwuj" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top"
+                Width="148" Margin="100,384,0,0" />
+        <Button x:Name="PayButton" Content="Zapłać" HorizontalAlignment="Right" Height="34" VerticalAlignment="Top"
+                Width="148" Margin="0,384,302,0" />
+        <Calendar HorizontalAlignment="Left" Height="168" Margin="585,60,0,0" VerticalAlignment="Top" Width="180" />
         <!--<Border BorderThickness="1" BorderBrush="Black"> -->
-        <TextBlock x:Name="RoomDesciptionBox" HorizontalAlignment="Left" Height="136" Margin="585,228,0,0" TextWrapping="Wrap" Text="Opis zaznaczonego pokoju" VerticalAlignment="Top" Width="180"/>
+        <TextBlock x:Name="RoomDesciptionBox" HorizontalAlignment="Left" Height="136" Margin="585,228,0,0"
+                   TextWrapping="Wrap" Text="Opis zaznaczonego pokoju" VerticalAlignment="Top" Width="180" />
         <!--</Border> -->
     </Grid>
 </Window>

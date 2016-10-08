@@ -3,7 +3,7 @@
 namespace BookingApp
 {
     /// <summary>
-    /// Interaction logic for BookingWindow.xaml
+    ///     Interaction logic for BookingWindow.xaml
     /// </summary>
     public partial class BookingWindow : Window
     {

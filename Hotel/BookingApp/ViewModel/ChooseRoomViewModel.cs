@@ -4,9 +4,5 @@ namespace BookingApp.ViewModel
 {
     public class ChooseRoomViewModel : ViewModelBase
     {
-        public ChooseRoomViewModel()
-        {
-            
-        }
     }
 }

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using BookingLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BookingLibrary;
 
 namespace BookingLibraryUnitTests
 {

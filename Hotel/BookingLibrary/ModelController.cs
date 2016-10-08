@@ -1,6 +1,6 @@
-﻿using BookingLibrary.TempDatabase;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using BookingLibrary.TempDatabase;
 
 namespace BookingLibrary
 {
@@ -8,7 +8,7 @@ namespace BookingLibrary
     public class ModelController
     {
         private static ModelController instance;
-        private TempDatabase.TempBookingDatabase tempBookingDatabase;
+        private readonly TempBookingDatabase tempBookingDatabase;
 
         private ModelController()
         {
@@ -16,7 +16,7 @@ namespace BookingLibrary
             Surname = "Dupalski";
             SelectedRoom = 6;
 
-            tempBookingDatabase = new TempDatabase.TempBookingDatabase();
+            tempBookingDatabase = new TempBookingDatabase();
         }
 
         public static ModelController Instance => instance ?? (instance = new ModelController());
@@ -28,8 +28,9 @@ namespace BookingLibrary
         public User GetUser()
         {
             // --- TEMPORARY SOLUTION ---- //
-            return tempBookingDatabase.Users[new Random().Next(0,tempBookingDatabase.Users.Count)];
+            return tempBookingDatabase.Users[new Random().Next(0, tempBookingDatabase.Users.Count)];
         }
+
         public List<Room> GetRooms()
         {
             // --- TEMPORARY SOLUTION ---- //
