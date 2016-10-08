@@ -26,7 +26,7 @@ namespace Hotel
 
         private void OpenBookingButton_OnClick(object sender, RoutedEventArgs e)
         {
-            BookingWindow bookingWindow = new BookingWindow();
+            global::BookingApp.BookingWindow bookingWindow = new global::BookingApp.BookingWindow();
             Application.Current.MainWindow = bookingWindow;
 
             this.Close();

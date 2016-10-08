@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hotel.BookingApp.Views
+namespace BookingApp.Views
 {
     /// <summary>
-    /// Interaction logic for ChooseRoomPage.xaml
+    /// Interaction logic for ChooseRoomView.xaml
     /// </summary>
-    public partial class ChooseRoomPage : Page
+    public partial class ChooseRoomView : UserControl
     {
-        public ChooseRoomPage()
+        public ChooseRoomView()
         {
             InitializeComponent();
         }

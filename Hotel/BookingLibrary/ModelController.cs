@@ -7,7 +7,7 @@ namespace BookingLibrary
     //A class responsible for exchange information beetwen database and our module controllers
     public class ModelController
     {
-        private static ModelController _instance;
+        private static ModelController instance;
         private TempDatabase.TempBookingDatabase tempBookingDatabase;
 
         private ModelController()
@@ -19,7 +19,7 @@ namespace BookingLibrary
             tempBookingDatabase = new TempDatabase.TempBookingDatabase();
         }
 
-        public static ModelController Instance => _instance ?? (_instance = new ModelController());
+        public static ModelController Instance => instance ?? (instance = new ModelController());
 
         public string Name { get; set; }
         public string Surname { get; set; }
