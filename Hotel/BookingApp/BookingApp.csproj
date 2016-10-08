@@ -72,11 +72,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\RoomDescriptionViewModel.cs" />
     <Compile Include="ViewModel\ChooseRoomViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\ChooseRoomView.xaml.cs">
       <DependentUpon>ChooseRoomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RoomDescriptionView.xaml.cs">
+      <DependentUpon>RoomDescriptionView.xaml</DependentUpon>
     </Compile>
     <Page Include="BookingWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +94,10 @@
       <DependentUpon>BookingWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\ChooseRoomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RoomDescriptionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

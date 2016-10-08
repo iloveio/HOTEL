@@ -13,20 +13,20 @@
         <DataTemplate x:Key="ChooseRoomDataTemplate">
             <view:ChooseRoomView />
         </DataTemplate>
+        <DataTemplate x:Key="RoomDescriptionTemplate">
+            <view:RoomDescriptionView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
-        <ContentControl ContentTemplate="{StaticResource ChooseRoomDataTemplate}" Margin="43,42,302,157">
+        <ContentControl ContentTemplate="{StaticResource RoomDescriptionTemplate}" Margin="585,233,47,35">
             <!--<ComboBox x:Name="TempRoomComboBox" HorizontalAlignment="Left" Height="32" Margin="159,99,0,0" VerticalAlignment="Top" Width="240"/>-->
         </ContentControl>
+        <ContentControl ContentTemplate="{StaticResource ChooseRoomDataTemplate}" Margin="43,42,302,157"/>
         <Button x:Name="BookButton" Content="Rezerwuj" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top"
                 Width="148" Margin="100,384,0,0" />
         <Button x:Name="PayButton" Content="Zapłać" HorizontalAlignment="Right" Height="34" VerticalAlignment="Top"
                 Width="148" Margin="0,384,302,0" />
         <Calendar HorizontalAlignment="Left" Height="168" Margin="585,60,0,0" VerticalAlignment="Top" Width="180" />
-        <!--<Border BorderThickness="1" BorderBrush="Black"> -->
-        <TextBlock x:Name="RoomDesciptionBox" HorizontalAlignment="Left" Height="136" Margin="585,228,0,0"
-                   TextWrapping="Wrap" Text="Opis zaznaczonego pokoju" VerticalAlignment="Top" Width="180" />
-        <!--</Border> -->
     </Grid>
 </Window>

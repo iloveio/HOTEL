@@ -43,11 +43,14 @@ namespace BookingApp.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<ChooseRoomViewModel>();
+            SimpleIoc.Default.Register<RoomDescriptionViewModel>();
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
         public ChooseRoomViewModel ChooseRoom => ServiceLocator.Current.GetInstance<ChooseRoomViewModel>();
+
+        public RoomDescriptionViewModel RoomDescription => ServiceLocator.Current.GetInstance<RoomDescriptionViewModel>();
 
         public static void Cleanup()
         {
