@@ -7,7 +7,7 @@
              mc:Ignorable="d" Height="164.706" Width="198.039">
     <Grid Margin="0,0,0,10">
         <!--<Border BorderThickness="1" BorderBrush="Black"> -->
-        <TextBlock x:Name="RoomDesciptionBox" HorizontalAlignment="Left" Margin="10,0,0,25"
+        <TextBlock x:Name="RoomDesciptionTextBlock" HorizontalAlignment="Left" Margin="10,0,0,25"
                    TextWrapping="Wrap" Text="Opis zaznaczonego pokoju" Width="180" />
         <!--</Border> -->
     </Grid>
