@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BookingLibrary.TempDatabase;
 
 namespace BookingLibrary
@@ -35,6 +36,13 @@ namespace BookingLibrary
         {
             // --- TEMPORARY SOLUTION ---- //
             return tempBookingDatabase.Rooms;
+        }
+
+        public Room GetRoom(int id)
+        {
+            return (from r in tempBookingDatabase.Rooms
+                where r.Id == id
+                select r).First();
         }
     }
 }

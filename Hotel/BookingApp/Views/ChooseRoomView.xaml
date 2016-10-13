@@ -8,8 +8,11 @@
              DataContext="{Binding ChooseRoom, Mode=OneWay, Source={StaticResource Locator}}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-       
-        <Button x:Name="Room1Button" x:Uid="1" Content="Pokój 1" HorizontalAlignment="Left" Height="28" Margin="54,99,0,0" VerticalAlignment="Top" Width="77" Command="{Binding ChangeSelectedRoomCommand}"/>
-        <Button x:Name="Room2Button" x:Uid="2" Content="Pokój 2" HorizontalAlignment="Left" Height="28" Margin="170,99,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="1.909,0.643" Command="{Binding ChangeSelectedRoomCommand}"/>
+
+        <Button x:Name="Room1Button" x:Uid="1" Content="Pokój 1" HorizontalAlignment="Left" Height="28"
+                Margin="54,99,0,0" VerticalAlignment="Top" Width="77" Command="{Binding ChangeSelectedRoomCommand}" />
+        <Button x:Name="Room2Button" x:Uid="2" Content="Pokój 2" HorizontalAlignment="Left" Height="28"
+                Margin="170,99,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="1.909,0.643"
+                Command="{Binding ChangeSelectedRoomCommand2}" />
     </Grid>
 </UserControl>

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BookingLibrary.TempDatabase
+﻿namespace BookingLibrary.TempDatabase
 {
     public class User
     {
@@ -8,5 +6,6 @@ namespace BookingLibrary.TempDatabase
         public string Name { get; set; }
         public string Surname { get; set; }
         public string PlaceOfBirth { get; set; }
+        public int SelectedRoom { get; set; }
     }
 }

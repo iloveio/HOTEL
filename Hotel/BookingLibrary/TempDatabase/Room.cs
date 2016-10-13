@@ -15,5 +15,6 @@ namespace BookingLibrary.TempDatabase
         public DateTime ReservationStart { get; set; }
         public DateTime ReservationEnd { get; set; }
         public int CurrentClientId { get; set; }
+        public int Id { get; set; }
     }
 }

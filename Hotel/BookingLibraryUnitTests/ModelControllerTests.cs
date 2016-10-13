@@ -1,4 +1,5 @@
 ﻿using BookingLibrary;
+using BookingLibrary.TempDatabase;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BookingLibraryUnitTests
@@ -36,6 +37,16 @@ namespace BookingLibraryUnitTests
 
             Assert.IsInstanceOfType(receivedName, typeof(string));
             Assert.AreEqual("Dupsko", receivedName);
+        }
+
+        [TestMethod]
+        public void GetRoomQueryTest()
+        {
+            var testRoom = ModelController.Instance.GetRoom(2);
+            Assert.IsNotNull(testRoom);
+            Assert.IsInstanceOfType(testRoom, typeof(Room));
+            Assert.AreEqual(2, testRoom.Id);
+            Assert.AreEqual(5, testRoom.FloorNumber);
         }
     }
 }

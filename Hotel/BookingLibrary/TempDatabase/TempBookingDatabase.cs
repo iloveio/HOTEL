@@ -20,6 +20,7 @@ namespace BookingLibrary.TempDatabase
                 new Room {Id = 122, FloorNumber = 1, Size = 78},
                 new Room {Id = 2452, FloorNumber = 2, Size = 234},
                 new Room {Id = 2, FloorNumber = 5, Size = 223},
+                new Room {Id = 1, FloorNumber = 5, Size = 223},
                 new Room {Id = 45, FloorNumber = 0, Size = 1221},
                 new Room {Id = 23, FloorNumber = 4, Size = 443}
             };

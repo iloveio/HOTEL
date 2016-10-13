@@ -50,7 +50,8 @@ namespace BookingApp.ViewModel
 
         public ChooseRoomViewModel ChooseRoom => ServiceLocator.Current.GetInstance<ChooseRoomViewModel>();
 
-        public RoomDescriptionViewModel RoomDescription => ServiceLocator.Current.GetInstance<RoomDescriptionViewModel>();
+        public RoomDescriptionViewModel RoomDescription
+            => ServiceLocator.Current.GetInstance<RoomDescriptionViewModel>();
 
         public static void Cleanup()
         {

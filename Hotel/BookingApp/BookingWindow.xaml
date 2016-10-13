@@ -7,7 +7,7 @@
         xmlns:view="clr-namespace:BookingApp.Views"
         mc:Ignorable="d"
         DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
-        Title="BookingWindow" Height="484" Width="819.949">
+        Title="BookingWindow" Height="484" Width="857.685">
 
     <Window.Resources>
         <DataTemplate x:Key="ChooseRoomDataTemplate">
@@ -19,14 +19,20 @@
     </Window.Resources>
 
     <Grid>
-        <ContentControl ContentTemplate="{StaticResource RoomDescriptionTemplate}" Margin="585,233,47,35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="267*" />
+            <ColumnDefinition Width="139*" />
+        </Grid.ColumnDefinitions>
+        <ContentControl ContentTemplate="{StaticResource RoomDescriptionTemplate}" Margin="10,234,0,35"
+                        HorizontalAlignment="Left" Grid.Column="1" Width="271">
             <!--<ComboBox x:Name="TempRoomComboBox" HorizontalAlignment="Left" Height="32" Margin="159,99,0,0" VerticalAlignment="Top" Width="240"/>-->
         </ContentControl>
-        <ContentControl ContentTemplate="{StaticResource ChooseRoomDataTemplate}" Margin="43,42,302,157"/>
+        <ContentControl ContentTemplate="{StaticResource ChooseRoomDataTemplate}" Margin="43,42,24.142,157" />
         <Button x:Name="BookButton" Content="Rezerwuj" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top"
                 Width="148" Margin="100,384,0,0" />
         <Button x:Name="PayButton" Content="Zapłać" HorizontalAlignment="Right" Height="34" VerticalAlignment="Top"
-                Width="148" Margin="0,384,302,0" />
-        <Calendar HorizontalAlignment="Left" Height="168" Margin="585,60,0,0" VerticalAlignment="Top" Width="180" />
+                Width="148" Margin="0,384,24.142,0" />
+        <Calendar HorizontalAlignment="Left" Height="168" Margin="10,61,0,0" VerticalAlignment="Top" Width="271"
+                  Grid.Column="1" />
     </Grid>
 </Window>
