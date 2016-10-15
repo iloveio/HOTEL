@@ -8,11 +8,34 @@
              DataContext="{Binding ChooseRoom, Mode=OneWay, Source={StaticResource Locator}}"
              d:DesignHeight="300" Width="492.982">
     <Grid>
+        <StackPanel HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="493" Orientation="Horizontal">
+            <Button x:Name="Floor1Button" x:Uid="1" Content="Piętro 1"
+                    Command="{Binding ChangeSelectedFloorCommand}"
+                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}" />
+            <Button x:Name="Floor2Button" x:Uid="2" Content="Piętro 2"
+                    Command="{Binding ChangeSelectedFloorCommand}"
+                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}"
+                    RenderTransformOrigin="1.287,0.606" />
+            <Button x:Name="Floor3Button" x:Uid="3" Content="Piętro 3"
+                    Command="{Binding ChangeSelectedFloorCommand}"
+                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}"
+                    RenderTransformOrigin="1.287,0.606" />
+            <Button x:Name="Floor4Button" x:Uid="4" Content="Piętro 4"
+                    Command="{Binding ChangeSelectedFloorCommand}"
+                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}"
+                    RenderTransformOrigin="1.287,0.606" />
+            <Button x:Name="Floor5Button" x:Uid="5" Content="Piętro 5"
+                    Command="{Binding ChangeSelectedFloorCommand}"
+                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}"
+                    RenderTransformOrigin="1.287,0.606" />
+        </StackPanel>
 
-        <Button x:Name="Room1Button" x:Uid="1" Content="Pokój 1" HorizontalAlignment="Left" Height="28"
-                Margin="54,99,0,0" VerticalAlignment="Top" Width="77" Command="{Binding ChangeSelectedRoomCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Uid}" />
-        <Button x:Name="Room2Button" x:Uid="45" Content="Pokój 45" HorizontalAlignment="Left" Height="28"
-                Margin="170,99,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="1.909,0.643"
-                Command="{Binding ChangeSelectedRoomCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Uid}" />
+        <Button x:Name="Room1Button" x:Uid="1" Content="Pokój 1" HorizontalAlignment="Left" Height="84"
+                Margin="0,78,0,0" VerticalAlignment="Top" Width="77" Command="{Binding ChangeSelectedRoomCommand}"
+                CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}" />
+        <Button x:Name="Room2Button" x:Uid="45" Content="Pokój 45" HorizontalAlignment="Left" Height="84"
+                Margin="77,78,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="1.909,0.643"
+                Command="{Binding ChangeSelectedRoomCommand}"
+                CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}" />
     </Grid>
 </UserControl>

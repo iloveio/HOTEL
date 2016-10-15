@@ -17,12 +17,16 @@ namespace BookingLibrary.TempDatabase
 
             Rooms = new List<Room>
             {
-                new Room {Id = 122, FloorNumber = 1, Size = 78},
-                new Room {Id = 2452, FloorNumber = 2, Size = 234},
-                new Room {Id = 2, FloorNumber = 5, Size = 223},
-                new Room {Id = 1, FloorNumber = 5, Size = 223},
-                new Room {Id = 45, FloorNumber = 0, Size = 1221},
-                new Room {Id = 23, FloorNumber = 4, Size = 443}
+                new Room {Id = 101, FloorNumber = 1, Size = 4},
+                new Room {Id = 145, FloorNumber = 1, Size = 3},
+                new Room {Id = 201, FloorNumber = 2, Size = 4},
+                new Room {Id = 245, FloorNumber = 2, Size = 3},
+                new Room {Id = 301, FloorNumber = 3, Size = 4},
+                new Room {Id = 345, FloorNumber = 3, Size = 3},
+                new Room {Id = 401, FloorNumber = 4, Size = 4},
+                new Room {Id = 445, FloorNumber = 4, Size = 3},
+                new Room {Id = 501, FloorNumber = 5, Size = 4},
+                new Room {Id = 545, FloorNumber = 5, Size = 3}
             };
         }
 
