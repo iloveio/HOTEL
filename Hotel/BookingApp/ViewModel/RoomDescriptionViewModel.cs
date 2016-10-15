@@ -9,20 +9,15 @@ namespace BookingApp.ViewModel
     {
         public RoomDescriptionViewModel()
         {
-            MessengerInstance.Register<PropertyChangedMessage<int>>(this, SearchSelectedRoomChanged);
+            MessengerInstance.Register<PropertyChangedMessage<Room>>(this, SearchSelectedRoomChanged);
         }
 
         public Room SelectedRoom { get; set; }
 
-        private void SearchSelectedRoomChanged(PropertyChangedMessage<int> propertyDetail)
+        private void SearchSelectedRoomChanged(PropertyChangedMessage<Room> propertyDetail)
         {
-            if (propertyDetail.PropertyName == "SelectedRoom")
-                LoadRoomFromModel(propertyDetail.NewValue);
-        }
-
-        private void LoadRoomFromModel(int selectedRoom)
-        {
-            SelectedRoom = ModelController.Instance.GetRoom(selectedRoom);
+            if (propertyDetail.PropertyName != "SelectedRoom") return;
+            SelectedRoom = propertyDetail.NewValue;
             RaisePropertyChanged(() => SelectedRoom);
         }
     }
