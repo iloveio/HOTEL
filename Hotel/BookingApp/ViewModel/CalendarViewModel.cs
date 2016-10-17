@@ -28,11 +28,6 @@ namespace BookingApp.ViewModel
         public List<Reservation> ActualReservations { get; set; }
         public uint SelectedRoom { get; set; }
 
-        public void Show()
-        {
-           
-        }
-
         #region Commands
 
         public event Action<int> Closed;

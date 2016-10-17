@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight;
 
 namespace BookingApp.ViewModel
 {
-    internal class ChildWindowManager : ViewModelBase
+    public class ChildWindowManager : ViewModelBase
     {
         private static ChildWindowManager instance;
 
