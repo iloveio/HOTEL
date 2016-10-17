@@ -44,12 +44,15 @@
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeStatus.cs" />
     <Compile Include="EmployeeStatusName.cs" />
+    <Compile Include="EmployeeFactory.cs" />
     <Compile Include="IManager.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Subordinate.cs" />
+    <Compile Include="SubordinateFactory.cs" />
     <Compile Include="Supervisor.cs" />
+    <Compile Include="SupervisorFactory.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

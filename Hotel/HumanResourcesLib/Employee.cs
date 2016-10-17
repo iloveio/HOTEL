@@ -7,7 +7,10 @@ namespace BuilderTest
         protected List<Job> jobs;
         protected EmployeeStatus employeeStatus;
         protected float wage;
+        public Employee()
+        {
 
+        }
         public EmployeeStatus EmployeeStatus
         {
             get

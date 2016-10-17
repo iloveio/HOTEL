@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BuilderTest.Subordinate">
-    <Position X="8.75" Y="8" Width="1.5" />
+    <Position X="8.75" Y="8.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -18,16 +18,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BuilderTest.Job">
-    <Position X="12" Y="7" Width="4.75" />
+    <Position X="11.5" Y="7" Width="4.75" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEABAAA=</HashCode>
       <FileName>Job.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BuilderTest.Supervisor">
-    <Position X="3.25" Y="7.75" Width="3.5" />
+    <Position X="3.25" Y="8.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIABCEAAAAAIAAAAAACAAAAAA=</HashCode>
       <FileName>Supervisor.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -35,7 +35,7 @@
   <Class Name="BuilderTest.Director">
     <Position X="0.5" Y="5.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABCEBAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Director.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -54,11 +54,34 @@
       <FileName>EmployeeStatus.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="HumanResourcesLib.SupervisorFactory">
+    <Position X="12.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SupervisorFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HumanResourcesLib.SubordinateFactory">
+    <Position X="15.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SubordinateFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="BuilderTest.IManager">
     <Position X="1.75" Y="2.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABCEAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>IManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HumanResourcesLib.EmployeeFactory">
+    <Position X="14.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EmployeeFactory.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="BuilderTest.EmployeeStatusName">
