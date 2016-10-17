@@ -18,16 +18,16 @@ namespace BookingLibrary.TempDatabase
 
             Rooms = new List<Room>
             {
-                new Room {RoomNumber = 101, FloorNumber = 1, Size = 4, IsEmpty = true},
-                new Room {RoomNumber = 145, FloorNumber = 1, Size = 3, IsEmpty = true},
-                new Room {RoomNumber = 201, FloorNumber = 2, Size = 4, IsEmpty = false},
-                new Room {RoomNumber = 245, FloorNumber = 2, Size = 3, IsEmpty = true},
-                new Room {RoomNumber = 301, FloorNumber = 3, Size = 4, IsEmpty = false},
-                new Room {RoomNumber = 345, FloorNumber = 3, Size = 3, IsEmpty = false},
-                new Room {RoomNumber = 401, FloorNumber = 4, Size = 4, IsEmpty = false},
-                new Room {RoomNumber = 445, FloorNumber = 4, Size = 3, IsEmpty = false},
-                new Room {RoomNumber = 501, FloorNumber = 5, Size = 4, IsEmpty = true},
-                new Room {RoomNumber = 545, FloorNumber = 5, Size = 3, IsEmpty = false}
+                new Room {RoomNumber = 101, FloorNumber = 1, Size = 4},
+                new Room {RoomNumber = 145, FloorNumber = 1, Size = 3},
+                new Room {RoomNumber = 201, FloorNumber = 2, Size = 4},
+                new Room {RoomNumber = 245, FloorNumber = 2, Size = 3},
+                new Room {RoomNumber = 301, FloorNumber = 3, Size = 4},
+                new Room {RoomNumber = 345, FloorNumber = 3, Size = 3},
+                new Room {RoomNumber = 401, FloorNumber = 4, Size = 4},
+                new Room {RoomNumber = 445, FloorNumber = 4, Size = 3},
+                new Room {RoomNumber = 501, FloorNumber = 5, Size = 4},
+                new Room {RoomNumber = 545, FloorNumber = 5, Size = 3}
             };
             Reservations = new List<Reservation>
             {

@@ -79,7 +79,7 @@
     <Compile Include="ViewModel\CalendarViewModel.cs" />
     <Compile Include="ViewModel\CalendarWindowViewModel.cs" />
     <Compile Include="ViewModel\ChildWindowManager.cs" />
-    <Compile Include="ViewModel\RoomDescriptionViewModel.cs" />
+    <Compile Include="ViewModel\RoomSearchViewModel.cs" />
     <Compile Include="ViewModel\ChooseRoomViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -89,8 +89,8 @@
     <Compile Include="Views\ChooseRoomView.xaml.cs">
       <DependentUpon>ChooseRoomView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RoomDescriptionView.xaml.cs">
-      <DependentUpon>RoomDescriptionView.xaml</DependentUpon>
+    <Compile Include="Views\RoomSearchView.xaml.cs">
+      <DependentUpon>RoomSearchView.xaml</DependentUpon>
     </Compile>
     <Page Include="BookingWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -111,7 +111,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RoomDescriptionView.xaml">
+    <Page Include="Views\RoomSearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

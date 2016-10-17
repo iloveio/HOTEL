@@ -43,7 +43,7 @@ namespace BookingApp.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<ChooseRoomViewModel>();
-            SimpleIoc.Default.Register<RoomDescriptionViewModel>();
+            SimpleIoc.Default.Register<RoomSearchViewModel>();
             SimpleIoc.Default.Register<CalendarViewModel>();
             SimpleIoc.Default.Register<ChildWindowManager>();
         }
@@ -54,8 +54,8 @@ namespace BookingApp.ViewModel
 
         public CalendarViewModel Calendar => ServiceLocator.Current.GetInstance<CalendarViewModel>();
 
-        public RoomDescriptionViewModel RoomDescription
-            => ServiceLocator.Current.GetInstance<RoomDescriptionViewModel>();
+        public RoomSearchViewModel RoomSearch
+            => ServiceLocator.Current.GetInstance<RoomSearchViewModel>();
 
         public ChildWindowManager ChildWindowManager => ServiceLocator.Current.GetInstance<ChildWindowManager>();
 

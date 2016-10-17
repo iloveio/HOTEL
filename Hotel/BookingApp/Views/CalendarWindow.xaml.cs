@@ -23,6 +23,9 @@ namespace BookingApp.Views
         public CalendarWindow()
         {
             InitializeComponent();
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today);
+            startDatePicker.BlackoutDates.Add(cdr);
+            endDatePicker.BlackoutDates.Add(cdr);
         }
     }
 }
