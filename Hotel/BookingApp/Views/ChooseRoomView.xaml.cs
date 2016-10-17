@@ -42,7 +42,7 @@ namespace BookingApp.Views
             foreach (var button in buttons)
             {
                 var room = (from r in rooms
-                           where r.Id == Convert.ToInt32(button.Uid) + selectedFloor * 100
+                           where r.RoomNumber == Convert.ToInt32(button.Uid) + selectedFloor * 100
                            select r).First();
                 button.Background = room.IsEmpty ? Brushes.Green : Brushes.Red;
             }

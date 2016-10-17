@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BookingLibrary.TempDatabase
 {
@@ -8,29 +9,35 @@ namespace BookingLibrary.TempDatabase
         {
             Users = new List<User>
             {
-                new User {Name = "Zdzisiu", SelectedRoom = 201, Surname = "Kowalksi"},
-                new User {Name = "Marek", SelectedRoom = 201, Surname = "Nowam"},
-                new User {Name = "Krystina", SelectedRoom = 201, Surname = "Szaba"},
-                new User {Name = "Abelard", SelectedRoom = 201, Surname = "Szama"},
-                new User {Name = "Konstantyn", SelectedRoom = 201, Surname = "Zdrój"}
+                new User {Name = "Zdzisiu", PESEL = 123, Surname = "Kowalksi"},
+                new User {Name = "Marek", PESEL = 22342201, Surname = "Nowam"},
+                new User {Name = "Krystina", PESEL = 24324401, Surname = "Szaba"},
+                new User {Name = "Abelard", PESEL = 2023421131, Surname = "Szama"},
+                new User {Name = "Konstantyn", PESEL = 232435201, Surname = "Zdrój"}
             };
 
             Rooms = new List<Room>
             {
-                new Room {Id = 101, FloorNumber = 1, Size = 4, IsEmpty = true},
-                new Room {Id = 145, FloorNumber = 1, Size = 3, IsEmpty = true},
-                new Room {Id = 201, FloorNumber = 2, Size = 4, IsEmpty = false},
-                new Room {Id = 245, FloorNumber = 2, Size = 3, IsEmpty = true},
-                new Room {Id = 301, FloorNumber = 3, Size = 4, IsEmpty = false},
-                new Room {Id = 345, FloorNumber = 3, Size = 3, IsEmpty = false},
-                new Room {Id = 401, FloorNumber = 4, Size = 4, IsEmpty = false},
-                new Room {Id = 445, FloorNumber = 4, Size = 3, IsEmpty = false},
-                new Room {Id = 501, FloorNumber = 5, Size = 4, IsEmpty = true},
-                new Room {Id = 545, FloorNumber = 5, Size = 3, IsEmpty = false}
+                new Room {RoomNumber = 101, FloorNumber = 1, Size = 4, IsEmpty = true},
+                new Room {RoomNumber = 145, FloorNumber = 1, Size = 3, IsEmpty = true},
+                new Room {RoomNumber = 201, FloorNumber = 2, Size = 4, IsEmpty = false},
+                new Room {RoomNumber = 245, FloorNumber = 2, Size = 3, IsEmpty = true},
+                new Room {RoomNumber = 301, FloorNumber = 3, Size = 4, IsEmpty = false},
+                new Room {RoomNumber = 345, FloorNumber = 3, Size = 3, IsEmpty = false},
+                new Room {RoomNumber = 401, FloorNumber = 4, Size = 4, IsEmpty = false},
+                new Room {RoomNumber = 445, FloorNumber = 4, Size = 3, IsEmpty = false},
+                new Room {RoomNumber = 501, FloorNumber = 5, Size = 4, IsEmpty = true},
+                new Room {RoomNumber = 545, FloorNumber = 5, Size = 3, IsEmpty = false}
+            };
+            Reservations = new List<Reservation>
+            {
+                new Reservation (145,123,DateTime.Today,DateTime.Today.AddDays(5)),
+                new Reservation (145,123,DateTime.Today.AddDays(8),DateTime.Today.AddDays(13))
             };
         }
 
         public List<User> Users { get; set; }
         public List<Room> Rooms { get; set; }
+        public List<Reservation> Reservations { get; set; }
     }
 }

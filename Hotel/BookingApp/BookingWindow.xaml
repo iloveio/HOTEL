@@ -28,7 +28,7 @@
             <!--<ComboBox x:Name="TempRoomComboBox" HorizontalAlignment="Left" Height="32" Margin="159,99,0,0" VerticalAlignment="Top" Width="240"/>-->
         </ContentControl>
         <ContentControl ContentTemplate="{StaticResource ChooseRoomDataTemplate}" Margin="43,42,24.142,157" />
-        <Button x:Name="BookButton" Content="Rezerwuj" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top"
+        <Button x:Name="BookButton" Content="Rezerwuj" Command="{Binding OpenCalendarCommand}" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top"
                 Width="148" Margin="100,384,0,0" />
         <Button x:Name="PayButton" Content="Zapłać" HorizontalAlignment="Right" Height="34" VerticalAlignment="Top"
                 Width="148" Margin="0,384,24.142,0" />

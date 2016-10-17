@@ -12,9 +12,5 @@ namespace BookingLibrary.TempDatabase
         public bool IsBathroom { get; set; }
         public bool IsBalcony { get; set; }
         public bool IsEmpty { get; set; }
-        public DateTime ReservationStart { get; set; }
-        public DateTime ReservationEnd { get; set; }
-        public int CurrentClientId { get; set; }
-        public int Id { get; set; }
     }
 }

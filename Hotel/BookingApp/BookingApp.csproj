@@ -52,6 +52,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -74,10 +76,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\CalendarViewModel.cs" />
+    <Compile Include="ViewModel\CalendarWindowViewModel.cs" />
+    <Compile Include="ViewModel\ChildWindowManager.cs" />
     <Compile Include="ViewModel\RoomDescriptionViewModel.cs" />
     <Compile Include="ViewModel\ChooseRoomViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\CalendarWindow.xaml.cs">
+      <DependentUpon>CalendarWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChooseRoomView.xaml.cs">
       <DependentUpon>ChooseRoomView.xaml</DependentUpon>
     </Compile>
@@ -95,6 +103,10 @@
     <Compile Include="BookingWindow.xaml.cs">
       <DependentUpon>BookingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\CalendarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ChooseRoomView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

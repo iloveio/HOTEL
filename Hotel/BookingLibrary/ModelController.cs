@@ -41,8 +41,18 @@ namespace BookingLibrary
         public Room GetRoom(int id)
         {
             return (from r in tempBookingDatabase.Rooms
-                where r.Id == id
+                where r.RoomNumber == id
                 select r).First();
+        }
+
+        public void CreateReservation(uint roomId, uint userId, DateTime reservationStart, DateTime reservationEnd)
+        {
+            tempBookingDatabase.Reservations.Add(new Reservation(roomId,userId,reservationStart,reservationEnd));
+        }
+
+        public List<Reservation> GetReservationsForSelectedRoom(uint id)
+        {
+            return (from r in tempBookingDatabase.Reservations where r.RoomId == id select r).ToList();
         }
     }
 }
