@@ -9,35 +9,31 @@
              d:DesignHeight="300" Width="492.982">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="493" Orientation="Horizontal">
-            <Button x:Name="Floor1Button" x:Uid="1" Content="Piętro 1"
-                    Command="{Binding ChangeSelectedFloorCommand}"
-                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}" Click="FloorButton_OnCLick" />
-            <Button x:Name="Floor2Button" x:Uid="2" Content="Piętro 2"
-                    Command="{Binding ChangeSelectedFloorCommand}"
-                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}"
-                    RenderTransformOrigin="1.287,0.606"  Click="FloorButton_OnCLick" />
-            <Button x:Name="Floor3Button" x:Uid="3" Content="Piętro 3"
-                    Command="{Binding ChangeSelectedFloorCommand}"
-                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}"
-                    RenderTransformOrigin="1.287,0.606" Click="FloorButton_OnCLick" />
-            <Button x:Name="Floor4Button" x:Uid="4" Content="Piętro 4"
-                    Command="{Binding ChangeSelectedFloorCommand}"
-                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}"
-                    RenderTransformOrigin="1.287,0.606" Click="FloorButton_OnCLick"/>
-            <Button x:Name="Floor5Button" x:Uid="5" Content="Piętro 5"
-                    Command="{Binding ChangeSelectedFloorCommand}"
-                    CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}"
-                    RenderTransformOrigin="1.287,0.606" Click="FloorButton_OnCLick"/>
-        </StackPanel>
-
-        <Button x:Name="Room1Button" x:Uid="1" Content="Pokój 1" HorizontalAlignment="Left" Height="84"
-                Margin="0,78,0,0" VerticalAlignment="Top" Width="77" Command="{Binding ChangeSelectedRoomCommand}"
-                CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}" />
-        <Button x:Name="Room2Button" x:Uid="45" Content="Pokój 45" HorizontalAlignment="Left" Height="84"
-                Margin="77,78,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="1.909,0.643"
-                Command="{Binding ChangeSelectedRoomCommand}"
-                CommandParameter="{Binding Uid, RelativeSource={RelativeSource Self}}" />
+        <StackPanel HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="493" Orientation="Horizontal"/>
+        <!--<DataGrid x:Name="roomsDataGrid" ItemsSource="{Binding Rooms}"  AutoGenerateColumns="False" HorizontalAlignment="Left" Height="247" Margin="10,43,0,0" VerticalAlignment="Top" Width="74">
+            <DataGridTextColumn Header="Numer pokoju:" Width="SizeToCells" IsReadOnly="True"/>
+            <DataGridTextColumn Header="Ilość miejsc:" Width="SizeToCells" IsReadOnly="True"/>
+            <DataGridTextColumn Header="Ilość pokojów:" Width="SizeToCells" IsReadOnly="True"/>
+        </DataGrid>-->
+        <ListView x:Name="roomsListView" ItemsSource="{Binding Rooms}" HorizontalAlignment="Center" Height="290" Margin="0,0,5,0" VerticalAlignment="Top" Width="488">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nr:" Width= "50" DisplayMemberBinding="{Binding RoomNumber}" />
+                    <GridViewColumn Header="Piętro:" Width= "60" DisplayMemberBinding="{Binding FloorNumber}" />
+                    <GridViewColumn Header="Ilość miejsc:" Width="70" DisplayMemberBinding="{Binding Size}" />
+                    <GridViewColumn Header="Ilość pokojów:" Width="90" DisplayMemberBinding="{Binding NumberOfRooms}" />
+                    <GridViewColumn Header="TV:" Width="40" DisplayMemberBinding="{Binding IsTv}" />
+                    <GridViewColumn Header="Balkon:" Width="70" DisplayMemberBinding="{Binding IsBalcony}" />
+                    <GridViewColumn Header="Widok:" Width="70" DisplayMemberBinding="{Binding HasOutlook}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 
 </UserControl>
+    

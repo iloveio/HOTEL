@@ -15,8 +15,10 @@ namespace BookingApp.ViewModel
             ChangeSelectedRoomCommand = new RelayCommand<int>(ChangeSelectedRoom);
             ChangeSelectedFloorCommand = new RelayCommand<int>(ChangeSelectedFloor);
             SelectedFloor = 1;
+            Rooms = ModelController.Instance.GetRooms();
         }
 
+        public List<Room> Rooms { get; set; }
         public Room SelectedRoom { get; set; }
 
         public int SelectedFloor { get; set; }
