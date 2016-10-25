@@ -17,7 +17,7 @@ namespace HumanResourcesLib
         }
         public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
-            return new Supervisor(name, lastName, id, employeeStatus, employees, wage, jobs, this.factory);
+            return new Supervisor(name, lastName, id, employeeStatus, this.employees, wage, jobs, this.factory);
         }
     }
 }
