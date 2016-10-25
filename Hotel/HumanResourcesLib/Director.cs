@@ -9,7 +9,14 @@ namespace BuilderTest
 {
     public class Director : User, IManager
     {
-        private List<Supervisor> supervisors;
+        private List<Employee> supervisors;
+
+        IEmployeeFactory employeeFactory;
+
+        public Director(string name, string lastName, uint id,List<Employee> supervisors) : base(name, lastName, id)
+        {
+            this.supervisors = supervisors;
+        }
 
         public List<EmployeeStatus> CheckAllSubordinateStatus()
         {
@@ -21,14 +28,23 @@ namespace BuilderTest
             throw new NotImplementedException();
         }
 
-        public HumanResourcesLib.EmployeeFactory GetFactory()
+        public HumanResourcesLib.IEmployeeFactory GetFactory
         {
-            return new SupervisorFactory();
+            get
+            {
+                return this.employeeFactory;
+            }
+            set
+            {
+                this.employeeFactory = value;
+            }
         }
 
-        public Employee HireAnEmployee()
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
-            return GetFactory().CreateEmployee();
+            return this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }
+
+
     }
 }

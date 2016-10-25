@@ -44,7 +44,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeStatus.cs" />
     <Compile Include="EmployeeStatusName.cs" />
-    <Compile Include="EmployeeFactory.cs" />
+    <Compile Include="IEmployeeFactory.cs" />
     <Compile Include="IManager.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Program.cs" />

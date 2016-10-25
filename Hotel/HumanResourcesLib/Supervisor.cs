@@ -8,8 +8,20 @@ namespace BuilderTest
 {
     public class Supervisor : Employee, IManager
     {
-        protected List<Subordinate> employees;
-        protected EmployeeFactory SubordinateFactory;
+        protected List<Employee> employees;
+        protected IEmployeeFactory subordinateFactory;
+
+        public Supervisor():base()
+        {
+
+        }
+
+        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus,List<Employee> employees, float wage, List<Job> jobs,IEmployeeFactory subrodinateFactory) : 
+            base(name, lastName, id, employeeStatus, wage, jobs)
+        {
+            this.subordinateFactory = subrodinateFactory;
+            this.employees = employees;
+        }
 
         public List<EmployeeStatus> CheckAllSubordinateStatus()
         {
@@ -21,14 +33,21 @@ namespace BuilderTest
             throw new NotImplementedException();
         }
 
-        public EmployeeFactory GetFactory()
+        public IEmployeeFactory GetFactory
         {
-            return new SubordinateFactory();
+            get
+            {
+                return this.subordinateFactory;
+            }
+            set
+            {
+                this.subordinateFactory = value;
+            }
         }
 
-        public Employee HireAnEmployee()
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
-            return GetFactory().CreateEmployee();
+            return GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }
     }
      

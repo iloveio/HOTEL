@@ -7,11 +7,13 @@ using HumanResourcesLib;
 
 namespace HumanResourcesLib
 { 
-    public class SubordinateFactory : EmployeeFactory
+    public class SubordinateFactory : IEmployeeFactory
     {
-        public Employee CreateEmployee()
+       
+
+        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
-            return new Subordinate();
+            return new Subordinate(name, lastName, id, employeeStatus, wage, jobs);
         }
     }
 }

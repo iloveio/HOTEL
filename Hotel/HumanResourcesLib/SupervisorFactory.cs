@@ -6,11 +6,18 @@ using BuilderTest;
 
 namespace HumanResourcesLib
 {
-    public class SupervisorFactory : EmployeeFactory
+    public class SupervisorFactory : IEmployeeFactory
     {
-        public Employee CreateEmployee()
+        private IEmployeeFactory factory;
+        List<Employee> employees;
+        public SupervisorFactory(IEmployeeFactory employeeFactory,List<Employee> employees) 
         {
-            return new Supervisor();
+            this.factory = employeeFactory;
+            this.employees = employees;
+        }
+        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        {
+            return new Supervisor(name, lastName, id, employeeStatus, employees, wage, jobs, this.factory);
         }
     }
 }
