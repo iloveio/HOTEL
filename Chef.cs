@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +14,13 @@ namespace Kitchen
 
         }
 
-        public Dish Make_Dish(string dishName, List<Ingredient> ingredients)
+        public Dish Make_Dish(string dishName, Fridge fridge )
         {
+            List<Ingredient> ingredients = fridge.Return_Ingredients();
+
+            List<Ingredient> empty = new List<Ingredient>();
+            Dish dish = new Dish("", empty);
+
             int i1 = -1,
                 i2 = -1,
                 i3 = -1;
@@ -26,46 +31,47 @@ namespace Kitchen
             {
                 for (int i = 0; i < ingredients.Count; i++)
                 {
-                    if (i1 == -1 && ingredients[i].Name() == "Bread"  )
+                    if (i1 == -1 && ingredients[i].Name() == "Bread")
                     {
                         i1 = i;
                         usedIngredients.Add(ingredients[i1]);
+                        Console.WriteLine("Found bread.");
                     }
-                    if ( i2 == -1 && ingredients[i].Name() == "Butter" )
+                    if (i2 == -1 && ingredients[i].Name() == "Butter")
                     {
                         i2 = i;
                         usedIngredients.Add(ingredients[i2]);
+                        Console.WriteLine("Found butter.");
                     }
-                    if ( i3 == -1 && ingredients[i].Name() == "Tomato" )
+                    if (i3 == -1 && ingredients[i].Name() == "Tomato")
                     {
                         i3 = i;
                         usedIngredients.Add(ingredients[i3]);
+                        Console.WriteLine("Found tomato.");
                     }
 
-                    if (i1 >= 0 && i2 >= 0 && i3 >= 0) break;
-                }
-
-                if (i1 >= 0)
-                {
-                    if (i2 >= 0)
+                    if (i1 >= 0)
                     {
-                        if (i3 >= 0)
+                        if (i2 >= 0)
                         {
-                            Console.WriteLine("{0} created.", dishName);
-                            Dish dish = new Dish("Tomato sandwich", usedIngredients);
-                            return dish;
+                            if (i3 >= 0)
+                            {
+                                Console.WriteLine("{0} created.", dishName);
+                                dish = new Dish("Tomato sandwich", usedIngredients);
+                                
+                                // Remove_Named_Ingredients()
+                            }
+                            //else Console.WriteLine("Tomato not present.");
                         }
-                        else Console.WriteLine("Tomato not present.");
+                        //else Console.WriteLine("Butter not present.");
                     }
-                    else Console.WriteLine("Butter not present.");
+                    //else Console.WriteLine("Bread not present.");
                 }
-                else Console.WriteLine("Bread not present.");
             }
+            else Console.WriteLine("No such dish as \"{0}\" in the menu.",dishName);
 
-            List<Ingredient> empty = new List<Ingredient>();
-            Dish emptyDish = new Dish("", empty);
-            Console.WriteLine("Empty dish created.");
-            return emptyDish;
+            return dish;
+            
         }
     }
 }
