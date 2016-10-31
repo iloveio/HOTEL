@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,33 +12,19 @@ namespace Kitchen_main
     {
         static void Main()
         {
-            Console.WriteLine("Hello.");
-
             Fridge fridge = new Fridge() ;
-            List<Ingredient> ingredients = fridge.Return_Ingredients();
+
+            fridge.Add_Ingredient("Tomato");
+            fridge.Add_Ingredient("Bread");
+            fridge.Add_Ingredient("Butter");
+
+            //List<Ingredient> ingredients = fridge.Return_Ingredients();
 
             Chef chef = new Chef();
-            Dish dish = chef.Make_Dish("Tomato sandwich",ingredients);
+            Dish dish = chef.Make_Dish("Tomato sandwich",fridge);
 
             Console.ReadKey();
         }
 
-
-
-
-
-
-
-
     }
-
-    
-
-    
-
-    
-
-    
-
-    
 }
