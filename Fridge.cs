@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +10,12 @@ namespace Kitchen
     {
         public Fridge()
         {
-            Console.WriteLine("Fridge Constructor.");
-            List<string> ingredientNames = new List<string>(new string[] { "Tomato", "Butter","Bread" });
-            this.Add_Ingredients(ingredientNames);
+            
+        }
+
+        public void Add_Ingredient( string name )
+        {
+            this.ingredients.Add(new Ingredient(name));
         }
 
         public void Request_Ingredients(List<string> orderNames)
