@@ -12,7 +12,7 @@ namespace BuilderTest
         private List<Employee> supervisors;
         private static volatile Director directorInstance;
 
-        private object syncObject = new object();
+        private static object syncObject = new object();
 
         IEmployeeFactory employeeFactory;
 
@@ -20,7 +20,7 @@ namespace BuilderTest
         {
             this.supervisors = supervisors;
         }
-        public Director GetInstance(string name, string lastName, uint id, List<Employee> supervisors)
+        public static Director GetInstance(string name, string lastName, uint id, List<Employee> supervisors)
         {
             
                 if( directorInstance == null)
