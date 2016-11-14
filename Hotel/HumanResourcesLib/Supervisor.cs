@@ -11,7 +11,7 @@ namespace BuilderTest
         protected List<Employee> employees;
         protected IEmployeeFactory subordinateFactory;
 
-        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus,List<Employee> employees, float wage, List<Job> jobs,IEmployeeFactory subrodinateFactory) : 
+        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus,List<Employee> employees, float wage, List<IJob> jobs,IEmployeeFactory subrodinateFactory) : 
             base(name, lastName, id, employeeStatus, wage, jobs)
         {
             this.subordinateFactory = subrodinateFactory;
@@ -40,7 +40,7 @@ namespace BuilderTest
             }
         }
 
-        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<IJob> jobs)
         {
             return GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }

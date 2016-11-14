@@ -15,7 +15,7 @@ namespace HumanResourcesLib
             this.factory = employeeFactory;
             this.employees = employees;
         }
-        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<IJob> jobs)
         {
             return new Supervisor(name, lastName, id, employeeStatus, this.employees, wage, jobs, this.factory);
         }

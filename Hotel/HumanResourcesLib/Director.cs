@@ -20,20 +20,37 @@ namespace BuilderTest
         {
             this.supervisors = supervisors;
         }
-        public static Director GetInstance(string name, string lastName, uint id, List<Employee> supervisors)
+        public static void InstantiateDirector(string name, string lastName, uint id, List<Employee> supervisors)
         {
-            
-                if( directorInstance == null)
+            if (directorInstance == null)
+            {
+                lock (syncObject)
                 {
-                    lock(syncObject)
+                    if (directorInstance == null)
                     {
-                        if (directorInstance == null)
-                        {
-                            directorInstance = new Director(name, lastName, id, supervisors);
-                        }
+                        directorInstance = new Director(name, lastName, id, supervisors);
                     }
                 }
-            return directorInstance;
+            }
+        }
+        public static Director GetInstance
+        {
+
+            get
+            {
+                lock (syncObject)
+                {
+                    if (directorInstance != null)
+                    {
+                        return directorInstance;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+            }
+            
             
         }
         public List<EmployeeStatus> CheckAllSubordinateStatus()
@@ -58,7 +75,7 @@ namespace BuilderTest
             }
         }
 
-        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<IJob> jobs)
         {
             return this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }

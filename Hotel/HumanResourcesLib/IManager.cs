@@ -8,7 +8,7 @@ namespace BuilderTest
 {
     public interface IManager
     {
-        Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs);
+        Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<IJob> jobs);
         Employee FireAnEmployee();
         List<EmployeeStatus> CheckAllSubordinateStatus();
     }

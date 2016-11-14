@@ -11,7 +11,7 @@ namespace HumanResourcesLib
     {
        
 
-        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<IJob> jobs)
         {
             return new Subordinate(name, lastName, id, employeeStatus, wage, jobs);
         }

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using HumanResourcesLib;
+using System.Collections.Generic;
 
 namespace BuilderTest
 {
     public abstract class Employee : User
     {
-        protected List<Job> jobs;
+        protected List<IJob> jobs;
         protected EmployeeStatus employeeStatus;
         protected float wage;
         public Employee(string name, string lastName, uint id) :base(name,lastName,id)
@@ -29,7 +30,7 @@ namespace BuilderTest
             
             return this.id.GetHashCode();
         }
-        public Employee(string name,string lastName,uint id,EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        public Employee(string name,string lastName,uint id,EmployeeStatus employeeStatus, float wage, List<IJob> jobs)
             :base(name,lastName,id)
         {
             this.employeeStatus = employeeStatus;
@@ -46,6 +47,17 @@ namespace BuilderTest
             set
             {
                 this.employeeStatus = value;
+            }
+        }
+        public List<IJob> Jobs
+        {
+            get
+            {
+                return this.jobs;
+            }
+            set
+            {
+                this.jobs = value;
             }
         }
     }
