@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BuilderTest;
+using HumanResourcesLib;
 
 namespace HumanResourcesLib
 {
@@ -15,7 +15,7 @@ namespace HumanResourcesLib
             this.factory = employeeFactory;
             this.employees = employees;
         }
-        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<IJob> jobs)
+        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
             return new Supervisor(name, lastName, id, employeeStatus, this.employees, wage, jobs, this.factory);
         }

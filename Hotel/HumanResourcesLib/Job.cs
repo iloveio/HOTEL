@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BuilderTest
+namespace HumanResourcesLib
 {
     public class Job
     {

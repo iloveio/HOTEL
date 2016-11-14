@@ -1,4 +1,4 @@
-﻿using BuilderTest;
+﻿using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,6 @@ namespace HumanResourcesLib
 {
     public interface IEmployeeFactory
     {
-        Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<IJob> jobs);
+        Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs);
     }
 }

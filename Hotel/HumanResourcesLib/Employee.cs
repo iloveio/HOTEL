@@ -1,11 +1,11 @@
 ﻿using HumanResourcesLib;
 using System.Collections.Generic;
 
-namespace BuilderTest
+namespace HumanResourcesLib
 {
     public abstract class Employee : User
     {
-        protected List<IJob> jobs;
+        protected List<Job> jobs;
         protected EmployeeStatus employeeStatus;
         protected float wage;
         public Employee(string name, string lastName, uint id) :base(name,lastName,id)
@@ -30,7 +30,7 @@ namespace BuilderTest
             
             return this.id.GetHashCode();
         }
-        public Employee(string name,string lastName,uint id,EmployeeStatus employeeStatus, float wage, List<IJob> jobs)
+        public Employee(string name,string lastName,uint id,EmployeeStatus employeeStatus, float wage, List<Job> jobs)
             :base(name,lastName,id)
         {
             this.employeeStatus = employeeStatus;
@@ -49,7 +49,7 @@ namespace BuilderTest
                 this.employeeStatus = value;
             }
         }
-        public List<IJob> Jobs
+        public List<Job> Jobs
         {
             get
             {

@@ -1,11 +1,11 @@
-﻿using BuilderTest;
-using HumanResourcesLib;
+﻿using HumanResourcesLib;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BuilderTest
+namespace HumanResourcesLib
 {
     public class Director : User, IManager
     {
@@ -75,7 +75,7 @@ namespace BuilderTest
             }
         }
 
-        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<IJob> jobs)
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
             return this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }
