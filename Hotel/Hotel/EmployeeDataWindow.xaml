@@ -1,0 +1,249 @@
+﻿<Window x:Class="Hotel.EmployeeDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel"
+        mc:Ignorable="d"
+        Title="EmployeeDataWindow" Height="700" Width="900"
+        WindowStartupLocation="Manual" 
+        Left="50" Top="20">
+    <Grid Background="#FF363636">
+        <TextBlock HorizontalAlignment="Left" Height="48" Margin="23,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" FontSize="28" Foreground="White" Text="Browse employee data"/>
+
+        <ListBox x:Name="browseEmployeeList" Margin="23,66,22,0" Background="#FF363636" FontSize="14" Foreground="#FFF" ItemsSource="{Binding GetPersonList}" SelectedIndex="{Binding Index}"  RenderTransformOrigin="0.55,1.322" Height="392" VerticalAlignment="Top">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding BusinessEntityID}"  />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding Title}" />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding FirstName}"  />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding LastName}" />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding Suffix}" />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding ModifiedDate}" />
+                        <TextBlock Text="    " />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button x:Name="EditButton" Content="Edit employee data" HorizontalAlignment="Left" Margin="23,490,0,0" VerticalAlignment="Top" Width="200" Height="38" Cursor="Hand" Foreground="White" Command="{Binding SubmitPersonDataChanges}" RenderTransformOrigin="1.044,1.747" Click="EditButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="DeleteButton" Content="Delete employee" HorizontalAlignment="Left" Margin="343,490,0,0" VerticalAlignment="Top" Width="200" Height="38" Cursor="Hand" Foreground="White" Command="{Binding SubmitPersonDataChanges}" RenderTransformOrigin="1.044,1.747" Click="DeleteButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFD6D6D6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="AddButton" Content="Add new employee" HorizontalAlignment="Left" Margin="661,490,0,0" VerticalAlignment="Top" Width="200" Height="38" Cursor="Hand" Foreground="White" Command="{Binding SubmitPersonDataChanges}" RenderTransformOrigin="1.044,1.747" Click="AddButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFD6D6D6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="ExitButton" Content="Close" HorizontalAlignment="Left" Margin="701,580,0,0" VerticalAlignment="Top" Width="160" Height="38" Cursor="Hand" Foreground="White" RenderTransformOrigin="1.044,1.747" Click="ExitButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFD6D6D6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <TextBox Name="editFirstName" Text="{Binding EditTitle}" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="23,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+        <TextBox Name="editLastName" Text="{Binding EditTitle}" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="213,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+        <DatePicker Name="datePicker" SelectedDateFormat="Short" Background="#FF363636" 
+                  DisplayDateStart="1/01/16" DisplayDateEnd="12/31/17" 
+                  FirstDayOfWeek="Monday" Width="105" Height="0" Margin="426,443,361,196"/>
+        <DatePicker Name="datePickerTo" SelectedDateFormat="Short" Background="#FF363636" 
+                  DisplayDateStart="1/01/16" DisplayDateEnd="12/31/17" 
+                  FirstDayOfWeek="Monday" Width="105" Height="0" Margin="555,443,232,196"/>
+        <ListBox Name="StatusesList" Background="#FF363636" Foreground="#FFF" FontSize="18" HorizontalAlignment="Left" Height="0" Margin="426,376,0,0" VerticalAlignment="Top" Width="230" SelectionChanged="StatusesList_SelectionChanged">
+        </ListBox>
+        <TextBox Name="editWage" Text="{Binding EditTitle}" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="725,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+        <ListBox Name="JobsListBrowse" Margin="23,490,535,44" Background="#FF363636" FontSize="14" Foreground="#FFF" Height="0"  RenderTransformOrigin="0.55,1.322">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding BusinessEntityID}"  />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding Title}" />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding FirstName}"  />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding LastName}" />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding Suffix}" />
+                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding ModifiedDate}" />
+                        <TextBlock Text="    " />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="AddJobButton" Content="Add job" HorizontalAlignment="Left" Margin="386,490,0,0" VerticalAlignment="Top" Width="125" Height="0" Cursor="Hand" Foreground="White" RenderTransformOrigin="1.044,1.747" Click="AddJobButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="DeleteJobButton" Content="Delete job" HorizontalAlignment="Left" Margin="386,580,0,0" VerticalAlignment="Top" Width="125" Height="0" Cursor="Hand" Foreground="White" Command="{Binding SubmitPersonDataChanges}" RenderTransformOrigin="1.044,1.747" Click="DeleteJobButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFD6D6D6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBox x:Name="AddJobField" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="532,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <Button x:Name="ConfirmJobButton" Content="Confirm" HorizontalAlignment="Left" Margin="701,490,0,0" VerticalAlignment="Top" Width="86" Height="0" Cursor="Hand" Foreground="White" RenderTransformOrigin="1.044,1.747" Click="ConfirmJobButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFD6D6D6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <TextBlock Name="FirstName" HorizontalAlignment="Left" Height="0" Margin="23,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="136" FontSize="15" Foreground="White" Text="First name"/>
+        <TextBlock Name="LastName" HorizontalAlignment="Left" Height="0" Margin="221,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="128" FontSize="15" Foreground="White"><Run Text="Last"/><Run Text=" name"/></TextBlock>
+        <TextBlock Name="Status" HorizontalAlignment="Left" Height="0" Margin="725,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="136" FontSize="15" Foreground="White" Text="Wage"/>
+        <TextBlock Name="Wage" HorizontalAlignment="Left" Height="0" Margin="426,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="230" FontSize="15" Foreground="White" Text="Status"/>
+        <TextBlock Name="Jobs" HorizontalAlignment="Left" Height="0" Margin="23,454,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="334" FontSize="15" Foreground="White" Text="Jobs"/>
+        <TextBlock Name="From" HorizontalAlignment="Left" Height="0" Margin="426,415,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="105" FontSize="15" Foreground="White" Text="From"/>
+        <TextBlock Name="To" HorizontalAlignment="Left" Height="0" Margin="555,415,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="105" FontSize="15" Foreground="White" Text="To"/>
+    </Grid>
+</Window>

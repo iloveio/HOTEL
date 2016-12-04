@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="320" Width="600">
+    <!-- <Window.DataContext>
+        <local:WindowManager/>
+    </Window.DataContext>-->
+    <Grid Background="#FF363636">
+        <TextBlock HorizontalAlignment="Left" Height="72" Margin="0,13,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="592" FontSize="35" Foreground="White" Text="Human Resources"/>
+        <Button x:Name="ViewButton" Content="Browse employee data" HorizontalAlignment="Left" Margin="23,162,0,0" VerticalAlignment="Top" Width="246" Height="42" Cursor="Hand" Foreground="White" RenderTransformOrigin="0.57,1.566" Click="ViewButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFD6D6D6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="ExitButton" Content="Exit module" HorizontalAlignment="Left" Margin="319,162,0,0" VerticalAlignment="Top" Width="246" Height="41" Cursor="Hand" Foreground="White" Click="ExitButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFD6D6D6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>

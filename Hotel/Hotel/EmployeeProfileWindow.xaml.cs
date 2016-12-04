@@ -9,30 +9,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Hotel
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EmployeeProfileWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EmployeeProfileWindow : Window
     {
-        public MainWindow()
+        public EmployeeProfileWindow()
         {
             InitializeComponent();
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        private void ExitModule_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void ViewButton_Click(object sender, RoutedEventArgs e)
-        {
-            Window employeeDataView = new EmployeeDataWindow();
-            employeeDataView.Show();
+            Close();
         }
     }
 }
