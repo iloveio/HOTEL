@@ -8,14 +8,14 @@ using GalaSoft.MvvmLight;
 
 namespace BookingApp.ViewModel
 {
-    public class CalendarWindowViewModel : ViewModelBase
+    public class CalendarWindowManager
     {
         public event Action<int> Closed;
 
-        public CalendarWindowViewModel()
+        public CalendarWindowManager()
         {
-            
         }
+
         public void Show()
         {
             CalendarViewModel calendarViewModel = new CalendarViewModel();
@@ -25,11 +25,8 @@ namespace BookingApp.ViewModel
 
         void ChildWindow_Closed(int i)
         {
-            if (Closed != null)
-            {
-                Closed(i);
-                ChildWindowManager.Instance.CloseChildWindow();
-            }
+            Closed?.Invoke(i);
+            ChildWindowManager.Instance.CloseChildWindow();
         }
     }
 }

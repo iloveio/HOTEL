@@ -22,7 +22,7 @@ namespace BookingApp.ViewModel
 
         private void CloseWindow()
         {
-            Closed(1);
+            Closed?.Invoke(1);
         }
 
         public List<Reservation> ActualReservations { get; set; }

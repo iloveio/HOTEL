@@ -15,8 +15,8 @@ namespace BookingApp.ViewModel
 
         void OpenCalendarWindow()
         {
-            CalendarWindowViewModel calendarWindowViewModel = new CalendarWindowViewModel();
-            calendarWindowViewModel.Show();
+            CalendarWindowManager calendarWindowManager = new CalendarWindowManager();
+            calendarWindowManager.Show();
         }
     }
 }

@@ -15,7 +15,7 @@
             <DataGridTextColumn Header="Ilość miejsc:" Width="SizeToCells" IsReadOnly="True"/>
             <DataGridTextColumn Header="Ilość pokojów:" Width="SizeToCells" IsReadOnly="True"/>
         </DataGrid>-->
-        <ListView x:Name="roomsListView" ItemsSource="{Binding Rooms}" HorizontalAlignment="Center" Height="290" Margin="0,0,5,0" VerticalAlignment="Top" Width="488">
+        <ListView x:Name="roomsListView" ItemsSource="{Binding Rooms}" SelectedItem="{Binding SelectedRoom}" HorizontalAlignment="Center" Height="290" Margin="0,0,5,0" VerticalAlignment="Top" Width="488">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
