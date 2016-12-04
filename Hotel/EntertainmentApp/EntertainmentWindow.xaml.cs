@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -20,7 +22,7 @@ namespace EntertainmentApp
     /// </summary>
     public partial class EntertainmentWindow : Window
     {
-        private List<Entertainment> m_EntertainmentList = null;
+        private ObservableCollection<OrganisedEvent> m_EntertainmentList;
         public EntertainmentWindow()
         {
             InitializeComponent();
@@ -29,7 +31,8 @@ namespace EntertainmentApp
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEntertainmentWindow addWindow = new AddEntertainmentWindow(null);
+            addWindow.ShowDialog();
         }
 
         private void OrganisedEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -39,11 +42,22 @@ namespace EntertainmentApp
 
     private void InitBinding()
     {
-            m_EntertainmentList = new List<Entertainment>();
-            m_EntertainmentList.Add(new OrganisedEvent(1, "Jan", "Kowalski", 25));
-            m_EntertainmentList.Add(new OrganisedEvent(2, "Adam", "Nowak", 24));
-            m_EntertainmentList.Add(new OrganisedEvent(3, "Agnieszka", "Kowalczyk", 23));
+            m_EntertainmentList = new ObservableCollection<OrganisedEvent>(); ;
+            m_EntertainmentList.Add(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016,12,10), new DateTime(2016, 12, 10), new Employee()));
+            m_EntertainmentList.Add(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
+            m_EntertainmentList.Add(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
             OrganisedEvents.ItemsSource = m_EntertainmentList;
     }
-}
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if(OrganisedEvents.SelectedItem!=null)
+            m_EntertainmentList.RemoveAt(OrganisedEvents.SelectedIndex);
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }

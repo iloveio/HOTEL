@@ -8,9 +8,9 @@ namespace EntertainmentApp
 {
     public abstract class Entertainment
     {
-        protected float price { get; set; }
-        protected string name { get; set; }
-        protected List<Employee> employeeList { get; set; }
+        public float price { get; set; }
+        public string name { get; set; }
+        public List<Employee> employeeList { get; set; }
 
         public void addEmployeeToShift(Employee employee)
         {

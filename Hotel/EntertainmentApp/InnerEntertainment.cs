@@ -8,6 +8,12 @@ namespace EntertainmentApp
 {
     public class InnerEntertainment : Entertainment
     {
+        public InnerEntertainment(string name, float price)
+        {
+            this.name = name;
+            this.price = price;
+        }
+        
         public double computePayment(int hoursSpent )
         {
             return price * hoursSpent;
