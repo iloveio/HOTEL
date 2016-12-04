@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EntertainmentApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Entertainment Module" Height="600" Width="800">
     <Grid>
-        
+        <ListView x:Name="OrganisedEvents" HorizontalAlignment="Left" Height="215" Margin="38,36,0,0" VerticalAlignment="Top" Width="300" SelectionChanged="OrganisedEvents_SelectionChanged" ItemsSource="{Binding Path=Rows}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="Nazwa" DisplayMemberBinding="{Binding Path=}" />
+                    <GridViewColumn Width="200" Header="Category" DisplayMemberBinding="{Binding Path=Category}" />
+                    <GridViewColumn Width="200" Header="Text" DisplayMemberBinding="{Binding Path=Text}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="InnerEntertainment" HorizontalAlignment="Left" Height="215" Margin="442,36,0,0" VerticalAlignment="Top" Width="300">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid HorizontalAlignment="Left" Height="34" Margin="38,269,0,0" VerticalAlignment="Top" Width="300">
+            <Button x:Name="Dodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="4,7,0,5" VerticalAlignment="Center" Width="94" Click="button_Click"/>
+            <Button x:Name="button1" Content="Usuń" HorizontalAlignment="Center" Margin="0,7,2,0" VerticalAlignment="Top" Width="93"/>
+            <Button x:Name="button2" Content="Edytuj" Margin="0,7,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="94"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="34" Margin="442,269,0,0" VerticalAlignment="Top" Width="300">
+            <Button x:Name="button3" Content="Dodaj" HorizontalAlignment="Left" Margin="4,7,0,5" VerticalAlignment="Center" Width="94"/>
+            <Button x:Name="button4" Content="Usuń" HorizontalAlignment="Center" Margin="0,7,2,0" VerticalAlignment="Top" Width="93"/>
+            <Button x:Name="button5" Content="Edytuj" Margin="0,7,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="94"/>
+        </Grid>
+        <Label x:Name="label1" Content="InnerEntertainements&#xD;&#xA;" HorizontalAlignment="Left" Margin="125,6,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label x:Name="label" Content="OrganisedEvents" HorizontalAlignment="Left" Margin="544,5,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
