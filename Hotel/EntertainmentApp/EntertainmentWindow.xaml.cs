@@ -22,7 +22,7 @@ namespace EntertainmentApp
     /// </summary>
     public partial class EntertainmentWindow : Window
     {
-        private ObservableCollection<OrganisedEvent> m_EntertainmentList;
+        public OurData col;
         public EntertainmentWindow()
         {
             InitializeComponent();
@@ -31,8 +31,8 @@ namespace EntertainmentApp
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            AddEntertainmentWindow addWindow = new AddEntertainmentWindow(null);
-            addWindow.ShowDialog();
+            AddEntertainmentWindow addWindow = new AddEntertainmentWindow(null, this);
+            addWindow.Show();
         }
 
         private void OrganisedEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,22 +42,24 @@ namespace EntertainmentApp
 
     private void InitBinding()
     {
-            m_EntertainmentList = new ObservableCollection<OrganisedEvent>(); ;
-            m_EntertainmentList.Add(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016,12,10), new DateTime(2016, 12, 10), new Employee()));
-            m_EntertainmentList.Add(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
-            m_EntertainmentList.Add(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
-            OrganisedEvents.ItemsSource = m_EntertainmentList;
+            col = new OurData();
+            col.addToCollection(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
+            col.addToCollection(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
+            col.addToCollection(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
+            OrganisedEvents.ItemsSource = col.m_OrganisedEvents;
     }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             if(OrganisedEvents.SelectedItem!=null)
-            m_EntertainmentList.RemoveAt(OrganisedEvents.SelectedIndex);
+                col.m_OrganisedEvents.RemoveAt(OrganisedEvents.SelectedIndex);
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEntertainmentWindow addWindow = new AddEntertainmentWindow(
+                col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex), this);
+            addWindow.Show();
         }
     }
 }

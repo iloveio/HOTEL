@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntertainmentApp;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -20,24 +21,35 @@ namespace EntertainmentApp
     /// </summary>
     public partial class AddEntertainmentWindow : Window
     {
-        public AddEntertainmentWindow(Entertainment entertainment, ObservableCollection<Entertainment> eventList)
+        private EntertainmentWindow entWin;
+        private OrganisedEvent ent;
+        private bool entIsNull;
+        public AddEntertainmentWindow(OrganisedEvent entertainment, EntertainmentWindow mainWindow)
         {
+            entWin = mainWindow;
+            ent = entertainment;
             InitializeComponent();
+
             if (entertainment != null)
             {
-                nazwaTextBox.AppendText(entertainment.name);
-                cenaTextBox.AppendText(entertainment.price.ToString());
+                nazwaTextBox.Text = entertainment.name;
+                cenaTextBox.Text = entertainment.price.ToString();
+                entIsNull = false;
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs eargs)
         {
-            
+            float e = (float)Convert.ToDouble(cenaTextBox.Text);
+            bool valid = float.TryParse(cenaTextBox.Text.ToString(), out e);
+            entWin.col.m_OrganisedEvents.Add(new OrganisedEvent(nazwaTextBox.Text, e, 999, datePicker.SelectedDate ?? DateTime.Now, datePicker.SelectedDate ?? DateTime.Now, new Employee()));
+            if (!entIsNull)
+                entWin.col.m_OrganisedEvents.Remove(ent);
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

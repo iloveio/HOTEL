@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EntertainmentApp
 {
-    class OrganisedEvent : Entertainment
+    public class OrganisedEvent : Entertainment
     {
         public OrganisedEvent(string name, float price, int maximumNumberOfGuests,
             DateTime startDate, DateTime endDate, Employee supervisor)
