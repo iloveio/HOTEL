@@ -8,17 +8,15 @@ namespace EntertainmentApp
 {
     public class InnerEntertainment : Entertainment
     {
-
-        
-
         public double computePayment(int hoursSpent )
         {
             return price * hoursSpent;
         }
 
-        public string printReceipt()
+        public string printReceipt(Guest guest)
         {
-            return "Entertainment name: " + name + " \nPrice: " + price;
+            return "Entertainment name: " + name + " \nPrice: " + price
+                + "\nGuest: " + guest.name + " " + guest.surname;
         }
 
     }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace EntertainmentApp
 {
-    class Class1
+    public class Employee
     {
+        private string name {get; set;}
+        private string surname { get; set; }
     }
 }
