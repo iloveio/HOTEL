@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Hotel.Transpport
 {
     /// <summary>
-    /// Interaction logic for History.xaml
+    /// Interaction logic for ShopPage.xaml
     /// </summary>
-    public partial class History : Page
+    public partial class ShopPage : Page
     {
-        public History()
+        public ShopPage()
         {
             InitializeComponent();
         }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\App.xaml
-5855867273
+3-181977325
 
-14911689492
+11-264078148
 121654848548
-MainWindow.xaml;Transpport\Guest.xaml;Transpport\History.xaml;Transpport\Shop.xaml;Transpport\Transport.xaml;
+MainWindow.xaml;Transpport\GuestPage.xaml;Transpport\ShopPage.xaml;
 
-True
+False
 

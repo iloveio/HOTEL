@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Hotel.Transpport
 {
     /// <summary>
-    /// Interaction logic for Transport.xaml
+    /// Interaction logic for GuestPage.xaml
     /// </summary>
-    public partial class Transport : Page
+    public partial class GuestPage : Page
     {
-        public Transport()
+        public GuestPage()
         {
             InitializeComponent();
         }
