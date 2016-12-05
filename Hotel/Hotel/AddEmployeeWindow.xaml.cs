@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HumanResourcesLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,15 @@ namespace Hotel
     public partial class AddEmployeeWindow : Window
     {
         private int isEditActive = -1;
-        //Director dyr = new Director("Jan", "Kowalski", 1);
+        Director dyr;
 
         public AddEmployeeWindow()
         {
             InitializeComponent();
+            Director.InstantiateDirector("aasd", "asdasd", 1, new List<Employee>());
+            dyr = Director.GetInstance;
+            
+
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -74,8 +79,8 @@ namespace Hotel
 
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-
-           // dyr.HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 1, 1)), 0, JobsList.Items.OfType<BuilderTest.Job>().ToList());
+            dyr.GetFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
+            dyr.HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 1, 1)), 0,new List<Job>());
             Close();
         }
     }

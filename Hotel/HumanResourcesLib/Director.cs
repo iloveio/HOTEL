@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HumanResourcesLib
 {
-    public class Director : User, IManager
+    public partial class Director : User, IManager
     {
         private List<Employee> supervisors;
         private static volatile Director directorInstance;

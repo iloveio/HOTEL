@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HumanResourcesLib
 {
-    public abstract class User
+    public abstract partial class User
     {
         protected string name;
         protected string lastName;

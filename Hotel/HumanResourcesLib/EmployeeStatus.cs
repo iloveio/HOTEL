@@ -9,7 +9,15 @@ namespace HumanResourcesLib
     {
         private DateTime statusBegining;
         private DateTime statusEnd;
-        EmployeeStatusName satusName;
+        EmployeeStatusName statusName;
+        
+        public EmployeeStatus(EmployeeStatusName statusName, DateTime statusBegining, DateTime statusEND)
+        {
+            this.statusName = statusName;
+            this.statusBegining = statusBegining;
+            this.statusEnd = statusEND;
+
+        }
     
         public DateTime StatusBegining
         {

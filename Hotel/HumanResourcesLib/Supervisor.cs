@@ -6,7 +6,7 @@ using HumanResourcesLib;
 
 namespace HumanResourcesLib
 {
-    public class Supervisor : Employee, IManager
+    public partial class Supervisor : Employee, IManager
     {
         protected List<Employee> employees;
         protected IEmployeeFactory subordinateFactory;

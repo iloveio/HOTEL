@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HumanResourcesLib
 {
-    public abstract class Employee : User
+    public abstract partial class Employee : User
     {
         protected List<Job> jobs;
         protected EmployeeStatus employeeStatus;

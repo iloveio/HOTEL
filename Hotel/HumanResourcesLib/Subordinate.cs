@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanResourcesLib
 {
-    public class Subordinate : Employee
+    public partial class Subordinate : Employee
     {
         public Subordinate(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs) 
             : base(name, lastName, id, employeeStatus, wage, jobs)
