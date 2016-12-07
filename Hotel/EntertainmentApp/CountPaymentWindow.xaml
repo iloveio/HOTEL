@@ -3,24 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:EntertainmentApp"
         mc:Ignorable="d"
         Title="Policz opłatę" Height="237.126" Width="300">
     <Grid>
-        <ComboBox x:Name="guestComboBox" HorizontalAlignment="Left" Margin="96,47,0,0" VerticalAlignment="Top" Width="168" IsEditable="True"/>
-        <ComboBox x:Name="hoursComboBox" HorizontalAlignment="Left" Margin="96,87,0,0" VerticalAlignment="Top" Width="45">
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
-            <MenuItem/>
+        <ComboBox x:Name="guestComboBox" DisplayMemberPath="fullName" HorizontalAlignment="Left" Margin="96,47,0,0" VerticalAlignment="Top" Width="168" IsEditable="True">
+        </ComboBox>
+        <ComboBox x:Name="hoursComboBox" HorizontalAlignment="Left" Margin="96,87,0,0" VerticalAlignment="Top" Width="45" SelectionChanged="hoursComboBox_SelectionChanged">
+            <ComboBox.ItemsSource>
+                <x:Array Type="{x:Type sys:Int32}">
+                    <sys:Int32>1</sys:Int32>
+                    <sys:Int32>2</sys:Int32>
+                    <sys:Int32>3</sys:Int32>
+                    <sys:Int32>4</sys:Int32>
+                    <sys:Int32>5</sys:Int32>
+                    <sys:Int32>6</sys:Int32>
+                    <sys:Int32>7</sys:Int32>
+                    <sys:Int32>8</sys:Int32>
+                    <sys:Int32>9</sys:Int32>
+                    <sys:Int32>10</sys:Int32>
+                    <sys:Int32>11</sys:Int32>
+                    <sys:Int32>12</sys:Int32>
+                </x:Array>
+            </ComboBox.ItemsSource>
         </ComboBox>
         <Label x:Name="label" Content="Gość:" HorizontalAlignment="Left" Margin="21,47,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Godzin:" HorizontalAlignment="Left" Margin="22,87,0,0" VerticalAlignment="Top"/>

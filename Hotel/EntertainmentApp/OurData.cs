@@ -13,6 +13,7 @@ namespace EntertainmentApp
         {
             m_OrganisedEvents = new ObservableCollection<OrganisedEvent>();
             m_InnerEntertainments = new ObservableCollection<InnerEntertainment>();
+            m_Guests = new ObservableCollection<Guest>();
 
             m_OrganisedEvents.Add(new OrganisedEvent("Koncert Perfect", 6800, 350, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
             m_OrganisedEvents.Add(new OrganisedEvent("Przyjęcie urodzinowe prezydenta", 15500, 100, new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), new Employee()));
@@ -24,10 +25,18 @@ namespace EntertainmentApp
             m_InnerEntertainments.Add(new InnerEntertainment("Bar", 13));
             m_InnerEntertainments.Add(new InnerEntertainment("Siłownia", 8));
             m_InnerEntertainments.Add(new InnerEntertainment("Kino", 15));
+
+            m_Guests.Add(new Guest("Piotrek", "ADr"));
+            m_Guests.Add(new Guest("Adrian", "aaa"));
+            m_Guests.Add(new Guest("1111111", "aaa"));
+            m_Guests.Add(new Guest("BARTOSZ", "aaa"));
+            m_Guests.Add(new Guest("Włodek", "aaa"));
+            m_Guests.Add(new Guest("Żonaty", "aaa"));
         }
 
         public ObservableCollection<OrganisedEvent> m_OrganisedEvents { get; set; }
         public ObservableCollection<InnerEntertainment> m_InnerEntertainments { get; set; }
+        public ObservableCollection<Guest> m_Guests { get; set; }
 
         public void addToCollection(OrganisedEvent organisedEvent)
         {

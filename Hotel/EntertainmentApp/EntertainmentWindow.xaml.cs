@@ -84,7 +84,7 @@ namespace EntertainmentApp
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            CountPaymentWindow paymentWindow = new CountPaymentWindow(col.m_InnerEntertainments.ElementAt(InnerEntertainments.SelectedIndex));
+            CountPaymentWindow paymentWindow = new CountPaymentWindow(col.m_InnerEntertainments.ElementAt(InnerEntertainments.SelectedIndex), this);
             paymentWindow.Show();
         }
     }
