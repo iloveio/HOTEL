@@ -58,6 +58,9 @@
     <Compile Include="AddEntertainmentWindow.xaml.cs">
       <DependentUpon>AddEntertainmentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CountPaymentWindow.xaml.cs">
+      <DependentUpon>CountPaymentWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="EntertainmentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +79,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="AddEntertainmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CountPaymentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

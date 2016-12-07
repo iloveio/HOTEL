@@ -8,34 +8,35 @@
         Title="Entertainment Module" Height="600" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
-        <ListView x:Name="OrganisedEvents" HorizontalAlignment="Left" Height="215" Margin="18,36,0,0" VerticalAlignment="Top" Width="360" SelectionChanged="OrganisedEvents_SelectionChanged" ItemsSource="{Binding m_EntertainmentList}" UseLayoutRounding="True" >
+        <ListView x:Name="OrganisedEvents" HorizontalAlignment="Left" Height="215" Margin="10,36,0,0" VerticalAlignment="Top" Width="460" SelectionChanged="OrganisedEvents_SelectionChanged" ItemsSource="{Binding m_EntertainmentList}" UseLayoutRounding="True" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="210" Header="Nazwa" DisplayMemberBinding="{Binding name}" />
+                    <GridViewColumn Width="380" Header="Nazwa" DisplayMemberBinding="{Binding name}" />
                     <GridViewColumn Width="80" Header="Data" DisplayMemberBinding="{Binding startDate}" />
-                    <GridViewColumn Width="70" Header="Cena" DisplayMemberBinding="{Binding price}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="InnerEntertainment" HorizontalAlignment="Left" Height="215" Margin="414,36,0,0" VerticalAlignment="Top" Width="360">
+        <ListView x:Name="InnerEntertainments" HorizontalAlignment="Left" Height="215" Margin="532,36,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="OrganisedEvents_SelectionChanged" ItemsSource="{Binding m_InnerEntertainments}" UseLayoutRounding="True" IsSynchronizedWithCurrentItem="True" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Width="170" Header="Nazwa" DisplayMemberBinding="{Binding name}" />
+                    <GridViewColumn Width="80" Header="Cena" DisplayMemberBinding="{Binding price}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid HorizontalAlignment="Left" Height="34" Margin="49,269,0,0" VerticalAlignment="Top" Width="300">
+        <Grid HorizontalAlignment="Left" Height="34" Margin="83,256,0,0" VerticalAlignment="Top" Width="300">
             <Button x:Name="Add" Content="Dodaj" HorizontalAlignment="Left" Margin="4,7,0,5" VerticalAlignment="Center" Width="94" Click="button_Click"/>
             <Button x:Name="Delete" Content="Usuń" HorizontalAlignment="Center" Margin="0,7,2,0" VerticalAlignment="Top" Width="93" Click="Delete_Click"/>
             <Button x:Name="Edit" Content="Edytuj" Margin="0,7,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="Edit_Click"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="34" Margin="445,269,0,0" VerticalAlignment="Top" Width="300">
-            <Button x:Name="button3" Content="Dodaj" HorizontalAlignment="Left" Margin="4,7,0,5" VerticalAlignment="Center" Width="94"/>
-            <Button x:Name="button4" Content="Usuń" HorizontalAlignment="Center" Margin="0,7,2,0" VerticalAlignment="Top" Width="93"/>
-            <Button x:Name="button5" Content="Edytuj" Margin="0,7,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="94"/>
+        <Grid HorizontalAlignment="Left" Height="34" Margin="573,256,0,0" VerticalAlignment="Top" Width="171">
+            <Button x:Name="button3" Content="Dodaj" HorizontalAlignment="Left" Margin="4,7,0,5" VerticalAlignment="Center" Width="50" Click="button3_Click"/>
+            <Button x:Name="button4" Content="Usuń" HorizontalAlignment="Center" Margin="0,7,2,0" VerticalAlignment="Top" Width="50" Click="button4_Click"/>
+            <Button x:Name="button5" Content="Edytuj" Margin="0,7,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" Click="button5_Click"/>
         </Grid>
-        <Label x:Name="label1" Content="InnerEntertainements&#xD;&#xA;" HorizontalAlignment="Left" Margin="130,6,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label x:Name="label" Content="OrganisedEvents" HorizontalAlignment="Left" Margin="544,5,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="InnerEntertainements&#xD;&#xA;" Margin="598,6,0,0" VerticalAlignment="Top" Height="25" HorizontalAlignment="Left" Width="123"/>
+        <Label x:Name="label" Content="OrganisedEvents" HorizontalAlignment="Left" Margin="186,5,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Policz opłatę" HorizontalAlignment="Left" Margin="607,290,0,0" VerticalAlignment="Top" Width="105" Click="button_Click_1"/>
 
     </Grid>
 </Window>

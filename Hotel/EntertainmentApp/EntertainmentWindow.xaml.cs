@@ -35,14 +35,10 @@ namespace EntertainmentApp
             addWindow.Show();
         }
 
-        private void OrganisedEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
     private void InitBinding()
     {
             col = new OurData();
+            InnerEntertainments.ItemsSource = col.m_InnerEntertainments;
             OrganisedEvents.ItemsSource = col.m_OrganisedEvents;
     }
 
@@ -61,6 +57,35 @@ namespace EntertainmentApp
                 addWindow.Show();
             }
                 
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            if(InnerEntertainments.SelectedItem != null)
+                col.m_InnerEntertainments.RemoveAt(InnerEntertainments.SelectedIndex);
+        }
+
+        // edit
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // add
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OrganisedEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            CountPaymentWindow paymentWindow = new CountPaymentWindow(col.m_InnerEntertainments.ElementAt(InnerEntertainments.SelectedIndex));
+            paymentWindow.Show();
         }
     }
 }
