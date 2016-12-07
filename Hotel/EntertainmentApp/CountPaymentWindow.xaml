@@ -28,6 +28,23 @@
                 </x:Array>
             </ComboBox.ItemsSource>
         </ComboBox>
+        <Popup Margin="10,10,0,13" Name="Popup1" HorizontalAlignment="Left"   
+ VerticalAlignment="Top" Width="194" Height="200" PopupAnimation="Fade">
+            <StackPanel Background="LightBlue">
+                <TextBlock Name="Label"   
+                Background="LightBlue" TextAlignment="Center" Width="194" FontWeight="Bold" FontSize="14" Visibility="Hidden" >  
+                Paragon
+                </TextBlock>
+                <Label HorizontalContentAlignment="Center">Hotel sp. z o.o.</Label>
+                <Label HorizontalContentAlignment="Center">ul. TakaISiaka 15 Łódź</Label>
+                <Grid>
+                    <Label x:Name="serviceLabel" Margin="5,0,111,0" Content="USŁUGA"/>
+                    <Label x:Name="priceLabel2" Margin="106,0,10,0" Content="USŁUGA"/>
+                </Grid>
+                <Label Name="fullNameLabel" HorizontalContentAlignment="Center">IMIE I NAZWISKO</Label>
+                <Button Content="Zamknij" />
+            </StackPanel>
+        </Popup>
         <Label x:Name="label" Content="Gość:" HorizontalAlignment="Left" Margin="21,47,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Godzin:" HorizontalAlignment="Left" Margin="22,87,0,0" VerticalAlignment="Top"/>
         <Label x:Name="entLabel" Content="Rodzaj rozrywki" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Center" Width="129" FontSize="16" Margin="0,5,0,0" HorizontalContentAlignment="Center"/>
