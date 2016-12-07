@@ -43,9 +43,6 @@ namespace EntertainmentApp
     private void InitBinding()
     {
             col = new OurData();
-            col.addToCollection(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
-            col.addToCollection(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
-            col.addToCollection(new OrganisedEvent("Koncert Tedasa", 50, 400, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Employee()));
             OrganisedEvents.ItemsSource = col.m_OrganisedEvents;
     }
 

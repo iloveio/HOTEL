@@ -11,14 +11,14 @@ namespace EntertainmentApp
             this.name = name;
             this.price = price;
             this.maximumNumberOfGuests = maximumNumberOfGuests;
-            this.startDate = startDate;
-            this.endDate = endDate;
+            this.startDate = startDate.ToShortDateString();
+            this.endDate = endDate.ToShortDateString();
             this.supervisor = supervisor;
         }
 
         public int maximumNumberOfGuests { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
+        public string startDate { get; set; }
+        public string endDate { get; set; }
         public Employee supervisor { get; set; }
         public List<Guest> guestList { get; set; }
 

@@ -45,6 +45,7 @@ namespace EntertainmentApp
             entWin.col.m_OrganisedEvents.Add(new OrganisedEvent(nazwaTextBox.Text, e, 999, datePicker.SelectedDate ?? DateTime.Now, datePicker.SelectedDate ?? DateTime.Now, new Employee()));
             if (!entIsNull)
                 entWin.col.m_OrganisedEvents.Remove(ent);
+            Close();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
