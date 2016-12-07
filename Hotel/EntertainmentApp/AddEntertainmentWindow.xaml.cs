@@ -42,7 +42,7 @@ namespace EntertainmentApp
         {
             float e = (float)Convert.ToDouble(cenaTextBox.Text);
             bool valid = float.TryParse(cenaTextBox.Text.ToString(), out e);
-            entWin.col.m_OrganisedEvents.Add(new OrganisedEvent(nazwaTextBox.Text, e, 999, datePicker.SelectedDate ?? DateTime.Now, datePicker.SelectedDate ?? DateTime.Now, new Employee()));
+            entWin.col.m_OrganisedEvents.Add(new OrganisedEvent(nazwaTextBox.Text, e, 999, datePicker.SelectedDate ?? DateTime.Now, datePicker.SelectedDate ?? DateTime.Now, new Employee(entWin.col.m_OrganisedEvents.ElementAt(entWin.OrganisedEvents.SelectedIndex).supervisor)));
             if (!entIsNull)
                 entWin.col.m_OrganisedEvents.Remove(ent);
             Close();

@@ -10,6 +10,16 @@ namespace EntertainmentApp
     {
         private string name {get; set;}
         private string surname { get; set; }
+        public Employee (string name, string surname)
+        {
+            this.name = name;
+            this.surname = surname;
+        }
+        public Employee (Employee emp)
+        {
+            name = emp.name;
+            surname = emp.surname;
+        }
         override public string ToString()
         {
             return name + " " + surname;
