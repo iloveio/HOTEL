@@ -37,6 +37,13 @@
         <Label x:Name="label1" Content="InnerEntertainements&#xD;&#xA;" Margin="598,6,0,0" VerticalAlignment="Top" Height="25" HorizontalAlignment="Left" Width="123"/>
         <Label x:Name="label" Content="OrganisedEvents" HorizontalAlignment="Left" Margin="186,5,0,0" VerticalAlignment="Top"/>
         <Button x:Name="button" Content="Policz opłatę" HorizontalAlignment="Left" Margin="607,290,0,0" VerticalAlignment="Top" Width="105" Click="button_Click_1"/>
-
+        <Label x:Name="infotext" Content="Informacje o wydarzeniu" HorizontalAlignment="Left" Margin="400,315,200,10" VerticalAlignment="Top"/>
+        <Label x:Name="nazwaLabel" Content="Label" HorizontalAlignment="Left" Margin="48,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="cenaLabel" Content="Label" HorizontalAlignment="Left" Margin="297,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="dataStartLabel" Content="Label" HorizontalAlignment="Left" Margin="376,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="dataKoniecLabel" Content="Label" HorizontalAlignment="Left" Margin="460,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="maxGosciLabel" Content="Label" HorizontalAlignment="Left" Margin="544,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="managerLabel" Content="Label" HorizontalAlignment="Left" Margin="607,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Nazwa&#x9;&#x9;    &#x9;&#x9;&#x9;  Cena&#x9;            Start&#x9;        Koniec&#x9;    Max Gości   Manager" HorizontalAlignment="Left" Margin="48,353,0,0" VerticalAlignment="Top" Width="719"/>
     </Grid>
 </Window>
