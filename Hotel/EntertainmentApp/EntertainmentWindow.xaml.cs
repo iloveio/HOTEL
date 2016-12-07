@@ -54,9 +54,13 @@ namespace EntertainmentApp
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            AddEntertainmentWindow addWindow = new AddEntertainmentWindow(
+            if (OrganisedEvents.SelectedItem != null)
+            {
+                AddEntertainmentWindow addWindow = new AddEntertainmentWindow(
                 col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex), this);
-            addWindow.Show();
+                addWindow.Show();
+            }
+                
         }
     }
 }
