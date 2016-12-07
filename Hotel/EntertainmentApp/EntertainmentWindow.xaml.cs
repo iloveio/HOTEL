@@ -92,7 +92,7 @@ namespace EntertainmentApp
                 dataStartLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).startDate;
                 dataKoniecLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).startDate;
                 maxGosciLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).maximumNumberOfGuests;
-                managerLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).supervisor;
+                managerLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).supervisor.ToString();
 
             }
 
