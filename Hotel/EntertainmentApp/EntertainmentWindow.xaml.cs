@@ -79,6 +79,16 @@ namespace EntertainmentApp
 
         private void OrganisedEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (OrganisedEvents.SelectedItems.Count > 0)
+            {
+                nazwaLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).name;
+                cenaLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).price;
+                dataStartLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).startDate;
+                dataKoniecLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).startDate;
+                maxGosciLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).maximumNumberOfGuests;
+                managerLabel.Content = col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex).supervisor;
+
+            }
 
         }
 
