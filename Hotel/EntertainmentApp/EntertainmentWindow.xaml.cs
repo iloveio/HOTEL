@@ -68,13 +68,19 @@ namespace EntertainmentApp
         // edit
         private void button5_Click(object sender, RoutedEventArgs e)
         {
-
+            if (InnerEntertainments.SelectedItem != null)
+            {
+                AddInnerEntertainmentWindow addWindow = new AddInnerEntertainmentWindow(
+                col.m_InnerEntertainments.ElementAt(InnerEntertainments.SelectedIndex), this);
+                addWindow.Show();
+            }
         }
 
         // add
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-
+            AddInnerEntertainmentWindow addWindow = new AddInnerEntertainmentWindow(null, this);
+            addWindow.Show();
         }
 
         private void OrganisedEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
