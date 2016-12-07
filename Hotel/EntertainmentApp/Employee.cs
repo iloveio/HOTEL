@@ -10,5 +10,9 @@ namespace EntertainmentApp
     {
         private string name {get; set;}
         private string surname { get; set; }
+        override public string ToString()
+        {
+            return name + " " + surname;
+        }
     }
 }
