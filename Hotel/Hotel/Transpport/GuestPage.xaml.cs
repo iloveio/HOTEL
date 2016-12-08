@@ -19,9 +19,22 @@ namespace Hotel.Transpport
     /// </summary>
     public partial class GuestPage : Page
     {
-        public GuestPage()
+        Guest guest;
+        public GuestPage(Guest tr)
         {
             InitializeComponent();
+            guest = tr;
+        }
+        private void DodajDane_Click(object sender, RoutedEventArgs e)
+        {
+            guest.from = FromData.Text;
+            guest.destination = DestinationData.Text;
+            guest.guest = FromData.Text;
+            guest.howMany = int.Parse(HowManyData.Text);
+            guest.cost = 100;
+            guest.date = DateData.DisplayDate;
+            MessageBox.Show("Stworzono nowe zlecenie");
+            guest.Save();
         }
     }
 }

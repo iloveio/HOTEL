@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hotel.Transpport
 {
-    class Guest
+    public class Guest : Transport
     {
         public string guest;
         public string from;

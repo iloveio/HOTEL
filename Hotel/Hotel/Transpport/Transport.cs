@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Hotel.Transpport
 {
-    class Transport
+    public class Transport
     {
         public Object employee;
-        public DateTime data;
+        public DateTime date;
         public float cost;
         public Transport(){
 
@@ -20,6 +20,10 @@ namespace Hotel.Transpport
         public void SetCost(float cost)
         {
             this.cost = cost;
+        }
+        public void Save()
+        {
+            
         }
 
     }
