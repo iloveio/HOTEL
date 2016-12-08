@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hotel.Database.Accountancy
 {
-    class AccountancyManager
+    public class AccountancyManager
     {
         List<Bill> billsList;
 
@@ -22,13 +22,21 @@ namespace Hotel.Database.Accountancy
         public void AddNewBill(Bill bill)
         {
             using (var db = new AccountancyContext())
+            {
                 db.Bills.Add(bill);
+                db.SaveChanges();
+            }
+            FillDataWithAllBills();
         }
 
         public void DeleteBillByObject(Bill bill)
         {
             using (var db = new AccountancyContext())
+            {
                 db.Bills.Remove(bill);
+                db.SaveChanges();
+            }
+            FillDataWithAllBills();
         }
 
         public List<Bill> GetBillsList()

@@ -5,9 +5,14 @@ using System.Text;
 
 namespace Hotel.Database.Transportation
 {
-    class TransportationManager
+    public class TransportationManager
     {
         List<Transportation> transportationsList;
+
+        public TransportationManager()
+        {
+            transportationsList = new List<Transportation>();
+        }
 
         //----Methods to fill lists----
         /// <summary>
@@ -30,10 +35,14 @@ namespace Hotel.Database.Transportation
         /// </summary>
         /// <param name="trans"></param>
         /// Transportation object to be added into databae
-        public void AddNewTransportationT(Transportation trans)
+        public void AddNewTransportation(Transportation trans)
         {
             using (var db = new TransportationContext())
+            {
                 db.Transportations.Add(trans);
+                db.SaveChanges();
+            }
+            FillDataWithAllTransportations();
         }
 
         /// <summary>
@@ -44,7 +53,13 @@ namespace Hotel.Database.Transportation
         public void DeleteTransportationByObject(Transportation trans)
         {
             using (var db = new TransportationContext())
+            {
                 db.Transportations.Remove(trans);
+                db.SaveChanges();
+            }
+
+
+            FillDataWithAllTransportations();
         }
 
         /// <summary>
@@ -62,6 +77,7 @@ namespace Hotel.Database.Transportation
                 toUpdate.employee = emp;
                 db.SaveChanges();
             }
+            FillDataWithAllTransportations();
         }
         /// <summary>
         /// Method to update description in exsisting record
@@ -78,6 +94,7 @@ namespace Hotel.Database.Transportation
                 toUpdate.description = desc;
                 db.SaveChanges();
             }
+            FillDataWithAllTransportations();
         }
         /// <summary>
         /// Method to update date in existing record
@@ -94,6 +111,7 @@ namespace Hotel.Database.Transportation
                 toUpdate.date = date;
                 db.SaveChanges();
             }
+            FillDataWithAllTransportations();
         }
 
         //----Methods to get data----

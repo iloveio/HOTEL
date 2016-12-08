@@ -6,8 +6,9 @@ using System.Data.Entity;
 
 namespace Hotel.Database.Transportation
 {
-    class TransportationContext : DbContext
+    public class TransportationContext : DbContext
     {
-        public DbSet<Transportation> Transportations { get; set; }
+        public virtual DbSet<Transportation> Transportations { get; set; }
+
     }
 }

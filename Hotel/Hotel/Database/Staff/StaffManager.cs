@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hotel.Database.Staff
 {
-    class StaffManager
+    public class StaffManager
     {
         List<Director> directorList;
         List<EmployeeStatus> employeeStatusList;
@@ -61,6 +61,52 @@ namespace Hotel.Database.Staff
                 supervisorList = query.ToList<Supervisor>();
 
             }
+        }
+
+        public void AddNewDirector(Director dir)
+        {
+            using (var db = new StaffContext())
+            {
+                db.Directors.Add(dir);
+                db.SaveChanges();
+            }
+            FillDataWithAllDirectors();
+        }
+        public void AddNewEmployeeStatus(EmployeeStatus status)
+        {
+            using (var db = new StaffContext())
+            {
+                db.EmployeeStatuses.Add(status);
+                db.SaveChanges();
+            }
+            FillDataWithAllEmployeeStatus();
+        }
+        public void AddNewJob(Job job)
+        {
+            using (var db = new StaffContext())
+            {
+                db.Jobs.Add(job);
+                db.SaveChanges();
+            }
+            FillDataWithAllJobs();
+        }
+        public void AddNewSubordinate(Subordinate sub)
+        {
+            using (var db = new StaffContext())
+            {
+                db.Subordinates.Add(sub);
+                db.SaveChanges();
+            }
+            FillDataWithAllSubordinates();
+        }
+        public void AddNewSupervisor(Supervisor sup)
+        {
+            using (var db = new StaffContext())
+            {
+                db.Supervisors.Add(sup);
+                db.SaveChanges();
+            }
+            FillDataWithAllSupervisor();
         }
     }
 }

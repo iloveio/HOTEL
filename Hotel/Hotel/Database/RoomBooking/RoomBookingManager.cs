@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hotel.Database
 {
-    class RoomBookingManager
+    public class RoomBookingManager
     {
         List<Room> roomsList;
         List<Guest> guestsList;
@@ -31,12 +31,20 @@ namespace Hotel.Database
         public void AddNewGuest(Guest guest)
         {
             using (var db = new RoomBookingContext())
+            {
                 db.Guests.Add(guest);
+                db.SaveChanges();
+            }
+            FillDataWithAllGuests();
         }
         public void DeleteGuestByObject(Guest guest)
         {
             using (var db = new RoomBookingContext())
+            {
                 db.Guests.Remove(guest);
+                db.SaveChanges();
+            }
+            FillDataWithAllGuests();
         }
 
         public void AddGuestToRoom(Guest guest, Room room)
@@ -44,7 +52,12 @@ namespace Hotel.Database
             if(room.CurrentGuest == null)
             {
                 using (var db = new RoomBookingContext())
-                    //db.Rooms.Find()
+                {
+                    Room temp = db.Rooms.Find(room);
+                    temp.CurrentGuest = guest;
+                    db.SaveChanges();
+                }
+                FillDataWithAllRooms();
             }
         }
 

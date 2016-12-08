@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace Hotel.Database
 {
-    class RoomBookingContext : DbContext
+    public class RoomBookingContext : DbContext
     {
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Guest> Guests { get; set; }
