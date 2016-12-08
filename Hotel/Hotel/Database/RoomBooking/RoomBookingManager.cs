@@ -15,11 +15,7 @@ namespace Hotel.Database
             {
                 var query = from b in db.Rooms
                             select b;
-
-                foreach(var room in query)
-                {
-                    roomsList = query.ToList<Room>();
-                }
+                roomsList = query.ToList<Room>();
             }
         }
         public void FillDataWithAllGuests()
@@ -28,13 +24,30 @@ namespace Hotel.Database
             {
                 var query = from b in db.Guests
                             select b;
-
-                foreach (var guest in query)
-                {
-                    guestsList = query.ToList<Guest>();
-                }
+                guestsList = query.ToList<Guest>();
             }
         }
+
+        public void AddNewGuest(Guest guest)
+        {
+            using (var db = new RoomBookingContext())
+                db.Guests.Add(guest);
+        }
+        public void DeleteGuestByObject(Guest guest)
+        {
+            using (var db = new RoomBookingContext())
+                db.Guests.Remove(guest);
+        }
+
+        public void AddGuestToRoom(Guest guest, Room room)
+        {
+            if(room.CurrentGuest == null)
+            {
+                using (var db = new RoomBookingContext())
+                    //db.Rooms.Find()
+            }
+        }
+
         public List<Room> GetRoomsList()
         {
             return roomsList;

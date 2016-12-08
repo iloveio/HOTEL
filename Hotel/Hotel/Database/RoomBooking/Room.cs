@@ -14,7 +14,7 @@ namespace Hotel.Database
         public bool IsBalcony { set; get; }
         public bool IsBathroom { set; get; }
         public bool IsEmpty { set; get; }
-        public int CurrentClientID { set; get; }
+        public virtual Guest CurrentGuest { set; get; }
         public DateTime ReservationStart { set; get; }
         public DateTime ReservationEnd { set; get; }
     }

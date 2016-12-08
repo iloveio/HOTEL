@@ -15,12 +15,20 @@ namespace Hotel.Database.Accountancy
             {
                 var query = from b in db.Bills
                             select b;
-
-                foreach (var bill in query)
-                {
-                    billsList = query.ToList<Bill>();
-                }
+                billsList = query.ToList<Bill>();
             }
+        }
+
+        public void AddNewBill(Bill bill)
+        {
+            using (var db = new AccountancyContext())
+                db.Bills.Add(bill);
+        }
+
+        public void DeleteBillByObject(Bill bill)
+        {
+            using (var db = new AccountancyContext())
+                db.Bills.Remove(bill);
         }
 
         public List<Bill> GetBillsList()
