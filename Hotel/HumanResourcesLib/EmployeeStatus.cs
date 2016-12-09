@@ -42,5 +42,17 @@ namespace HumanResourcesLib
             }
         }
 
+        public EmployeeStatusName StatusName
+        {
+            get
+            {
+                return this.statusName;
+            }
+            set
+            {
+                statusName = value;
+            }
+        }
+
     }
 }

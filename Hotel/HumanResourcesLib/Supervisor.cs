@@ -18,6 +18,12 @@ namespace HumanResourcesLib
             this.employees = employees;
         }
 
+        //for testing
+        public Supervisor(string name, string lastName, uint id) : base(name, lastName, id)
+        {
+
+        }
+
         public List<EmployeeStatus> CheckAllSubordinateStatus()
         {
             throw new NotImplementedException();

@@ -80,6 +80,11 @@ namespace HumanResourcesLib
             return this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }
 
+        public List<Employee> GetSupervisors()
+        {
+            return supervisors;
+        }
+
 
     }
 }

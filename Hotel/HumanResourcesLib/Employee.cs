@@ -60,5 +60,26 @@ namespace HumanResourcesLib
                 this.jobs = value;
             }
         }
+        public float Wage
+        {
+            get
+            {
+                return this.wage;
+            }
+            set
+            {
+                this.wage = value;
+            }
+        }
+
+        public string shortenJobsProperty { get { if (jobs.Count > 0) { return "have some tasks"; } else { return "no tasks"; } } set { } }
+        public List<Job> jobsProperty { get { return jobs; } set { jobs = value; } }
+        public string employeeStatusProperty { get { return employeeStatus.StatusName.ToString()+":  from: "+employeeStatus.StatusBegining.ToShortDateString()+" to: "+employeeStatus.StatusEnd.ToShortDateString(); } set { } }
+        public string employeeStatusName { get { return employeeStatus.StatusName.ToString(); } set { } }
+        public System.DateTime employeeStatusDateFrom { get { return employeeStatus.StatusBegining; } set { } }
+        public System.DateTime employeeStatusDateTo { get { return employeeStatus.StatusEnd; } set { } }
+        public string wageProperty { get { return wage.ToString(); } set { } }
+
+
     }
 }

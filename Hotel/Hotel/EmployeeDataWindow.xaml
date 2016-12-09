@@ -11,22 +11,22 @@
     <Grid Background="#FF363636">
         <TextBlock HorizontalAlignment="Left" Height="48" Margin="23,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" FontSize="28" Foreground="White" Text="Browse employee data"/>
 
-        <ListBox x:Name="browseEmployeeList" Margin="23,66,22,0" Background="#FF363636" FontSize="14" Foreground="#FFF" ItemsSource="{Binding GetPersonList}" SelectedIndex="{Binding Index}"  RenderTransformOrigin="0.55,1.322" Height="392" VerticalAlignment="Top">
+        <ListBox x:Name="browseEmployeeList" Margin="23,66,22,0" ItemsSource="{Binding GetEmployees}" SelectedItem="{Binding SelectedEmployee}" Background="#FF363636" FontSize="14" Foreground="#FFF"  RenderTransformOrigin="0.55,1.322" Height="392" VerticalAlignment="Top" SelectionChanged="browseEmployeeList_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <TextBlock Text="{Binding BusinessEntityID}"  />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding Title}" />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding FirstName}"  />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding LastName}" />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding Suffix}" />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding ModifiedDate}" />
-                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding idProperty}"  />
+                        <TextBlock Text="      " />
+                        <TextBlock Text="{Binding nameProperty}" />
+                        <TextBlock Text="      " />
+                        <TextBlock Text="{Binding lastNameProperty}"  />
+                        <TextBlock Text="      " />
+                        <TextBlock Text="{Binding wageProperty}" />
+                        <TextBlock Text="      " />
+                        <TextBlock Text="{Binding employeeStatusProperty}" />
+                        <TextBlock Text="      " />
+                        <TextBlock Text="{Binding shortenJobsProperty}" />
+                        <TextBlock Text="      " />
                     </WrapPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -133,7 +133,7 @@
             </Button.Style>
         </Button>
 
-        <TextBox Name="editFirstName" Text="{Binding EditTitle}" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="23,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+        <TextBox Name="editFirstName" Text="{Binding nameProperty}" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="23,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
         <TextBox Name="editLastName" Text="{Binding EditTitle}" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="213,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
         <DatePicker Name="datePicker" SelectedDateFormat="Short" Background="#FF363636" 
                   DisplayDateStart="1/01/16" DisplayDateEnd="12/31/17" 
@@ -141,30 +141,19 @@
         <DatePicker Name="datePickerTo" SelectedDateFormat="Short" Background="#FF363636" 
                   DisplayDateStart="1/01/16" DisplayDateEnd="12/31/17" 
                   FirstDayOfWeek="Monday" Width="105" Height="0" Margin="555,443,232,196"/>
-        <ListBox Name="StatusesList" Background="#FF363636" Foreground="#FFF" FontSize="18" HorizontalAlignment="Left" Height="0" Margin="426,376,0,0" VerticalAlignment="Top" Width="230" SelectionChanged="StatusesList_SelectionChanged">
+        <ListBox Name="StatusesList" Background="#FF363636" Foreground="#FFF" FontSize="18" HorizontalAlignment="Left" Height="0" Margin="412,376,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="StatusesList_SelectionChanged">
         </ListBox>
         <TextBox Name="editWage" Text="{Binding EditTitle}" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="725,376,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
-        <ListBox Name="JobsListBrowse" Margin="23,490,535,44" Background="#FF363636" FontSize="14" Foreground="#FFF" Height="0"  RenderTransformOrigin="0.55,1.322">
+        <ListBox Name="JobsListBrowse" Margin="23,444,535,44" Background="#FF363636" FontSize="14" Foreground="#FFF" Height="0"  RenderTransformOrigin="0.55,1.322" SelectionChanged="JobsListBrowse_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <TextBlock Text="{Binding BusinessEntityID}"  />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding Title}" />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding FirstName}"  />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding LastName}" />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding Suffix}" />
-                        <TextBlock Text="    " />
-                        <TextBlock Text="{Binding ModifiedDate}" />
-                        <TextBlock Text="    " />
+                        <TextBlock Text="{Binding Description}"  />
                     </WrapPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="AddJobButton" Content="Add job" HorizontalAlignment="Left" Margin="386,490,0,0" VerticalAlignment="Top" Width="125" Height="0" Cursor="Hand" Foreground="White" RenderTransformOrigin="1.044,1.747" Click="AddJobButton_Click">
+        <Button x:Name="AddJobButton" Content="Add job" HorizontalAlignment="Left" Margin="374,490,0,0" VerticalAlignment="Top" Width="125" Height="0" Cursor="Hand" Foreground="White" RenderTransformOrigin="1.044,1.747" Click="AddJobButton_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF363636"/>
@@ -186,7 +175,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="DeleteJobButton" Content="Delete job" HorizontalAlignment="Left" Margin="386,580,0,0" VerticalAlignment="Top" Width="125" Height="0" Cursor="Hand" Foreground="White" Command="{Binding SubmitPersonDataChanges}" RenderTransformOrigin="1.044,1.747" Click="DeleteJobButton_Click">
+        <Button x:Name="DeleteJobButton" Content="Delete job" HorizontalAlignment="Left" Margin="374,534,0,0" VerticalAlignment="Top" Width="125" Height="0" Cursor="Hand" Foreground="White" Command="{Binding SubmitPersonDataChanges}" RenderTransformOrigin="1.044,1.747" Click="DeleteJobButton_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF363636"/>
@@ -211,8 +200,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBox x:Name="AddJobField" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="532,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Button x:Name="ConfirmJobButton" Content="Confirm" HorizontalAlignment="Left" Margin="701,490,0,0" VerticalAlignment="Top" Width="86" Height="0" Cursor="Hand" Foreground="White" RenderTransformOrigin="1.044,1.747" Click="ConfirmJobButton_Click">
+        <TextBox x:Name="AddJobField" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="524,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Text="job name"/>
+        <Button x:Name="ConfirmJobButton" Content="Confirm" HorizontalAlignment="Left" Margin="730,490,0,0" VerticalAlignment="Top" Width="86" Height="0" Cursor="Hand" Foreground="White" RenderTransformOrigin="1.044,1.747" Click="ConfirmJobButton_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF363636"/>
@@ -241,9 +230,24 @@
         <TextBlock Name="FirstName" HorizontalAlignment="Left" Height="0" Margin="23,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="136" FontSize="15" Foreground="White" Text="First name"/>
         <TextBlock Name="LastName" HorizontalAlignment="Left" Height="0" Margin="221,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="128" FontSize="15" Foreground="White"><Run Text="Last"/><Run Text=" name"/></TextBlock>
         <TextBlock Name="Status" HorizontalAlignment="Left" Height="0" Margin="725,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="136" FontSize="15" Foreground="White" Text="Wage"/>
-        <TextBlock Name="Wage" HorizontalAlignment="Left" Height="0" Margin="426,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="230" FontSize="15" Foreground="White" Text="Status"/>
+        <TextBlock Name="Wage" HorizontalAlignment="Left" Height="0" Margin="418,348,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="230" FontSize="15" Foreground="White" Text="Status"/>
         <TextBlock Name="Jobs" HorizontalAlignment="Left" Height="0" Margin="23,454,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="334" FontSize="15" Foreground="White" Text="Jobs"/>
         <TextBlock Name="From" HorizontalAlignment="Left" Height="0" Margin="426,415,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="105" FontSize="15" Foreground="White" Text="From"/>
         <TextBlock Name="To" HorizontalAlignment="Left" Height="0" Margin="555,415,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="105" FontSize="15" Foreground="White" Text="To"/>
+        <TextBox x:Name="JobDateFrom" Background="#FF363636" Foreground="#FFF" IsReadOnly = "True" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="77,580,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="JobDateTo" Background="#FF363636" Foreground="#FFF" IsReadOnly = "True" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="249,580,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBlock x:Name="JobDateFromText" HorizontalAlignment="Left" Height="0" Margin="23,582,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="From"/>
+        <TextBlock x:Name="JobDateToText" HorizontalAlignment="Left" Height="0" Margin="204,582,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="To"/>
+        <TextBlock x:Name="SupervisorText" HorizontalAlignment="Left" Height="0" Margin="359,582,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="100" FontSize="15" Foreground="White" Text="Supervisor"/>
+        <TextBox x:Name="SupervisorField" Background="#FF363636" IsReadOnly = "True" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="0" Margin="474,580,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBlock x:Name="AddJobDateFromText" HorizontalAlignment="Left" Height="0" Margin="517,542,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="From"/>
+        <TextBlock x:Name="AddJobDateToText" HorizontalAlignment="Left" Height="0" Margin="675,542,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="To"/>
+        <DatePicker Name="AddJobDateFromField" SelectedDateFormat="Short" Background="#FF363636" 
+                  DisplayDateStart="1/01/16" DisplayDateEnd="12/31/17" 
+                  FirstDayOfWeek="Monday" Width="105" Height="0" Margin="567,506,220,59"/>
+        <DatePicker Name="AddJobDateToField" SelectedDateFormat="Short" Background="#FF363636" 
+                  DisplayDateStart="1/01/16" DisplayDateEnd="12/31/17" 
+                  FirstDayOfWeek="Monday" Width="105" Height="0" Margin="719,506,68,59"/>
+
     </Grid>
 </Window>

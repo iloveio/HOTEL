@@ -17,5 +17,9 @@ namespace HumanResourcesLib
             this.lastName = lastName;
             this.name = name;
         }
+
+        public string nameProperty { get { return name; } set { name = value; } }
+        public string lastNameProperty { get { return lastName; } set { lastName = value; } }
+        public uint idProperty { get { return id; } set { } }
     }
 }

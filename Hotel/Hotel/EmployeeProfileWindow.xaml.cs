@@ -27,5 +27,10 @@ namespace Hotel
         {
             Close();
         }
+
+        private void JobsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
