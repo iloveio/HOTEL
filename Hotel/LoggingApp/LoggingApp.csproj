@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Liphsoft.Crypto.Argon2">
+      <HintPath>..\packages\Liphsoft.Crypto.Argon2.1.0.5\lib\net35\x64\Liphsoft.Crypto.Argon2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
