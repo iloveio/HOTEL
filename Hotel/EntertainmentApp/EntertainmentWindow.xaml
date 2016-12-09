@@ -1,0 +1,49 @@
+﻿<Window x:Class="EntertainmentApp.EntertainmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EntertainmentApp"
+        mc:Ignorable="d"
+        Title="Entertainment Module" Height="600" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <ListView x:Name="OrganisedEvents" HorizontalAlignment="Left" Height="215" Margin="10,36,0,0" VerticalAlignment="Top" Width="460" SelectionChanged="OrganisedEvents_SelectionChanged" ItemsSource="{Binding m_EntertainmentList}" UseLayoutRounding="True" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="380" Header="Nazwa" DisplayMemberBinding="{Binding name}" />
+                    <GridViewColumn Width="80" Header="Data" DisplayMemberBinding="{Binding startDate}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="InnerEntertainments" HorizontalAlignment="Left" Height="215" Margin="532,36,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="OrganisedEvents_SelectionChanged" ItemsSource="{Binding m_InnerEntertainments}" UseLayoutRounding="True" IsSynchronizedWithCurrentItem="True" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="170" Header="Nazwa" DisplayMemberBinding="{Binding name}" />
+                    <GridViewColumn Width="80" Header="Cena" DisplayMemberBinding="{Binding price}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid HorizontalAlignment="Left" Height="34" Margin="83,256,0,0" VerticalAlignment="Top" Width="300">
+            <Button x:Name="Add" Content="Dodaj" HorizontalAlignment="Left" Margin="4,7,0,5" VerticalAlignment="Center" Width="94" Click="button_Click"/>
+            <Button x:Name="Delete" Content="Usuń" HorizontalAlignment="Center" Margin="0,7,2,0" VerticalAlignment="Top" Width="93" Click="Delete_Click"/>
+            <Button x:Name="Edit" Content="Edytuj" Margin="0,7,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="94" Click="Edit_Click"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="34" Margin="573,256,0,0" VerticalAlignment="Top" Width="171">
+            <Button x:Name="button3" Content="Dodaj" HorizontalAlignment="Left" Margin="4,7,0,5" VerticalAlignment="Center" Width="50" Click="button3_Click"/>
+            <Button x:Name="button4" Content="Usuń" HorizontalAlignment="Center" Margin="0,7,2,0" VerticalAlignment="Top" Width="50" Click="button4_Click"/>
+            <Button x:Name="button5" Content="Edytuj" Margin="0,7,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" Click="button5_Click"/>
+        </Grid>
+        <Label x:Name="label1" Content="InnerEntertainements&#xD;&#xA;" Margin="598,6,0,0" VerticalAlignment="Top" Height="25" HorizontalAlignment="Left" Width="123"/>
+        <Label x:Name="label" Content="OrganisedEvents" HorizontalAlignment="Left" Margin="186,5,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Policz opłatę" HorizontalAlignment="Left" Margin="607,290,0,0" VerticalAlignment="Top" Width="105" Click="button_Click_1"/>
+        <Label x:Name="infotext" Content="Informacje o wydarzeniu" HorizontalAlignment="Left" Margin="400,315,200,10" VerticalAlignment="Top"/>
+        <Label x:Name="nazwaLabel" Content="Label" HorizontalAlignment="Left" Margin="48,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="cenaLabel" Content="Label" HorizontalAlignment="Left" Margin="297,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="dataStartLabel" Content="Label" HorizontalAlignment="Left" Margin="376,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="dataKoniecLabel" Content="Label" HorizontalAlignment="Left" Margin="460,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="maxGosciLabel" Content="Label" HorizontalAlignment="Left" Margin="544,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="managerLabel" Content="Label" HorizontalAlignment="Left" Margin="607,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Nazwa&#x9;&#x9;    &#x9;&#x9;&#x9;  Cena&#x9;            Start&#x9;        Koniec&#x9;    Max Gości   Manager" HorizontalAlignment="Left" Margin="48,353,0,0" VerticalAlignment="Top" Width="719"/>
+    </Grid>
+</Window>

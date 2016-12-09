@@ -1,0 +1,57 @@
+﻿<Window x:Class="EntertainmentApp.CountPaymentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:EntertainmentApp"
+        mc:Ignorable="d"
+        Title="Policz opłatę" Height="237.126" Width="300">
+    <Grid>
+        <ComboBox x:Name="guestComboBox" DisplayMemberPath="fullName" HorizontalAlignment="Left" Margin="96,47,0,0" VerticalAlignment="Top" Width="168" IsEditable="True">
+        </ComboBox>
+        <ComboBox x:Name="hoursComboBox" HorizontalAlignment="Left" Margin="96,87,0,0" VerticalAlignment="Top" Width="45" SelectionChanged="hoursComboBox_SelectionChanged">
+            <ComboBox.ItemsSource>
+                <x:Array Type="{x:Type sys:Int32}">
+                    <sys:Int32>1</sys:Int32>
+                    <sys:Int32>2</sys:Int32>
+                    <sys:Int32>3</sys:Int32>
+                    <sys:Int32>4</sys:Int32>
+                    <sys:Int32>5</sys:Int32>
+                    <sys:Int32>6</sys:Int32>
+                    <sys:Int32>7</sys:Int32>
+                    <sys:Int32>8</sys:Int32>
+                    <sys:Int32>9</sys:Int32>
+                    <sys:Int32>10</sys:Int32>
+                    <sys:Int32>11</sys:Int32>
+                    <sys:Int32>12</sys:Int32>
+                </x:Array>
+            </ComboBox.ItemsSource>
+        </ComboBox>
+        <Popup Margin="10,10,0,13" Name="Popup1" HorizontalAlignment="Left"   
+ VerticalAlignment="Top" Width="194" Height="200" PopupAnimation="Fade">
+            <StackPanel Background="LightBlue">
+                <TextBlock Name="Label"   
+                Background="LightBlue" TextAlignment="Center" Width="194" FontWeight="Bold" FontSize="14" Visibility="Hidden" >  
+                Paragon
+                </TextBlock>
+                <Label HorizontalContentAlignment="Center">Hotel sp. z o.o.</Label>
+                <Label HorizontalContentAlignment="Center">ul. TakaISiaka 15 Łódź</Label>
+                <Grid>
+                    <Label x:Name="serviceLabel" Margin="5,0,111,0" Content="USŁUGA"/>
+                    <Label x:Name="priceLabel2" Margin="106,0,10,0" Content="USŁUGA"/>
+                </Grid>
+                <Label Name="fullNameLabel" HorizontalContentAlignment="Center">IMIE I NAZWISKO</Label>
+                <Button Content="Zamknij" />
+            </StackPanel>
+        </Popup>
+        <Label x:Name="label" Content="Gość:" HorizontalAlignment="Left" Margin="21,47,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Godzin:" HorizontalAlignment="Left" Margin="22,87,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="entLabel" Content="Rodzaj rozrywki" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Center" Width="129" FontSize="16" Margin="0,5,0,0" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label3" Content="Łączna kwota:" HorizontalAlignment="Left" Margin="21,129,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="priceLabel" Content="KWOTA" HorizontalAlignment="Left" Margin="129,129,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="printReceiptButton" Content="Paragon" HorizontalAlignment="Left" Margin="29,175,0,0" VerticalAlignment="Top" Width="75" Click="printReceiptButton_Click"/>
+        <Button x:Name="OkButton" Content="OK" HorizontalAlignment="Left" Margin="118,175,0,0" VerticalAlignment="Top" Width="75" Click="OkButton_Click"/>
+        <Button x:Name="CancelButton" Content="Anuluj" HorizontalAlignment="Left" Margin="207,175,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
+    </Grid>
+</Window>
