@@ -1,0 +1,59 @@
+﻿<Window x:Class="Hotel.EmployeeProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel"
+        mc:Ignorable="d"
+        Title="EmployeeProfileWindow" Height="580" Width="900"
+        WindowStartupLocation="Manual" 
+        Left="50" Top="20">
+    <Grid Background="#FF363636">
+        <TextBlock HorizontalAlignment="Left" Height="48" Margin="23,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" FontSize="28" Foreground="White" Text="Employee profile"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="First name" RenderTransformOrigin="0.593,3.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Last name" RenderTransformOrigin="0.593,3.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Wage" RenderTransformOrigin="0.593,3.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Jobs" RenderTransformOrigin="0.593,3.5"/>
+        <TextBox x:Name="AddFirstName" Background="#FF363636" Foreground="#FFF" IsReadOnly="True" FontSize="18" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="142,95,0,0" VerticalAlignment="Top" Width="170"/>
+        <TextBox x:Name="AddLastName" Background="#FF363636" Foreground="#FFF" IsReadOnly="True" FontSize="18" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="142,152,0,0" VerticalAlignment="Top" Width="170"/>
+        <TextBox x:Name="AddWage" Background="#FF363636" Foreground="#FFF" IsReadOnly="True" FontSize="18" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="142,207,0,0" VerticalAlignment="Top" Width="170"/>
+        <ListBox x:Name="JobsList" Background="#FF363636" Foreground="#FFF" FontSize="18" HorizontalAlignment="Left" Height="90" Margin="142,320,0,0" VerticalAlignment="Top" Width="309" SelectionChanged="JobsList_SelectionChanged">
+        </ListBox>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Status" RenderTransformOrigin="0.593,3.5"/>
+        <TextBox x:Name="EmployeeStatus" Background="#FF363636" Foreground="#FFF" IsReadOnly="True" FontSize="18" HorizontalAlignment="Left" BorderBrush="LightGray" BorderThickness="1" Height="30" Margin="142,263,0,0" VerticalAlignment="Top" Width="170"/>
+        <Button x:Name="ExitModule" Content="Exit module" HorizontalAlignment="Left" Margin="684,483,0,0" VerticalAlignment="Top" Width="170" Height="38" Cursor="Hand" Foreground="White" RenderTransformOrigin="1.044,1.747" Click="ExitModule_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF363636"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="18.667"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF9C9C9C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFD6D6D6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="352,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="18" Foreground="White" Text="From" RenderTransformOrigin="0.593,3.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="565,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47" FontSize="18" Foreground="White" Text="To" RenderTransformOrigin="0.593,3.5"/>
+        <TextBox x:Name="StatusFrom" Background="#FF363636" Foreground="#FFF" IsReadOnly="True" FontSize="18" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="410,263,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="StatusTo" Background="#FF363636" Foreground="#FFF" IsReadOnly="True" FontSize="18" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="599,263,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="JobDateFrom" Background="#FF363636" Foreground="#FFF" IsReadOnly = "True" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Margin="190,429,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="JobDateTo" Background="#FF363636" Foreground="#FFF" IsReadOnly = "True" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left"  Margin="351,429,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBlock x:Name="JobDateFromText" HorizontalAlignment="Left" Margin="135,432,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="From"/>
+        <TextBlock x:Name="JobDateToText" HorizontalAlignment="Left"  Margin="306,432,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="To"/>
+
+    </Grid>
+</Window>
