@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lukasz\Documents\HOTEL\Hotel\Hotel\obj\Debug\
+C:\Users\user\Documents\HOTEL\Hotel\Hotel\obj\Debug\
 Hotel
 none
 false
 DEBUG;TRACE
-C:\Users\Lukasz\Documents\HOTEL\Hotel\Hotel\App.xaml
+C:\Users\user\Documents\HOTEL\Hotel\Hotel\App.xaml
 632202358
 
-381112110873
-14-1692253535
+38938433714
+19-384028472
 AddEmployeeWindow.xaml;EmployeeDataWindow.xaml;EmployeeProfileWindow.xaml;MainWindow.xaml;Transpport\GuestPage.xaml;Transpport\ShopPage.xaml;
 
-False
+True
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.Entity;
 
+
+
 namespace Hotel.Database.Transportation
 {
     public class TransportationContext : DbContext
