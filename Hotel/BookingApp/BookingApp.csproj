@@ -76,6 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ModelController.cs" />
     <Compile Include="ViewModel\CalendarViewModel.cs" />
     <Compile Include="ViewModel\CalendarWindowManager.cs" />
     <Compile Include="ViewModel\ChildWindowManager.cs" />
@@ -148,6 +149,10 @@
     <ProjectReference Include="..\BookingLibrary\BookingLibrary.csproj">
       <Project>{e6dabd10-b75e-4122-a1d9-93d12897301b}</Project>
       <Name>BookingLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel\Hotel.csproj">
+      <Project>{e269dc37-fecd-43aa-af77-1eed3f2b4fbb}</Project>
+      <Name>Hotel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

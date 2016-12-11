@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempDatabase\Reservation.cs" />
     <Compile Include="TempDatabase\Room.cs" />

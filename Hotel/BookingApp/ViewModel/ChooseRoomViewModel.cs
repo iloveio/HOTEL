@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using BookingLibrary;
-using BookingLibrary.TempDatabase;
+using BookingApp.Model;
+using Hotel.Database;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;

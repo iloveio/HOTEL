@@ -13,7 +13,7 @@ namespace BookingApp.ViewModel
         public event Action<int> Closed;
 
         public CalendarWindowManager()
-        {
+        { 
         }
 
         public void Show()

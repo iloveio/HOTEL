@@ -165,12 +165,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookingApp\BookingApp.csproj">
-      <Project>{20c2c418-9434-4306-813e-b4b3dad641cd}</Project>
-      <Name>BookingApp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\HumanResourcesLib\HumanResourcesLib.csproj">
       <Project>{4bf7395d-6627-4410-8078-2c1fe5fe7eca}</Project>
       <Name>HumanResourcesLib</Name>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using BookingLibrary;
+using BookingApp.Model;
 using BookingLibrary.TempDatabase;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
