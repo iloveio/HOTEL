@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Policz opłatę" Height="237.126" Width="300">
     <Grid>
-        <ComboBox x:Name="guestComboBox" DisplayMemberPath="fullName" HorizontalAlignment="Left" Margin="96,47,0,0" VerticalAlignment="Top" Width="168" IsEditable="True">
+        <ComboBox x:Name="guestComboBox" DisplayMemberPath="FullName" HorizontalAlignment="Left" Margin="96,47,0,0" VerticalAlignment="Top" Width="168" IsEditable="True" SelectionChanged="guestComboBox_SelectionChanged">
         </ComboBox>
         <ComboBox x:Name="hoursComboBox" HorizontalAlignment="Left" Margin="96,87,0,0" VerticalAlignment="Top" Width="45" SelectionChanged="hoursComboBox_SelectionChanged">
             <ComboBox.ItemsSource>
@@ -28,21 +28,22 @@
                 </x:Array>
             </ComboBox.ItemsSource>
         </ComboBox>
-        <Popup Margin="10,10,0,13" Name="Popup1" HorizontalAlignment="Left"   
- VerticalAlignment="Top" Width="194" Height="200" PopupAnimation="Fade">
+        <Popup Margin="-1,208,0,-201" Name="ReceiptPopup" HorizontalAlignment="Left"   
+ VerticalAlignment="Top" Width="194" Height="180" PopupAnimation="Fade">
             <StackPanel Background="LightBlue">
                 <TextBlock Name="Label"   
-                Background="LightBlue" TextAlignment="Center" Width="194" FontWeight="Bold" FontSize="14" Visibility="Hidden" >  
+                Background="LightBlue" TextAlignment="Center" Width="194" FontWeight="Bold" FontSize="14" >  
                 Paragon
                 </TextBlock>
                 <Label HorizontalContentAlignment="Center">Hotel sp. z o.o.</Label>
                 <Label HorizontalContentAlignment="Center">ul. TakaISiaka 15 Łódź</Label>
                 <Grid>
                     <Label x:Name="serviceLabel" Margin="5,0,111,0" Content="USŁUGA"/>
-                    <Label x:Name="priceLabel2" Margin="106,0,10,0" Content="USŁUGA"/>
+                    <Label x:Name="priceLabel2" Margin="106,0,5,0" Content="CENA" HorizontalContentAlignment="Right"/>
                 </Grid>
-                <Label Name="fullNameLabel" HorizontalContentAlignment="Center">IMIE I NAZWISKO</Label>
-                <Button Content="Zamknij" />
+                <Label Name="fullNameLabel" HorizontalContentAlignment="Left" Margin="5,0,0,0">IMIE I NAZWISKO</Label>
+                <Label HorizontalContentAlignment="Center" FontSize="9" FontStyle="Italic" Margin="0,13,0,0">Dziękujemy za skorzystanie z naszych usług :)</Label>
+                <Button Content="Zamknij" Click="Button_Click" Margin="0" />
             </StackPanel>
         </Popup>
         <Label x:Name="label" Content="Gość:" HorizontalAlignment="Left" Margin="21,47,0,0" VerticalAlignment="Top"/>
@@ -53,5 +54,6 @@
         <Button x:Name="printReceiptButton" Content="Paragon" HorizontalAlignment="Left" Margin="29,175,0,0" VerticalAlignment="Top" Width="75" Click="printReceiptButton_Click"/>
         <Button x:Name="OkButton" Content="OK" HorizontalAlignment="Left" Margin="118,175,0,0" VerticalAlignment="Top" Width="75" Click="OkButton_Click"/>
         <Button x:Name="CancelButton" Content="Anuluj" HorizontalAlignment="Left" Margin="207,175,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
+        <Label x:Name="ErrorMessage" Content="" HorizontalAlignment="Left" Margin="29,149,0,0" VerticalAlignment="Top" Width="253" Height="26" Foreground="Red"/>
     </Grid>
 </Window>
