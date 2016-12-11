@@ -27,6 +27,7 @@ namespace EntertainmentApp
                 nazwaTextBox.Text = entertainment.name;
                 cenaTextBox.Text = entertainment.price.ToString();
                 maxGosciTextBox.Text = entertainment.maximumNumberOfGuests.ToString();
+                managerComboBox.Text = entertainment.supervisor.ToString();
                 
                 entIsNull = false;
             }

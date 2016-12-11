@@ -20,6 +20,6 @@
         <Button x:Name="Accept" Content="Ok" HorizontalAlignment="Left" Margin="95,274,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <Button x:Name="Cancel" Content="Anuluj" HorizontalAlignment="Left" Margin="194,274,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
         <DatePicker x:Name="datePickerEnd" HorizontalAlignment="Left" Margin="149,187,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="managerComboBox" HorizontalAlignment="Left" Margin="149,222,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="managerComboBox" HorizontalAlignment="Left" Margin="149,222,0,0" VerticalAlignment="Top" Width="120" IsEditable="True"/>
     </Grid>
 </Window>
