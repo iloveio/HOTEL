@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using Hotel.Database.Accountancy;
 
 namespace EntertainmentApp
 {
@@ -15,9 +16,12 @@ namespace EntertainmentApp
         public ObservableCollection<int> Numbers { get; set; }
         private EntertainmentWindow entWindow;
         private InnerEntertainment innEnt;
+        private AccountancyManager accManager;
+        private float overallPrice;
 
         public CountPaymentWindow(InnerEntertainment ent, EntertainmentWindow entWindow)
         {
+            accManager = new AccountancyManager();
             this.entWindow = entWindow;
             innEnt = ent;
 
@@ -35,7 +39,7 @@ namespace EntertainmentApp
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            // sendInfoToAccountancyModule(guest, priceLabel.Content);
+            accManager.AddNewBill(new Bill(5, (int)overallPrice, "Entertainment", "Accountancy"));
         }
 
         private void printReceiptButton_Click(object sender, RoutedEventArgs e)
@@ -56,7 +60,7 @@ namespace EntertainmentApp
         {
             int hours;
             bool parseOK = Int32.TryParse(hoursComboBox.SelectedValue.ToString(), out hours);
-            float overallPrice = innEnt.price * hours;
+            overallPrice = innEnt.price * hours;
             priceLabel.Content = overallPrice;
         }
 
