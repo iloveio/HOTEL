@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Hotel.Database;
+using Hotel.Database.Staff;
 
 namespace EntertainmentApp
 {
     public class OrganisedEvent : Entertainment
     {
         public OrganisedEvent(string name, float price, int maximumNumberOfGuests,
-            DateTime startDate, DateTime endDate, Employee supervisor)
+            DateTime startDate, DateTime endDate, Supervisor supervisor)
         {
             this.name = name;
             this.price = price;
@@ -20,7 +21,7 @@ namespace EntertainmentApp
         public int maximumNumberOfGuests { get; set; }
         public string startDate { get; set; }
         public string endDate { get; set; }
-        public Employee supervisor { get; set; }
+        public Supervisor supervisor { get; set; }
         public List<Guest> guestList { get; set; }
 
         public void addGuest(Guest guest)

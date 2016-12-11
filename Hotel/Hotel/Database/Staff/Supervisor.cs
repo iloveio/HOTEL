@@ -28,5 +28,10 @@ namespace Hotel.Database.Staff
             this.employeeStatus = status;
             this.jobs = jobs;
         }
-}
+
+        public override string ToString()
+        {
+            return name + " " + lastname;
+        }
+    }
 }
