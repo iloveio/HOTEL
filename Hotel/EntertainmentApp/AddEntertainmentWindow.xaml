@@ -5,21 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EntertainmentApp"
         mc:Ignorable="d"
-        Title="Dodaj lub edytuj wydarzenie" Height="350" Width="300">
+        Title="Dodaj lub edytuj wydarzenie" Height="309.03" Width="300">
     <Grid>
         <Label x:Name="label" Content="Nazwa:" HorizontalAlignment="Left" Margin="32,32,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Cena:" HorizontalAlignment="Left" Margin="32,63,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label3" Content="Max gosci:" HorizontalAlignment="Left" Margin="33,125,0,0" VerticalAlignment="Top" />
-        <Label x:Name="label4" Content="Data pocz:" HorizontalAlignment="Left" Margin="33,156,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label5" Content="Data zakończenia:" HorizontalAlignment="Left" Margin="33,187,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Max gosci:" HorizontalAlignment="Left" Margin="33,93,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label4" Content="Data pocz:" HorizontalAlignment="Left" Margin="33,124,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Content="Data zakończenia:" HorizontalAlignment="Left" Margin="33,155,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="nazwaTextBox" HorizontalAlignment="Left" Height="23" Margin="149,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label6" Content="Manager:" HorizontalAlignment="Left" Margin="33,218,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label6" Content="Manager:" HorizontalAlignment="Left" Margin="33,186,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="cenaTextBox" HorizontalAlignment="Left" Height="23" Margin="149,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DatePicker x:Name="datePickerStart" HorizontalAlignment="Left" Margin="149,157,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="maxGosciTextBox" HorizontalAlignment="Left" Height="23" Margin="149,129,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Accept" Content="Ok" HorizontalAlignment="Left" Margin="95,274,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Button x:Name="Cancel" Content="Anuluj" HorizontalAlignment="Left" Margin="194,274,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
-        <DatePicker x:Name="datePickerEnd" HorizontalAlignment="Left" Margin="149,187,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="managerComboBox" HorizontalAlignment="Left" Margin="149,222,0,0" VerticalAlignment="Top" Width="120" IsEditable="True"/>
+        <DatePicker x:Name="datePickerStart" HorizontalAlignment="Left" Margin="149,125,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="maxGosciTextBox" HorizontalAlignment="Left" Height="23" Margin="149,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="Accept" Content="Ok" HorizontalAlignment="Left" Margin="95,242,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button x:Name="Cancel" Content="Anuluj" HorizontalAlignment="Left" Margin="194,242,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+        <DatePicker x:Name="datePickerEnd" HorizontalAlignment="Left" Margin="149,155,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="managerComboBox" HorizontalAlignment="Left" Margin="149,190,0,0" VerticalAlignment="Top" Width="120" IsEditable="True"/>
     </Grid>
 </Window>
