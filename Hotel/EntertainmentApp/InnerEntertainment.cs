@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hotel.Database;
 
 namespace EntertainmentApp
 {
@@ -22,7 +23,7 @@ namespace EntertainmentApp
         public string printReceipt(Guest guest)
         {
             return "Entertainment name: " + name + " \nPrice: " + price
-                + "\nGuest: " + guest.name + " " + guest.surname;
+                + "\nGuest: " + guest.Name + " " + guest.Surname;
         }
 
     }

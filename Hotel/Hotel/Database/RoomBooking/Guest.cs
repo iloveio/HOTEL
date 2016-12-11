@@ -22,5 +22,13 @@ namespace Hotel.Database
             this.Surname = surname;
             this.PlaceOfBirth = placeofbirth;
         }
+
+        public string FullName
+        {
+            get
+            {
+                return Surname + " " + Name;
+            }
+        }
     }
 }

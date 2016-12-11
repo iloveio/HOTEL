@@ -1,18 +1,8 @@
-﻿using EntertainmentApp;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Hotel.Database;
+using Hotel.Database.Staff;
 
 namespace EntertainmentApp
 {
@@ -42,7 +32,7 @@ namespace EntertainmentApp
         {
             float e = (float)Convert.ToDouble(cenaTextBox.Text);
             bool valid = float.TryParse(cenaTextBox.Text.ToString(), out e);
-            entWin.col.m_OrganisedEvents.Add(new OrganisedEvent(nazwaTextBox.Text, e, 999, datePicker.SelectedDate ?? DateTime.Now, datePicker.SelectedDate ?? DateTime.Now, new Employee(entWin.col.m_OrganisedEvents.ElementAt(entWin.OrganisedEvents.SelectedIndex).supervisor)));
+            entWin.col.m_OrganisedEvents.Add(new OrganisedEvent(nazwaTextBox.Text, e, 999, datePicker.SelectedDate ?? DateTime.Now, datePicker.SelectedDate ?? DateTime.Now, new Supervisor(0, "Pioter", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null)));
             if (!entIsNull)
                 entWin.col.m_OrganisedEvents.Remove(ent);
             Close();
