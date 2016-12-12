@@ -7,14 +7,19 @@ namespace Hotel.Transpport
 {
     public class Guest : Transport
     {
-        public string guest;
+        public string guestName;
         public string from;
         public string destination;
         public int howMany;
+        GuestWindow w;
 
         public Guest()
         {
-            
+            w = new GuestWindow(this);
+        }
+        public void Show()
+        {
+            w.Show();
         }
 
     }  

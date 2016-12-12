@@ -9,6 +9,9 @@
       Title="ShopPage">
 
     <Grid>
+        <TextBox x:Name="DataView" HorizontalAlignment="Left" Height="31" Margin="10,108,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" Width="95" TextAlignment="Center" IsEnabled="False"/>
+        <DatePicker x:Name="DateData" HorizontalAlignment="Left" Height="31" Margin="141,108,0,0" VerticalAlignment="Top" Width="120"/>
+
         <TextBox x:Name="Shop_View" HorizontalAlignment="Left" Height="25" Margin="53,10,0,0" TextWrapping="Wrap" Text="Shop View" VerticalAlignment="Top" Width="179" IsEnabled="False" TextAlignment="Center"/>
         <Button x:Name="DodajDane" Content="Dodaj noew zlecenie" HorizontalAlignment="Left" Height="38" Margin="82,216,0,0" VerticalAlignment="Top" Width="122"/>
 

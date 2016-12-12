@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Hotel.Transpport;
 
 namespace Hotel
 {
@@ -22,6 +23,8 @@ namespace Hotel
         public MainWindow()
         {
             InitializeComponent();
+            Guest gr = new Guest();
+            gr.Show();
         }
     }
 }

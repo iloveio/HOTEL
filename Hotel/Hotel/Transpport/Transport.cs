@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace Hotel.Transpport
 {
     public class Transport
@@ -21,9 +22,9 @@ namespace Hotel.Transpport
         {
             this.cost = cost;
         }
-        public void Save()
+        public bool Save()
         {
-            
+            return false;
         }
 
     }
