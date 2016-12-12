@@ -23,8 +23,23 @@ namespace Hotel
         public MainWindow()
         {
             InitializeComponent();
-            Guest gr = new Guest();
-            gr.Show();
         }
+
+        public void Menager_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void Gosc_Click(object sender, RoutedEventArgs e)
+        {
+            Guest gu = new Guest();
+            gu.Show();
+        }
+        public void Shop_Click(object sender, RoutedEventArgs e)
+        {
+            Shop sh = new Shop(new List<object>());
+            MessageBox.Show("Utworzono zlecenie");
+        }
+
+
     }
 }
