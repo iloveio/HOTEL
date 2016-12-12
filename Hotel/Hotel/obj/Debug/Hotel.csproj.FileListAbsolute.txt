@@ -1,0 +1,17 @@
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\bin\Debug\Hotel.exe
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\bin\Debug\Hotel.pdb
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Hotel.csprojResolveAssemblyReference.cache
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\MainWindow.g.cs
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Transpport\ShopPage.g.cs
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\App.g.cs
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Hotel_MarkupCompile.cache
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Hotel_MarkupCompile.lref
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\MainWindow.baml
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Transpport\ShopPage.baml
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Hotel.g.resources
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Hotel.Properties.Resources.resources
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Hotel.csproj.GenerateResource.Cache
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Hotel.exe
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Hotel.pdb
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Transpport\GuestWindow.g.cs
+C:\Users\Paweł\Desktop\HOTEL\Hotel\Hotel\obj\Debug\Transpport\GuestWindow.baml
