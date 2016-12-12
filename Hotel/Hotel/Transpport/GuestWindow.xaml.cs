@@ -24,7 +24,7 @@ namespace Hotel.Transpport
             InitializeComponent();
             gs = tr;
         }
-        public void DodajDane_Click()
+        public void DodajDane_Click(object sender, RoutedEventArgs e)
         {
             gs.guestName = GuestData.Text;
             gs.from = FromData.Text;
