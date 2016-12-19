@@ -1,4 +1,10 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	EntertainmentWindow.xaml.cs
+//
+// summary:	Implements the entertainment window.xaml class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -17,23 +23,49 @@ using System.Windows.Shapes;
 
 namespace EntertainmentApp
 {
-    /// <summary>
-    /// Interaction logic for EntertainmentWindow.xaml
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Interaction logic for EntertainmentWindow.xaml. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public partial class EntertainmentWindow : Window
     {
+        /// <summary>   The col. </summary>
         public OurData col;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public EntertainmentWindow()
         {
             InitializeComponent();
             InitBinding();
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by button for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             AddEntertainmentWindow addWindow = new AddEntertainmentWindow(null, this);
             addWindow.Show();
         }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Init binding. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void InitBinding()
     {
@@ -42,11 +74,29 @@ namespace EntertainmentApp
             OrganisedEvents.ItemsSource = col.m_OrganisedEvents;
     }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by Delete for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             if(OrganisedEvents.SelectedItem!=null)
                 col.m_OrganisedEvents.RemoveAt(OrganisedEvents.SelectedIndex);
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by Edit for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +109,15 @@ namespace EntertainmentApp
                 
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by button4 for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void button4_Click(object sender, RoutedEventArgs e)
         {
             if(InnerEntertainments.SelectedItem != null)
@@ -66,6 +125,16 @@ namespace EntertainmentApp
         }
 
         // edit
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by button5 for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void button5_Click(object sender, RoutedEventArgs e)
         {
             if (InnerEntertainments.SelectedItem != null)
@@ -77,11 +146,30 @@ namespace EntertainmentApp
         }
 
         // add
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by button3 for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void button3_Click(object sender, RoutedEventArgs e)
         {
             AddInnerEntertainmentWindow addWindow = new AddInnerEntertainmentWindow(null, this);
             addWindow.Show();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by OrganisedEvents for selection changed events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Selection changed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void OrganisedEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -97,6 +185,15 @@ namespace EntertainmentApp
             }
 
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by button_Click for 1 events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {

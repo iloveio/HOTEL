@@ -1,4 +1,10 @@
-﻿using HumanResourcesLib;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	MainWindow.xaml.cs
+//
+// summary:	Implements the main window.xaml class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +13,21 @@ using System.Windows;
 
 namespace Hotel
 {
-    /// <summary>
-    ///     Interaction logic for MainWindow.xaml
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Interaction logic for MainWindow.xaml. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public partial class MainWindow : Window
     {
         //Director dyr;
-        
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public MainWindow()
         {
@@ -30,10 +44,28 @@ namespace Hotel
             dyr.GetSupervisors().Add(dyr.HireAnEmployee("tttt", "tttt", 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 1, 1)), 110, new List<Job>()));*/
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by ExitButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by ViewButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void ViewButton_Click(object sender, RoutedEventArgs e)
         {

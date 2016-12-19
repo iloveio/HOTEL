@@ -1,4 +1,10 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	RegisterWindow..xaml.cs
+//
+// summary:	Implements the register window..xaml class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +22,20 @@ using Liphsoft.Crypto.Argon2;
 
 namespace LoggingApp
 {
-    /// <summary>
-    /// Interaction logic for RegisterWindow.xaml
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Interaction logic for RegisterWindow.xaml. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public partial class RegisterWindow : Window
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public RegisterWindow()
         {
             InitializeComponent();
@@ -31,6 +46,18 @@ namespace LoggingApp
             loginTextBox.MaxLength = 20;
             passwordBox.MaxLength = 20;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by registerButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             Logging dane = new Logging();
@@ -112,17 +139,47 @@ namespace LoggingApp
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Event handler. Called by phoneNumberTextBox for preview text input events.
+        /// </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Text composition event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void phoneNumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!char.IsDigit(e.Text, e.Text.Length - 1))
                 e.Handled = true;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Query if 'text' is text allowed. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="text"> The text. </param>
+        ///
+        /// <returns>   True if text allowed, false if not. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private static bool IsTextAllowed(string text)
         {
             Regex regex = new Regex("[^0-9.-]+");
             return !regex.IsMatch(text);
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Raises the data object pasting event. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Event information to send to registered event handlers. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void OnPaste(object sender, DataObjectPastingEventArgs e)
         {

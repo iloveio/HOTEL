@@ -1,4 +1,10 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	LoggingWindow.xaml.cs
+//
+// summary:	Implements the logging window.xaml class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +22,20 @@ using Liphsoft.Crypto.Argon2;
 
 namespace LoggingApp
 {
-    /// <summary>
-    /// Interaction logic for LoggingWindow.xaml
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Interaction logic for LoggingWindow.xaml. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public partial class LoggingWindow : Window
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public LoggingWindow()
         {
             InitializeComponent();
@@ -28,15 +43,44 @@ namespace LoggingApp
             passwordBox.MaxLength = 20;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by loginTextBox for text changed events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Text changed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void loginTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by passwordTextBox for text changed events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Text changed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void passwordTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by loginButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <exception cref="Exception">    Thrown when an exception error condition occurs. </exception>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -73,6 +117,15 @@ namespace LoggingApp
 
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by registerButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {

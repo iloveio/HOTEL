@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	Chef.cs
+//
+// summary:	Implements the chef class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +12,24 @@ using System.Threading.Tasks;
 
 namespace Kitchen
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A chef. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     class Chef
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="fridge">   The fridge. </param>
+        /// <param name="cookBook"> The cook book. </param>
+        /// <param name="bills">    The bills. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public Chef(Fridge fridge, CookBook cookBook, Bills bills)
         {
             this.usedFridge = fridge;
@@ -15,6 +37,16 @@ namespace Kitchen
             this.usedBills = bills;
 
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Makes a dish. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="dishName"> Name of the dish. </param>
+        ///
+        /// <returns>   A Dish. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Dish Make_Dish(string dishName )
         {
@@ -49,6 +81,16 @@ namespace Kitchen
             
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Names to ingredients. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="ingredientNames">  List of names of the ingredients. </param>
+        ///
+        /// <returns>   A List&lt;Ingredient&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public List<Ingredient> Names_To_Ingredients( List<string> ingredientNames )
         {
             List<Ingredient> ingredients = new List<Ingredient>();
@@ -63,8 +105,11 @@ namespace Kitchen
         }
 
 
+        /// <summary>   The used fridge. </summary>
         private Fridge usedFridge;
+        /// <summary>   The used cook book. </summary>
         private CookBook usedCookBook;
+        /// <summary>   The used bills. </summary>
         private Bills usedBills;
 
         

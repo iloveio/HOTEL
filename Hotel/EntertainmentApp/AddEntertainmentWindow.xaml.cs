@@ -1,4 +1,10 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	AddEntertainmentWindow.xaml.cs
+//
+// summary:	Implements the add entertainment window.xaml class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Linq;
 using System.Windows;
 using Hotel.Database;
@@ -6,14 +12,30 @@ using Hotel.Database.Staff;
 
 namespace EntertainmentApp
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Interaction logic for Window1.xaml. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public partial class AddEntertainmentWindow : Window
     {
+        /// <summary>   The ent window. </summary>
         private EntertainmentWindow entWin;
+        /// <summary>   The ent. </summary>
         private OrganisedEvent ent;
+        /// <summary>   True if ent is null. </summary>
         private bool entIsNull;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="entertainment">    The entertainment. </param>
+        /// <param name="mainWindow">       The main window. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public AddEntertainmentWindow(OrganisedEvent entertainment, EntertainmentWindow mainWindow)
         {
             
@@ -33,6 +55,15 @@ namespace EntertainmentApp
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by button for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="eargs">    Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void button_Click(object sender, RoutedEventArgs eargs)
         {
             float e = (float)Convert.ToDouble(cenaTextBox.Text);
@@ -44,6 +75,15 @@ namespace EntertainmentApp
                 entWin.col.m_OrganisedEvents.Remove(ent);
             Close();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by button1 for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {

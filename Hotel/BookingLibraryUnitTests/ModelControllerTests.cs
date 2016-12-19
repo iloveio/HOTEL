@@ -1,12 +1,30 @@
-﻿using BookingLibrary;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	ModelControllerTests.cs
+//
+// summary:	Implements the model controller tests class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using BookingLibrary;
 using BookingLibrary.TempDatabase;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BookingLibraryUnitTests
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   (Unit Test Class) a model controller tests. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     [TestClass]
     public class ModelControllerTests
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   (Unit Test Method) tests model controller singleton. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [TestMethod]
         public void ModelControllerSingletonTest()
         {
@@ -14,6 +32,12 @@ namespace BookingLibraryUnitTests
             Assert.IsNotNull(modelController);
             Assert.IsInstanceOfType(modelController, typeof(ModelController));
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   (Unit Test Method) tests get user name. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         [TestMethod]
         public void GetUserNameTest()
@@ -38,6 +62,12 @@ namespace BookingLibraryUnitTests
             Assert.IsInstanceOfType(receivedName, typeof(string));
             Assert.AreEqual("Dupsko", receivedName);
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   (Unit Test Method) tests get room query. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         [TestMethod]
         public void GetRoomQueryTest()

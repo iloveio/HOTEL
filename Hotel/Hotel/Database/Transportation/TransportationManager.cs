@@ -1,13 +1,32 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	Database\Transportation\TransportationManager.cs
+//
+// summary:	Implements the transportation manager class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Hotel.Database.Transportation
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Manager for transportations. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class TransportationManager
     {
+        /// <summary>   List of transportations. </summary>
         List<Transportation> transportationsList;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public TransportationManager()
         {
@@ -15,10 +34,16 @@ namespace Hotel.Database.Transportation
         }
 
         //----Methods to fill lists----
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
-        /// Method to fill transportations list with data from database, 
-        /// works as update (should be called whenever data in database has been changed
+        /// Method to fill transportations list with data from database, works as update (should be
+        /// called whenever data in database has been changed.
         /// </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void FillDataWithAllTransportations()
         {
             using (var db = new TransportationContext())
@@ -30,11 +55,15 @@ namespace Hotel.Database.Transportation
         }
 
         //----Methods to manage database----
-        /// <summary>
-        /// Method to add new transportation record to database
-        /// </summary>
-        /// <param name="trans"></param>
-        /// Transportation object to be added into databae
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Method to add new transportation record to database. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="trans">    . </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void AddNewTransportation(Transportation trans)
         {
             using (var db = new TransportationContext())
@@ -45,11 +74,14 @@ namespace Hotel.Database.Transportation
             FillDataWithAllTransportations();
         }
 
-        /// <summary>
-        /// Method to delete transportation record from database
-        /// </summary>
-        /// <param name="trans"></param>
-        /// Object to be deleted
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Method to delete transportation record from database. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="trans">    . </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void DeleteTransportationByObject(Transportation trans)
         {
             using (var db = new TransportationContext())
@@ -62,13 +94,15 @@ namespace Hotel.Database.Transportation
             FillDataWithAllTransportations();
         }
 
-        /// <summary>
-        /// Method to update employee in existing record
-        /// </summary>
-        /// <param name="trans"></param>
-        /// Object to be updated
-        /// <param name="emp"></param>
-        /// New emloyee to be replaced
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Method to update employee in existing record. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="trans">    . </param>
+        /// <param name="emp">      . </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void UpdateTransportationEmployee(Transportation trans, Employee emp)
         {
             using (var db = new TransportationContext())
@@ -79,13 +113,16 @@ namespace Hotel.Database.Transportation
             }
             FillDataWithAllTransportations();
         }
-        /// <summary>
-        /// Method to update description in exsisting record
-        /// </summary>
-        /// <param name="trans"></param>
-        /// Object to be updated
-        /// <param name="desc"></param>
-        /// New description to be replaced
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Method to update description in exsisting record. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="trans">    . </param>
+        /// <param name="desc">     . </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void UpdateTransportationDescription(Transportation trans, string desc)
         {
             using (var db = new TransportationContext())
@@ -96,13 +133,16 @@ namespace Hotel.Database.Transportation
             }
             FillDataWithAllTransportations();
         }
-        /// <summary>
-        /// Method to update date in existing record
-        /// </summary>
-        /// <param name="trans"></param>
-        /// Object to be updated
-        /// <param name="date"></param>
-        /// New date to be replaced
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Method to update date in existing record. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="trans">    . </param>
+        /// <param name="date">     . </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void UpdateTransportationDate(Transportation trans, DateTime date)
         {
             using (var db = new TransportationContext())
@@ -115,10 +155,15 @@ namespace Hotel.Database.Transportation
         }
 
         //----Methods to get data----
-        /// <summary>
-        /// This method will be heavly reworked in future
-        /// </summary>
-        /// <returns></returns>
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   This method will be heavly reworked in future. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <returns>   The transportation list. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public List<Transportation> GetTransportationList()
         {
             return transportationsList;

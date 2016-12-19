@@ -1,4 +1,10 @@
-﻿using HumanResourcesLib;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	AddEmployeeWindow.xaml.cs
+//
+// summary:	Implements the add employee window.xaml class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +24,34 @@ using System.Windows.Shapes;
 
 namespace Hotel
 {
-    /// <summary>
-    /// Interaction logic for AddEmployeeWindow.xaml
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Interaction logic for AddEmployeeWindow.xaml. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public partial class AddEmployeeWindow : Window
     {
+        /// <summary>   The is edit active. </summary>
         private int isEditActive = -1;
+        /// <summary>   The jobs. </summary>
         private List<Job> jobs;
+        /// <summary>   Zero-based index of the job. </summary>
         private int jobIndex = 0;
+        /// <summary>   List of employees. </summary>
         private ListBox employeeList;
 
         //Supervisor sup; //for future uses
+        /// <summary>   The dyr. </summary>
         Director dyr;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="employeeList"> List of employees. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public AddEmployeeWindow(ListBox employeeList)
         {
@@ -43,6 +65,15 @@ namespace Hotel
 
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by ListBox for selection changed events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Selection changed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             jobIndex = JobsList.SelectedIndex;
@@ -53,7 +84,15 @@ namespace Hotel
                 JobDateTo.Text = jobs[jobIndex].Deadline;
             }
         }
-      
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by DeleteJobButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void DeleteJobButton_Click(object sender, RoutedEventArgs e)
         {
@@ -66,6 +105,15 @@ namespace Hotel
                 JobsList.Items.Remove(JobsList.SelectedItem);
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by ConfirmJobButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void ConfirmJobButton_Click(object sender, RoutedEventArgs e)
         {
@@ -88,6 +136,15 @@ namespace Hotel
                 JobsList.UpdateLayout();
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by AddJobButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void AddJobButton_Click(object sender, RoutedEventArgs e)
         {
@@ -120,6 +177,15 @@ namespace Hotel
                 AddJobDateToField.Height = 0;
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by AddEmployeeButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {

@@ -1,4 +1,10 @@
-﻿using HumanResourcesLib;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	EmployeeDataWindow.xaml.cs
+//
+// summary:	Implements the employee data window.xaml class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +22,32 @@ using System.Windows.Shapes;
 
 namespace Hotel
 {
-    /// <summary>
-    /// Interaction logic for EmployeeDataWindow.xaml
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Interaction logic for EmployeeDataWindow.xaml. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public partial class EmployeeDataWindow : Window
     {
+        /// <summary>   The is edit active. </summary>
         private int isEditActive = -1;
+        /// <summary>   The is add job active. </summary>
         private int isAddJobActive = -1;
+        /// <summary>   Zero-based index of the. </summary>
         private int index = 0;
+        /// <summary>   Zero-based index of the job. </summary>
         private int jobIndex = 0;
+        /// <summary>   The dyr. </summary>
         Director dyr;
+        /// <summary>   The status. </summary>
         EmployeeStatusName status;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public EmployeeDataWindow()
         {
@@ -57,6 +78,15 @@ namespace Hotel
             //dyr = Director.GetInstance;           
             //browseEmployeeList.ItemsSource = dyr.GetSupervisors();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by EditButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
@@ -146,6 +176,15 @@ namespace Hotel
             
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by DeleteButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if(browseEmployeeList.SelectedIndex != -1)
@@ -164,11 +203,29 @@ namespace Hotel
             }       
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by AddButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             Window addEmployeeView = new AddEmployeeWindow(browseEmployeeList);
             addEmployeeView.Show();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by ExitButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -221,6 +278,15 @@ namespace Hotel
             
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by AddJobButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void AddJobButton_Click(object sender, RoutedEventArgs e)
         {
             isAddJobActive = isAddJobActive * (-1);
@@ -249,6 +315,15 @@ namespace Hotel
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by DeleteJobButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void DeleteJobButton_Click(object sender, RoutedEventArgs e)
         {
             if(JobsListBrowse.SelectedIndex != -1)
@@ -261,6 +336,15 @@ namespace Hotel
                 JobsListBrowse.Items.Remove(JobsListBrowse.SelectedItem);
             }     
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by ConfirmJobButton for click events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Routed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void ConfirmJobButton_Click(object sender, RoutedEventArgs e)
         {
@@ -285,10 +369,28 @@ namespace Hotel
             
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by editJob for text changed events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Text changed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void editJob_TextChanged(object sender, TextChangedEventArgs e)
         {
             
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by JobsListBrowse for selection changed events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Selection changed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void JobsListBrowse_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -316,6 +418,15 @@ namespace Hotel
             
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Event handler. Called by StatusesList for selection changed events. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Selection changed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private void StatusesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             From.Height = 30;
@@ -323,6 +434,17 @@ namespace Hotel
             datePicker.Height = 30;
             datePickerTo.Height = 30;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Event handler. Called by browseEmployeeList for selection changed events.
+        /// </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sender">   Source of the event. </param>
+        /// <param name="e">        Selection changed event information. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void browseEmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

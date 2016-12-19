@@ -1,17 +1,40 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	Database\Staff\StaffManager.cs
+//
+// summary:	Implements the staff manager class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Hotel.Database.Staff
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Manager for staffs. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class StaffManager
     {
+        /// <summary>   List of directors. </summary>
         List<Director> directorList;
+        /// <summary>   List of employee status. </summary>
         List<EmployeeStatus> employeeStatusList;
+        /// <summary>   List of jobs. </summary>
         List<Job> jobsList;
+        /// <summary>   List of subordinates. </summary>
         List<Subordinate> subordinatesList;
+        /// <summary>   List of supervisors. </summary>
         List<Supervisor> supervisorList;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Fill data with all directors. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void FillDataWithAllDirectors()
         {
@@ -22,6 +45,13 @@ namespace Hotel.Database.Staff
                 directorList = query.ToList<Director>();
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Fill data with all employee status. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void FillDataWithAllEmployeeStatus()
         {
             using (var db = new StaffContext())
@@ -31,6 +61,13 @@ namespace Hotel.Database.Staff
                 employeeStatusList = query.ToList<EmployeeStatus>();
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Fill data with all jobs. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void FillDataWithAllJobs()
         {
             using (var db = new StaffContext())
@@ -40,6 +77,13 @@ namespace Hotel.Database.Staff
                 jobsList = query.ToList<Job>();
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Fill data with all subordinates. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void FillDataWithAllSubordinates()
         {
             using (var db = new StaffContext())
@@ -51,6 +95,13 @@ namespace Hotel.Database.Staff
 
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Fill data with all supervisor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void FillDataWithAllSupervisor()
         {
             using (var db = new StaffContext())
@@ -63,6 +114,14 @@ namespace Hotel.Database.Staff
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds a new director. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="dir">  The dir. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void AddNewDirector(Director dir)
         {
             using (var db = new StaffContext())
@@ -72,6 +131,15 @@ namespace Hotel.Database.Staff
             }
             FillDataWithAllDirectors();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds a new employee status. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="status">   The status. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void AddNewEmployeeStatus(EmployeeStatus status)
         {
             using (var db = new StaffContext())
@@ -81,6 +149,15 @@ namespace Hotel.Database.Staff
             }
             FillDataWithAllEmployeeStatus();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds a new job. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="job">  The job. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void AddNewJob(Job job)
         {
             using (var db = new StaffContext())
@@ -90,6 +167,15 @@ namespace Hotel.Database.Staff
             }
             FillDataWithAllJobs();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds a new subordinate. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sub">  The sub. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void AddNewSubordinate(Subordinate sub)
         {
             using (var db = new StaffContext())
@@ -99,6 +185,15 @@ namespace Hotel.Database.Staff
             }
             FillDataWithAllSubordinates();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds a new supervisor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="sup">  The sup. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void AddNewSupervisor(Supervisor sup)
         {
             using (var db = new StaffContext())

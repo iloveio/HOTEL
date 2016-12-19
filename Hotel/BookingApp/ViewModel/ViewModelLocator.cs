@@ -17,15 +17,23 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace BookingApp.ViewModel
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
-    ///     This class contains static references to all the view models in the
-    ///     application and provides an entry point for the bindings.
+    /// This class contains static references to all the view models in the application and provides
+    /// an entry point for the bindings.
     /// </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class ViewModelLocator
     {
-        /// <summary>
-        ///     Initializes a new instance of the ViewModelLocator class.
-        /// </summary>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Initializes a new instance of the ViewModelLocator class. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
@@ -48,16 +56,27 @@ namespace BookingApp.ViewModel
             SimpleIoc.Default.Register<ChildWindowManager>();
         }
 
+        /// <summary>   The main. </summary>
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
+        /// <summary>   The choose room. </summary>
         public ChooseRoomViewModel ChooseRoom => ServiceLocator.Current.GetInstance<ChooseRoomViewModel>();
 
+        /// <summary>   The calendar. </summary>
         public CalendarViewModel Calendar => ServiceLocator.Current.GetInstance<CalendarViewModel>();
 
+        /// <summary>   The room search. </summary>
         public RoomSearchViewModel RoomSearch
             => ServiceLocator.Current.GetInstance<RoomSearchViewModel>();
 
+        /// <summary>   Manager for child window. </summary>
         public ChildWindowManager ChildWindowManager => ServiceLocator.Current.GetInstance<ChildWindowManager>();
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Cleanups this object. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static void Cleanup()
         {

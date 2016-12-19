@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	Fridge.cs
+//
+// summary:	Implements the fridge class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +12,20 @@ using System.Threading.Tasks;
 
 namespace Kitchen
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A fridge. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     class Fridge
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public Fridge()
         {
             this.Add_Ingredient("Tomato");
@@ -16,10 +34,26 @@ namespace Kitchen
 
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds an ingredient. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="name"> The name. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void Add_Ingredient( string name )
         {
             this.ingredients.Add(new Ingredient(name));
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Request ingredients. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="orderNames">   List of names of the orders. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void Request_Ingredients(List<string> orderNames)
         {
@@ -27,10 +61,26 @@ namespace Kitchen
             // send list of names to outside database.
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Returns the ingredients. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <returns>   The ingredients. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public List<Ingredient> Return_Ingredients()
         {
             return this.ingredients;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Returns ingredient names. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <returns>   The ingredient names. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<string> Return_ingredientNames()
         {
@@ -45,6 +95,14 @@ namespace Kitchen
             return ingredientNames;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds the ingredients. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="namedIngredients"> The named ingredients. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void Add_Ingredients(List<string> namedIngredients)
         {
             // convert names to Ingredients
@@ -54,6 +112,14 @@ namespace Kitchen
                 ingredients.Add(new Ingredient(namedIngredients[i]));
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Removes the ingredient described by name. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="name"> The name. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void Remove_Ingredient( string name )
         {
@@ -73,6 +139,7 @@ namespace Kitchen
             else Console.WriteLine("[Fridge::Remove_Ingredient(): Couldn't find the {0} in the Fridge.]", name);
         }
 
+        /// <summary>   The ingredients. </summary>
         private List<Ingredient> ingredients = new List<Ingredient>();
     }
 }

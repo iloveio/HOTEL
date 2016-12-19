@@ -1,4 +1,10 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	CookBook.cs
+//
+// summary:	Implements the cook book class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +14,26 @@ using System.Threading.Tasks;
 
 namespace Kitchen
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A cook book. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     class CookBook
     {
+                                                /// <summary>   True to show, false to hide the comments. </summary>
                                                 public bool showComments = false;
         
 
+        /// <summary>   True to display comments. </summary>
         public bool displayComments = false;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public CookBook()
         {
@@ -38,6 +57,16 @@ namespace Kitchen
             this.Display_Recipes();
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Enough ingredients. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="dishName"> Name of the dish. </param>
+        /// <param name="fridge">   The fridge. </param>
+        ///
+        /// <returns>   True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public bool Enough_Ingredients( string dishName, Fridge fridge )
         {
@@ -104,6 +133,15 @@ namespace Kitchen
             return false;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Returns the ingredients. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="dishName"> Name of the dish. </param>
+        ///
+        /// <returns>   The ingredients. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<string> Return_Ingredients( string dishName )
         {
@@ -122,6 +160,12 @@ namespace Kitchen
 
             return ingredientNames;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Displays the recipes. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void Display_Recipes()
         {
@@ -144,6 +188,7 @@ namespace Kitchen
             
         }
 
+        /// <summary>   The recipes. </summary>
         private List<Recipe> recipes = new List<Recipe>();
 
     }

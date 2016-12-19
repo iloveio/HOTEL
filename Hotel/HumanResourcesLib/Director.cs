@@ -1,25 +1,75 @@
-﻿using HumanResourcesLib;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	Director.cs
+//
+// summary:	Implements the director class
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using HumanResourcesLib;
+
+/// <summary>   The system. </summary>
 using System;
+/// <summary>   The system. collections. generic. </summary>
 using System.Collections.Generic;
+/// <summary>   The system. linq. </summary>
 using System.Linq;
+/// <summary>   The system. text. </summary>
 using System.Text;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// namespace: HumanResourcesLib
+//
+// summary:	.
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace HumanResourcesLib
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A director. </summary>
+    ///
+    /// <remarks>   Student, 19.12.2016. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public partial class Director : User, IManager
     {
+        /// <summary>   The supervisors. </summary>
         private List<Employee> supervisors;
+        /// <summary>   The director instance. </summary>
         private static volatile Director directorInstance;
 
+        /// <summary>   The synchronise object. </summary>
         private static object syncObject = new object();
 
+        /// <summary>   The employee factory. </summary>
         IEmployeeFactory employeeFactory;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="name">         The name. </param>
+        /// <param name="lastName">     The person's last name. </param>
+        /// <param name="id">           The identifier. </param>
+        /// <param name="supervisors">  The supervisors. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private Director(string name, string lastName, uint id,List<Employee> supervisors) : base(name, lastName, id)
         {
             this.supervisors = supervisors;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Instantiate director. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="name">         The name. </param>
+        /// <param name="lastName">     The person's last name. </param>
+        /// <param name="id">           The identifier. </param>
+        /// <param name="supervisors">  The supervisors. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public static void InstantiateDirector(string name, string lastName, uint id, List<Employee> supervisors)
         {
             if (directorInstance == null)
@@ -33,6 +83,16 @@ namespace HumanResourcesLib
                 }
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets the get instance. </summary>
+        ///
+        /// <exception cref="InvalidOperationException">    Thrown when the requested operation is
+        ///                                                 invalid. </exception>
+        ///
+        /// <value> The get instance. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public static Director GetInstance
         {
 
@@ -53,15 +113,38 @@ namespace HumanResourcesLib
             
             
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Check all subordinate status. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <returns>   A List&lt;EmployeeStatus&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public List<EmployeeStatus> CheckAllSubordinateStatus()
         {
             throw new NotImplementedException();
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Fire an employee. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <returns>   An Employee. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public Employee FireAnEmployee()
         {
             throw new NotImplementedException();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the get factory. </summary>
+        ///
+        /// <value> The get factory. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public HumanResourcesLib.IEmployeeFactory GetFactory
         {
@@ -75,10 +158,33 @@ namespace HumanResourcesLib
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Hire an employee. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="name">             The name. </param>
+        /// <param name="lastName">         The person's last name. </param>
+        /// <param name="id">               The identifier. </param>
+        /// <param name="employeeStatus">   The employee status. </param>
+        /// <param name="wage">             The wage. </param>
+        /// <param name="jobs">             The jobs. </param>
+        ///
+        /// <returns>   An Employee. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
             return this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets the supervisors. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <returns>   The supervisors. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Employee> GetSupervisors()
         {
