@@ -24,18 +24,19 @@ namespace Hotel.Transpport
             InitializeComponent();
             gs = tr;
         }
-        public void DodajDane_Click(object sender, RoutedEventArgs e)
+        private void DodajDane_Click_1(object sender, RoutedEventArgs e)
         {
-            gs.guestName = GuestData.Text;
-            gs.from = FromData.Text;
-            gs.destination = DestinationData.Text;
-            gs.howMany = int.Parse(HowManyData.Text);
+            gs.guestName = GuestData.Text.ToString();
+            gs.from = FromData.Text.ToString();
+            gs.destination = DestinationData.Text.ToString();
+            gs.howMany = int.Parse(HowManyData.Text.ToString());
             gs.date = DateData.DisplayDate;
-            if(!gs.Save())
+            if (!gs.Save())
             {
                 MessageBox.Show("brak bołaczenia z bazą");
             }
-               
+
+            this.Close();
         }
     }
 }

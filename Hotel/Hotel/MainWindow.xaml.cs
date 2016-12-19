@@ -25,21 +25,23 @@ namespace Hotel
             InitializeComponent();
         }
 
-        public void Menager_Click(object sender, RoutedEventArgs e)
-        {
+        
 
-        }
-        public void Gosc_Click(object sender, RoutedEventArgs e)
+        private void Gosc_Click_1(object sender, RoutedEventArgs e)
         {
             Guest gu = new Guest();
             gu.Show();
+
         }
-        public void Shop_Click(object sender, RoutedEventArgs e)
+
+        private void Menager_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Brak połączenia z baza danych");
+        }
+
+        private void Shop_Click(object sender, RoutedEventArgs e)
         {
             Shop sh = new Shop(new List<object>());
-            MessageBox.Show("Utworzono zlecenie");
         }
-
-
     }
 }

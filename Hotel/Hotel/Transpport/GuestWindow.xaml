@@ -16,7 +16,7 @@
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="32" Margin="23,153,0,0" TextWrapping="Wrap" Text="How many people" VerticalAlignment="Top" Width="95" TextAlignment="Center" IsEnabled="False"/>
         <TextBox x:Name="DestinationData" HorizontalAlignment="Left" Height="32" Margin="150,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextAlignment="Center"/>
         <TextBox x:Name="HowManyData" HorizontalAlignment="Left" Height="32" Margin="150,153,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextAlignment="Center"/>
-        <Button x:Name="DodajDane" Content="Dodaj noew zlecenie" HorizontalAlignment="Left" Height="40" Margin="82,241,0,0" VerticalAlignment="Top" Width="122" RenderTransformOrigin="0.516,1.474"/>
+        <Button x:Name="DodajDane" Content="Dodaj noew zlecenie" HorizontalAlignment="Left" Height="40" Margin="82,241,0,0" VerticalAlignment="Top" Width="122" RenderTransformOrigin="0.516,1.474" Click="DodajDane_Click_1"/>
         <TextBox x:Name="DataView" HorizontalAlignment="Left" Height="31" Margin="23,194,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" Width="95" TextAlignment="Center" IsEnabled="False"/>
         <DatePicker x:Name="DateData" HorizontalAlignment="Left" Height="31" Margin="150,194,0,0" VerticalAlignment="Top" Width="120"/>
 

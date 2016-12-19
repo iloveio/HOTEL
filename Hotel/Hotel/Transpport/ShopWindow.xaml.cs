@@ -9,19 +9,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Hotel.Transpport
 {
     /// <summary>
-    /// Interaction logic for ShopPage.xaml
+    /// Interaction logic for ShopWindow.xaml
     /// </summary>
-    public partial class ShopPage : Page
+    public partial class ShopWindow : Window
     {
-        public ShopPage()
+        Shop sh;
+        public ShopWindow(Shop s)
         {
             InitializeComponent();
+            sh = s;
+        }
+
+        private void DodajDane_Click_1(object sender, RoutedEventArgs e)
+        {
+            sh.date = DateData.DisplayDate;
+            if (!sh.Save())
+            {
+                MessageBox.Show("brak bołaczenia z bazą");
+            }
+
+            this.Close();
         }
     }
 }

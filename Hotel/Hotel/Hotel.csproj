@@ -36,6 +36,9 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -60,9 +63,13 @@
     <Compile Include="Transpport\GuestWindow.xaml.cs">
       <DependentUpon>GuestWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Transpport\Menager.cs" />
+    <Compile Include="Transpport\MenagerWindow.xaml.cs">
+      <DependentUpon>MenagerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transpport\Shop.cs" />
-    <Compile Include="Transpport\ShopPage.xaml.cs">
-      <DependentUpon>ShopPage.xaml</DependentUpon>
+    <Compile Include="Transpport\ShopWindow.xaml.cs">
+      <DependentUpon>ShopWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transpport\Transport.cs" />
     <Page Include="MainWindow.xaml">
@@ -81,7 +88,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Transpport\ShopPage.xaml">
+    <Page Include="Transpport\MenagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transpport\ShopWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,11 +12,16 @@ namespace Hotel.Transpport
         public string destination;
         public int howMany;
         GuestWindow w;
-
+        /// <summary>
+        /// Create object
+        /// </summary>
         public Guest()
         {
             w = new GuestWindow(this);
         }
+        /// <summary>
+        /// Schow window wher you can edit data;
+        /// </summary>
         public void Show()
         {
             w.Show();

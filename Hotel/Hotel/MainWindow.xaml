@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="Menager" Content="Menager" HorizontalAlignment="Left" Height="56" Margin="62,41,0,0" VerticalAlignment="Top" Width="140"/>
-        <Button x:Name="Gosc" Content="Zlecnie (gości)" HorizontalAlignment="Left" Height="75" Margin="62,102,0,0" VerticalAlignment="Top" Width="140"/>
-        <Button x:Name="Shop" Content="Button" HorizontalAlignment="Left" Height="67" Margin="62,182,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button x:Name="Menager" Content="Menager" HorizontalAlignment="Left" Height="56" Margin="62,41,0,0" VerticalAlignment="Top" Width="140" Click="Menager_Click"/>
+        <Button x:Name="Gosc" Content="Zlecnie (gości)" HorizontalAlignment="Left" Height="75" Margin="62,102,0,0" VerticalAlignment="Top" Width="140" Click="Gosc_Click_1"/>
+        <Button x:Name="Shop" Content="Zlecenie (schop)" HorizontalAlignment="Left" Height="67" Margin="62,182,0,0" VerticalAlignment="Top" Width="140" Click="Shop_Click"/>
 
     </Grid>
 </Window>
