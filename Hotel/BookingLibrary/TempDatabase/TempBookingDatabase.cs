@@ -34,10 +34,13 @@ namespace BookingLibrary.TempDatabase
                 new Reservation (145,123,DateTime.Today,DateTime.Today.AddDays(5)),
                 new Reservation (145,123,DateTime.Today.AddDays(8),DateTime.Today.AddDays(13))
             };
+
+            CleaningJobs = new List<CleaningJob>();
         }
 
         public List<Guest> Guests { get; set; }
         public List<Room> Rooms { get; set; }
         public List<Reservation> Reservations { get; set; }
+        public List<CleaningJob> CleaningJobs { get; set; }
     }
 }

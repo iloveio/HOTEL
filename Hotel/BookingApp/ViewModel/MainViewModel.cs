@@ -20,19 +20,26 @@ namespace BookingApp.ViewModel
 
         void OpenCalendarWindow()
         {
-            if (ModelController.Instance.SelectedRoomID == 0)
-            {
-                MessageBox.Show("Nie wybrano pokoju");
-                return;
-            }
+            if (!CheckIfRoomSelected()) return;
             CalendarWindowManager calendarWindowManager = new CalendarWindowManager();
             calendarWindowManager.Show();
         }
 
         void OpenCleaningWindow()
         {
+            if (!CheckIfRoomSelected()) return;
             CleaningWindowManager cleaningWindowManager = new CleaningWindowManager();
             cleaningWindowManager.Show();
+        }
+
+        private bool CheckIfRoomSelected()
+        {
+            if (ModelController.Instance.SelectedRoomID == 0)
+            {
+                MessageBox.Show("Nie wybrano pokoju");
+                return false;
+            }
+            return true;
         }
     }
 }

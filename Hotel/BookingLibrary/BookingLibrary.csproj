@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempDatabase\CleaningJob.cs" />
     <Compile Include="TempDatabase\Reservation.cs" />
     <Compile Include="TempDatabase\Room.cs" />
     <Compile Include="TempDatabase\TempBookingDatabase.cs" />

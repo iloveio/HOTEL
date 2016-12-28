@@ -45,7 +45,6 @@ namespace BookingApp.ViewModel
 
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            Console.WriteLine("Hopsa hop");
             ModelController.Instance.SelectedRoomID = SelectedRoom.RoomNumber;
             //PropertyChanged?.Invoke(this, e);
         }

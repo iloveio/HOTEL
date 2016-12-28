@@ -77,11 +77,22 @@ namespace BookingApp.Model
             tempBookingDatabase.Guests.Add(new Guest(pesel,name,surname,placeOfBirth));
         }
 
+        public void CreateCleaningJob(string description)
+        {
+            //TODO zamien na tworzenie w prawdziwej bazie
+            tempBookingDatabase.CleaningJobs.Add(new CleaningJob(GenerateCleaningJobID(),(int)SelectedRoomID,description));
+        }
+
         public List<Reservation> GetReservationsForSelectedRoom(uint id)
         {
             return (from r in tempBookingDatabase.Reservations where r.RoomId == id select r).ToList();
         }
 
+        private long GenerateCleaningJobID()
+        {
+            var now = DateTime.Now;
+            return Int64.Parse($"{SelectedRoomID}{now.Year}{now.Month}{now.Day}{now.Hour}{now.Minute}{now.Second}");
+        }
 
     }
 }
