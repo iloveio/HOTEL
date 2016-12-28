@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using BookingLibrary.TempDatabase;
 using Hotel.Database;
-using Room = Hotel.Database.Room;
+using Guest = BookingLibrary.TempDatabase.Guest;
+using Room = BookingLibrary.TempDatabase.Room;
 
 namespace BookingApp.Model
 {
@@ -17,48 +18,70 @@ namespace BookingApp.Model
 
         private ModelController()
         {
-            Name = "Dupa";
-            Surname = "Dupalski";
-            SelectedRoom = 6;
+            SelectedRoomID = 0;
 
-            roomBookingManager = new RoomBookingManager();
-            //tempBookingDatabase = new TempBookingDatabase();
+            //roomBookingManager = new RoomBookingManager();
+            tempBookingDatabase = new TempBookingDatabase();
         }
 
         public static ModelController Instance => instance ?? (instance = new ModelController());
 
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public int SelectedRoom { get; set; }
+        public uint SelectedRoomID { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
-        public Guest GetUser()
+
+        public Guest GetGuest(uint PESEL)
         {
             // --- TEMPORARY SOLUTION ---- //
-            //return tempBookingDatabase.Users[new Random().Next(0, tempBookingDatabase.Users.Count)];
-            return null;
+
+            return (from r in tempBookingDatabase.Guests
+                    where r.PESEL == PESEL
+                    select r).First();
         }
 
         public List<Room> GetRooms()
         {
             // --- TEMPORARY SOLUTION ---- //
-            return roomBookingManager.GetRoomsList();
+            //return roomBookingManager.GetRoomsList();
+            return tempBookingDatabase.Rooms;
         }
+
+
 
         public Room GetRoom(int id)
         {
-            return (from r in roomBookingManager.GetRoomsList()
+            //return (from r in roomBookingManager.GetRoomsList()
+            //        where r.RoomNumber == id
+            //        select r).First();
+            return (from r in tempBookingDatabase.Rooms
                     where r.RoomNumber == id
                     select r).First();
         }
 
         public void CreateReservation(uint roomId, uint userId, DateTime reservationStart, DateTime reservationEnd)
         {
+            //TODO zamien na tworzenie w prawdziwej bazie
             tempBookingDatabase.Reservations.Add(new Reservation(roomId, userId, reservationStart, reservationEnd));
+        }
+
+        public void CreateReservation(uint PESEL)
+        {
+            //TODO zamien na tworzenie w prawdziwej bazie
+            tempBookingDatabase.Reservations.Add(new Reservation(SelectedRoomID, PESEL, StartDate, EndDate));
+        }
+
+        public void CreateGuest(uint pesel, string name, string surname, string placeOfBirth)
+        {
+            //TODO zamien na tworzenie w prawdziwej bazie
+            tempBookingDatabase.Guests.Add(new Guest(pesel,name,surname,placeOfBirth));
         }
 
         public List<Reservation> GetReservationsForSelectedRoom(uint id)
         {
             return (from r in tempBookingDatabase.Reservations where r.RoomId == id select r).ToList();
         }
+
+
     }
 }

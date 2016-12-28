@@ -12,7 +12,7 @@ namespace BookingApp.ViewModel
     {
         public RoomSearchViewModel()
         {
-            RoomDetails = new List<uint> {1, 2, 3, 4};
+            RoomDetails = new List<uint> {1, 2, 3, 4};  //very clever method for binding number of rooms/size in xaml
             SelectedRoom = new Room();
             SearchCommand = new RelayCommand(SaveDesirableRoom);
             //MessengerInstance.Register<PropertyChangedMessage<Room>>(this, SearchSelectedRoomChanged);
@@ -30,8 +30,8 @@ namespace BookingApp.ViewModel
         //private void SearchSelectedRoomChanged(PropertyChangedMessage<Room> propertyDetail)
         //{
         //    if (propertyDetail.PropertyName != "SelectedRoom") return;
-        //    SelectedRoom = propertyDetail.NewValue;
-        //    RaisePropertyChanged(() => SelectedRoom);
+        //    SelectedRoomID = propertyDetail.NewValue;
+        //    RaisePropertyChanged(() => SelectedRoomID);
         //}
 
         private void SaveDesirableRoom()

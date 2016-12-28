@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using BookingApp.Model;
 using BookingLibrary.TempDatabase;
@@ -15,8 +16,9 @@ namespace BookingApp.ViewModel
     {
         public CalendarViewModel()
         {
-            SaveCommand = new RelayCommand(CreateReservation);
+            SaveCommand = new RelayCommand(OpenGuestsWindow);
             CancelCommand = new RelayCommand(CloseWindow);
+            SelectedRoom = ModelController.Instance.SelectedRoomID;
             ActualReservations = ModelController.Instance.GetReservationsForSelectedRoom(SelectedRoom);
         }
 
@@ -36,13 +38,16 @@ namespace BookingApp.ViewModel
         public ICommand CancelCommand { get; }
 
         #endregion
+
         #region Fields
+
         private DateTime startDate;
         private DateTime endDate;
+
         #endregion
+
         #region Properties
 
-        public uint UserId { get; set; }
         public DateTime StartDate
         {
             get { return startDate; }
@@ -52,6 +57,7 @@ namespace BookingApp.ViewModel
                 RaisePropertyChanged("StartDate");
             }
         }
+
         public DateTime EndDate
         {
             get { return endDate; }
@@ -61,10 +67,35 @@ namespace BookingApp.ViewModel
                 RaisePropertyChanged("EndDate");
             }
         }
+
         #endregion
-        private void CreateReservation()
+
+        private void OpenGuestsWindow()
         {
-            ModelController.Instance.CreateReservation(SelectedRoom,UserId,StartDate,EndDate);
+            if (!CheckIfDatesCorrect()) return;
+            SaveReservationDates();
+            GuestWindowManager guestWindowManager = new GuestWindowManager();
+            guestWindowManager.Show();
+        }
+
+        private void SaveReservationDates()
+        {
+            ModelController.Instance.StartDate = StartDate;
+            ModelController.Instance.EndDate = EndDate;
+        }
+
+
+        private bool CheckIfDatesCorrect()
+        {
+            if (StartDate >= EndDate)
+            {
+                MessageBox.Show("Niewłaściwa data rezerwacji. Spróbuj ponownie.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

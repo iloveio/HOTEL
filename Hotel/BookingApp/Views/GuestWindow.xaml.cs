@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,14 +19,17 @@ namespace BookingApp.Views
     /// <summary>
     /// Interaction logic for CalendarWindow.xaml
     /// </summary>
-    public partial class CalendarWindow : UserControl
+    public partial class GuestWindow : UserControl
     {
-        public CalendarWindow()
+        public GuestWindow()
         {
             InitializeComponent();
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
-            startDatePicker.BlackoutDates.Add(cdr);
-            endDatePicker.BlackoutDates.Add(cdr);
+
+        }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

@@ -45,7 +45,7 @@
     <Compile Include="TempDatabase\Reservation.cs" />
     <Compile Include="TempDatabase\Room.cs" />
     <Compile Include="TempDatabase\TempBookingDatabase.cs" />
-    <Compile Include="TempDatabase\User.cs" />
+    <Compile Include="TempDatabase\Guest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
