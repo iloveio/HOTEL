@@ -12,9 +12,11 @@ namespace BookingApp.ViewModel
         public MainViewModel()
         {
             OpenCalendarCommand = new RelayCommand(OpenCalendarWindow);
+            OpenCleaningCommand = new RelayCommand(OpenCleaningWindow);
         }
 
         public ICommand OpenCalendarCommand { get; set; }
+        public ICommand OpenCleaningCommand { get; set; }
 
         void OpenCalendarWindow()
         {
@@ -25,6 +27,12 @@ namespace BookingApp.ViewModel
             }
             CalendarWindowManager calendarWindowManager = new CalendarWindowManager();
             calendarWindowManager.Show();
+        }
+
+        void OpenCleaningWindow()
+        {
+            CleaningWindowManager cleaningWindowManager = new CleaningWindowManager();
+            cleaningWindowManager.Show();
         }
     }
 }
