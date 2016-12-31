@@ -4,10 +4,14 @@
 // summary:	Implements the transportation manager class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Hotel.Transpport;
+using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Hotel.Database.Transportation
 {
@@ -20,7 +24,7 @@ namespace Hotel.Database.Transportation
     public class TransportationManager
     {
         /// <summary>   List of transportations. </summary>
-        List<Transportation> transportationsList;
+        List<Transport> transportationsList;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Default constructor. </summary>
@@ -30,7 +34,8 @@ namespace Hotel.Database.Transportation
 
         public TransportationManager()
         {
-            transportationsList = new List<Transportation>();
+            transportationsList = new List<Transport>();
+            FillDataWithAllTransportations();
         }
 
         //----Methods to fill lists----
@@ -46,14 +51,22 @@ namespace Hotel.Database.Transportation
 
         public void FillDataWithAllTransportations()
         {
-            using (var db = new TransportationContext())
+            //Deserialize
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Transport>));
+            TextReader reader = new StreamReader(@"./transportationsXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            transportationsList = (List<Transport>)obj;
+            reader.Close();
+        }
+        #pragma warning restore 1591
+        public void SerializeTransport()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Transport>));
+            using (TextWriter writer = new StreamWriter(@"./transportationsXML.xml"))
             {
-                var query = from b in db.Transportations
-                            select b;
-                transportationsList = query.ToList<Transportation>();
+                serializer.Serialize(writer, transportationsList);
             }
         }
-
         //----Methods to manage database----
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,110 +77,25 @@ namespace Hotel.Database.Transportation
         /// <param name="trans">    . </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void AddNewTransportation(Transportation trans)
+        public void AddNewTransportation(Transport trans)
         {
-            using (var db = new TransportationContext())
-            {
-                db.Transportations.Add(trans);
-                db.SaveChanges();
-            }
-            FillDataWithAllTransportations();
+            transportationsList.Add(trans);
+            SerializeTransport();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Method to delete transportation record from database. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="trans">    . </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void DeleteTransportationByObject(Transportation trans)
+        public void UpdateTransport(Transport trans , Transport newVal)
         {
-            using (var db = new TransportationContext())
-            {
-                db.Transportations.Remove(trans);
-                db.SaveChanges();
-            }
-
-
-            FillDataWithAllTransportations();
+            transportationsList[transportationsList.IndexOf(trans)] = newVal;
+            SerializeTransport();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Method to update employee in existing record. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="trans">    . </param>
-        /// <param name="emp">      . </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void UpdateTransportationEmployee(Transportation trans, Employee emp)
+        public void DeleteTransport(Transport trans)
         {
-            using (var db = new TransportationContext())
-            {
-                Transportation toUpdate = db.Transportations.Find(trans);
-                toUpdate.employee = emp;
-                db.SaveChanges();
-            }
-            FillDataWithAllTransportations();
+            transportationsList.Remove(trans);
+            SerializeTransport();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Method to update description in exsisting record. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="trans">    . </param>
-        /// <param name="desc">     . </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void UpdateTransportationDescription(Transportation trans, string desc)
-        {
-            using (var db = new TransportationContext())
-            {
-                Transportation toUpdate = db.Transportations.Find(trans);
-                toUpdate.description = desc;
-                db.SaveChanges();
-            }
-            FillDataWithAllTransportations();
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Method to update date in existing record. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="trans">    . </param>
-        /// <param name="date">     . </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void UpdateTransportationDate(Transportation trans, DateTime date)
-        {
-            using (var db = new TransportationContext())
-            {
-                Transportation toUpdate = db.Transportations.Find(trans);
-                toUpdate.date = date;
-                db.SaveChanges();
-            }
-            FillDataWithAllTransportations();
-        }
-
-        //----Methods to get data----
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   This method will be heavly reworked in future. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <returns>   The transportation list. </returns>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public List<Transportation> GetTransportationList()
-        {
-            return transportationsList;
-        }
 
     }
 }

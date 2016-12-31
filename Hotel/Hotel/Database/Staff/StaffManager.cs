@@ -6,8 +6,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
+using HumanResourcesLib;
 
 namespace Hotel.Database.Staff
 {
@@ -21,8 +24,8 @@ namespace Hotel.Database.Staff
     {
         /// <summary>   List of directors. </summary>
         List<Director> directorList;
-        /// <summary>   List of employee status. </summary>
-        List<EmployeeStatus> employeeStatusList;
+        ///// <summary>   List of employee status. </summary>
+        //List<EmployeeStatus> employeeStatusList;
         /// <summary>   List of jobs. </summary>
         List<Job> jobsList;
         /// <summary>   List of subordinates. </summary>
@@ -30,178 +33,279 @@ namespace Hotel.Database.Staff
         /// <summary>   List of supervisors. </summary>
         List<Supervisor> supervisorList;
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Fill data with all directors. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        List<Employee> employeeList;
+
+        List<User> userList;
+
+        public StaffManager()
+        {
+            directorList = new List<Director>();
+            //employeeStatusList = new List<EmployeeStatus>();
+            jobsList = new List<Job>();
+            subordinatesList = new List<Subordinate>();
+            supervisorList = new List<Supervisor>();
+            employeeList = new List<Employee>();
+            userList = new List<User>();
+
+            FillDataWithAllDirectors();
+            //FillDataWithAllEmployeeStatus();
+            FillDataWithAllJobs();
+            FillDataWithAllSubordinates();
+            FillDataWithAllSupervisor();
+            FillDataWithAllEmployee();
+            FillDataWithAllUser();
+        }
 
         public void FillDataWithAllDirectors()
         {
-            using (var db = new StaffContext())
-            {
-                var query = from b in db.Directors
-                            select b;
-                directorList = query.ToList<Director>();
-            }
+            //Deserialize
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Director>));
+            TextReader reader = new StreamReader(@"./directorXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            directorList = (List<Director>)obj;
+            reader.Close();
         }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Fill data with all employee status. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void FillDataWithAllEmployeeStatus()
-        {
-            using (var db = new StaffContext())
-            {
-                var query = from b in db.EmployeeStatuses
-                            select b;
-                employeeStatusList = query.ToList<EmployeeStatus>();
-            }
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Fill data with all jobs. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        
+        //public void FillDataWithAllEmployeeStatus()
+        //{
+        //    //Deserialize
+        //    XmlSerializer deserializer = new XmlSerializer(typeof(List<EmployeeStatus>));
+        //    TextReader reader = new StreamReader(@"./employeeStatusXML.xml");
+        //    object obj = deserializer.Deserialize(reader);
+        //    employeeStatusList = (List<EmployeeStatus>)obj;
+        //    reader.Close();
+        //}
+        
         public void FillDataWithAllJobs()
         {
-            using (var db = new StaffContext())
-            {
-                var query = from b in db.Jobs
-                            select b;
-                jobsList = query.ToList<Job>();
-            }
+            //Deserialize
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Job>));
+            TextReader reader = new StreamReader(@"./jobsXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            jobsList = (List<Job>)obj;
+            reader.Close();
         }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Fill data with all subordinates. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        
         public void FillDataWithAllSubordinates()
         {
-            using (var db = new StaffContext())
-            {
-                var query = from b in db.Subordinates
-                            select b;
-
-                subordinatesList = query.ToList<Subordinate>();
-
-            }
+            //Deserialize
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Subordinate>));
+            TextReader reader = new StreamReader(@"./subordinatesXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            subordinatesList = (List<Subordinate>)obj;
+            reader.Close();
         }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Fill data with all supervisor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        
         public void FillDataWithAllSupervisor()
         {
-            using (var db = new StaffContext())
+            //Deserialize
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Supervisor>));
+            TextReader reader = new StreamReader(@"./supervisorsXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            supervisorList = (List<Supervisor>)obj;
+            reader.Close();
+        }
+
+        public void FillDataWithAllEmployee()
+        {
+            //Deserialize
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Employee>));
+            TextReader reader = new StreamReader(@"./employeeXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            employeeList = (List<Employee>)obj;
+            reader.Close();
+        }
+
+        public void FillDataWithAllUser()
+        {
+            //Deserialize
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<User>));
+            TextReader reader = new StreamReader(@"./userXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            userList = (List<User>)obj;
+            reader.Close();
+        }
+        
+        public void SerializeDirectors()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Director>));
+            using (TextWriter writer = new StreamWriter(@"./directorXML.xml"))
             {
-                var query = from b in db.Supervisors
-                            select b;
-
-                supervisorList = query.ToList<Supervisor>();
-
+                serializer.Serialize(writer, directorList);
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a new director. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="dir">  The dir. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //public void SerializeEmployeeStatus()
+        //{
+        //    XmlSerializer serializer = new XmlSerializer(typeof(List<EmployeeStatus>));
+        //    using (TextWriter writer = new StreamWriter(@"./employeeStatusXML.xml"))
+        //    {
+        //        serializer.Serialize(writer, employeeStatusList);
+        //    }
+        //}
+
+        public void SerializeJobs()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Job>));
+            using (TextWriter writer = new StreamWriter(@"./jobsXML.xml"))
+            {
+                serializer.Serialize(writer, jobsList);
+            }
+        }
+
+        public void SerializeSubordinates()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Subordinate>));
+            using (TextWriter writer = new StreamWriter(@"./subordinatesXML.xml"))
+            {
+                serializer.Serialize(writer, subordinatesList);
+            }
+        }
+
+        public void SerializeSupervisor()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Supervisor>));
+            using (TextWriter writer = new StreamWriter(@"./supervisorsXML.xml"))
+            {
+                serializer.Serialize(writer, supervisorList);
+            }
+        }
+
+        public void SerializeEmployee()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Employee>));
+            using (TextWriter writer = new StreamWriter(@"./employeeXML.xml"))
+            {
+                serializer.Serialize(writer, employeeList);
+            }
+        }
+
+        public void SerializeUser()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
+            using (TextWriter writer = new StreamWriter(@"./userXML.xml"))
+            {
+                serializer.Serialize(writer, employeeList);
+            }
+        }
 
         public void AddNewDirector(Director dir)
         {
-            using (var db = new StaffContext())
-            {
-                db.Directors.Add(dir);
-                db.SaveChanges();
-            }
-            FillDataWithAllDirectors();
+            directorList.Add(dir);
+            SerializeDirectors();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a new employee status. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="status">   The status. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void AddNewEmployeeStatus(EmployeeStatus status)
-        {
-            using (var db = new StaffContext())
-            {
-                db.EmployeeStatuses.Add(status);
-                db.SaveChanges();
-            }
-            FillDataWithAllEmployeeStatus();
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a new job. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="job">  The job. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //public void AddNewEmployeeStatus(EmployeeStatus status)
+        //{
+        //    employeeStatusList.Add(status);
+        //    SerializeEmployeeStatus();
+        //}
 
         public void AddNewJob(Job job)
         {
-            using (var db = new StaffContext())
-            {
-                db.Jobs.Add(job);
-                db.SaveChanges();
-            }
-            FillDataWithAllJobs();
+            jobsList.Add(job);
+            SerializeJobs();
         }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a new subordinate. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="sub">  The sub. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void AddNewSubordinate(Subordinate sub)
         {
-            using (var db = new StaffContext())
-            {
-                db.Subordinates.Add(sub);
-                db.SaveChanges();
-            }
-            FillDataWithAllSubordinates();
+            subordinatesList.Add(sub);
+            SerializeSubordinates();
         }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a new supervisor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="sup">  The sup. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        
         public void AddNewSupervisor(Supervisor sup)
         {
-            using (var db = new StaffContext())
-            {
-                db.Supervisors.Add(sup);
-                db.SaveChanges();
-            }
-            FillDataWithAllSupervisor();
+            supervisorList.Add(sup);
+            SerializeSupervisor();
+        }
+
+        public void AddNewEmployee(Employee emp)
+        {
+            employeeList.Add(emp);
+            SerializeEmployee();
+        }
+
+        public void AddNewUser(User user)
+        {
+            userList.Add(user);
+            SerializeEmployee();
+        }
+
+        public void DeleteDirector(Director dir)
+        {
+            directorList.Remove(dir);
+            SerializeDirectors();
+        }
+
+        //public void DeleteEmployeeStatus(EmployeeStatus status)
+        //{
+        //    employeeStatusList.Remove(status);
+        //}
+
+        public void DeleteJob(Job job)
+        {
+            jobsList.Remove(job);
+            SerializeJobs();
+        }
+
+        public void DeleteSubordinate(Subordinate sub)
+        {
+            subordinatesList.Remove(sub);
+            SerializeSubordinates();
+        }
+
+        public void DeleteSupervisor(Supervisor sup)
+        {
+            supervisorList.Remove(sup);
+            SerializeSupervisor();
+        }
+
+        public void DeleteEmployee(Employee emp)
+        {
+            employeeList.Remove(emp);
+            SerializeEmployee();
+        }
+
+        public void DeleteUser(User user)
+        {
+            userList.Remove(user);
+            SerializeUser();
+        }
+
+        public void UpdateDirector(Director dir, Director newVal)
+        {
+            directorList[directorList.IndexOf(dir)] = newVal;
+            SerializeDirectors();
+        }
+
+        public void UpdateJob(Job job, Job newVal)
+        {
+            jobsList[jobsList.IndexOf(job)] = newVal;
+            SerializeJobs();
+        }
+
+        public void UpdateSubordinate(Subordinate sub, Subordinate newVal)
+        {
+            subordinatesList[subordinatesList.IndexOf(sub)] = newVal;
+            SerializeSubordinates();
+        }
+
+        public void UpdateSupervisor(Supervisor sup, Supervisor newVal)
+        {
+            supervisorList[supervisorList.IndexOf(sup)] = newVal;
+            SerializeSupervisor();
+        }
+
+        public void UpdateEmployee(Employee emp, Employee newVal)
+        {
+            employeeList[employeeList.IndexOf(emp)] = newVal;
+            SerializeEmployee();
+        }
+
+        public void UpdateUser(User user, User newVal)
+        {
+            userList[userList.IndexOf(user)] = newVal;
+            SerializeUser();
         }
     }
 }

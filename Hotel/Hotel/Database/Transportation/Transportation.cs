@@ -30,7 +30,10 @@ namespace Hotel.Database.Transportation
         /// <param name="date"> Gets or sets the Date/Time of the date. </param>
         /// <param name="desc"> The description. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public Transportation()
+        {
 
+        }
         public Transportation(Employee emp, DateTime date, string desc)
         {
             employee = emp;
