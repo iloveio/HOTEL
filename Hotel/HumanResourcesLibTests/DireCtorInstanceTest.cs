@@ -32,8 +32,8 @@ namespace HumanResourcesLibTests
         [TestMethod]
         public void CreatingDirecotr()
         {
-            Director.InstantiateDirector("TestName","Last",0,new List<Employee>());
-            testDirector = Director.GetInstance;
+            //Director.InstantiateDirector("TestName","Last",0,new List<Employee>());
+            //testDirector = Director.GetInstance;
             Assert.AreNotEqual(null, testDirector);
         }
     }

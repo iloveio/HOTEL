@@ -4,6 +4,7 @@
 // summary:	Implements the main window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Hotel.Database.Staff;
 using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,8 @@ namespace Hotel
 
     public partial class MainWindow : Window
     {
-        //Director dyr;
+        Director dyr;
+        StaffManager staffManager;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Default constructor. </summary>
@@ -32,10 +34,12 @@ namespace Hotel
         public MainWindow()
         {
             InitializeComponent();
-            /*Director.InstantiateDirector("Jan", "Kowalski", 1, new List<Employee>());
-            dyr = Director.GetInstance;
+            dyr = new Director("Jan", "Kowalski", 1, new List<Employee>());
+           
+            staffManager = new StaffManager();
+            staffManager.AddNewDirector(dyr);
 
-            dyr.GetFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
+            /*dyr.GetFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
             List<Job> jobs = new List<Job>();
             Supervisor sup = new Supervisor("john", "mccree", 1);
             Job job = new Job(sup, "zarządanie pracownikami", new DateTime(2016, 12, 07), new DateTime(2016, 12, 30));

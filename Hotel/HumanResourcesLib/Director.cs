@@ -34,12 +34,6 @@ namespace HumanResourcesLib
     {
         /// <summary>   The supervisors. </summary>
         private List<Employee> supervisors;
-        /// <summary>   The director instance. </summary>
-        private static volatile Director directorInstance;
-
-        /// <summary>   The synchronise object. </summary>
-        private static object syncObject = new object();
-
         /// <summary>   The employee factory. </summary>
         IEmployeeFactory employeeFactory;
 
@@ -54,7 +48,12 @@ namespace HumanResourcesLib
         /// <param name="supervisors">  The supervisors. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private Director(string name, string lastName, uint id,List<Employee> supervisors) : base(name, lastName, id)
+        public Director()
+        {
+
+        }
+
+        public Director(string name, string lastName, uint id,List<Employee> supervisors) : base(name, lastName, id)
         {
             this.supervisors = supervisors;
         }
@@ -70,19 +69,7 @@ namespace HumanResourcesLib
         /// <param name="supervisors">  The supervisors. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static void InstantiateDirector(string name, string lastName, uint id, List<Employee> supervisors)
-        {
-            if (directorInstance == null)
-            {
-                lock (syncObject)
-                {
-                    if (directorInstance == null)
-                    {
-                        directorInstance = new Director(name, lastName, id, supervisors);
-                    }
-                }
-            }
-        }
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets the get instance. </summary>
@@ -93,26 +80,7 @@ namespace HumanResourcesLib
         /// <value> The get instance. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static Director GetInstance
-        {
 
-            get
-            {
-                lock (syncObject)
-                {
-                    if (directorInstance != null)
-                    {
-                        return directorInstance;
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException();
-                    }
-                }
-            }
-            
-            
-        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Check all subordinate status. </summary>

@@ -4,6 +4,7 @@
 // summary:	Implements the employee profile window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Hotel.Database.Staff;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,12 @@ namespace Hotel
         /// <remarks>   Student, 19.12.2016. </remarks>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        StaffManager staffManager;
+
         public EmployeeProfileWindow()
         {
             InitializeComponent();
+            staffManager = new StaffManager();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

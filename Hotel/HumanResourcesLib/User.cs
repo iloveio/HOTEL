@@ -36,6 +36,11 @@ namespace HumanResourcesLib
         /// <param name="id">       The identifier. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        public User()
+        {
+
+        }
+
         public User(string name, string lastName, uint id)
         {
             this.id = id;

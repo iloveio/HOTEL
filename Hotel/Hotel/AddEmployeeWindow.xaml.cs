@@ -4,6 +4,7 @@
 // summary:	Implements the add employee window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Hotel.Database.Staff;
 using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,9 @@ namespace Hotel
 
         //Supervisor sup; //for future uses
         /// <summary>   The dyr. </summary>
-        Director dyr;
+        //Director dyr;
+
+        StaffManager staffManager;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Constructor. </summary>
@@ -59,6 +62,7 @@ namespace Hotel
             //dyr = Director.GetInstance;
             jobs = new List<Job>();
             this.employeeList = employeeList;
+            staffManager = new StaffManager();
 
             //sup = new Supervisor("Jan", "Kowalski", 1, new EmployeeStatus(EmployeeStatusName.Working, new DateTime(2016, 12, 6), new DateTime(2017, 1, 1)), new List<Employee>(), 1000, new List<Job>(), );
             //for future uses
@@ -189,10 +193,10 @@ namespace Hotel
 
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            dyr.GetFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
+            staffManager.directorList[0].GetFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
 
 
-            dyr.GetSupervisors().Add(dyr.HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 1, 1)), float.Parse(AddWage.Text), jobs));
+            staffManager.directorList[0].GetSupervisors().Add(staffManager.directorList[0].HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs));
             employeeList.Items.Refresh();
             Close();
         }

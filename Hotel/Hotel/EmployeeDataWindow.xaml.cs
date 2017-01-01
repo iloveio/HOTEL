@@ -4,6 +4,7 @@
 // summary:	Implements the employee data window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Hotel.Database.Staff;
 using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
@@ -39,9 +40,11 @@ namespace Hotel
         /// <summary>   Zero-based index of the job. </summary>
         private int jobIndex = 0;
         /// <summary>   The dyr. </summary>
-        Director dyr;
+        //Director dyr;
         /// <summary>   The status. </summary>
         EmployeeStatusName status;
+
+        StaffManager staffManager;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Default constructor. </summary>
@@ -75,8 +78,10 @@ namespace Hotel
             StatusesList.Items.Add(item6);
 
             //datePicker.SelectedDate = DateTime.Now;
-            //dyr = Director.GetInstance;           
-            //browseEmployeeList.ItemsSource = dyr.GetSupervisors();
+            //dyr = Director.GetInstance;
+            
+            browseEmployeeList.ItemsSource = staffManager.directorList[0].GetSupervisors();
+            staffManager = new StaffManager();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,9 +120,9 @@ namespace Hotel
                 Jobs.Height = 30;
                 AddJobButton.Height = 38;
                 DeleteJobButton.Height = 38;
-                
 
-                browseEmployeeList.Height = 200; 
+
+                browseEmployeeList.Height = 200;
                 Thickness editButtonMargin = EditButton.Margin;
                 editButtonMargin.Top = 294;
                 EditButton.Margin = editButtonMargin;
@@ -173,7 +178,7 @@ namespace Hotel
                 addButtonMargin.Top = 490;
                 AddButton.Margin = addButtonMargin;
             }
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -187,9 +192,10 @@ namespace Hotel
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if(browseEmployeeList.SelectedIndex != -1)
+            if (browseEmployeeList.SelectedIndex != -1)
             {
-                dyr.GetSupervisors().RemoveAt(browseEmployeeList.SelectedIndex);
+                staffManager.directorList[0].GetSupervisors().RemoveAt(browseEmployeeList.SelectedIndex);
+                //staffManager.DeleteSupervisor(browseEmployeeList.)
                 browseEmployeeList.Items.Refresh();
                 editFirstName.Clear();
                 editLastName.Clear();
@@ -200,7 +206,7 @@ namespace Hotel
                 JobDateFrom.Clear();
                 JobDateTo.Clear();
                 SupervisorField.Clear();
-            }       
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -229,16 +235,16 @@ namespace Hotel
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            if(isEditActive == 1)
+            if (isEditActive == 1)
             {
-                if(browseEmployeeList.SelectedIndex != -1)
+                if (browseEmployeeList.SelectedIndex != -1)
                 {
-                    dyr.GetSupervisors()[index].nameProperty = editFirstName.Text;
-                    dyr.GetSupervisors()[index].lastNameProperty = editLastName.Text;
-                    dyr.GetSupervisors()[index].Wage = float.Parse(editWage.Text);
+                    staffManager.directorList[0].GetSupervisors()[index].nameProperty = editFirstName.Text;
+                    staffManager.directorList[0].GetSupervisors()[index].lastNameProperty = editLastName.Text;
+                    staffManager.directorList[0].GetSupervisors()[index].Wage = float.Parse(editWage.Text);
                     if (StatusesList.SelectedIndex != -1)
                     {
-                        switch(StatusesList.SelectedIndex)
+                        switch (StatusesList.SelectedIndex)
                         {
                             case 0:
                                 status = EmployeeStatusName.Working;
@@ -260,22 +266,24 @@ namespace Hotel
                                 break;
                         }
                         EmployeeStatus employeeStatus = new EmployeeStatus(status, DateTime.Parse(datePicker.Text), DateTime.Parse(datePickerTo.Text));
-                       // EmployeeStatus employeeStatus = new EmployeeStatus(EmployeeStatusName.Working, new DateTime(2016, 12, 12), new DateTime(2016, 12, 12));
-                        dyr.GetSupervisors()[index].EmployeeStatus = employeeStatus;
+                        // EmployeeStatus employeeStatus = new EmployeeStatus(EmployeeStatusName.Working, new DateTime(2016, 12, 12), new DateTime(2016, 12, 12));
+                        staffManager.directorList[0].GetSupervisors()[index].EmployeeStatus = employeeStatus;
                     }
                     //browseEmployeeList.InvalidateArrange();
                     //browseEmployeeList.UpdateLayout();
                     browseEmployeeList.Items.Refresh();
                     //isEditActive = -1;
                     //ExitButton.UpdateLayout();
-                }    
+
+                    //staffManager.UpdateSupervisor(dyr.GetSupervisors()[index], new Supervisor(editFirstName.Text, editLastName.Text), float.Parse(editWage.Text), emplo)
+                }
             }
             else
             {
                 Close();
             }
 
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -326,15 +334,15 @@ namespace Hotel
 
         private void DeleteJobButton_Click(object sender, RoutedEventArgs e)
         {
-            if(JobsListBrowse.SelectedIndex != -1)
+            if (JobsListBrowse.SelectedIndex != -1)
             {
                 JobDateFrom.Clear();
                 JobDateTo.Clear();
                 SupervisorField.Clear();
 
-                dyr.GetSupervisors()[index].jobsProperty.RemoveAt(JobsListBrowse.SelectedIndex);
+                staffManager.directorList[0].GetSupervisors()[index].jobsProperty.RemoveAt(JobsListBrowse.SelectedIndex);
                 JobsListBrowse.Items.Remove(JobsListBrowse.SelectedItem);
-            }     
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -348,7 +356,7 @@ namespace Hotel
 
         private void ConfirmJobButton_Click(object sender, RoutedEventArgs e)
         {
-            if(AddJobDateFromField.SelectedDate != null && AddJobDateToField.SelectedDate != null)
+            if (AddJobDateFromField.SelectedDate != null && AddJobDateToField.SelectedDate != null)
             {
                 ListBoxItem item = new ListBoxItem();
                 item.Content = AddJobField.Text;
@@ -358,7 +366,7 @@ namespace Hotel
 
                 Job job = new Job(AddJobField.Text, dateFrom, dateTo);
 
-                dyr.GetSupervisors()[index].jobsProperty.Add(job);
+                staffManager.directorList[0].GetSupervisors()[index].jobsProperty.Add(job);
 
                 JobsListBrowse.Items.Add(item);
 
@@ -366,7 +374,7 @@ namespace Hotel
 
                 JobsListBrowse.UpdateLayout();
             }
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -380,7 +388,7 @@ namespace Hotel
 
         private void editJob_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -400,22 +408,22 @@ namespace Hotel
             JobDateTo.Clear();
             SupervisorField.Clear();
 
-            if(dyr.GetSupervisors()[index].jobsProperty.Count != 0)
+            if (staffManager.directorList[0].GetSupervisors()[index].jobsProperty.Count != 0)
             {
                 if (JobsListBrowse.SelectedIndex != -1)
                 {
-                    JobDateFrom.Text = dyr.GetSupervisors()[index].jobsProperty[jobIndex].StartDate;
-                    JobDateTo.Text = dyr.GetSupervisors()[index].jobsProperty[jobIndex].Deadline;
+                    JobDateFrom.Text = staffManager.directorList[0].GetSupervisors()[index].jobsProperty[jobIndex].StartDate;
+                    JobDateTo.Text = staffManager.directorList[0].GetSupervisors()[index].jobsProperty[jobIndex].Deadline;
 
-                    if (dyr.GetSupervisors()[index].jobsProperty[jobIndex].JobSupervisor != null)
-                        SupervisorField.Text = dyr.GetSupervisors()[index].jobsProperty[jobIndex].JobSupervisorName;
+                    if (staffManager.directorList[0].GetSupervisors()[index].jobsProperty[jobIndex].JobSupervisor != null)
+                        SupervisorField.Text = staffManager.directorList[0].GetSupervisors()[index].jobsProperty[jobIndex].JobSupervisorName;
                 }
 
-                
+
 
                 //SupervisorField.Text = jobIndex.ToString();
             }
-            
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -448,29 +456,29 @@ namespace Hotel
 
         private void browseEmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(browseEmployeeList.SelectedIndex != -1)
+            if (browseEmployeeList.SelectedIndex != -1)
             {
                 index = browseEmployeeList.SelectedIndex;
                 //editFirstName.DataContext = dyr.GetSupervisors()[index];
-                editFirstName.Text = dyr.GetSupervisors()[index].nameProperty;
-                editLastName.Text = dyr.GetSupervisors()[index].lastNameProperty;
+                editFirstName.Text = staffManager.directorList[0].GetSupervisors()[index].nameProperty;
+                editLastName.Text = staffManager.directorList[0].GetSupervisors()[index].lastNameProperty;
                 //StatusesList.SelectedItem = dyr.GetSupervisors()[index].employeeStatusName;
                 //var listBoxItem = (ListBoxItem)StatusesList.ItemContainerGenerator.ContainerFromIndex(2);
                 //listBoxItem.Focus();
-                datePicker.SelectedDate = dyr.GetSupervisors()[index].employeeStatusDateFrom;
-                datePickerTo.SelectedDate = dyr.GetSupervisors()[index].employeeStatusDateTo;
-                editWage.Text = dyr.GetSupervisors()[index].wageProperty;
+                datePicker.SelectedDate = staffManager.directorList[0].GetSupervisors()[index].employeeStatusDateFrom;
+                datePickerTo.SelectedDate = staffManager.directorList[0].GetSupervisors()[index].employeeStatusDateTo;
+                editWage.Text = staffManager.directorList[0].GetSupervisors()[index].wageProperty;
 
                 JobsListBrowse.Items.Clear();
                 JobsListBrowse.UpdateLayout();
                 //JobsListBrowse.ItemsSource = dyr.GetSupervisors()[index].jobsProperty;
-                for (int i = 0; i < dyr.GetSupervisors()[index].Jobs.Count; i++)
+                for (int i = 0; i < staffManager.directorList[0].GetSupervisors()[index].Jobs.Count; i++)
                 {
                     ListBoxItem item = new ListBoxItem();
-                    item.Content = dyr.GetSupervisors()[index].jobsProperty[i].Description;
+                    item.Content = staffManager.directorList[0].GetSupervisors()[index].jobsProperty[i].Description;
                     JobsListBrowse.Items.Add(item);
                 }
-            }       
+            }
         }
     }
 }
