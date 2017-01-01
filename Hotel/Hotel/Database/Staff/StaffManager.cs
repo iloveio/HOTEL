@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using HumanResourcesLib;
+using System.Runtime.Serialization;
 
 namespace Hotel.Database.Staff
 {
@@ -34,6 +35,7 @@ namespace Hotel.Database.Staff
 
         public List<User> userList { get; set; }
 
+
         public StaffManager()
         {
             directorList = new List<Director>();
@@ -43,24 +45,23 @@ namespace Hotel.Database.Staff
             supervisorList = new List<Supervisor>();
             employeeList = new List<Employee>();
             userList = new List<User>();
-
-            FillDataWithAllDirectors();
-            //FillDataWithAllEmployeeStatus();
-            FillDataWithAllJobs();
-            FillDataWithAllSubordinates();
-            FillDataWithAllSupervisor();
-            FillDataWithAllEmployee();
-            FillDataWithAllUser();
+            
+            //FillDataWithAllDirectors();
+            ////FillDataWithAllEmployeeStatus();
+            //FillDataWithAllJobs();
+            //FillDataWithAllSubordinates();
+            //FillDataWithAllSupervisor();
+            //FillDataWithAllEmployee();
+            //FillDataWithAllUser();
         }
 
         public void FillDataWithAllDirectors()
         {
-            //Deserialize
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Director>));
-            TextReader reader = new StreamReader(@"./directorXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            directorList = (List<Director>)obj;
-            reader.Close();
+
+
+            MyXmlSerializer<List<Director>> serialzier = new MyXmlSerializer<List<Director>>();
+            directorList = serialzier.ReadObject(@"./directorXML.xml");
+           
         }
                 
         public void FillDataWithAllJobs()
@@ -115,11 +116,10 @@ namespace Hotel.Database.Staff
         
         public void SerializeDirectors()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Director>));
-            using (TextWriter writer = new StreamWriter(@"./directorXML.xml"))
-            {
-                serializer.Serialize(writer, directorList);
-            }
+
+            MyXmlSerializer<List<Director>> ser = new MyXmlSerializer<List<Director>>();
+            ser.WriteObject(@"./directorXML.xml", directorList); 
+
         }
         
         public void SerializeJobs()

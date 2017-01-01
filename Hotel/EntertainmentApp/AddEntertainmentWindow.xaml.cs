@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows;
 using Hotel.Database;
 using Hotel.Database.Staff;
+using HumanResourcesLib;
 
 namespace EntertainmentApp
 {

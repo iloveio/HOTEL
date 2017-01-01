@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 /// <summary>   The system. text. </summary>
 using System.Text;
+using System.Runtime.Serialization;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,11 +31,14 @@ namespace HumanResourcesLib
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    [DataContract]
     public partial class Director : User, IManager
     {
         /// <summary>   The supervisors. </summary>
+        [DataMember]
         private List<Employee> supervisors;
         /// <summary>   The employee factory. </summary>
+        [DataMember]
         IEmployeeFactory employeeFactory;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

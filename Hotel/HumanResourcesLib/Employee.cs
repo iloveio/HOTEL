@@ -6,6 +6,7 @@
 
 using HumanResourcesLib;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace HumanResourcesLib
 {
@@ -15,13 +16,17 @@ namespace HumanResourcesLib
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    [DataContract]
     public abstract partial class Employee : User
     {
         /// <summary>   The jobs. </summary>
+        [DataMember]
         protected List<Job> jobs;
         /// <summary>   The employee status. </summary>
+        [DataMember]
         protected EmployeeStatus employeeStatus;
         /// <summary>   The wage. </summary>
+        [DataMember]
         protected float wage;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

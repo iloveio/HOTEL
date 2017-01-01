@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hotel.Database;
 using Hotel.Database.Staff;
+using HumanResourcesLib;
 
 namespace EntertainmentApp
 {
@@ -36,9 +37,9 @@ namespace EntertainmentApp
             m_Guests = new ObservableCollection<Guest>();
             m_Supervisors = new ObservableCollection<Supervisor>();
 
-            m_OrganisedEvents.Add(new OrganisedEvent("Koncert Perfect", 6800, 350, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Supervisor(0,"Pioter","Cham",null,20000,new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05),"ZAROBIONY"),null)));
-            m_OrganisedEvents.Add(new OrganisedEvent("Przyjęcie urodzinowe prezydenta", 15500, 100, new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), new Supervisor(0, "Pioter", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null)));
-            m_OrganisedEvents.Add(new OrganisedEvent("Bal przebierańców", 3100, 500, new DateTime(2016, 10, 31), new DateTime(2016, 10, 31), new Supervisor(0, "Pioter", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null)));
+            //m_OrganisedEvents.Add(new OrganisedEvent("Koncert Perfect", 6800, 350, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Supervisor(0,"Pioter","Cham",null,20000,new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05),"ZAROBIONY"),null)));
+            //m_OrganisedEvents.Add(new OrganisedEvent("Przyjęcie urodzinowe prezydenta", 15500, 100, new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), new Supervisor(0, "Pioter", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null)));
+            //m_OrganisedEvents.Add(new OrganisedEvent("Bal przebierańców", 3100, 500, new DateTime(2016, 10, 31), new DateTime(2016, 10, 31), new Supervisor(0, "Pioter", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null)));
 
             m_InnerEntertainments.Add(new InnerEntertainment("Basen", 10));
             m_InnerEntertainments.Add(new InnerEntertainment("Kasyno", 45));
@@ -54,8 +55,8 @@ namespace EntertainmentApp
             m_Guests.Add(new Guest(912312939, "Włodek", "aaa", "LODZ"));
             m_Guests.Add(new Guest(912393129, "Żonaty", "aaa", "LODZ"));
 
-            m_Supervisors.Add(new Supervisor(0, "Pioter", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null));
-            m_Supervisors.Add(new Supervisor(0, "Bartosz", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null));
+            //m_Supervisors.Add(new Supervisor(0, "Pioter", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null));
+            //m_Supervisors.Add(new Supervisor(0, "Bartosz", "Cham", null, 20000, new EmployeeStatus(new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), "ZAROBIONY"), null));
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

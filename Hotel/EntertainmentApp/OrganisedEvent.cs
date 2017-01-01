@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using Hotel.Database;
 using Hotel.Database.Staff;
+using HumanResourcesLib;
 
 namespace EntertainmentApp
 {
