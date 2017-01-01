@@ -21,7 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 
-namespace Hotel
+namespace StaffGUI
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>   Interaction logic for EmployeeDataWindow.xaml. </summary>
@@ -80,7 +80,7 @@ namespace Hotel
             //datePicker.SelectedDate = DateTime.Now;
             //dyr = Director.GetInstance;
             
-            browseEmployeeList.ItemsSource = staffManager.directorList[0].GetSupervisors();
+            //browseEmployeeList.ItemsSource = staffManager.directorList[0].GetSupervisors();
             staffManager = new StaffManager();
         }
 

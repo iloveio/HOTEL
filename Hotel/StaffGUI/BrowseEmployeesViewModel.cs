@@ -20,7 +20,7 @@ namespace Hotel
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public class BrowseEmployeesViewModel : ViewModelBase
+    public class BrowseEmployeesViewModel
     {
         /// <summary>   The employees. </summary>
         private ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
