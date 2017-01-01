@@ -37,13 +37,6 @@ namespace Hotel.Database.Transportation
             //manager.AddNewTransportation(trans2);
             //manager.AddNewTransportation(trans3);
             
-            List<Transportation> testList = manager.GetTransportationList();
-
-            foreach (var temp in testList)
-            {
-                Console.WriteLine(temp.description);
-            }
-
         }
     }
 }

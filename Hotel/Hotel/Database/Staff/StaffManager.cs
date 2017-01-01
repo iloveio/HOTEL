@@ -22,17 +22,17 @@ namespace Hotel.Database.Staff
 
     public class StaffManager
     { 
-        List<Director> directorList { get; set; }
+        public List<Director> directorList { get; set; }
 
-        List<Job> jobsList { get; set; }
+        public List<Job> jobsList { get; set; }
 
-        List<Subordinate> subordinatesList { get; set; }
+        public List<Subordinate> subordinatesList { get; set; }
 
-        List<Supervisor> supervisorList { get; set; }
+        public List<Supervisor> supervisorList { get; set; }
 
-        List<Employee> employeeList { get; set; }
+        public List<Employee> employeeList { get; set; }
 
-        List<User> userList { get; set; }
+        public List<User> userList { get; set; }
 
         public StaffManager()
         {

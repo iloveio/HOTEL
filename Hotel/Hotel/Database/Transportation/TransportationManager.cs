@@ -18,16 +18,14 @@ namespace Hotel.Database.Transportation
 
     public class TransportationManager
     {
-        List<Transport> transportationsList { get; set; }
+        public List<Transport> transportationsList { get; set; }
         
-
         public TransportationManager()
         {
             transportationsList = new List<Transport>();
             FillDataWithAllTransportations();
         }
         
-
         public void FillDataWithAllTransportations()
         {
             XmlSerializer deserializer = new XmlSerializer(typeof(List<Transport>));
