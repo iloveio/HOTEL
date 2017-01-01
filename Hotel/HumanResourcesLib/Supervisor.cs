@@ -24,7 +24,7 @@ namespace HumanResourcesLib
         [DataMember]
         protected List<Employee> employees;
         /// <summary>   The subordinate factory. </summary>
-        [DataMember]
+        [IgnoreDataMember]
         protected IEmployeeFactory subordinateFactory;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +46,25 @@ namespace HumanResourcesLib
             base(name, lastName, id, employeeStatus, wage, jobs)
         {
             this.subordinateFactory = subrodinateFactory;
+            this.employees = employees;
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="name">                 The name. </param>
+        /// <param name="lastName">             The person's last name. </param>
+        /// <param name="id">                   The identifier. </param>
+        /// <param name="employeeStatus">       The employee status. </param>
+        /// <param name="employees">            The employees. </param>
+        /// <param name="wage">                 The wage. </param>
+        /// <param name="jobs">                 The jobs. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus, List<Employee> employees, float wage, List<Job> jobs) :
+            base(name, lastName, id, employeeStatus, wage, jobs)
+        {
+           
             this.employees = employees;
         }
 
@@ -127,6 +146,7 @@ namespace HumanResourcesLib
 
         public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
+            this.subordinateFactory = new SubordinateFactory();
             return GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }
     }

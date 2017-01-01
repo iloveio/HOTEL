@@ -21,7 +21,6 @@ namespace HumanResourcesLib
     public class SupervisorFactory : IEmployeeFactory
     {
         /// <summary>   The factory. </summary>
-        private IEmployeeFactory factory;
         /// <summary>   The employees. </summary>
         List<Employee> employees;
 
@@ -30,13 +29,11 @@ namespace HumanResourcesLib
         ///
         /// <remarks>   Student, 19.12.2016. </remarks>
         ///
-        /// <param name="employeeFactory">  The employee factory. </param>
         /// <param name="employees">        The employees. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public SupervisorFactory(IEmployeeFactory employeeFactory,List<Employee> employees) 
+        public SupervisorFactory(List<Employee> employees) 
         {
-            this.factory = employeeFactory;
             this.employees = employees;
         }
 
@@ -57,7 +54,7 @@ namespace HumanResourcesLib
 
         public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
-            return new Supervisor(name, lastName, id, employeeStatus, this.employees, wage, jobs, this.factory);
+            return new Supervisor(name, lastName, id, employeeStatus, this.employees, wage, jobs);
         }
     }
 }
