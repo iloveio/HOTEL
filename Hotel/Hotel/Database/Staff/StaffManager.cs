@@ -21,21 +21,18 @@ namespace Hotel.Database.Staff
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public class StaffManager
-    {
-        /// <summary>   List of directors. </summary>
-        List<Director> directorList;
-        ///// <summary>   List of employee status. </summary>
-        //List<EmployeeStatus> employeeStatusList;
-        /// <summary>   List of jobs. </summary>
-        List<Job> jobsList;
-        /// <summary>   List of subordinates. </summary>
-        List<Subordinate> subordinatesList;
-        /// <summary>   List of supervisors. </summary>
-        List<Supervisor> supervisorList;
+    { 
+        List<Director> directorList { get; set; }
 
-        List<Employee> employeeList;
+        List<Job> jobsList { get; set; }
 
-        List<User> userList;
+        List<Subordinate> subordinatesList { get; set; }
+
+        List<Supervisor> supervisorList { get; set; }
+
+        List<Employee> employeeList { get; set; }
+
+        List<User> userList { get; set; }
 
         public StaffManager()
         {
@@ -65,17 +62,7 @@ namespace Hotel.Database.Staff
             directorList = (List<Director>)obj;
             reader.Close();
         }
-        
-        //public void FillDataWithAllEmployeeStatus()
-        //{
-        //    //Deserialize
-        //    XmlSerializer deserializer = new XmlSerializer(typeof(List<EmployeeStatus>));
-        //    TextReader reader = new StreamReader(@"./employeeStatusXML.xml");
-        //    object obj = deserializer.Deserialize(reader);
-        //    employeeStatusList = (List<EmployeeStatus>)obj;
-        //    reader.Close();
-        //}
-        
+                
         public void FillDataWithAllJobs()
         {
             //Deserialize
@@ -134,16 +121,7 @@ namespace Hotel.Database.Staff
                 serializer.Serialize(writer, directorList);
             }
         }
-
-        //public void SerializeEmployeeStatus()
-        //{
-        //    XmlSerializer serializer = new XmlSerializer(typeof(List<EmployeeStatus>));
-        //    using (TextWriter writer = new StreamWriter(@"./employeeStatusXML.xml"))
-        //    {
-        //        serializer.Serialize(writer, employeeStatusList);
-        //    }
-        //}
-
+        
         public void SerializeJobs()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Job>));
@@ -194,13 +172,7 @@ namespace Hotel.Database.Staff
             directorList.Add(dir);
             SerializeDirectors();
         }
-
-        //public void AddNewEmployeeStatus(EmployeeStatus status)
-        //{
-        //    employeeStatusList.Add(status);
-        //    SerializeEmployeeStatus();
-        //}
-
+        
         public void AddNewJob(Job job)
         {
             jobsList.Add(job);
@@ -236,12 +208,7 @@ namespace Hotel.Database.Staff
             directorList.Remove(dir);
             SerializeDirectors();
         }
-
-        //public void DeleteEmployeeStatus(EmployeeStatus status)
-        //{
-        //    employeeStatusList.Remove(status);
-        //}
-
+       
         public void DeleteJob(Job job)
         {
             jobsList.Remove(job);
@@ -307,5 +274,42 @@ namespace Hotel.Database.Staff
             userList[userList.IndexOf(user)] = newVal;
             SerializeUser();
         }
+
+        public void AddNewDirectors(Director dir)
+        {
+            directorList.Add(dir);
+            SerializeDirectors();
+        }
+        
+        public void AddNewJobs(IEnumerable<Job> job)
+        {
+            jobsList.AddRange(job);
+            SerializeJobs();
+        }
+
+        public void AddNewSubordinates(IEnumerable<Subordinate> sub)
+        {
+            subordinatesList.AddRange(sub);
+            SerializeSubordinates();
+        }
+
+        public void AddNewSupervisors(IEnumerable<Supervisor> sup)
+        {
+            supervisorList.AddRange(sup);
+            SerializeSupervisor();
+        }
+
+        public void AddNewEmployees(IEnumerable<Employee> emp)
+        {
+            employeeList.AddRange(emp);
+            SerializeEmployee();
+        }
+
+        public void AddNewUsers(IEnumerable<User> user)
+        {
+            userList.AddRange(user);
+            SerializeEmployee();
+        }
+
     }
 }
