@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BookingApp.Model;
+using BookingLibrary.TempDatabase;
 
 namespace BookingApp.Views
 {
@@ -20,9 +22,19 @@ namespace BookingApp.Views
     /// </summary>
     public partial class CalendarWindow : UserControl
     {
+        public List<Reservation> ActualReservations { get; set; }
+
         public CalendarWindow()
         {
             InitializeComponent();
+            var SelectedRoom = ModelController.Instance.SelectedRoomID;
+            ActualReservations = ModelController.Instance.GetReservationsForSelectedRoom(SelectedRoom);
+            foreach (var reservation in ActualReservations)
+            {
+                CalendarDateRange range = new CalendarDateRange(reservation.ReservationStart,reservation.ReservationEnd);
+                startDatePicker.BlackoutDates.Add(range);
+                endDatePicker.BlackoutDates.Add(range);
+            }
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             startDatePicker.BlackoutDates.Add(cdr);
             endDatePicker.BlackoutDates.Add(cdr);

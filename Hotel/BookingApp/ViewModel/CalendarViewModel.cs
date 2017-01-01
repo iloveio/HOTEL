@@ -18,17 +18,12 @@ namespace BookingApp.ViewModel
         {
             SaveCommand = new RelayCommand(OpenGuestsWindow);
             CancelCommand = new RelayCommand(CloseWindow);
-            SelectedRoom = ModelController.Instance.SelectedRoomID;
-            ActualReservations = ModelController.Instance.GetReservationsForSelectedRoom(SelectedRoom);
         }
 
         private void CloseWindow()
         {
             Closed?.Invoke(1);
         }
-
-        public List<Reservation> ActualReservations { get; set; }
-        public uint SelectedRoom { get; set; }
 
         #region Commands
 
