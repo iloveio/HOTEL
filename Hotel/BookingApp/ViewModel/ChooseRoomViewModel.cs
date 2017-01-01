@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 using BookingApp.Model;
 //using Hotel.Database;
@@ -20,7 +21,15 @@ namespace BookingApp.ViewModel
             //ChangeSelectedFloorCommand = new RelayCommand<int>(ChangeSelectedFloor);
             //SelectedFloor = 1;
             Rooms = ModelController.Instance.GetRooms();
+            //Messenger.Default.Register<UpdateListView>(this,FilterList);
         }
+
+        //private void FilterList(UpdateListView action)
+        //{
+        //    Rooms = (from r in Rooms
+        //             where r.ToString() == action.PreferredRoom.ToString()
+        //             select r).ToList();
+        //}
 
         public List<Room> Rooms { get; set; }
         //public Room SelectedRoomID { get; set; }

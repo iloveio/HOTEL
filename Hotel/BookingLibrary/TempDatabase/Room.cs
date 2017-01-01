@@ -11,5 +11,11 @@ namespace BookingLibrary.TempDatabase
         public bool IsTv { get; set; }
         public bool HasOutlook { get; set; }
         public bool IsBalcony { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Size},{NumberOfRooms},{IsTv},{HasOutlook},{IsBalcony}";
+        }
     }
+
 }

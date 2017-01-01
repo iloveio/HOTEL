@@ -10,7 +10,7 @@
     <Grid Height="213" VerticalAlignment="Bottom" Margin="0,0,0,-7">
         <ComboBox x:Name="sizeComboBox" SelectedIndex="0" SelectedItem="{Binding Size, Mode=OneWayToSource}" ItemsSource="{Binding Path=RoomDetails}" HorizontalAlignment="Left" Height="22" Margin="129,37,0,0" VerticalAlignment="Top" Width="40"></ComboBox>
         <ComboBox x:Name="roomsComboBox" SelectedIndex="0" SelectedItem ="{Binding NumberOfRooms, Mode=OneWayToSource}" ItemsSource="{Binding Path=RoomDetails}" HorizontalAlignment="Left" Height="22" Margin="129,69,0,0" VerticalAlignment="Top" Width="40"/>
-        <Button x:Name="searchButton" Command="{Binding SearchCommand}" Content="Szukaj" HorizontalAlignment="Left" Height="26" Margin="92,177,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.148,3.778"/>
+        <Button x:Name="searchButton" Command="{Binding SearchCommand}" Content="Szukaj" HorizontalAlignment="Left" Height="26" Margin="151,177,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.148,3.778"/>
         <CheckBox x:Name="tvCheckBox" IsChecked="{Binding isTv, Mode=OneWayToSource}" Content="CheckBox" HorizontalAlignment="Left" Height="14" Margin="129,96,0,0" VerticalAlignment="Top" Width="17"/>
         <CheckBox x:Name="balconyCheckBox" IsChecked="{Binding isBalcony, Mode=OneWayToSource}" Content="CheckBox" HorizontalAlignment="Left" Height="14" Margin="129,156,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="0.615,2.857"/>
         <CheckBox x:Name="outlookCheckBox" IsChecked="{Binding hasOutlook, Mode=OneWayToSource}" Content="CheckBox" HorizontalAlignment="Left" Height="14" Margin="129,126,0,0" VerticalAlignment="Top" Width="17"/>
@@ -20,7 +20,8 @@
         <Label x:Name="balconyLabel" Content="Balkon:" HorizontalContentAlignment="Right" Height="30" Margin="10,150,145,0" VerticalAlignment="Top" Width="88"/>
         <Label x:Name="outlookLabel" Content="Widok;" HorizontalContentAlignment="Right" Height="30" Margin="10,120,145,0" VerticalAlignment="Top" Width="88"/>
         <Label x:Name="titleLabel" Content="Filtr pokojów:" Height="34" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Center" Margin="0,1,0,0"/>
+            <Button x:Name="cancelFilterButton" Command="{Binding CancelCommand}" Content="Anuluj" HorizontalAlignment="Left" Height="26" Margin="31,177,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.148,3.778"/>
 
-    </Grid>
+        </Grid>
         </Border>
 </UserControl>

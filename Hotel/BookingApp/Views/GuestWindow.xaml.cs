@@ -28,6 +28,7 @@ namespace BookingApp.Views
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
+            peselTextBox.MaxLength = 9;
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
