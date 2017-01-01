@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace HumanResourcesLib
 {
@@ -16,14 +17,17 @@ namespace HumanResourcesLib
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    [DataContract]
     public class EmployeeStatus
     {
         /// <summary>   The status begining Date/Time. </summary>
+        [DataMember]
         private DateTime statusBegining;
         /// <summary>   The status end Date/Time. </summary>
+        [DataMember]
         private DateTime statusEnd;
         /// <summary>   Name of the status. </summary>
+        [DataMember]
         EmployeeStatusName statusName;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

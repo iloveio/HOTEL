@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HumanResourcesLib;
-
+using System.Runtime.Serialization;
 namespace HumanResourcesLib
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,12 +17,14 @@ namespace HumanResourcesLib
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    [DataContract]
     public partial class Supervisor : Employee, IManager
     {
         /// <summary>   The employees. </summary>
+        [DataMember]
         protected List<Employee> employees;
         /// <summary>   The subordinate factory. </summary>
+        [DataMember]
         protected IEmployeeFactory subordinateFactory;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

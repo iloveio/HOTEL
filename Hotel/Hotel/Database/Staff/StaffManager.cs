@@ -36,6 +36,8 @@ namespace Hotel.Database.Staff
         public List<User> userList { get; set; }
 
 
+
+
         public StaffManager()
         {
             directorList = new List<Director>();
@@ -67,51 +69,48 @@ namespace Hotel.Database.Staff
         public void FillDataWithAllJobs()
         {
             //Deserialize
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Job>));
-            TextReader reader = new StreamReader(@"./jobsXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            jobsList = (List<Job>)obj;
-            reader.Close();
+            MyXmlSerializer<List<Job>> serialzier = new MyXmlSerializer<List<Job>>();
+            jobsList = serialzier.ReadObject(@"./jobsXML.xml");
         }
         
         public void FillDataWithAllSubordinates()
         {
             //Deserialize
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Subordinate>));
-            TextReader reader = new StreamReader(@"./subordinatesXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            subordinatesList = (List<Subordinate>)obj;
-            reader.Close();
+            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Subordinate>));
+            //TextReader reader = new StreamReader(@"./subordinatesXML.xml");
+            //object obj = deserializer.Deserialize(reader);
+            //subordinatesList = (List<Subordinate>)obj;
+            //reader.Close();
+
+            MyXmlSerializer<List<Subordinate>> serialzier = new MyXmlSerializer<List<Subordinate>>();
+            subordinatesList = serialzier.ReadObject(@"./subordinatesXML.xml");
         }
         
         public void FillDataWithAllSupervisor()
         {
-            //Deserialize
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Supervisor>));
-            TextReader reader = new StreamReader(@"./supervisorsXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            supervisorList = (List<Supervisor>)obj;
-            reader.Close();
+
+            MyXmlSerializer<List<Supervisor>> serialzier = new MyXmlSerializer<List<Supervisor>>();
+            supervisorList = serialzier.ReadObject(@"./supervisorsXML.xml");
         }
 
         public void FillDataWithAllEmployee()
         {
             //Deserialize
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Employee>));
-            TextReader reader = new StreamReader(@"./employeeXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            employeeList = (List<Employee>)obj;
-            reader.Close();
+            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Employee>));
+            //TextReader reader = new StreamReader(@"./employeeXML.xml");
+            //object obj = deserializer.Deserialize(reader);
+            //employeeList = (List<Employee>)obj;
+            //reader.Close();
         }
 
         public void FillDataWithAllUser()
         {
             //Deserialize
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<User>));
-            TextReader reader = new StreamReader(@"./userXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            userList = (List<User>)obj;
-            reader.Close();
+            //XmlSerializer deserializer = new XmlSerializer(typeof(List<User>));
+            //TextReader reader = new StreamReader(@"./userXML.xml");
+            //object obj = deserializer.Deserialize(reader);
+            //userList = (List<User>)obj;
+            //reader.Close();
         }
         
         public void SerializeDirectors()
@@ -124,47 +123,45 @@ namespace Hotel.Database.Staff
         
         public void SerializeJobs()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Job>));
-            using (TextWriter writer = new StreamWriter(@"./jobsXML.xml"))
-            {
-                serializer.Serialize(writer, jobsList);
-            }
+            
+            MyXmlSerializer<List<Job>> ser = new MyXmlSerializer<List<Job>>();
+            ser.WriteObject(@"./jobsXML.xml", jobsList);
         }
 
         public void SerializeSubordinates()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Subordinate>));
-            using (TextWriter writer = new StreamWriter(@"./subordinatesXML.xml"))
-            {
-                serializer.Serialize(writer, subordinatesList);
-            }
+
+            MyXmlSerializer<List<Subordinate>> ser = new MyXmlSerializer<List<Subordinate>>();
+            ser.WriteObject(@"./subordinatesXML.xml", subordinatesList);
         }
 
         public void SerializeSupervisor()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Supervisor>));
-            using (TextWriter writer = new StreamWriter(@"./supervisorsXML.xml"))
-            {
-                serializer.Serialize(writer, supervisorList);
-            }
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<Supervisor>));
+            //using (TextWriter writer = new StreamWriter(@"./supervisorsXML.xml"))
+            //{
+            //    serializer.Serialize(writer, supervisorList);
+            //}
+            MyXmlSerializer<List<Supervisor>> ser = new MyXmlSerializer<List<Supervisor>>();
+            ser.WriteObject(@"./supervisorsXML.xml", supervisorList);
         }
 
         public void SerializeEmployee()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Employee>));
-            using (TextWriter writer = new StreamWriter(@"./employeeXML.xml"))
-            {
-                serializer.Serialize(writer, employeeList);
-            }
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<Employee>));
+            //using (TextWriter writer = new StreamWriter(@"./employeeXML.xml"))
+            //{
+            //    serializer.Serialize(writer, employeeList);
+            //}
         }
 
         public void SerializeUser()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
-            using (TextWriter writer = new StreamWriter(@"./userXML.xml"))
-            {
-                serializer.Serialize(writer, employeeList);
-            }
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
+            //using (TextWriter writer = new StreamWriter(@"./userXML.xml"))
+            //{
+            //    serializer.Serialize(writer, employeeList);
+            //}
         }
 
         public void AddNewDirector(Director dir)

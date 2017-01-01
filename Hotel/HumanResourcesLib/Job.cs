@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Runtime.Serialization;
 namespace HumanResourcesLib
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,16 +17,20 @@ namespace HumanResourcesLib
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    [DataContract]
     public class Job
     {
         /// <summary>   The job supervisor. </summary>
+        [DataMember]
         private Supervisor jobSupervisor;
         /// <summary>   Information describing the job. </summary>
+        [DataMember]
         private string jobDescription;
         /// <summary>   The start date. </summary>
+        [DataMember]
         private DateTime startDate;
         /// <summary>   The deadline Date/Time. </summary>
+        [DataMember]
         private DateTime deadline;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
