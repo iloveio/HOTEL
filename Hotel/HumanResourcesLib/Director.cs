@@ -147,7 +147,7 @@ namespace HumanResourcesLib
 
         public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
-            this.employeeFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
+            this.employeeFactory = new SupervisorFactory(new List<Employee>());
             return this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
         }
 
