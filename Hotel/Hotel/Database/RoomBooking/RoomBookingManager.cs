@@ -6,8 +6,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Hotel.Database
 {
@@ -20,125 +22,129 @@ namespace Hotel.Database
     public class RoomBookingManager
     {
         /// <summary>   List of rooms. </summary>
-        List<Room> roomsList;
+        public List<Room> roomsList { get; set; }
         /// <summary>   List of guests. </summary>
-        List<Guest> guestsList;
+        public List<User> guestsList { get; set; }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Fill data with all rooms. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public List<Reservation> reservationList { get; set; }
 
+        public RoomBookingManager()
+        {
+            roomsList = new List<Room>();
+            guestsList = new List<User>();
+            reservationList = new List<Reservation>();
+
+            FillDataWithAllGuests();
+            FillDataWithAllReservations();
+            FillDataWithAllRooms();
+        }
+        
         public void FillDataWithAllRooms()
         {
-            using (var db = new RoomBookingContext())
-            {
-                var query = from b in db.Rooms
-                            select b;
-                roomsList = query.ToList<Room>();
-            }
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Room>));
+            TextReader reader = new StreamReader(@"./roomXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            roomsList = (List<Room>)obj;
+            reader.Close();
         }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Fill data with all guests. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public void FillDataWithAllGuests()
         {
-            using (var db = new RoomBookingContext())
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<User>));
+            TextReader reader = new StreamReader(@"./guestXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            guestsList = (List<User>)obj;
+            reader.Close();
+        }
+
+        public void FillDataWithAllReservations()
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Reservation>));
+            TextReader reader = new StreamReader(@"./reservationXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            reservationList = (List<Reservation>)obj;
+            reader.Close();
+        }
+
+        public void SerializeRooms()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Room>));
+            using (TextWriter writer = new StreamWriter(@"./roomXML.xml"))
             {
-                var query = from b in db.Guests
-                            select b;
-                guestsList = query.ToList<Guest>();
+                serializer.Serialize(writer, roomsList);
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a new guest. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="guest">    The guest. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void AddNewGuest(Guest guest)
+        public void SerializeGuests()
         {
-            using (var db = new RoomBookingContext())
+            XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
+            using (TextWriter writer = new StreamWriter(@"./guestXML.xml"))
             {
-                db.Guests.Add(guest);
-                db.SaveChanges();
-            }
-            FillDataWithAllGuests();
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Deletes the guest by object described by guest. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="guest">    The guest. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void DeleteGuestByObject(Guest guest)
-        {
-            using (var db = new RoomBookingContext())
-            {
-                db.Guests.Remove(guest);
-                db.SaveChanges();
-            }
-            FillDataWithAllGuests();
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a guest to room to 'room'. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="guest">    The guest. </param>
-        /// <param name="room">     The room. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void AddGuestToRoom(Guest guest, Room room)
-        {
-            if(room.CurrentGuest == null)
-            {
-                using (var db = new RoomBookingContext())
-                {
-                    Room temp = db.Rooms.Find(room);
-                    temp.CurrentGuest = guest;
-                    db.SaveChanges();
-                }
-                FillDataWithAllRooms();
+                serializer.Serialize(writer, guestsList);
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets rooms list. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <returns>   The rooms list. </returns>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public List<Room> GetRoomsList()
+        public void SerializeReservations()
         {
-            return roomsList;
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Reservation>));
+            using (TextWriter writer = new StreamWriter(@"./reservationXML.xml"))
+            {
+                serializer.Serialize(writer, reservationList);
+            }
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets guests list. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <returns>   The guests list. </returns>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public List<Guest> GetGuestsList()
+        public void AddNewGuest(User guest)
         {
-            return guestsList;
+            guestsList.Add(guest);
+            SerializeGuests();
+        }
+
+        public void AddNewRoom(Room room)
+        {
+            roomsList.Add(room);
+            SerializeRooms();
+        }
+
+        public void AddNewReservation(Reservation reservation)
+        {
+            reservationList.Add(reservation);
+            SerializeReservations();
+        }
+
+        public void DeleteGuest(User guest)
+        {
+            guestsList.Remove(guest);
+            SerializeGuests();
+        }
+        
+        public void DeleteRoom(Room room)
+        {
+            roomsList.Remove(room);
+            SerializeRooms();
+        }
+
+        public void DeleteReservation(Reservation reservation)
+        {
+            reservationList.Remove(reservation);
+            SerializeReservations();
+        }
+
+        public void UpdateRoom(Room room, Room newVal)
+        {
+            roomsList[roomsList.IndexOf(room)] = newVal;
+            SerializeRooms();
+        }
+
+        public void UpdateGuest(User guest, User newVal)
+        {
+            guestsList[guestsList.IndexOf(guest)] = newVal;
+            SerializeGuests();
+        }
+
+        public void UpdateReservation(Reservation res, Reservation newVal)
+        {
+            reservationList[reservationList.IndexOf(res)] = newVal;
+            SerializeReservations();
         }
     }
 }

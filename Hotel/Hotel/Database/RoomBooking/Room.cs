@@ -1,15 +1,10 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	Database\RoomBooking\Room.cs
+// file:	TempDatabase\Room.cs
 //
 // summary:	Implements the room class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace Hotel.Database
 {
@@ -27,8 +22,7 @@ namespace Hotel.Database
         /// <value> The room number. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        [Key]
-        public int RoomNumber { set; get; }
+        public uint RoomNumber { get; set; }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the floor number. </summary>
@@ -36,7 +30,15 @@ namespace Hotel.Database
         /// <value> The floor number. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public int FloorNumber { set; get; }
+        public uint FloorNumber { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the size. </summary>
+        ///
+        /// <value> The size. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public uint Size { get; set; }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the number of rooms. </summary>
@@ -44,7 +46,7 @@ namespace Hotel.Database
         /// <value> The total number of rooms. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public int NumberOfRooms { set; get; }
+        public uint NumberOfRooms { get; set; }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets a value indicating whether this object is TV. </summary>
@@ -52,7 +54,15 @@ namespace Hotel.Database
         /// <value> True if this object is tv, false if not. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public bool IsTv { set; get; }
+        public bool IsTv { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets a value indicating whether this object has outlook. </summary>
+        ///
+        /// <value> True if this object has outlook, false if not. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public bool HasOutlook { get; set; }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets a value indicating whether this object is balcony. </summary>
@@ -60,77 +70,6 @@ namespace Hotel.Database
         /// <value> True if this object is balcony, false if not. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public bool IsBalcony { set; get; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets a value indicating whether this object is bathroom. </summary>
-        ///
-        /// <value> True if this object is bathroom, false if not. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public bool IsBathroom { set; get; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets a value indicating whether this object is empty. </summary>
-        ///
-        /// <value> True if this object is empty, false if not. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public bool IsEmpty { set; get; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the current guest. </summary>
-        ///
-        /// <value> The current guest. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public virtual Guest CurrentGuest { set; get; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the Date/Time of the reservation start. </summary>
-        ///
-        /// <value> The reservation start. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public DateTime ReservationStart { set; get; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the Date/Time of the reservation end. </summary>
-        ///
-        /// <value> The reservation end. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public DateTime ReservationEnd { set; get; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Constructor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="number">           Number of. </param>
-        /// <param name="floor">            The floor. </param>
-        /// <param name="numberofrooms">    The numberofrooms. </param>
-        /// <param name="tv">               True to TV. </param>
-        /// <param name="balcony">          True to balcony. </param>
-        /// <param name="bathroom">         True to bathroom. </param>
-        /// <param name="empty">            True to empty. </param>
-        /// <param name="currentGuest">     The current guest. </param>
-        /// <param name="startTime">        The start time. </param>
-        /// <param name="endTime">          The end time. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public Room(int number, int floor, int numberofrooms, bool tv, bool balcony, bool bathroom, bool empty, Guest currentGuest, DateTime startTime, DateTime endTime)
-        {
-            this.RoomNumber = number;
-            this.FloorNumber = floor;
-            this.NumberOfRooms = numberofrooms;
-            IsTv = tv;
-            IsBalcony = balcony;
-            IsBathroom = bathroom;
-            IsEmpty = empty;
-            CurrentGuest = currentGuest;
-            ReservationEnd = endTime;
-            ReservationStart = startTime;
-        }
+        public bool IsBalcony { get; set; }
     }
 }
