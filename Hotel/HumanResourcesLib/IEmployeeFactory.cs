@@ -8,6 +8,7 @@ using HumanResourcesLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace HumanResourcesLib
@@ -17,7 +18,7 @@ namespace HumanResourcesLib
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     public interface IEmployeeFactory
     {
         ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -56,13 +56,13 @@ namespace StaffGUI
         /// <param name="employeeList"> List of employees. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public AddEmployeeWindow(ListBox employeeList)
+        public AddEmployeeWindow(ListBox employeeList, StaffManager staffManager)
         {
             InitializeComponent();
             //dyr = Director.GetInstance;
             jobs = new List<Job>();
             this.employeeList = employeeList;
-            staffManager = new StaffManager();
+            this.staffManager = staffManager;
 
             //sup = new Supervisor("Jan", "Kowalski", 1, new EmployeeStatus(EmployeeStatusName.Working, new DateTime(2016, 12, 6), new DateTime(2017, 1, 1)), new List<Employee>(), 1000, new List<Job>(), );
             //for future uses
@@ -193,10 +193,9 @@ namespace StaffGUI
 
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
-            staffManager.directorList[0].GetFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
+            //staffManager.directorList[0].GetFactory = new SupervisorFactory(new List<Employee>());
 
-
-            staffManager.directorList[0].GetSupervisors().Add(staffManager.directorList[0].HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs));
+            staffManager.directorList[0].GetSupervisors().Add(staffManager.directorList[0].HireAnEmployee(AddFirstName.Text, AddLastName.Text, UInt32.Parse(AddID.Text), new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs));
             employeeList.Items.Refresh();
             Close();
         }

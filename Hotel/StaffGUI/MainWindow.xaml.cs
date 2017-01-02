@@ -42,6 +42,7 @@ namespace StaffGUI
            
             staffManager = new StaffManager();
             staffManager.AddNewDirector(dyr);
+            staffManager.SerializeDirectors();
 
             /*dyr.GetFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
             List<Job> jobs = new List<Job>();
@@ -77,7 +78,7 @@ namespace StaffGUI
 
         private void ViewButton_Click(object sender, RoutedEventArgs e)
         {
-            Window employeeDataView = new EmployeeDataWindow();
+            Window employeeDataView = new EmployeeDataWindow(staffManager);
             employeeDataView.Show();
         }
     }

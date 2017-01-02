@@ -10,13 +10,13 @@
         Left="50" Top="50">
     <Grid Background="#FF363636">
         <TextBlock HorizontalAlignment="Left" Height="48" Margin="23,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" FontSize="28" Foreground="White" Text="Add new employee"/>
-        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="First name" RenderTransformOrigin="0.593,3.5"/>
-        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Last name" RenderTransformOrigin="0.593,3.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="First name" RenderTransformOrigin="0.593,3.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="350,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Last name" RenderTransformOrigin="0.593,3.5"/>
         <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Wage" RenderTransformOrigin="0.593,3.5"/>
         <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Jobs" RenderTransformOrigin="0.593,3.5"/>
 
-        <TextBox Name="AddFirstName" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="142,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
-        <TextBox x:Name="AddLastName" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="142,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox Name="AddFirstName" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="142,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBox x:Name="AddLastName" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="469,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
         <TextBox x:Name="AddWage" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="142,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
 
         <ListBox Name="JobsList" Background="#FF363636" Foreground="#FFF" FontSize="18" HorizontalAlignment="Left" Height="90" Margin="142,265,0,0" VerticalAlignment="Top" Width="170" SelectionChanged="ListBox_SelectionChanged">
@@ -133,5 +133,7 @@
         <TextBox x:Name="JobDateTo" Background="#FF363636" Foreground="#FFF" IsReadOnly = "True" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left"  Margin="350,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
         <TextBlock x:Name="JobDateFromText" HorizontalAlignment="Left" Margin="134,381,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="From"/>
         <TextBlock x:Name="JobDateToText" HorizontalAlignment="Left"  Margin="305,381,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="To"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="ID" RenderTransformOrigin="0.593,3.5"/>
+        <TextBox x:Name="AddID" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="142,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
     </Grid>
 </Window>

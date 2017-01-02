@@ -52,7 +52,7 @@ namespace StaffGUI
         /// <remarks>   Student, 19.12.2016. </remarks>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public EmployeeDataWindow()
+        public EmployeeDataWindow(StaffManager staffManager)
         {
             InitializeComponent();
 
@@ -79,9 +79,10 @@ namespace StaffGUI
 
             //datePicker.SelectedDate = DateTime.Now;
             //dyr = Director.GetInstance;
+            this.staffManager = staffManager;
+
+            browseEmployeeList.ItemsSource = staffManager.directorList[0].GetSupervisors();
             
-            //browseEmployeeList.ItemsSource = staffManager.directorList[0].GetSupervisors();
-            staffManager = new StaffManager();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -220,7 +221,7 @@ namespace StaffGUI
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Window addEmployeeView = new AddEmployeeWindow(browseEmployeeList);
+            Window addEmployeeView = new AddEmployeeWindow(browseEmployeeList, staffManager);
             addEmployeeView.Show();
         }
 
@@ -256,13 +257,13 @@ namespace StaffGUI
                                 status = EmployeeStatusName.MaternityOrPaternityLeave;
                                 break;
                             case 3:
-                                status = EmployeeStatusName.ExtraOrdinaryLeave;
+                                status = EmployeeStatusName.HalfPayLeave;
                                 break;
                             case 4:
-                                status = EmployeeStatusName.ErnedLeave;
+                                status = EmployeeStatusName.ExtraOrdinaryLeave;
                                 break;
                             case 5:
-                                status = EmployeeStatusName.HalfPayLeave;
+                                status = EmployeeStatusName.ErnedLeave;
                                 break;
                         }
                         EmployeeStatus employeeStatus = new EmployeeStatus(status, DateTime.Parse(datePicker.Text), DateTime.Parse(datePickerTo.Text));
