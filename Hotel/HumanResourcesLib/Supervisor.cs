@@ -106,9 +106,10 @@ namespace HumanResourcesLib
         /// <returns>   An Employee. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Employee FireAnEmployee()
+        public void FireAnEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            this.employees.Remove(employee);
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -147,7 +148,9 @@ namespace HumanResourcesLib
         public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
         {
             this.subordinateFactory = new SubordinateFactory();
-            return GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
+            Employee tmp = GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
+            this.employees.Add(tmp);
+            return tmp;
         }
     }
      
