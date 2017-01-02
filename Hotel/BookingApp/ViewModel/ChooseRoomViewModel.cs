@@ -21,7 +21,13 @@ namespace BookingApp.ViewModel
             //ChangeSelectedFloorCommand = new RelayCommand<int>(ChangeSelectedFloor);
             //SelectedFloor = 1;
             Rooms = ModelController.Instance.GetRooms();
-            //Messenger.Default.Register<UpdateListView>(this,FilterList);
+            Messenger.Default.Register<UpdateListView>(this, UncheckSelectedRoom);
+        }
+
+        private void UncheckSelectedRoom(UpdateListView obj)
+        {
+            SelectedRoom = null;
+            ModelController.Instance.SelectedRoomID = 0;
         }
 
         //private void FilterList(UpdateListView action)
@@ -54,6 +60,7 @@ namespace BookingApp.ViewModel
 
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
+            if (SelectedRoom == null) return;
             ModelController.Instance.SelectedRoomID = SelectedRoom.RoomNumber;
             //PropertyChanged?.Invoke(this, e);
         }
