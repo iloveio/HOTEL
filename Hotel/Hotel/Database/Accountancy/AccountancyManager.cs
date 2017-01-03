@@ -4,6 +4,7 @@
 // summary:	Implements the accountancy manager class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Hotel.Database.Staff;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,20 +40,33 @@ namespace Hotel.Database.Accountancy
 
         public void FillDataWithAllBills()
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Bill>));
-            TextReader reader = new StreamReader(@"./billXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            billsList = (List<Bill>)obj;
-            reader.Close();
+            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Bill>));
+            //TextReader reader = new StreamReader(@"./billXML.xml");
+            //object obj = deserializer.Deserialize(reader);
+            //billsList = (List<Bill>)obj;
+            //reader.Close();
+
+            try
+            {
+                MyXmlSerializer<List<Bill>> serialzier = new MyXmlSerializer<List<Bill>>();
+                billsList = serialzier.ReadObject(@"./billXML.xml");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void SerializeBills()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Bill>));
-            using (TextWriter writer = new StreamWriter(@"./billXML.xml"))
-            {
-                serializer.Serialize(writer, billsList);
-            }
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<Bill>));
+            //using (TextWriter writer = new StreamWriter(@"./billXML.xml"))
+            //{
+            //    serializer.Serialize(writer, billsList);
+            //}
+
+            MyXmlSerializer<List<Bill>> ser = new MyXmlSerializer<List<Bill>>();
+            ser.WriteObject(@"billXML.xml", billsList);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

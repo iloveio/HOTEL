@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LoggingApp;
 using System.Xml.Serialization;
 using System.IO;
+using Hotel.Database.Staff;
 
 namespace Hotel.Database.Access
 {
@@ -22,20 +23,33 @@ namespace Hotel.Database.Access
 
         public void DeserializeLogging()
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Logging>));
+            /*XmlSerializer deserializer = new XmlSerializer(typeof(List<Logging>));
             TextReader reader = new StreamReader(@"./loggingXML.xml");
             object obj = deserializer.Deserialize(reader);
             loggingList = (List<Logging>)obj;
-            reader.Close();
+            reader.Close();*/
+
+            try
+            {
+                MyXmlSerializer<List<Logging>> serialzier = new MyXmlSerializer<List<Logging>>();
+                loggingList = serialzier.ReadObject(@"loggingXML.xml");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void SerializeLogging()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Logging>));
-            using (TextWriter writer = new StreamWriter(@"./loggingXML.xml"))
-            {
-                serializer.Serialize(writer, loggingList);
-            }
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<Logging>));
+            //using (TextWriter writer = new StreamWriter(@"./loggingXML.xml"))
+            //{
+            //    serializer.Serialize(writer, loggingList);
+            //}
+
+            MyXmlSerializer<List<Logging>> ser = new MyXmlSerializer<List<Logging>>();
+            ser.WriteObject(@"loggingXML.xml", loggingList);
         }
 
         public void AddNewLogging(Logging log)

@@ -4,6 +4,7 @@
 // summary:	Implements the room booking manager class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Hotel.Database.Staff;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,56 +42,96 @@ namespace Hotel.Database
 
         public void FillDataWithAllRooms()
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Room>));
-            TextReader reader = new StreamReader(@"./roomXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            roomsList = (List<Room>)obj;
-            reader.Close();
+            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Room>));
+            //TextReader reader = new StreamReader(@"./roomXML.xml");
+            //object obj = deserializer.Deserialize(reader);
+            //roomsList = (List<Room>)obj;
+            //reader.Close();
+
+            try
+            {
+                MyXmlSerializer<List<Room>> serialzier = new MyXmlSerializer<List<Room>>();
+                roomsList = serialzier.ReadObject(@"./roomXML.xml");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void FillDataWithAllGuests()
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<User>));
-            TextReader reader = new StreamReader(@"./guestXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            guestsList = (List<User>)obj;
-            reader.Close();
+            //XmlSerializer deserializer = new XmlSerializer(typeof(List<User>));
+            //TextReader reader = new StreamReader(@"./guestXML.xml");
+            //object obj = deserializer.Deserialize(reader);
+            //guestsList = (List<User>)obj;
+            //reader.Close();
+
+            try
+            {
+                MyXmlSerializer<List<User>> serialzier = new MyXmlSerializer<List<User>>();
+                guestsList = serialzier.ReadObject(@"./guestXML");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void FillDataWithAllReservations()
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<Reservation>));
-            TextReader reader = new StreamReader(@"./reservationXML.xml");
-            object obj = deserializer.Deserialize(reader);
-            reservationList = (List<Reservation>)obj;
-            reader.Close();
+            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Reservation>));
+            //TextReader reader = new StreamReader(@"./reservationXML.xml");
+            //object obj = deserializer.Deserialize(reader);
+            //reservationList = (List<Reservation>)obj;
+            //reader.Close();
+
+
+            try
+            {
+                MyXmlSerializer<List<Reservation>> serialzier = new MyXmlSerializer<List<Reservation>>();
+                reservationList = serialzier.ReadObject(@"./reservationXML.xml");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void SerializeRooms()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Room>));
-            using (TextWriter writer = new StreamWriter(@"./roomXML.xml"))
-            {
-                serializer.Serialize(writer, roomsList);
-            }
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<Room>));
+            //using (TextWriter writer = new StreamWriter(@"./roomXML.xml"))
+            //{
+            //    serializer.Serialize(writer, roomsList);
+            //}
+
+            MyXmlSerializer<List<Room>> ser = new MyXmlSerializer<List<Room>>();
+            ser.WriteObject(@"roomXML.xml", roomsList);
         }
 
         public void SerializeGuests()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
-            using (TextWriter writer = new StreamWriter(@"./guestXML.xml"))
-            {
-                serializer.Serialize(writer, guestsList);
-            }
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
+            //using (TextWriter writer = new StreamWriter(@"./guestXML.xml"))
+            //{
+            //    serializer.Serialize(writer, guestsList);
+            //}
+
+            MyXmlSerializer<List<User>> ser = new MyXmlSerializer<List<User>>();
+            ser.WriteObject(@"guestXML.xml", guestsList);
         }
 
         public void SerializeReservations()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Reservation>));
-            using (TextWriter writer = new StreamWriter(@"./reservationXML.xml"))
-            {
-                serializer.Serialize(writer, reservationList);
-            }
+            //XmlSerializer serializer = new XmlSerializer(typeof(List<Reservation>));
+            //using (TextWriter writer = new StreamWriter(@"./reservationXML.xml"))
+            //{
+            //    serializer.Serialize(writer, reservationList);
+            //}
+
+            MyXmlSerializer<List<Reservation>> ser = new MyXmlSerializer<List<Reservation>>();
+            ser.WriteObject(@"reservationXML.xml", reservationList);
         }
 
         public void AddNewGuest(User guest)
