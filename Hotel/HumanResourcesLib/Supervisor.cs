@@ -40,10 +40,13 @@ namespace HumanResourcesLib
         /// <param name="wage">                 The wage. </param>
         /// <param name="jobs">                 The jobs. </param>
         /// <param name="subrodinateFactory">   The subrodinate factory. </param>
+        /// <param name="login">       The user's login. </param>
+        /// <param name="password">       The user's password. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus,List<Employee> employees, float wage, List<Job> jobs,IEmployeeFactory subrodinateFactory) : 
-            base(name, lastName, id, employeeStatus, wage, jobs)
+        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus,List<Employee> employees, float wage, List<Job> jobs,IEmployeeFactory subrodinateFactory,
+            string login, string password) : 
+            base(name, lastName, id, employeeStatus, wage, jobs,login,password)
         {
             this.subordinateFactory = subrodinateFactory;
             this.employees = employees;
@@ -60,9 +63,11 @@ namespace HumanResourcesLib
         /// <param name="employees">            The employees. </param>
         /// <param name="wage">                 The wage. </param>
         /// <param name="jobs">                 The jobs. </param>
+        /// <param name="login">       The user's login. </param>
+        /// <param name="password">       The user's password. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus, List<Employee> employees, float wage, List<Job> jobs) :
-            base(name, lastName, id, employeeStatus, wage, jobs)
+        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus, List<Employee> employees, float wage, List<Job> jobs, string login, string password) :
+            base(name, lastName, id, employeeStatus, wage, jobs,login,password)
         {
            
             this.employees = employees;
@@ -78,9 +83,11 @@ namespace HumanResourcesLib
         /// <param name="name">     The name. </param>
         /// <param name="lastName"> The person's last name. </param>
         /// <param name="id">       The identifier. </param>
+        /// <param name="login">       The user's login. </param>
+        /// <param name="password">       The user's password. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Supervisor(string name, string lastName, uint id) : base(name, lastName, id)
+        public Supervisor(string name, string lastName, uint id, string login, string password) : base(name, lastName, id,login,password)
         {
 
         }
@@ -141,14 +148,16 @@ namespace HumanResourcesLib
         /// <param name="employeeStatus">   The employee status. </param>
         /// <param name="wage">             The wage. </param>
         /// <param name="jobs">             The jobs. </param>
-        ///
+        /// <param name="login">       The user's login. </param>
+        /// <param name="password">       The user's password. </param>
+        /// 
         /// <returns>   An Employee. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs, string login, string password)
         {
             this.subordinateFactory = new SubordinateFactory();
-            Employee tmp = GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
+            Employee tmp = GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password);
             this.employees.Add(tmp);
             return tmp;
         }

@@ -32,10 +32,12 @@ namespace HumanResourcesLib
         /// <param name="employeeStatus">   The employee status. </param>
         /// <param name="wage">             The wage. </param>
         /// <param name="jobs">             The jobs. </param>
+        /// <param name="login">       The user's login. </param>
+        /// <param name="password">       The user's password. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Subordinate(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs) 
-            : base(name, lastName, id, employeeStatus, wage, jobs)
+        public Subordinate(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs, string login, string password) 
+            : base(name, lastName, id, employeeStatus, wage, jobs,login,password)
         {
             
         }

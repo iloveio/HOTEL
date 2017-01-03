@@ -40,7 +40,10 @@ namespace HumanResourcesLib
         /// <summary>   The employee factory. </summary>
         [IgnoreDataMember]
         IEmployeeFactory employeeFactory;
+        public Director()
+        {
 
+        }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Constructor. </summary>
         ///
@@ -50,14 +53,13 @@ namespace HumanResourcesLib
         /// <param name="lastName">     The person's last name. </param>
         /// <param name="id">           The identifier. </param>
         /// <param name="supervisors">  The supervisors. </param>
+        /// <param name="login">       The user's login. </param>
+        /// <param name="password">       The user's password. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Director()
-        {
 
-        }
 
-        public Director(string name, string lastName, uint id,List<Employee> supervisors) : base(name, lastName, id)
+        public Director(string name, string lastName, uint id,List<Employee> supervisors, string login, string password) : base(name, lastName, id, login, password)
         {
             this.supervisors = supervisors;
         }
@@ -145,10 +147,10 @@ namespace HumanResourcesLib
         /// <returns>   An Employee. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs,string login,string password)
         {
             this.employeeFactory = new SupervisorFactory(new List<Employee>());
-            Employee tmp = this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs);
+            Employee tmp = this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password);
             this.supervisors.Add(tmp);
             return tmp;
         }

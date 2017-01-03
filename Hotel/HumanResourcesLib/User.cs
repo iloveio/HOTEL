@@ -71,13 +71,17 @@ namespace HumanResourcesLib
         /// <param name="name">     The name. </param>
         /// <param name="lastName"> The person's last name. </param>
         /// <param name="id">       The identifier. </param>
+        /// <param name="login">       The user's login. </param>
+        /// <param name="password">       The user's password. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public User(string name, string lastName, uint id)
+        public User(string name, string lastName, uint id, string login, string password)
         {
             this.id = id;
             this.lastName = lastName;
             this.name = name;
+            this.login = login;
+            this.password = password;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

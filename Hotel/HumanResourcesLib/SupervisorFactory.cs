@@ -48,13 +48,15 @@ namespace HumanResourcesLib
         /// <param name="employeeStatus">   The employee status. </param>
         /// <param name="wage">             The wage. </param>
         /// <param name="jobs">             The jobs. </param>
-        ///
+        /// <param name="login">       The user's login. </param>
+        /// <param name="password">       The user's password. </param>
+        /// 
         /// <returns>   The new employee. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs)
+        public Employee CreateEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs, string login, string password)
         {
-            return new Supervisor(name, lastName, id, employeeStatus, this.employees, wage, jobs);
+            return new Supervisor(name, lastName, id, employeeStatus, this.employees, wage, jobs, login, password);
         }
     }
 }
