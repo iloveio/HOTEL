@@ -6,8 +6,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Hotel.Database.Accountancy
 {
@@ -20,7 +22,14 @@ namespace Hotel.Database.Accountancy
     public class AccountancyManager
     {
         /// <summary>   List of bills. </summary>
-        List<Bill> billsList;
+        public List<Bill> billsList { get; set; }
+
+        public AccountancyManager()
+        {
+            billsList = new List<Bill>();
+
+            FillDataWithAllBills();
+        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Fill data with all bills. </summary>
@@ -30,11 +39,19 @@ namespace Hotel.Database.Accountancy
 
         public void FillDataWithAllBills()
         {
-            using (var db = new AccountancyContext())
+            XmlSerializer deserializer = new XmlSerializer(typeof(List<Bill>));
+            TextReader reader = new StreamReader(@"./billXML.xml");
+            object obj = deserializer.Deserialize(reader);
+            billsList = (List<Bill>)obj;
+            reader.Close();
+        }
+
+        public void SerializeBills()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Bill>));
+            using (TextWriter writer = new StreamWriter(@"./billXML.xml"))
             {
-                var query = from b in db.Bills
-                            select b;
-                billsList = query.ToList<Bill>();
+                serializer.Serialize(writer, billsList);
             }
         }
 
@@ -48,12 +65,8 @@ namespace Hotel.Database.Accountancy
 
         public void AddNewBill(Bill bill)
         {
-            using (var db = new AccountancyContext())
-            {
-                db.Bills.Add(bill);
-                db.SaveChanges();
-            }
-            FillDataWithAllBills();
+            billsList.Add(bill);
+            SerializeBills();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,25 +79,14 @@ namespace Hotel.Database.Accountancy
 
         public void DeleteBillByObject(Bill bill)
         {
-            using (var db = new AccountancyContext())
-            {
-                db.Bills.Remove(bill);
-                db.SaveChanges();
-            }
-            FillDataWithAllBills();
+            billsList.Remove(bill);
+            SerializeBills();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets bills list. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <returns>   The bills list. </returns>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public List<Bill> GetBillsList()
+        public void UpdateTransport(Bill trans, Bill newVal)
         {
-            return billsList;
+            billsList[billsList.IndexOf(trans)] = newVal;
+            SerializeBills();
         }
     }
 }

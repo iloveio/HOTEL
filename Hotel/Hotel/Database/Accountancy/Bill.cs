@@ -54,6 +54,8 @@ namespace Hotel.Database.Accountancy
 
         public string Target { get; set; }
 
+        public Bill() { }
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Constructor. </summary>
         ///
