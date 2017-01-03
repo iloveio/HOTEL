@@ -21,9 +21,13 @@ namespace Hotel.Transpport
         {
             this.cost = cost;
         }
-        public void Save()
+        virtual public bool Save()
         {
-            
+            return false;
+        }
+        public void Pay(float addKost)
+        {
+           float z = addKost + cost;
         }
 
     }

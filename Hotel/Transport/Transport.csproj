@@ -63,6 +63,9 @@
       <DependentUpon>GuestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transpport\Menager.cs" />
+    <Compile Include="Transpport\MenagerPage.xaml.cs">
+      <DependentUpon>MenagerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transpport\Shop.cs" />
     <Compile Include="Transpport\ShopPage.xaml.cs">
       <DependentUpon>ShopPage.xaml</DependentUpon>
@@ -83,6 +86,10 @@
     <Page Include="Transpport\GuestPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transpport\MenagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transpport\ShopPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +122,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntertainmentApp\EntertainmentApp.csproj">
+      <Project>{8cb98dee-f1ed-427a-8977-df942c8e77d3}</Project>
+      <Name>EntertainmentApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel\Hotel.csproj">
+      <Project>{e269dc37-fecd-43aa-af77-1eed3f2b4fbb}</Project>
+      <Name>Hotel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kitchen\Kitchen_main.csproj">
+      <Project>{85803855-bf15-400a-a777-142fd25c3e0f}</Project>
+      <Name>Kitchen_main</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

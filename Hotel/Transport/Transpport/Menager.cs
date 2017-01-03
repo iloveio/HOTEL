@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Hotel.Database.Transportation;
 
 namespace Hotel.Transpport
 {
-    class Menager
+    public class Menager
     {
+        TransportationManager mengaer;
+        public Menager(TransportationManager men)
+        {
+            mengaer = men;
+        }
+
     }
 }
