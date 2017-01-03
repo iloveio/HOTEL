@@ -30,6 +30,38 @@ namespace HumanResourcesLib
         /// <summary>   The identifier. </summary>
         [DataMember]
         protected uint id;
+        /// <summary>   The user's login. </summary>
+        [DataMember]
+        protected string login;
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the login property. </summary>
+        ///
+        /// <value> The login property. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public string Login
+        {
+            get { return login; }
+            set { login = value; }
+        }
+        /// <summary>   The user's password. </summary>
+        [DataMember]
+        protected string password;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the Password property. </summary>
+        ///
+        /// <value> The Password property. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public User()
+        {
+
+        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Constructor. </summary>
@@ -40,11 +72,6 @@ namespace HumanResourcesLib
         /// <param name="lastName"> The person's last name. </param>
         /// <param name="id">       The identifier. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public User()
-        {
-
-        }
 
         public User(string name, string lastName, uint id)
         {
