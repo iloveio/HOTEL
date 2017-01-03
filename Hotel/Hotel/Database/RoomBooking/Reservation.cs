@@ -1,78 +1,74 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	Database\Accountancy\Bill.cs
+// file:	TempDatabase\Reservation.cs
 //
-// summary:	Implements the bill class
+// summary:	Implements the reservation class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
-namespace Hotel.Database.Accountancy
+namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   A bill. </summary>
+    /// <summary>   A reservation. </summary>
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public class Bill
+    public class Reservation
     {
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the identifier of the bill. </summary>
-        ///
-        /// <value> The identifier of the bill. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        [Key]
-        public int BillID { set; get; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the amount. </summary>
-        ///
-        /// <value> The amount. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public int Amount { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the module. </summary>
-        ///
-        /// <value> The module. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public string Module { get; set; } //typ??
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the Target for the. </summary>
-        ///
-        /// <value> The target. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public string Target { get; set; }
-
-        public Bill() { }
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Constructor. </summary>
         ///
         /// <remarks>   Student, 19.12.2016. </remarks>
         ///
-        /// <param name="id">       The identifier. </param>
-        /// <param name="amt">      The amount. </param>
-        /// <param name="Module">   The module. </param>
-        /// <param name="Target">   Target for the. </param>
+        /// <param name="roomId">           Gets or sets the identifier of the room. </param>
+        /// <param name="userId">           Gets or sets the identifier of the user. </param>
+        /// <param name="reservationStart"> Gets or sets the Date/Time of the reservation start. </param>
+        /// <param name="reservationEnd">   Gets or sets the Date/Time of the reservation end. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Bill(int id, int amt, string Module, string Target)
+        public Reservation(uint roomId, uint userId, DateTime reservationStart, DateTime reservationEnd)
         {
-            this.BillID = id;
-            this.Amount = amt;
-            this.Module = Module;
-            this.Target = Target;
+            RoomId = roomId;
+            UserId = userId;
+            ReservationStart = reservationStart;
+            ReservationEnd = reservationEnd;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the identifier of the room. </summary>
+        ///
+        /// <value> The identifier of the room. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public uint RoomId { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the identifier of the user. </summary>
+        ///
+        /// <value> The identifier of the user. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public uint UserId { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the Date/Time of the reservation start. </summary>
+        ///
+        /// <value> The reservation start. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public DateTime ReservationStart { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the Date/Time of the reservation end. </summary>
+        ///
+        /// <value> The reservation end. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public DateTime ReservationEnd { get; set; }
     }
 }
