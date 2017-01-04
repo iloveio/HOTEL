@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
-using Hotel.Database.Staff;
+using Hotel.Database;
 using HumanResourcesLib;
 
-namespace Hotel.Database.Access
+namespace Hotel.Database
 {
     class AccessManager
     {

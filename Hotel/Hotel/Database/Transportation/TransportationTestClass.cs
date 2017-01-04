@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Hotel.Database.Room
+namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>   A transportation test class. </summary>

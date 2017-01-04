@@ -4,7 +4,7 @@
 // summary:	Implements the accountancy manager class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using Hotel.Database.Staff;
+using Hotel.Database;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Hotel.Database.Accountancy
+namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>   Manager for accountancies. </summary>

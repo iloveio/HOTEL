@@ -13,7 +13,7 @@ using System.ComponentModel.DataAnnotations;
 using HumanResourcesLib;
 using System.Runtime.Serialization;
 
-namespace Hotel.Database.Room
+namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>   A transportation. </summary>

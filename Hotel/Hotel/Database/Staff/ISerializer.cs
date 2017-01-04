@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hotel.Database.Staff
+namespace Hotel.Database
 {
     public interface ISerializer<T> where T : class, new()
     {

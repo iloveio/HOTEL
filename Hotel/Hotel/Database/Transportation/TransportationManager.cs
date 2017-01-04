@@ -4,7 +4,7 @@
 // summary:	Implements the transportation manager class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using Hotel.Database.Staff;
+using Hotel.Database;
 using Hotel.Transpport;
 using HumanResourcesLib;
 using System;
@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Hotel.Database.Room
+namespace Hotel.Database
 {
 
     public class TransportationManager
