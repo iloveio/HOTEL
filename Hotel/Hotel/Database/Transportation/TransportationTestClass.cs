@@ -32,13 +32,13 @@ namespace Hotel.Database.Room
             //Transportation trans1 = new Transportation(new Employee(), DateTime.Now, "cos tam1");
             //Transportation trans2 = new Transportation(new Employee(), DateTime.Now, "cos tam2");
             //Transportation trans3 = new Transportation(new Employee(), DateTime.Now, "cos tam3");
-            TransportationManager manager = new TransportationManager();
-            Subordinate dir = new Subordinate("we", "ewwe", 1, null, 12, null);
-            Transportation trans = new Transportation(dir, DateTime.Now, "dssddasda");
+            //TransportationManager manager = new TransportationManager();
+            ////Subordinate dir = new Subordinate("we", "ewwe", 1, null, 12, null);
+            //Transportation trans = new Transportation(dir, DateTime.Now, "dssddasda");
 
-            manager.AddNewTransportation(trans);
+            //manager.AddNewTransportation(trans);
 
-            Console.WriteLine("poszlo");
+            //Console.WriteLine("poszlo");
 
             //manager.AddNewTransportation(trans1);
             //manager.AddNewTransportation(trans2);
