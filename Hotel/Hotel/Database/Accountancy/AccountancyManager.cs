@@ -40,12 +40,6 @@ namespace Hotel.Database
 
         public void FillDataWithAllBills()
         {
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Bill>));
-            //TextReader reader = new StreamReader(@"./billXML.xml");
-            //object obj = deserializer.Deserialize(reader);
-            //billsList = (List<Bill>)obj;
-            //reader.Close();
-
             try
             {
                 MyXmlSerializer<List<Bill>> serialzier = new MyXmlSerializer<List<Bill>>();
@@ -59,12 +53,6 @@ namespace Hotel.Database
 
         public void SerializeBills()
         {
-            //XmlSerializer serializer = new XmlSerializer(typeof(List<Bill>));
-            //using (TextWriter writer = new StreamWriter(@"./billXML.xml"))
-            //{
-            //    serializer.Serialize(writer, billsList);
-            //}
-
             MyXmlSerializer<List<Bill>> ser = new MyXmlSerializer<List<Bill>>();
             ser.WriteObject(@"billXML.xml", billsList);
         }
