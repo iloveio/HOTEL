@@ -25,7 +25,7 @@ namespace HumanResourcesLib
         private Supervisor jobSupervisor;
         /// <summary>   Information describing the job. </summary>
         [DataMember]
-        private string jobDescription;
+        private JobDescription JobDescription;
         /// <summary>   The start date. </summary>
         [DataMember]
         private DateTime startDate;
@@ -44,11 +44,11 @@ namespace HumanResourcesLib
         /// <param name="deadline">         The deadline. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Job(Supervisor jobSupervisor, string jobDescription,DateTime startDate, DateTime deadline)
+        public Job(Supervisor jobSupervisor, JobDescription jobDescription,DateTime startDate, DateTime deadline)
         {
             this.startDate = startDate;
             this.deadline = deadline;
-            this.jobDescription = jobDescription;
+            this.JobDescription = jobDescription;
             this.jobSupervisor = jobSupervisor;
         }
 
@@ -62,11 +62,11 @@ namespace HumanResourcesLib
         /// <param name="deadline">         The deadline. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Job(string jobDescription, DateTime startDate, DateTime deadline)
+        public Job(JobDescription jobDescription, DateTime startDate, DateTime deadline)
         {
             this.startDate = startDate;
             this.deadline = deadline;
-            this.jobDescription = jobDescription;
+            this.JobDescription = jobDescription;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,9 +78,9 @@ namespace HumanResourcesLib
         /// <param name="jobDescription">   Information describing the job. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Job(Supervisor jobSupervisor, string jobDescription)
+        public Job(Supervisor jobSupervisor, JobDescription jobDescription)
         {
-            this.jobDescription = jobDescription;
+            this.JobDescription = jobDescription;
             this.jobSupervisor = jobSupervisor;
         }
 
@@ -90,7 +90,7 @@ namespace HumanResourcesLib
         /// <value> The description. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string Description { get { return jobDescription; } set { } }
+        public JobDescription Description { get { return JobDescription; } set { } }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the start date. </summary>
