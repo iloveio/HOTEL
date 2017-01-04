@@ -195,7 +195,7 @@ namespace StaffGUI
         {
             //staffManager.directorList[0].GetFactory = new SupervisorFactory(new List<Employee>());
 
-            staffManager.directorList[0].GetSupervisors().Add(staffManager.directorList[0].HireAnEmployee(AddFirstName.Text, AddLastName.Text, UInt32.Parse(AddID.Text), new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, "testLogin", "qwerty123"));
+            staffManager.directorList[0].GetSupervisors().Add(staffManager.directorList[0].HireAnEmployee(AddFirstName.Text, AddLastName.Text, UInt32.Parse(AddID.Text), new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, "testLogin", "qwerty123",Postion.KitchenManager));
             employeeList.Items.Refresh();
             Close();
         }

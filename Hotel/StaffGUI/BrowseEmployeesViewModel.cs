@@ -33,7 +33,7 @@ namespace Hotel
 
         public BrowseEmployeesViewModel()
         {
-            employees.Add(new Subordinate("test", "test", 1, new EmployeeStatus(EmployeeStatusName.Working, new DateTime(2016, 12, 12), new DateTime(2016, 12, 13)), 10, new List<Job>(),"testLogin","qwerty123"));
+            employees.Add(new Subordinate("test", "test", 1, new EmployeeStatus(EmployeeStatusName.Working, new DateTime(2016, 12, 12), new DateTime(2016, 12, 13)), 10, new List<Job>(),"testLogin","qwerty123",Postion.Accounting));
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

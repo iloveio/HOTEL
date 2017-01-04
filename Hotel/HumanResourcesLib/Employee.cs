@@ -28,6 +28,20 @@ namespace HumanResourcesLib
         /// <summary>   The wage. </summary>
         [DataMember]
         protected float wage;
+        /// <summary>   The employee Postion. </summary>
+        [DataMember]
+        private Postion position;
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets  position. </summary>
+        ///
+        /// <value> The position. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public Postion Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Constructor. </summary>
@@ -94,18 +108,20 @@ namespace HumanResourcesLib
         /// <param name="lastName">         The person's last name. </param>
         /// <param name="id">               The identifier. </param>
         /// <param name="employeeStatus">   The employee status. </param>
+        /// <param name="position">       The employees's position. </param>
         /// <param name="wage">             The wage. </param>
         /// <param name="jobs">             The jobs. </param>
         /// <param name="login">       The user's login. </param>
         /// <param name="password">       The user's password. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Employee(string name,string lastName,uint id,EmployeeStatus employeeStatus, float wage, List<Job> jobs, string login, string password)
+        public Employee(string name,string lastName,uint id,EmployeeStatus employeeStatus, float wage, List<Job> jobs, string login, string password, Postion position)
             :base(name,lastName,id,login,password)
         {
             this.employeeStatus = employeeStatus;
             this.wage = wage;
             this.jobs = jobs;
+            this.position = position;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -45,8 +45,8 @@ namespace HumanResourcesLib
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus,List<Employee> employees, float wage, List<Job> jobs,IEmployeeFactory subrodinateFactory,
-            string login, string password) : 
-            base(name, lastName, id, employeeStatus, wage, jobs,login,password)
+            string login, string password, Postion position) : 
+            base(name, lastName, id, employeeStatus, wage, jobs,login,password,position)
         {
             this.subordinateFactory = subrodinateFactory;
             this.employees = employees;
@@ -66,8 +66,8 @@ namespace HumanResourcesLib
         /// <param name="login">       The user's login. </param>
         /// <param name="password">       The user's password. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus, List<Employee> employees, float wage, List<Job> jobs, string login, string password) :
-            base(name, lastName, id, employeeStatus, wage, jobs,login,password)
+        public Supervisor(string name, string lastName, uint id, EmployeeStatus employeeStatus, List<Employee> employees, float wage, List<Job> jobs, string login, string password, Postion position) :
+            base(name, lastName, id, employeeStatus, wage, jobs,login,password,position)
         {
            
             this.employees = employees;
@@ -146,6 +146,7 @@ namespace HumanResourcesLib
         /// <param name="lastName">         The person's last name. </param>
         /// <param name="id">               The identifier. </param>
         /// <param name="employeeStatus">   The employee status. </param>
+        /// <param name="position">       The employees's position. </param>
         /// <param name="wage">             The wage. </param>
         /// <param name="jobs">             The jobs. </param>
         /// <param name="login">       The user's login. </param>
@@ -154,10 +155,10 @@ namespace HumanResourcesLib
         /// <returns>   An Employee. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs, string login, string password)
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs, string login, string password, Postion position)
         {
             this.subordinateFactory = new SubordinateFactory();
-            Employee tmp = GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password);
+            Employee tmp = GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password, position);
             this.employees.Add(tmp);
             return tmp;
         }

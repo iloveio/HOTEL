@@ -34,9 +34,9 @@ namespace StaffGUI
         public MainWindow()
         {
             InitializeComponent();
-            dyr = new Director("Jan", "Kowalski", 1, new List<Employee>());
+            dyr = new Director("Jan", "Kowalski", 1, new List<Employee>(), "testLogin", "qwerty123");
 
-            Supervisor sup = new Supervisor("Zenek", "Martyniuk", 1);
+            Supervisor sup = new Supervisor("Zenek", "Martyniuk", 1, "testLogin11", "qwerty123");
 
             //dyr.GetSupervisors().Add(sup);
            

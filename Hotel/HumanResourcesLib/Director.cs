@@ -147,10 +147,10 @@ namespace HumanResourcesLib
         /// <returns>   An Employee. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs,string login,string password)
+        public Employee HireAnEmployee(string name, string lastName, uint id, EmployeeStatus employeeStatus, float wage, List<Job> jobs,string login,string password, Postion position)
         {
             this.employeeFactory = new SupervisorFactory(new List<Employee>());
-            Employee tmp = this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password);
+            Employee tmp = this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password, position);
             this.supervisors.Add(tmp);
             return tmp;
         }
