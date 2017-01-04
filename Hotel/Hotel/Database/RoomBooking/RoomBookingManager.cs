@@ -26,14 +26,14 @@ namespace Hotel.Database
         /// <summary>   List of rooms. </summary>
         public List<Room> roomsList { get; set; }
         /// <summary>   List of guests. </summary>
-        public List<User> guestsList { get; set; }
+        public List<Guest> guestsList { get; set; }
 
         public List<Reservation> reservationList { get; set; }
 
         public RoomBookingManager()
         {
             roomsList = new List<Room>();
-            guestsList = new List<User>();
+            guestsList = new List<Guest>();
             reservationList = new List<Reservation>();
 
             FillDataWithAllGuests();
@@ -70,7 +70,7 @@ namespace Hotel.Database
 
             try
             {
-                MyXmlSerializer<List<User>> serialzier = new MyXmlSerializer<List<User>>();
+                MyXmlSerializer<List<Guest>> serialzier = new MyXmlSerializer<List<Guest>>();
                 guestsList = serialzier.ReadObject(@"./guestXML");
             }
             catch (Exception ex)
@@ -119,7 +119,7 @@ namespace Hotel.Database
             //    serializer.Serialize(writer, guestsList);
             //}
 
-            MyXmlSerializer<List<User>> ser = new MyXmlSerializer<List<User>>();
+            MyXmlSerializer<List<Guest>> ser = new MyXmlSerializer<List<Guest>>();
             ser.WriteObject(@"guestXML.xml", guestsList);
         }
 
@@ -135,7 +135,7 @@ namespace Hotel.Database
             ser.WriteObject(@"reservationXML.xml", reservationList);
         }
 
-        public void AddNewGuest(User guest)
+        public void AddNewGuest(Guest guest)
         {
             guestsList.Add(guest);
             SerializeGuests();
@@ -153,7 +153,7 @@ namespace Hotel.Database
             SerializeReservations();
         }
 
-        public void DeleteGuest(User guest)
+        public void DeleteGuest(Guest guest)
         {
             guestsList.Remove(guest);
             SerializeGuests();
@@ -177,7 +177,7 @@ namespace Hotel.Database
             SerializeRooms();
         }
 
-        public void UpdateGuest(User guest, User newVal)
+        public void UpdateGuest(Guest guest, Guest newVal)
         {
             guestsList[guestsList.IndexOf(guest)] = newVal;
             SerializeGuests();
