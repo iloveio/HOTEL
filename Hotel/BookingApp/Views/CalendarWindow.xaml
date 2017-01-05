@@ -13,8 +13,8 @@
         <Label x:Name="titleLabel" Content="Wybierz termin:" HorizontalAlignment="Center" Margin="70,22,48,0" VerticalAlignment="Top" Height="39" Width="232" FontSize="24"/>
         <DatePicker x:Name="startDatePicker" SelectedDate="{Binding StartDate, Mode=OneWayToSource}" VerticalContentAlignment="Center"  Margin="181,78,52,169" Width="178" Height="24"/>
         <DatePicker x:Name="endDatePicker" SelectedDate="{Binding EndDate, Mode=OneWayToSource}" VerticalContentAlignment="Center" Margin="181,121,52,126" Width="178" Height="24"/>
-        <Button x:Name="saveButton" Command="{Binding SaveCommand}" Content="Save " Margin="73,198,262,53" Width="76" Background="Black" Foreground="White" Height="20"/>
-        <Button x:Name="cancelbutton" Command="{Binding CancelCommand}" Content="Cancel"  Margin="239,198,97,53"  Width="75" Foreground="White" Background="Black" Height="20"/>
+        <Button x:Name="saveButton" Command="{Binding SaveCommand}" Content="Dalej " Margin="256,198,79,53" Width="76" Background="Black" Foreground="White" Height="20"/>
+        <Button x:Name="cancelbutton" Command="{Binding CancelCommand}" Content="Anuluj"  Margin="75,198,261,53"  Width="75" Foreground="White" Background="Black" Height="20"/>
         <Label x:Name="reservationStart" Content="Początek rezerwacji:" Margin="19,78,272,167" Height="26" Width="120"/>
         <Label x:Name="reservationEnd" Content="Koniec rezerwacji:" Margin="19,121,287,124" Height="26" Width="105"/>
 

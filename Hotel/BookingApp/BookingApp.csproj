@@ -76,13 +76,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ModelController.cs" />
+    <Compile Include="UpdateListView.cs" />
     <Compile Include="ViewModel\CalendarViewModel.cs" />
     <Compile Include="ViewModel\CalendarWindowManager.cs" />
     <Compile Include="ViewModel\ChildWindowManager.cs" />
+    <Compile Include="ViewModel\CleaningViewModel.cs" />
+    <Compile Include="ViewModel\CleaningWindowManager.cs" />
+    <Compile Include="ViewModel\GuestViewModel.cs" />
+    <Compile Include="ViewModel\GuestWindowManager.cs" />
     <Compile Include="ViewModel\RoomSearchViewModel.cs" />
     <Compile Include="ViewModel\ChooseRoomViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\CleaningWindow.xaml.cs">
+      <DependentUpon>CleaningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GuestWindow.xaml.cs">
+      <DependentUpon>GuestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CalendarWindow.xaml.cs">
       <DependentUpon>CalendarWindow.xaml</DependentUpon>
     </Compile>
@@ -103,6 +115,14 @@
     <Compile Include="BookingWindow.xaml.cs">
       <DependentUpon>BookingWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\CleaningWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GuestWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\CalendarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,9 +165,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookingLibrary\BookingLibrary.csproj">
-      <Project>{e6dabd10-b75e-4122-a1d9-93d12897301b}</Project>
-      <Name>BookingLibrary</Name>
+    <ProjectReference Include="..\Hotel\Hotel.csproj">
+      <Project>{e269dc37-fecd-43aa-af77-1eed3f2b4fbb}</Project>
+      <Name>Hotel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

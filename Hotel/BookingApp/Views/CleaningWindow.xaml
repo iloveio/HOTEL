@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="BookingApp.Views.CleaningWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BookingApp.Views"
+             mc:Ignorable="d" 
+             DataContext="{Binding Cleaning, Source={StaticResource Locator}}" Height="271" Width="411">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="titleLabel" Content="Zlecenie sprzątania:" HorizontalContentAlignment="Center" Margin="10,10,10,0" VerticalAlignment="Top" Height="45" Width="391" FontSize="24"/>
+        <Label x:Name="descLabel" Content="Wytyczne dot. pokoju do sprzątnięcia:" HorizontalContentAlignment="Center" Margin="10,57,151,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.478,1.578"/>
+        <Button x:Name="saveButton" Command="{Binding SaveCommand}" Content="Zapisz " Margin="256,214,79,37" Width="76" Background="Black" Foreground="White" Height="20"/>
+        <Button x:Name="cancelbutton" Command="{Binding CancelCommand}" Content="Anuluj"  Margin="75,214,261,37"  Width="75" Foreground="White" Background="Black" Height="20"/>
+        <TextBox x:Name="descriptionBlock" Text="{Binding Description, Mode=OneWayToSource}" HorizontalAlignment="Left" Height="104" Margin="28,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360"/>
+
+    </Grid>
+</UserControl>

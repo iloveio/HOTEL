@@ -1,10 +1,4 @@
-﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	Views\CalendarWindow.xaml.cs
-//
-// summary:	Implements the calendar window.xaml class
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,27 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BookingApp.Model;
+using Hotel.Database;
 
 namespace BookingApp.Views
 {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   Interaction logic for CalendarWindow.xaml. </summary>
-    ///
-    /// <remarks>   Student, 19.12.2016. </remarks>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    /// <summary>
+    /// Interaction logic for CalendarWindow.xaml
+    /// </summary>
     public partial class CalendarWindow : UserControl
     {
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Default constructor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public List<Reservation> ActualReservations { get; set; }
 
         public CalendarWindow()
         {
             InitializeComponent();
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today);
+            var SelectedRoom = ModelController.Instance.SelectedRoomID;
+            ActualReservations = ModelController.Instance.GetReservationsForSelectedRoom(SelectedRoom);
+            foreach (var reservation in ActualReservations)
+            {
+                CalendarDateRange range = new CalendarDateRange(reservation.ReservationStart,reservation.ReservationEnd);
+                startDatePicker.BlackoutDates.Add(range);
+                endDatePicker.BlackoutDates.Add(range);
+            }
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             startDatePicker.BlackoutDates.Add(cdr);
             endDatePicker.BlackoutDates.Add(cdr);
         }

@@ -1,106 +1,88 @@
-﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	ViewModel\ChooseRoomViewModel.cs
-//
-// summary:	Implements the choose room view model class
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
-using BookingLibrary;
-using BookingLibrary.TempDatabase;
+using BookingApp.Model;
+//using Hotel.Database;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using Hotel.Database;
 
 namespace BookingApp.ViewModel
 {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   A ViewModel for the choose room. </summary>
-    ///
-    /// <remarks>   Student, 19.12.2016. </remarks>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public class ChooseRoomViewModel : ViewModelBase
     {
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Default constructor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public ChooseRoomViewModel()
         {
-            ChangeSelectedRoomCommand = new RelayCommand<int>(ChangeSelectedRoom);
-            ChangeSelectedFloorCommand = new RelayCommand<int>(ChangeSelectedFloor);
-            SelectedFloor = 1;
+            //ChangeSelectedRoomCommand = new RelayCommand<int>(ChangeSelectedRoom);
+            //ChangeSelectedFloorCommand = new RelayCommand<int>(ChangeSelectedFloor);
+            //SelectedFloor = 1;
             Rooms = ModelController.Instance.GetRooms();
+            Messenger.Default.Register<UpdateListView>(this, UncheckSelectedRoom);
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the rooms. </summary>
-        ///
-        /// <value> The rooms. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        private void UncheckSelectedRoom(UpdateListView obj)
+        {
+            SelectedRoom = null;
+            ModelController.Instance.SelectedRoomID = 0;
+        }
+
+        //private void FilterList(UpdateListView action)
+        //{
+        //    Rooms = (from r in Rooms
+        //             where r.ToString() == action.PreferredRoom.ToString()
+        //             select r).ToList();
+        //}
 
         public List<Room> Rooms { get; set; }
+        //public Room SelectedRoomID { get; set; }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the selected room. </summary>
-        ///
-        /// <value> The selected room. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //public int SelectedFloor { get; set; }
 
-        public Room SelectedRoom { get; set; }
+        //public ICommand ChangeSelectedRoomCommand { get; set; }
+        //public ICommand ChangeSelectedFloorCommand { get; set; }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the selected floor. </summary>
-        ///
-        /// <value> The selected floor. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //private void ChangeSelectedRoom(int roomId)
+        //{
+        //    //SelectedRoomID = ModelController.Instance.GetRoom(roomId + SelectedFloor * 100);
+        //    MessengerInstance.Send(new PropertyChangedMessage<Room>(SelectedRoomID, SelectedRoomID, "SelectedRoomID"));
+        //}
 
-        public int SelectedFloor { get; set; }
+        //private void ChangeSelectedFloor(int floorId)
+        //{
+        //    SelectedFloor = floorId;
+        //}
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the change selected room command. </summary>
-        ///
-        /// <value> The change selected room command. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        private Room selectedRoom;
 
-        public ICommand ChangeSelectedRoomCommand { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the change selected floor command. </summary>
-        ///
-        /// <value> The change selected floor command. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public ICommand ChangeSelectedFloorCommand { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Change selected room. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="roomId">   Identifier for the room. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        private void ChangeSelectedRoom(int roomId)
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            SelectedRoom = ModelController.Instance.GetRoom(roomId + SelectedFloor * 100);
-            MessengerInstance.Send(new PropertyChangedMessage<Room>(SelectedRoom, SelectedRoom, "SelectedRoom"));
+            if (SelectedRoom == null) return;
+            ModelController.Instance.SelectedRoomID = SelectedRoom.RoomNumber;
+            //PropertyChanged?.Invoke(this, e);
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Change selected floor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="floorId">  Identifier for the floor. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        private void ChangeSelectedFloor(int floorId)
+        protected void OnPropertyChanged(string propertyName)
         {
-            SelectedFloor = floorId;
+            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
+
+        public Room SelectedRoom
+        {
+            get { return selectedRoom; }
+            set
+            {
+                if (value != selectedRoom)
+                {
+                    selectedRoom = value;
+                    OnPropertyChanged("SelectedRoom");
+                }
+            }
+        }
+
+        //public event PropertyChangedEventHandler PropertyChanged;
     }
 }
