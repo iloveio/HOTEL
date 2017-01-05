@@ -73,6 +73,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BrowseEmployeesViewModel.cs" />
+    <Compile Include="Database\Access\AccessManager.cs" />
+    <Compile Include="Database\Accountancy\AccountancyManager.cs" />
+    <Compile Include="Database\Accountancy\Bill.cs" />
+    <Compile Include="Database\Entertainment\Entertainment.cs" />
+    <Compile Include="Database\Entertainment\EntertainmentManager.cs" />
+    <Compile Include="Database\Entertainment\InnerEntertainment.cs" />
+    <Compile Include="Database\Entertainment\OrganisedEvent.cs" />
+    <Compile Include="Database\RoomBooking\Guest.cs" />
+    <Compile Include="Database\RoomBooking\Reservation.cs" />
+    <Compile Include="Database\RoomBooking\Room.cs" />
+    <Compile Include="Database\RoomBooking\RoomBookingManager.cs" />
+    <Compile Include="Database\Staff\ISerializer.cs" />
+    <Compile Include="Database\Staff\MyXmlSerializer.cs" />
+    <Compile Include="Database\Staff\StaffManager.cs" />
+    <Compile Include="Database\Transportation\Transportation.cs" />
+    <Compile Include="Database\Transportation\TransportationManager.cs" />
+    <Compile Include="Database\Transportation\TransportationTestClass.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="AddEmployeeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +176,7 @@
       <Name>HumanResourcesLib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
