@@ -73,20 +73,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BrowseEmployeesViewModel.cs" />
-    <Compile Include="Database\Accountancy\AccountancyContext.cs" />
-    <Compile Include="Database\Accountancy\AccountancyManager.cs" />
-    <Compile Include="Database\Accountancy\Bill.cs" />
-    <Compile Include="Database\RoomBooking\Guest.cs" />
-    <Compile Include="Database\RoomBooking\Room.cs" />
-    <Compile Include="Database\RoomBooking\RoomBookingContext.cs" />
-    <Compile Include="Database\RoomBooking\RoomBookingManager.cs" />
-    <Compile Include="Database\Staff\ISerializer.cs" />
-    <Compile Include="Database\Staff\MyXmlSerializer.cs" />
-    <Compile Include="Database\Staff\StaffManager.cs" />
-    <Compile Include="Database\Transportation\Transportation.cs" />
-    <Compile Include="Database\Transportation\TransportationContext.cs" />
-    <Compile Include="Database\Transportation\TransportationManager.cs" />
-    <Compile Include="Database\Transportation\TransportationTestClass.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="AddEmployeeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
