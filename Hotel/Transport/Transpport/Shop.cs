@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Hotel.Database.Transportation;
+using Hotel.Database;
 
 namespace Hotel.Transpport
 {
@@ -26,7 +26,10 @@ namespace Hotel.Transpport
         {
             if (menager != null)
             {
-                menager.AddNewTransportation(this);
+                Transportation tr = new Transportation();
+                tr.date = this.date;
+                tr.description = produkt.ToString() + "/n Pracownik: " + employee;
+                menager.AddNewTransportation(tr);
                 return true;
             }
             else

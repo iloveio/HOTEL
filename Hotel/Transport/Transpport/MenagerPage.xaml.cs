@@ -35,7 +35,7 @@ namespace Transport.Transpport
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-
+            man.
         }
 
         private void Finish_Click(object sender, RoutedEventArgs e)

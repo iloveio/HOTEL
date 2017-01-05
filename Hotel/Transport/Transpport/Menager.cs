@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Hotel.Database.Transportation;
+using Hotel.Database;
 
 namespace Hotel.Transpport
 {
     public class Menager
     {
-        TransportationManager mengaer;
+        public TransportationManager mengaerDatabase;
         public Menager(TransportationManager men)
         {
-            mengaer = men;
+            mengaerDatabase = men;
         }
 
     }
