@@ -1,52 +1,45 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	ViewModel\MainViewModel.cs
-//
-// summary:	Implements the main view model class
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
+using System;
+using System.Windows;
 using System.Windows.Input;
+using BookingApp.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
 namespace BookingApp.ViewModel
 {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   A ViewModel for the main. </summary>
-    ///
-    /// <remarks>   Student, 19.12.2016. </remarks>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public class MainViewModel : ViewModelBase
     {
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Default constructor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public MainViewModel()
         {
             OpenCalendarCommand = new RelayCommand(OpenCalendarWindow);
+            OpenCleaningCommand = new RelayCommand(OpenCleaningWindow);
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the open calendar command. </summary>
-        ///
-        /// <value> The open calendar command. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public ICommand OpenCalendarCommand { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Opens calendar window. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public ICommand OpenCleaningCommand { get; set; }
 
         void OpenCalendarWindow()
         {
+            if (!CheckIfRoomSelected()) return;
             CalendarWindowManager calendarWindowManager = new CalendarWindowManager();
             calendarWindowManager.Show();
+        }
+
+        void OpenCleaningWindow()
+        {
+            if (!CheckIfRoomSelected()) return;
+            CleaningWindowManager cleaningWindowManager = new CleaningWindowManager();
+            cleaningWindowManager.Show();
+        }
+
+        private bool CheckIfRoomSelected()
+        {
+            if (ModelController.Instance.SelectedRoomID == 0)
+            {
+                MessageBox.Show("Nie wybrano pokoju");
+                return false;
+            }
+            return true;
         }
     }
 }

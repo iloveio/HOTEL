@@ -1,20 +1,13 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	Database\RoomBooking\Guest.cs
+// file:	TempDatabase\User.cs
 //
-// summary:	Implements the guest class
+// summary:	Implements the user class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   A guest. </summary>
+    /// <summary>   An user. </summary>
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,8 +20,7 @@ namespace Hotel.Database
         /// <value> The pesel. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        [Key]
-        public int PESEL { get; set; }
+        public uint PESEL { get; set; }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the name. </summary>
@@ -53,38 +45,5 @@ namespace Hotel.Database
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public string PlaceOfBirth { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Constructor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="pesel">        The pesel. </param>
-        /// <param name="name">         The name. </param>
-        /// <param name="surname">      The person's surname. </param>
-        /// <param name="placeofbirth"> The placeofbirth. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public Guest(int pesel, string name, string surname, string placeofbirth)
-        {
-            this.PESEL = pesel;
-            this.Name = name;
-            this.Surname = surname;
-            this.PlaceOfBirth = placeofbirth;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets the name of the full. </summary>
-        ///
-        /// <value> The name of the full. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public string FullName
-        {
-            get
-            {
-                return Surname + " " + Name;
-            }
-        }
     }
 }

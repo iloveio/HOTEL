@@ -4,7 +4,7 @@
 // summary:	Implements the accountancy manager class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using Hotel.Database.Staff;
+using Hotel.Database;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Hotel.Database.Accountancy
+namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>   Manager for accountancies. </summary>
@@ -40,12 +40,6 @@ namespace Hotel.Database.Accountancy
 
         public void FillDataWithAllBills()
         {
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Bill>));
-            //TextReader reader = new StreamReader(@"./billXML.xml");
-            //object obj = deserializer.Deserialize(reader);
-            //billsList = (List<Bill>)obj;
-            //reader.Close();
-
             try
             {
                 MyXmlSerializer<List<Bill>> serialzier = new MyXmlSerializer<List<Bill>>();
@@ -59,12 +53,6 @@ namespace Hotel.Database.Accountancy
 
         public void SerializeBills()
         {
-            //XmlSerializer serializer = new XmlSerializer(typeof(List<Bill>));
-            //using (TextWriter writer = new StreamWriter(@"./billXML.xml"))
-            //{
-            //    serializer.Serialize(writer, billsList);
-            //}
-
             MyXmlSerializer<List<Bill>> ser = new MyXmlSerializer<List<Bill>>();
             ser.WriteObject(@"billXML.xml", billsList);
         }

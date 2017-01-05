@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 using HumanResourcesLib;
 using System.Runtime.Serialization;
 
-namespace Hotel.Database.Staff
+namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>   Manager for staffs. </summary>

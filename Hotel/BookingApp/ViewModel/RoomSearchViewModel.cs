@@ -1,119 +1,49 @@
-﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	ViewModel\RoomSearchViewModel.cs
-//
-// summary:	Implements the room search view model class
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
-using BookingLibrary;
-using BookingLibrary.TempDatabase;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using Hotel.Database;
 
 namespace BookingApp.ViewModel
 {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   A ViewModel for the room search. </summary>
-    ///
-    /// <remarks>   Student, 19.12.2016. </remarks>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public class RoomSearchViewModel : ViewModelBase
     {
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Default constructor. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public RoomSearchViewModel()
         {
-            RoomDetails = new List<uint> {1, 2, 3, 4};
+            RoomDetails = new List<uint> {1, 2, 3, 4};  //very clever method for binding number of rooms/size in xaml
             SelectedRoom = new Room();
             SearchCommand = new RelayCommand(SaveDesirableRoom);
+            CancelCommand = new RelayCommand(CancelFilter);
             //MessengerInstance.Register<PropertyChangedMessage<Room>>(this, SearchSelectedRoomChanged);
         }
+
+
+
         #region Properties
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the selected room. </summary>
-        ///
-        /// <value> The selected room. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public Room SelectedRoom { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the room details. </summary>
-        ///
-        /// <value> The room details. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public List<uint> RoomDetails { get; set; } 
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the size. </summary>
-        ///
-        /// <value> The size. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public string Size { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the number of rooms. </summary>
-        ///
-        /// <value> The total number of rooms. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public string NumberOfRooms { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets a value indicating whether this object is TV. </summary>
-        ///
-        /// <value> True if this object is tv, false if not. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public bool isTv { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets a value indicating whether this object is balcony. </summary>
-        ///
-        /// <value> True if this object is balcony, false if not. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public bool isBalcony { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets a value indicating whether this object has outlook. </summary>
-        ///
-        /// <value> True if this object has outlook, false if not. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public bool hasOutlook { get; set; }
         #endregion
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets the search command. </summary>
-        ///
-        /// <value> The search command. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
         public ICommand SearchCommand { get; }
+        public ICommand CancelCommand { get; }
         //private void SearchSelectedRoomChanged(PropertyChangedMessage<Room> propertyDetail)
         //{
         //    if (propertyDetail.PropertyName != "SelectedRoom") return;
-        //    SelectedRoom = propertyDetail.NewValue;
-        //    RaisePropertyChanged(() => SelectedRoom);
+        //    SelectedRoomID = propertyDetail.NewValue;
+        //    RaisePropertyChanged(() => SelectedRoomID);
         //}
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Saves the desirable room. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        private void CancelFilter()
+        {
+            var msg = new UpdateListView() { PreferredRoom = null };
+            Messenger.Default.Send<UpdateListView>(msg);
+        }
 
         private void SaveDesirableRoom()
         {
@@ -122,6 +52,9 @@ namespace BookingApp.ViewModel
             SelectedRoom.IsBalcony = isBalcony;
             SelectedRoom.IsTv = isTv;
             SelectedRoom.HasOutlook = hasOutlook;
+
+            var msg = new UpdateListView() { PreferredRoom = SelectedRoom };
+            Messenger.Default.Send<UpdateListView>(msg);
         }
     }
 }

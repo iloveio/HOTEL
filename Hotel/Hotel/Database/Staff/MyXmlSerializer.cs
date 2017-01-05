@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Runtime.Serialization;
 
-namespace Hotel.Database.Staff
+namespace Hotel.Database
 {
     public class MyXmlSerializer<T> : ISerializer<T> where T : class, new()
     {

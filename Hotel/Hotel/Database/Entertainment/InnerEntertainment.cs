@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	ViewModel\CalendarWindowManager.cs
+// file:	InnerEntertainment.cs
 //
-// summary:	Implements the calendar window manager class
+// summary:	Implements the inner entertainment class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
@@ -9,57 +9,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BookingApp.Views;
-using GalaSoft.MvvmLight;
+using Hotel.Database;
 
-namespace BookingApp.ViewModel
+namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   Manager for calendar windows. </summary>
+    /// <summary>   An inner entertainment. </summary>
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public class CalendarWindowManager
+    public class InnerEntertainment : Entertainment
     {
-        /// <summary>   Event queue for all listeners interested in Closed events. </summary>
-        public event Action<int> Closed;
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Default constructor. </summary>
+        /// <summary>   Constructor. </summary>
         ///
         /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public CalendarWindowManager()
-        { 
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Shows this object. </summary>
         ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
+        /// <param name="name">     The name. </param>
+        /// <param name="price">    The price. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public void Show()
+        public InnerEntertainment(string name, float price)
         {
-            CalendarViewModel calendarViewModel = new CalendarViewModel();
-            calendarViewModel.Closed += ChildWindow_Closed;
-            ChildWindowManager.Instance.ShowChildWindow(new CalendarWindow() {DataContext = calendarViewModel});
+            this.name = name;
+            this.price = price;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Child window closed. </summary>
+        /// <summary>   Calculates the payment. </summary>
         ///
         /// <remarks>   Student, 19.12.2016. </remarks>
         ///
-        /// <param name="i">    Zero-based index of the. </param>
+        /// <param name="hoursSpent">   The hours spent. </param>
+        ///
+        /// <returns>   The calculated payment. </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        void ChildWindow_Closed(int i)
+        public double computePayment(int hoursSpent )
         {
-            Closed?.Invoke(i);
-            ChildWindowManager.Instance.CloseChildWindow();
+            return price * hoursSpent;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Print receipt. </summary>
+        ///
+        /// <remarks>   Student, 19.12.2016. </remarks>
+        ///
+        /// <param name="guest">    The guest. </param>
+        ///
+        /// <returns>   A string. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public string printReceipt(Guest guest)
+        {
+            return "Entertainment name: " + name + " \nPrice: " + price
+                + "\nGuest: " + guest.Name + " " + guest.Surname;
+        }
+
     }
 }

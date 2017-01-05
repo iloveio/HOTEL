@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace HumanResourcesLib
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   Values that represent Job Decription Names. </summary>
+    /// <summary>   Values that represent Employee Positon Names. </summary>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    public enum JobDescription
+    public enum Postion
     {
         /// <summary>   An enum constant representing the subordinate position in Accountancy Department. </summary>
         Accounting,

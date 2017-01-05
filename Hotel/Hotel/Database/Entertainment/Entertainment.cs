@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	TempDatabase\Reservation.cs
+// file:	Entertainment.cs
 //
-// summary:	Implements the reservation class
+// summary:	Implements the entertainment class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
@@ -9,66 +9,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hotel.Database;
+using HumanResourcesLib;
 
-namespace BookingLibrary.TempDatabase
+namespace Hotel.Database
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   A reservation. </summary>
+    /// <summary>   An entertainment. </summary>
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public class Reservation
+    public abstract class Entertainment
     {
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Constructor. </summary>
+        /// <summary>   Gets or sets the price. </summary>
+        ///
+        /// <value> The price. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public float price { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the name. </summary>
+        ///
+        /// <value> The name. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public string name { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets a list of employees. </summary>
+        ///
+        /// <value> A List of employees. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public List<Employee> employeeList { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Adds an employee to shift. </summary>
         ///
         /// <remarks>   Student, 19.12.2016. </remarks>
         ///
-        /// <param name="roomId">           Gets or sets the identifier of the room. </param>
-        /// <param name="userId">           Gets or sets the identifier of the user. </param>
-        /// <param name="reservationStart"> Gets or sets the Date/Time of the reservation start. </param>
-        /// <param name="reservationEnd">   Gets or sets the Date/Time of the reservation end. </param>
+        /// <param name="employee"> The employee. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Reservation(uint roomId, uint userId, DateTime reservationStart, DateTime reservationEnd)
+        public void addEmployeeToShift(Employee employee)
         {
-            RoomId = roomId;
-            UserId = userId;
-            ReservationStart = reservationStart;
-            ReservationEnd = reservationEnd;
+            employeeList.Add(employee);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the identifier of the room. </summary>
+        /// <summary>   Removes the employee from shift described by employee. </summary>
         ///
-        /// <value> The identifier of the room. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public uint RoomId { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the identifier of the user. </summary>
+        /// <remarks>   Student, 19.12.2016. </remarks>
         ///
-        /// <value> The identifier of the user. </value>
+        /// <param name="employee"> The employee. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public uint UserId { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the Date/Time of the reservation start. </summary>
-        ///
-        /// <value> The reservation start. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public DateTime ReservationStart { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the Date/Time of the reservation end. </summary>
-        ///
-        /// <value> The reservation end. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public DateTime ReservationEnd { get; set; }
+        public void removeEmployeeFromShift(Employee employee)
+        {
+            employeeList.Remove(employee);
+        }
     }
 }
