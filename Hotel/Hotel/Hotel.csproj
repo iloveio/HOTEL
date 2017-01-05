@@ -72,7 +72,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BrowseEmployeesViewModel.cs" />
     <Compile Include="Database\Access\AccessManager.cs" />
     <Compile Include="Database\Accountancy\AccountancyManager.cs" />
     <Compile Include="Database\Accountancy\Bill.cs" />
@@ -90,19 +89,10 @@
     <Compile Include="Database\Transportation\Transportation.cs" />
     <Compile Include="Database\Transportation\TransportationManager.cs" />
     <Compile Include="Database\Transportation\TransportationTestClass.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModelBase.cs" />
-    <Page Include="AddEmployeeWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="EmployeeDataWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="EmployeeProfileWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="Transpport\Guest.cs" />
     <Compile Include="Transpport\GuestPage.xaml.cs">
       <DependentUpon>GuestPage.xaml</DependentUpon>
@@ -112,23 +102,14 @@
       <DependentUpon>ShopPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transpport\Transport.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="AddEmployeeWindow.xaml.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EmployeeDataWindow.xaml.cs" />
-    <Compile Include="EmployeeProfileWindow.xaml.cs">
-      <DependentUpon>EmployeeProfileWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Transpport\GuestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
