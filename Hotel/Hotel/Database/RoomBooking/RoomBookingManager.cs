@@ -30,25 +30,23 @@ namespace Hotel.Database
 
         public List<Reservation> reservationList { get; set; }
 
+        public List<CleaningJob> cleaningJobList { get; set; }
+
         public RoomBookingManager()
         {
             roomsList = new List<Room>();
             guestsList = new List<Guest>();
             reservationList = new List<Reservation>();
+            cleaningJobList = new List<CleaningJob>();
 
             FillDataWithAllGuests();
             FillDataWithAllReservations();
             FillDataWithAllRooms();
+            FillDataWithAllCleaningJobs();
         }
 
         public void FillDataWithAllRooms()
         {
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Room>));
-            //TextReader reader = new StreamReader(@"./roomXML.xml");
-            //object obj = deserializer.Deserialize(reader);
-            //roomsList = (List<Room>)obj;
-            //reader.Close();
-
             try
             {
                 MyXmlSerializer<List<Room>> serialzier = new MyXmlSerializer<List<Room>>();
@@ -62,12 +60,6 @@ namespace Hotel.Database
 
         public void FillDataWithAllGuests()
         {
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<User>));
-            //TextReader reader = new StreamReader(@"./guestXML.xml");
-            //object obj = deserializer.Deserialize(reader);
-            //guestsList = (List<User>)obj;
-            //reader.Close();
-
             try
             {
                 MyXmlSerializer<List<Guest>> serialzier = new MyXmlSerializer<List<Guest>>();
@@ -81,13 +73,6 @@ namespace Hotel.Database
 
         public void FillDataWithAllReservations()
         {
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Reservation>));
-            //TextReader reader = new StreamReader(@"./reservationXML.xml");
-            //object obj = deserializer.Deserialize(reader);
-            //reservationList = (List<Reservation>)obj;
-            //reader.Close();
-
-
             try
             {
                 MyXmlSerializer<List<Reservation>> serialzier = new MyXmlSerializer<List<Reservation>>();
@@ -99,40 +84,41 @@ namespace Hotel.Database
             }
         }
 
+        public void FillDataWithAllCleaningJobs()
+        {
+            try
+            {
+                MyXmlSerializer<List<CleaningJob>> serialzier = new MyXmlSerializer<List<CleaningJob>>();
+                cleaningJobList = serialzier.ReadObject(@"./cleaningJobXML.xml");
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public void SerializeRooms()
         {
-            //XmlSerializer serializer = new XmlSerializer(typeof(List<Room>));
-            //using (TextWriter writer = new StreamWriter(@"./roomXML.xml"))
-            //{
-            //    serializer.Serialize(writer, roomsList);
-            //}
-
             MyXmlSerializer<List<Room>> ser = new MyXmlSerializer<List<Room>>();
             ser.WriteObject(@"roomXML.xml", roomsList);
         }
 
         public void SerializeGuests()
         {
-            //XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
-            //using (TextWriter writer = new StreamWriter(@"./guestXML.xml"))
-            //{
-            //    serializer.Serialize(writer, guestsList);
-            //}
-
             MyXmlSerializer<List<Guest>> ser = new MyXmlSerializer<List<Guest>>();
             ser.WriteObject(@"guestXML.xml", guestsList);
         }
 
         public void SerializeReservations()
         {
-            //XmlSerializer serializer = new XmlSerializer(typeof(List<Reservation>));
-            //using (TextWriter writer = new StreamWriter(@"./reservationXML.xml"))
-            //{
-            //    serializer.Serialize(writer, reservationList);
-            //}
-
             MyXmlSerializer<List<Reservation>> ser = new MyXmlSerializer<List<Reservation>>();
             ser.WriteObject(@"reservationXML.xml", reservationList);
+        }
+
+        public void SerializeCleaningJobs()
+        {
+            MyXmlSerializer<List<CleaningJob>> ser = new MyXmlSerializer<List<CleaningJob>>();
+            ser.WriteObject(@"cleaningJobXML.xml", cleaningJobList);
         }
 
         public void AddNewGuest(Guest guest)
@@ -153,6 +139,12 @@ namespace Hotel.Database
             SerializeReservations();
         }
 
+        public void AddNewCleaningJob(CleaningJob cJob)
+        {
+            cleaningJobList.Add(cJob);
+            SerializeCleaningJobs();
+        }
+
         public void DeleteGuest(Guest guest)
         {
             guestsList.Remove(guest);
@@ -171,6 +163,12 @@ namespace Hotel.Database
             SerializeReservations();
         }
 
+        public void DeleteCleaningJob(CleaningJob cJob)
+        {
+            cleaningJobList.Remove(cJob);
+            SerializeCleaningJobs();
+        }
+
         public void UpdateRoom(Room room, Room newVal)
         {
             roomsList[roomsList.IndexOf(room)] = newVal;
@@ -187,6 +185,12 @@ namespace Hotel.Database
         {
             reservationList[reservationList.IndexOf(res)] = newVal;
             SerializeReservations();
+        }
+
+        public void UpdateCleaningJob(CleaningJob cJob, CleaningJob newVal)
+        {
+            cleaningJobList[cleaningJobList.IndexOf(cJob)] = newVal;
+            SerializeCleaningJobs();
         }
     }
 }
