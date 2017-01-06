@@ -20,6 +20,7 @@ namespace Hotel.Database
 
     public class Room
     {
+        public Room() { }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the room number. </summary>
         ///

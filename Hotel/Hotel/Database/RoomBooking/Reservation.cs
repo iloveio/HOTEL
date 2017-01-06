@@ -20,6 +20,8 @@ namespace Hotel.Database
 
     public class Reservation
     {
+        public Reservation() { }
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Constructor. </summary>
         ///

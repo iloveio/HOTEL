@@ -14,6 +14,8 @@ namespace Hotel.Database
 
     public class Guest
     {
+        public Guest() { }
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the pesel. </summary>
         ///

@@ -27,9 +27,9 @@ namespace Hotel.Database
         public List<Room> roomsList { get; set; }
         /// <summary>   List of guests. </summary>
         public List<Guest> guestsList { get; set; }
-
+        /// <summary>   List of reservations. </summary>
         public List<Reservation> reservationList { get; set; }
-
+        /// <summary>   List of cleaning jobs. </summary>
         public List<CleaningJob> cleaningJobList { get; set; }
 
         public RoomBookingManager()
