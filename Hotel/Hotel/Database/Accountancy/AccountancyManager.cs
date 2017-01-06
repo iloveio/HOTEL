@@ -1,10 +1,4 @@
-﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	Database\Accountancy\AccountancyManager.cs
-//
-// summary:	Implements the accountancy manager class
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using Hotel.Database;
+﻿using Hotel.Database;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,17 +8,21 @@ using System.Xml.Serialization;
 
 namespace Hotel.Database
 {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   Manager for accountancies. </summary>
-    ///
-    /// <remarks>   Student, 19.12.2016. </remarks>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /// <summary>
+    /// Class AccountancyManager.
+    /// </summary>
     public class AccountancyManager
     {
-        /// <summary>   List of bills. </summary>
+        /// <summary>
+        /// Gets or sets the bills list.
+        /// </summary>
+        /// <value>The bills list.</value>
         public List<Bill> billsList { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountancyManager"/> class.
+        /// </summary>
         public AccountancyManager()
         {
             billsList = new List<Bill>();
@@ -32,12 +30,9 @@ namespace Hotel.Database
             FillDataWithAllBills();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Fill data with all bills. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        /// <summary>
+        /// Fills the data with all bills.
+        /// </summary>
         public void FillDataWithAllBills()
         {
             try
@@ -51,41 +46,41 @@ namespace Hotel.Database
             }
         }
 
+        /// <summary>
+        /// Serializes the bills.
+        /// </summary>
         public void SerializeBills()
         {
             MyXmlSerializer<List<Bill>> ser = new MyXmlSerializer<List<Bill>>();
             ser.WriteObject(@"billXML.xml", billsList);
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a new bill. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="bill"> The bill. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        /// <summary>
+        /// Adds the new bill.
+        /// </summary>
+        /// <param name="bill">The bill.</param>
         public void AddNewBill(Bill bill)
         {
             billsList.Add(bill);
             SerializeBills();
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Deletes the bill by object described by bill. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="bill"> The bill. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        /// <summary>
+        /// Deletes the bill by object.
+        /// </summary>
+        /// <param name="bill">The bill.</param>
         public void DeleteBillByObject(Bill bill)
         {
             billsList.Remove(bill);
             SerializeBills();
         }
 
-        public void UpdateTransport(Bill trans, Bill newVal)
+        /// <summary>
+        /// Updates the bill.
+        /// </summary>
+        /// <param name="trans">The trans.</param>
+        /// <param name="newVal">The new value.</param>
+        public void UpdateBill(Bill trans, Bill newVal)
         {
             billsList[billsList.IndexOf(trans)] = newVal;
             SerializeBills();
