@@ -13,7 +13,7 @@ namespace Hotel.Database
     /// <summary>
     /// Class AccessManager.
     /// </summary>
-    class AccessManager
+    public class AccessManager
     {
         /// <summary>
         /// Gets or sets the user list.
