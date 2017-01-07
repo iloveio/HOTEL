@@ -79,6 +79,7 @@
     <Compile Include="Database\Entertainment\EntertainmentManager.cs" />
     <Compile Include="Database\Entertainment\InnerEntertainment.cs" />
     <Compile Include="Database\Entertainment\OrganisedEvent.cs" />
+    <Compile Include="Database\RoomBooking\CleaningJob.cs" />
     <Compile Include="Database\RoomBooking\Guest.cs" />
     <Compile Include="Database\RoomBooking\Reservation.cs" />
     <Compile Include="Database\RoomBooking\Room.cs" />
