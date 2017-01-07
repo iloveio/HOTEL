@@ -9,7 +9,7 @@ namespace Hotel.Database
     /// <summary>
     /// Class EntertainmentManager.
     /// </summary>
-    class EntertainmentManager
+    public class EntertainmentManager
     {
         /// <summary>
         /// The innier entertainment list

@@ -14,6 +14,14 @@ namespace Hotel.Database
 
     public class Guest
     {
+        public Guest(uint pesel, string name, string surname, string placeOfBirth)
+        {
+            PESEL = pesel;
+            Name = name;
+            Surname = surname;
+            PlaceOfBirth = placeOfBirth;
+        }
+
         public Guest() { }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
