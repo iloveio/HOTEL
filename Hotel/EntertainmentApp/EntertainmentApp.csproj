@@ -77,8 +77,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OurData.cs" />
-    <Compile Include="InnerEntertainment.cs" />
-    <Compile Include="Entertainment.cs" />
     <Compile Include="EntertainmentWindow.xaml.cs">
       <DependentUpon>EntertainmentWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -93,7 +91,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrganisedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

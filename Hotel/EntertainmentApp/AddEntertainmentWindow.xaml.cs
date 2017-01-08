@@ -5,10 +5,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Linq;
 using System.Windows;
 using Hotel.Database;
-using Hotel.Database.Staff;
 using HumanResourcesLib;
 
 namespace EntertainmentApp
@@ -51,6 +49,8 @@ namespace EntertainmentApp
                 cenaTextBox.Text = entertainment.price.ToString();
                 maxGosciTextBox.Text = entertainment.maximumNumberOfGuests.ToString();
                 managerComboBox.Text = entertainment.supervisor.ToString();
+                datePickerStart.Text = entertainment.startDate;
+                datePickerEnd.Text = entertainment.endDate;
                 
                 entIsNull = false;
             }
@@ -90,6 +90,5 @@ namespace EntertainmentApp
         {
             Close();
         }
-        
     }
 }

@@ -7,7 +7,6 @@
 using System;
 using System.Collections.Generic;
 using Hotel.Database;
-using Hotel.Database.Staff;
 using HumanResourcesLib;
 
 namespace EntertainmentApp
@@ -75,39 +74,5 @@ namespace EntertainmentApp
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Supervisor supervisor { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets a list of guests. </summary>
-        ///
-        /// <value> A List of guests. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public List<Guest> guestList { get; set; }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Adds a guest. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="guest">    The guest. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void addGuest(Guest guest)
-        {
-            guestList.Add(guest);
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Removes the guest described by guest. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="guest">    The guest. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public void removeGuest(Guest guest)
-        {
-            guestList.Remove(guest);
-        }
     }
 }

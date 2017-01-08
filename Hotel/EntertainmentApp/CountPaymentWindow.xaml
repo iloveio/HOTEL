@@ -8,7 +8,16 @@
         mc:Ignorable="d"
         Title="Policz opłatę" Height="237.126" Width="300">
     <Grid>
-        <ComboBox x:Name="guestComboBox" DisplayMemberPath="FullName" HorizontalAlignment="Left" Margin="96,47,0,0" VerticalAlignment="Top" Width="168" IsEditable="True" SelectionChanged="guestComboBox_SelectionChanged">
+        <ComboBox x:Name="guestComboBox" HorizontalAlignment="Left" Margin="96,47,0,0" VerticalAlignment="Top" Width="168" IsEditable="True">
+            <!--<ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text=" " />
+                        <TextBlock Text="{Binding Surname}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>-->
         </ComboBox>
         <ComboBox x:Name="hoursComboBox" HorizontalAlignment="Left" Margin="96,87,0,0" VerticalAlignment="Top" Width="45" SelectionChanged="hoursComboBox_SelectionChanged">
             <ComboBox.ItemsSource>

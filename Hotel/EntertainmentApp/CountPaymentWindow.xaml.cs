@@ -8,7 +8,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using Hotel.Database.Accountancy;
+using Hotel.Database;
 
 namespace EntertainmentApp
 {
@@ -124,20 +124,6 @@ namespace EntertainmentApp
             bool parseOK = Int32.TryParse(hoursComboBox.SelectedValue.ToString(), out hours);
             overallPrice = innEnt.price * hours;
             priceLabel.Content = overallPrice;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Event handler. Called by guestComboBox for selection changed events. </summary>
-        ///
-        /// <remarks>   Student, 19.12.2016. </remarks>
-        ///
-        /// <param name="sender">   Source of the event. </param>
-        /// <param name="e">        Selection changed event information. </param>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        private void guestComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
