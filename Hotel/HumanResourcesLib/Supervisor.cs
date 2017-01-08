@@ -162,6 +162,11 @@ namespace HumanResourcesLib
             this.employees.Add(tmp);
             return tmp;
         }
+
+        override public string ToString()
+        {
+            return name + " " + lastName;
+        }
     }
      
 }

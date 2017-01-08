@@ -55,5 +55,10 @@ namespace Hotel.Database
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public string PlaceOfBirth { get; set; }
+
+        override public string ToString()
+        {
+            return Name + " " + Surname;
+        }
     }
 }
