@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hotel.Database;
+using Transport.Transpport;
 
-namespace Hotel.Transpport
+namespace Hotel.Transpport.Dane
 {
     public class Guest : Transport
     {
@@ -13,10 +14,12 @@ namespace Hotel.Transpport
         public string destination;
         public int howMany;
         private TransportationManager menager;
+        GuestWindow page;
 
         public Guest(TransportationManager men)
         {
             menager = men;
+            page = new GuestWindow(this);
         }
         public Guest()
         {
@@ -36,6 +39,10 @@ namespace Hotel.Transpport
             {
                 return false;
             }
+        }
+        public void Show()
+        {
+            page.Show();
         }
     }  
 }

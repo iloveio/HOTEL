@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hotel.Database;
+using Transport.Transpport;
 
-namespace Hotel.Transpport
+namespace Hotel.Transpport.Dane
 {
-    class Shop :Transport
+    public class Shop :Transport
     {
         List<Object> produkt;
+        ShopWindow page;
         private TransportationManager menager;
         public Shop(List<Object> prod)
         {
             produkt = prod;
+            page = new ShopWindow(this);
             menager = new TransportationManager();
         }
 
@@ -20,6 +23,7 @@ namespace Hotel.Transpport
         {
             produkt = prod;
             menager = men;
+            page = new ShopWindow(this);
         }
 
         public override bool Save()
@@ -30,12 +34,17 @@ namespace Hotel.Transpport
                 tr.date = this.date;
                 tr.description = produkt.ToString() + "/n Pracownik: " + employee;
                 menager.AddNewTransportation(tr);
+                menager.SerializeTransport();
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+        public void Show()
+        {
+            page.Show();
         }
     }
 }

@@ -10,7 +10,7 @@
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="148" Margin="26,40,0,0" VerticalAlignment="Top" Width="230" SelectionChanged="listBox_SelectionChanged"/>
         <TextBox x:Name="information" HorizontalAlignment="Left" Height="25" Margin="26,10,0,0" TextWrapping="Wrap" Text="Chose order" VerticalAlignment="Top" Width="184" IsEnabled="False"/>
         <Button x:Name="button" HorizontalAlignment="Left" Height="37" Margin="26,193,0,0" VerticalAlignment="Top" Width="75">
-            <Button x:Name="Delete" Content="Delete" Width="74" Click="Edit_Click"/>
+            <Button x:Name="Delete" Content="Delete" Width="74" Click="Delete_Click"/>
         </Button>
         <Button x:Name="Finish" Content="Finish" HorizontalAlignment="Left" Height="37" Margin="101,193,0,0" VerticalAlignment="Top" Width="87" Click="Finish_Click"/>
         <Button x:Name="Edit" Content="Edit" HorizontalAlignment="Left" Height="37" Margin="188,193,0,0" VerticalAlignment="Top" Width="68"/>

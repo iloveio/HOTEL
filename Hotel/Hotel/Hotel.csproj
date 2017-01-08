@@ -95,27 +95,13 @@
     </Compile>
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="Transpport\Guest.cs" />
-    <Compile Include="Transpport\GuestPage.xaml.cs">
-      <DependentUpon>GuestPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Transpport\Shop.cs" />
-    <Compile Include="Transpport\ShopPage.xaml.cs">
-      <DependentUpon>ShopPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Transpport\Transport.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Transpport\GuestPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Transpport\ShopPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

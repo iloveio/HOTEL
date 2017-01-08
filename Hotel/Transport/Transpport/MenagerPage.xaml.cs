@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hotel.Transpport;
+using Hotel.Database;
+
 
 
 namespace Transport.Transpport
@@ -33,19 +35,27 @@ namespace Transport.Transpport
 
         }
 
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            man.
-        }
 
         private void Finish_Click(object sender, RoutedEventArgs e)
         {
-
+            Transportation selected = (Transportation)listBox.SelectedItem;
+           // man.Pay(selected.cost);
+            man.Delete(selected);
         }
 
         private void Edit_Click_1(object sender, RoutedEventArgs e)
         {
+            Transportation tr = new Transportation();
+            Transportation selected = (Transportation)listBox.SelectedItem;
+            Window po = new EditMenager();
+            po.Show();
+            man.Edit(selected, tr );
+        }
 
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Transportation selected = (Transportation)listBox.SelectedItem;
+            man.Delete(selected);
         }
     }
 }
