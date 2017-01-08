@@ -33,7 +33,7 @@ namespace Hotel.Database
             //Transportation trans2 = new Transportation(new Employee(), DateTime.Now, "cos tam2");
             //Transportation trans3 = new Transportation(new Employee(), DateTime.Now, "cos tam3");
             //TransportationManager manager = new TransportationManager();
-            ////Subordinate dir = new Subordinate("we", "ewwe", 1, null, 12, null);
+            //Subordinate dir = new Subordinate("we", "ewwe", 1, null, 12, null);
             //Transportation trans = new Transportation(dir, DateTime.Now, "dssddasda");
 
             //manager.AddNewTransportation(trans);
@@ -43,7 +43,7 @@ namespace Hotel.Database
             //manager.AddNewTransportation(trans1);
             //manager.AddNewTransportation(trans2);
             //manager.AddNewTransportation(trans3);
-            
+
         }
     }
 }

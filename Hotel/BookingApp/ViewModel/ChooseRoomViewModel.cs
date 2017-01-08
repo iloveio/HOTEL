@@ -1,4 +1,10 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+// file:	viewmodel\chooseroomviewmodel.cs
+//
+// summary:	Implements the chooseroomviewmodel class
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -13,8 +19,20 @@ using Hotel.Database;
 
 namespace BookingApp.ViewModel
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A ViewModel for the choose room. </summary>
+    ///
+    /// <remarks>   Radek, 08.01.2017. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class ChooseRoomViewModel : ViewModelBase
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Radek, 08.01.2017. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public ChooseRoomViewModel()
         {
             //ChangeSelectedRoomCommand = new RelayCommand<int>(ChangeSelectedRoom);
@@ -23,6 +41,14 @@ namespace BookingApp.ViewModel
             Rooms = ModelController.Instance.GetRooms();
             Messenger.Default.Register<UpdateListView>(this, UncheckSelectedRoom);
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Uncheck selected room. </summary>
+        ///
+        /// <remarks>   Radek, 08.01.2017. </remarks>
+        ///
+        /// <param name="obj">  The object. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void UncheckSelectedRoom(UpdateListView obj)
         {
@@ -36,6 +62,12 @@ namespace BookingApp.ViewModel
         //             where r.ToString() == action.PreferredRoom.ToString()
         //             select r).ToList();
         //}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the rooms. </summary>
+        ///
+        /// <value> The rooms. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Room> Rooms { get; set; }
         //public Room SelectedRoomID { get; set; }
@@ -56,7 +88,16 @@ namespace BookingApp.ViewModel
         //    SelectedFloor = floorId;
         //}
 
+        /// <summary>   The selected room. </summary>
         private Room selectedRoom;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Executes the property changed action. </summary>
+        ///
+        /// <remarks>   Radek, 08.01.2017. </remarks>
+        ///
+        /// <param name="e">    Event information to send to registered event handlers. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
@@ -65,10 +106,24 @@ namespace BookingApp.ViewModel
             //PropertyChanged?.Invoke(this, e);
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Executes the property changed action. </summary>
+        ///
+        /// <remarks>   Radek, 08.01.2017. </remarks>
+        ///
+        /// <param name="propertyName"> Name of the property. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         protected void OnPropertyChanged(string propertyName)
         {
             OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets or sets the selected room. </summary>
+        ///
+        /// <value> The selected room. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Room SelectedRoom
         {
