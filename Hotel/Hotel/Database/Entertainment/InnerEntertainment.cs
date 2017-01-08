@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hotel.Database;
+using System.Runtime.Serialization;
 
 namespace Hotel.Database
 {
@@ -18,7 +19,7 @@ namespace Hotel.Database
     ///
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    [DataContract]
     public class InnerEntertainment : Entertainment
     {
         ////////////////////////////////////////////////////////////////////////////////////////////////////
