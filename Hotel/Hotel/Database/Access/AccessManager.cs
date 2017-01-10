@@ -32,6 +32,7 @@ namespace Hotel.Database
             userList.AddRange(mgr.employeeList);
             userList.AddRange(mgr.subordinatesList);
             userList.AddRange(mgr.supervisorList);
+            userList.AddRange(mgr.userList);
         }
 
         /// <summary>
