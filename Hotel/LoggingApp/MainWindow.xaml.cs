@@ -58,9 +58,7 @@ namespace LoggingApp
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            LoggingWindow loggingWindow = new LoggingWindow();
-            loggingWindow.Show();
-            this.Close();     
+            this.Close();
         }
 
     }

@@ -109,16 +109,13 @@ namespace LoggingApp
                     dane.Password = passwordBox.Password;
                 }
 
-                //AccessManager access = new AccessManager();
-                // if(access.CheckAuthorization(dane.Login, dane.Password) == dane)
-                //{
-                //    MessageBox.Show("Zalogowano pomyślnie!");
-                //   MainWindow mainWindow = new MainWindow();
-                //   mainWindow.Show();
-                // }
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
+                AccessManager access = new AccessManager();
+                if(access.CheckAuthorization(dane.Login, dane.Password) == dane)
+                {
+                    MessageBox.Show("Zalogowano pomyślnie!");
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                }
             }
             catch (Exception)
             {
