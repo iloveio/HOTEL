@@ -1,0 +1,16 @@
+﻿<Window x:Class="Kitchen.IncomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kitchen"
+        mc:Ignorable="d"
+        Title="IncomeWindow" Height="400" Width="400">
+    <Grid>
+        <Label x:Name="label" Content="Income" FontSize="20" HorizontalAlignment="Left" Margin="150,24,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Total income today is:" FontSize="15" HorizontalAlignment="Left" Margin="71,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Tutaj bind income" HorizontalAlignment="Left" Margin="250,154,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Send income to accountancy" HorizontalAlignment="Left" Margin="103,280,0,0" VerticalAlignment="Top" Width="168"/>
+
+    </Grid>
+</Window>
