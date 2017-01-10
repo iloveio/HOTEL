@@ -64,6 +64,9 @@
     <Compile Include="LoggingWindow.xaml.cs">
       <DependentUpon>LoggingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -101,10 +104,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegisterWindow..xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookingApp\BookingApp.csproj">
+      <Project>{20c2c418-9434-4306-813e-b4b3dad641cd}</Project>
+      <Name>BookingApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntertainmentApp\EntertainmentApp.csproj">
+      <Project>{8cb98dee-f1ed-427a-8977-df942c8e77d3}</Project>
+      <Name>EntertainmentApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel\Hotel.csproj">
+      <Project>{e269dc37-fecd-43aa-af77-1eed3f2b4fbb}</Project>
+      <Name>Hotel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HumanResourcesLib\HumanResourcesLib.csproj">
+      <Project>{4bf7395d-6627-4410-8078-2c1fe5fe7eca}</Project>
+      <Name>HumanResourcesLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Transport\Transport.csproj">
+      <Project>{7478a262-f43a-45d2-863b-e85844237004}</Project>
+      <Name>Transport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
