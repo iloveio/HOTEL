@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hotel.Database;
 
 namespace LoggingApp
 {
@@ -18,20 +19,8 @@ namespace LoggingApp
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public class Logging
+    public class Logging : HumanResourcesLib.User
     {
-        /// <summary>   The login. </summary>
-        private string login;
-        /// <summary>   The password. </summary>
-        private string password;
-        /// <summary>   The person's first name. </summary>
-        private string firstName;
-        /// <summary>   The person's last name. </summary>
-        private string lastName;
-        /// <summary>   The birth date. </summary>
-        private string birthDate;
-        /// <summary>   The phone number. </summary>
-        private int phoneNumber;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the login. </summary>
@@ -77,16 +66,16 @@ namespace LoggingApp
         /// <value> The name of the first. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string FirstName
+        public string Name
         {
             get
             {
-                return firstName;
+                return name;
             }
 
             set
             {
-                firstName = value;
+                name = value;
             }
         }
 
@@ -109,42 +98,5 @@ namespace LoggingApp
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the birth date. </summary>
-        ///
-        /// <value> The birth date. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public string BirthDate
-        {
-            get
-            {
-                return birthDate;
-            }
-
-            set
-            {
-                birthDate = value;
-            }
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// <summary>   Gets or sets the phone number. </summary>
-        ///
-        /// <value> The phone number. </value>
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public int PhoneNumber
-        {
-            get
-            {
-                return phoneNumber;
-            }
-
-            set
-            {
-                phoneNumber = value;
-            }
-        }
     }
 }

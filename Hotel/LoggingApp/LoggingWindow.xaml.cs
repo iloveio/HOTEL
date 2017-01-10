@@ -18,7 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Liphsoft.Crypto.Argon2;
+using Hotel.Database;
 
 namespace LoggingApp
 {
@@ -85,7 +85,6 @@ namespace LoggingApp
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             Logging dane = new Logging();
-            var hasher = new PasswordHasher();
             try
             {
                 if (string.IsNullOrWhiteSpace(loginTextBox.Text))
@@ -107,10 +106,16 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.Password = hasher.Hash(passwordBox.Password);
+                    dane.Password = passwordBox.Password;
                 }
 
-                MessageBox.Show("Login: " + dane.Login + "\nHasło: " + dane.Password);
+                AccessManager access = new AccessManager();
+                if(access.CheckAuthorization(dane.Login, dane.Password) == dane)
+                {
+                    MessageBox.Show("Zalogowano pomyślnie!");
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                }
             }
             catch (Exception)
             {
