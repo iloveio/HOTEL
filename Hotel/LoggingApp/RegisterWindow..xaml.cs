@@ -109,6 +109,7 @@ namespace LoggingApp
                 StaffManager staff = new StaffManager();
                 staff.AddNewUser(dane);
                 MessageBox.Show("Zarejestrowano nowego użytkownika!");
+                this.Close();
             }
             catch (Exception)
             {
