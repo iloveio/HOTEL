@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel", "Hotel\Hotel.csproj", "{E269DC37-FECD-43AA-AF77-1EED3F2B4FBB}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transport", "Transport\Transport.csproj", "{7478A262-F43A-45D2-863B-E85844237004}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffGUI", "StaffGUI\StaffGUI.csproj", "{E973BFBF-1318-4C13-86E0-B2FB9C4A2401}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kitchen", "KitchenApp\Kitchen.csproj", "{8C97A2FF-01E0-4DA2-B844-10DF0F4BF704}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{E973BFBF-1318-4C13-86E0-B2FB9C4A2401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E973BFBF-1318-4C13-86E0-B2FB9C4A2401}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E973BFBF-1318-4C13-86E0-B2FB9C4A2401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C97A2FF-01E0-4DA2-B844-10DF0F4BF704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C97A2FF-01E0-4DA2-B844-10DF0F4BF704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C97A2FF-01E0-4DA2-B844-10DF0F4BF704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C97A2FF-01E0-4DA2-B844-10DF0F4BF704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
