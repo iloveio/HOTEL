@@ -64,9 +64,12 @@
     <Compile Include="LoggingWindow.xaml.cs">
       <DependentUpon>LoggingWindow.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+=======
+>>>>>>> a35dc3d38c5287ed9e248937c8f867d8f07effe0
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
