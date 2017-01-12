@@ -74,20 +74,18 @@ namespace Hotel.Database
         public StaffManager()
         {
             directorList = new List<Director>();
-            //employeeStatusList = new List<EmployeeStatus>();
             jobsList = new List<Job>();
             subordinatesList = new List<Subordinate>();
             supervisorList = new List<Supervisor>();
             employeeList = new List<Employee>();
             userList = new List<User>();
             
-            //FillDataWithAllDirectors();
-            ////FillDataWithAllEmployeeStatus();
-            //FillDataWithAllJobs();
-            //FillDataWithAllSubordinates();
-            //FillDataWithAllSupervisor();
-            //FillDataWithAllEmployee();
-            //FillDataWithAllUser();
+            FillDataWithAllDirectors();
+            FillDataWithAllJobs();
+            FillDataWithAllSubordinates();
+            FillDataWithAllSupervisor();
+            FillDataWithAllEmployee();
+            FillDataWithAllUser();
         }
 
         /// <summary>
@@ -117,13 +115,6 @@ namespace Hotel.Database
         /// </summary>
         public void FillDataWithAllSubordinates()
         {
-            //Deserialize
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Subordinate>));
-            //TextReader reader = new StreamReader(@"./subordinatesXML.xml");
-            //object obj = deserializer.Deserialize(reader);
-            //subordinatesList = (List<Subordinate>)obj;
-            //reader.Close();
-
             MyXmlSerializer<List<Subordinate>> serialzier = new MyXmlSerializer<List<Subordinate>>();
             subordinatesList = serialzier.ReadObject(@"./subordinatesXML.xml");
         }
@@ -143,12 +134,8 @@ namespace Hotel.Database
         /// </summary>
         public void FillDataWithAllEmployee()
         {
-            //Deserialize
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<Employee>));
-            //TextReader reader = new StreamReader(@"./employeeXML.xml");
-            //object obj = deserializer.Deserialize(reader);
-            //employeeList = (List<Employee>)obj;
-            //reader.Close();
+            MyXmlSerializer<List<Employee>> serialzier = new MyXmlSerializer<List<Employee>>();
+            employeeList = serialzier.ReadObject(@"./employeeXML.xml");
         }
 
         /// <summary>
@@ -156,12 +143,8 @@ namespace Hotel.Database
         /// </summary>
         public void FillDataWithAllUser()
         {
-            //Deserialize
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<User>));
-            //TextReader reader = new StreamReader(@"./userXML.xml");
-            //object obj = deserializer.Deserialize(reader);
-            //userList = (List<User>)obj;
-            //reader.Close();
+            MyXmlSerializer<List<User>> serialzier = new MyXmlSerializer<List<User>>();
+            userList = serialzier.ReadObject(@"./userXML.xml");
         }
 
         /// <summary>
@@ -219,6 +202,8 @@ namespace Hotel.Database
             //{
             //    serializer.Serialize(writer, employeeList);
             //}
+            MyXmlSerializer<List<Employee>> ser = new MyXmlSerializer<List<Employee>>();
+            ser.WriteObject(@"./employeeXML.xml", employeeList);
         }
 
         /// <summary>
@@ -231,6 +216,8 @@ namespace Hotel.Database
             //{
             //    serializer.Serialize(writer, employeeList);
             //}
+            MyXmlSerializer<List<User>> ser = new MyXmlSerializer<List<User>>();
+            ser.WriteObject(@"./userXML.xml", userList);
         }
 
         /// <summary>
@@ -290,7 +277,7 @@ namespace Hotel.Database
         public void AddNewUser(User user)
         {
             userList.Add(user);
-            SerializeEmployee();
+            SerializeUser();
         }
 
         /// <summary>
