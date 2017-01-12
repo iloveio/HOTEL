@@ -130,6 +130,10 @@
       <Project>{4bf7395d-6627-4410-8078-2c1fe5fe7eca}</Project>
       <Name>HumanResourcesLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KitchenApp\Kitchen.csproj">
+      <Project>{8c97a2ff-01e0-4da2-b844-10df0f4bf704}</Project>
+      <Name>Kitchen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Transport\Transport.csproj">
       <Project>{7478a262-f43a-45d2-863b-e85844237004}</Project>
       <Name>Transport</Name>

@@ -43,13 +43,15 @@ namespace LoggingApp
 
         private void bookingButton_Click(object sender, RoutedEventArgs e)
         {
-            BookingApp.BookingWindow bookingWindow = new BookingApp.BookingWindow();
-            bookingWindow.Show();
+            //BookingApp.App bookingWindow = new BookingApp.App();
+            //bookingWindow.InitializeComponent();
+            //bookingWindow.Run();
         }
 
         private void kitchenButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //Kitchen.MainWindow kitchenWindow = new Kitchen.MainWindow();
+            //kitchenWindow.Show();
         }
         private void accountancyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -58,6 +60,8 @@ namespace LoggingApp
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
+            LoggingWindow loggingWindow = new LoggingWindow();
+            loggingWindow.Show();
             this.Close();
         }
 
