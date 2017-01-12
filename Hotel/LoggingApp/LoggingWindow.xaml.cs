@@ -109,7 +109,7 @@ namespace LoggingApp
                     dane.Password = passwordBox.Password;
                 }
 
-                AccessManager access = new AccessManager();
+               //AccessManager access = new AccessManager();
                // if(access.CheckAuthorization(dane.Login, dane.Password) == dane)
                // {
                //     MessageBox.Show("Zalogowano pomyślnie!");
