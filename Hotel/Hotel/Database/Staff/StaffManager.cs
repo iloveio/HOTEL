@@ -84,8 +84,8 @@ namespace Hotel.Database
             FillDataWithAllJobs();
             FillDataWithAllSubordinates();
             FillDataWithAllSupervisor();
-            FillDataWithAllEmployee();
-            FillDataWithAllUser();
+            //FillDataWithAllEmployee();
+            //FillDataWithAllUser();
         }
 
         /// <summary>

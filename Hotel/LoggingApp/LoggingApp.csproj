@@ -60,6 +60,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ISession.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="LoggingWindow.xaml.cs">
       <DependentUpon>LoggingWindow.xaml</DependentUpon>
@@ -83,6 +84,7 @@
     <Compile Include="RegisterWindow..xaml.cs">
       <DependentUpon>RegisterWindow..xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserSession.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -133,6 +135,10 @@
     <ProjectReference Include="..\KitchenApp\Kitchen.csproj">
       <Project>{8c97a2ff-01e0-4da2-b844-10df0f4bf704}</Project>
       <Name>Kitchen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StaffGUI\StaffGUI.csproj">
+      <Project>{e973bfbf-1318-4c13-86e0-b2fb9c4a2401}</Project>
+      <Name>StaffGUI</Name>
     </ProjectReference>
     <ProjectReference Include="..\Transport\Transport.csproj">
       <Project>{7478a262-f43a-45d2-863b-e85844237004}</Project>

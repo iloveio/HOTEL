@@ -4,7 +4,7 @@
 // summary:	Implements the add employee window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using Hotel.Database.Staff;
+using Hotel.Database;
 using HumanResourcesLib;
 using System;
 using System.Collections.Generic;

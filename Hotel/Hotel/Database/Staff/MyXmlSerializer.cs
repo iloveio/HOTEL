@@ -22,17 +22,25 @@ namespace Hotel.Database
 
         public T ReadObject(string fileName)
         {
+            
+
             T deserializedObject;
-            using (FileStream fs = new FileStream(fileName, FileMode.Open))
-            {
-               deserializedObject = (T) serializer.ReadObject(fs);
-            }
-            return deserializedObject;
+
+                using (FileStream fs = new FileStream(fileName, FileMode.Open))
+                {
+                    deserializedObject = (T)serializer.ReadObject(fs);
+                }
+                return deserializedObject;
+
         }
 
-        public void WriteObject(string filename, T Object)
+        public void WriteObject(string fileName, T Object)
         {
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            if (fileName == null)
+                throw new ArgumentNullException(nameof(fileName));
+            if (Object == null)
+                throw new ArgumentNullException(nameof(Object));
+            using (FileStream fs = new FileStream(fileName, FileMode.Create))
             {
                 serializer.WriteObject(fs, Object);
             }

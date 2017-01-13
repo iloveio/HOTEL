@@ -37,8 +37,8 @@ namespace LoggingApp
 
         private void staffButton_Click(object sender, RoutedEventArgs e)
         {
-            //StaffGUI.MainWindow staffWindow = new StaffGUI.MainWindow();
-            //staffWindow.Show();
+            StaffGUI.MainWindow staffWindow = new StaffGUI.MainWindow();
+            staffWindow.Show();
         }
 
         private void bookingButton_Click(object sender, RoutedEventArgs e)

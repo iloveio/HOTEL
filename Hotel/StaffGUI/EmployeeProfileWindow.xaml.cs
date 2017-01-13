@@ -4,7 +4,7 @@
 // summary:	Implements the employee profile window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using Hotel.Database.Staff;
+using Hotel.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
