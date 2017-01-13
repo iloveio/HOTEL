@@ -84,7 +84,8 @@ namespace LoggingApp
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            Logging dane = new Logging();
+            UserSession newSession = new UserSession();
+            //Logging dane = new Logging();
             try
             {
                 if (string.IsNullOrWhiteSpace(loginTextBox.Text))
@@ -95,7 +96,8 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.Login = loginTextBox.Text;
+                    //dane.Login = loginTextBox.Text;
+                    newSession.Login = loginTextBox.Text;
                 }
 
                 if (string.IsNullOrWhiteSpace(passwordBox.Password))
@@ -106,18 +108,29 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.Password = passwordBox.Password;
+                    //dane.Password = passwordBox.Password;
+                    newSession.Password = passwordBox.Password;
                 }
 
-               //AccessManager access = new AccessManager();
-               // if(access.CheckAuthorization(dane.Login, dane.Password) == dane)
-               // {
-               //     MessageBox.Show("Zalogowano pomyślnie!");
-               //     MainWindow mainWindow = new MainWindow();
-               //     mainWindow.Show();
-               //     this.Close();
-               // }
-            MainWindow mainWindow = new MainWindow();
+                //AccessManager access = new AccessManager();
+                //if(access.CheckAuthorization(dane.Login, dane.Password) == dane)
+                // {
+                //     MessageBox.Show("Zalogowano pomyślnie!");
+                //     MainWindow mainWindow = new MainWindow();
+                //     mainWindow.Show();
+                //     this.Close();
+                // }
+                try
+                {
+                    newSession.StartSession();
+                }
+                catch(NullReferenceException nullref)
+                {
+                    MessageBox.Show("Błedny Login lub Hasło");
+                    throw;
+                }
+
+            MainWindow mainWindow = new MainWindow(newSession.Session);
             mainWindow.Show();
                  this.Close();
         }

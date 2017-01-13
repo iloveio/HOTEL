@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HumanResourcesLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,13 @@ namespace LoggingApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private User user;
+        public MainWindow(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
+
 
         private void entertainmentButton_Click(object sender, RoutedEventArgs e)
         {
@@ -37,8 +41,16 @@ namespace LoggingApp
 
         private void staffButton_Click(object sender, RoutedEventArgs e)
         {
-            StaffGUI.MainWindow staffWindow = new StaffGUI.MainWindow();
-            staffWindow.Show();
+            if(user.GetType() == typeof(Director) || user.GetType() == typeof(Supervisor))
+            {
+                StaffGUI.MainWindow staffWindow = new StaffGUI.MainWindow();
+                staffWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie Masz uprawnień do otworzenia tego modułu");
+            }
+           
         }
 
         private void bookingButton_Click(object sender, RoutedEventArgs e)
