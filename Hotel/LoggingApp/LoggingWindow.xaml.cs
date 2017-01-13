@@ -130,7 +130,7 @@ namespace LoggingApp
                     throw;
                 }
 
-            MainWindow mainWindow = new MainWindow(newSession.Session);
+            MainWindow mainWindow = new MainWindow(newSession);
             mainWindow.Show();
                  this.Close();
         }

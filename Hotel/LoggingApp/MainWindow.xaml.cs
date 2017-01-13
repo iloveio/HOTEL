@@ -20,11 +20,11 @@ namespace LoggingApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private User user;
-        public MainWindow(User user)
+        private ISession<User> userSession;
+        public MainWindow(ISession<User> userSession)
         {
             InitializeComponent();
-            this.user = user;
+            this.userSession = userSession;
         }
 
 
@@ -41,7 +41,7 @@ namespace LoggingApp
 
         private void staffButton_Click(object sender, RoutedEventArgs e)
         {
-            if(user.GetType() == typeof(Director) || user.GetType() == typeof(Supervisor))
+            if(userSession.Session.GetType() == typeof(Director) || userSession.Session.GetType() == typeof(Supervisor))
             {
                 StaffGUI.MainWindow staffWindow = new StaffGUI.MainWindow();
                 staffWindow.Show();
