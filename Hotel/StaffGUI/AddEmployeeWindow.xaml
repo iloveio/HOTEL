@@ -133,7 +133,11 @@
         <TextBox x:Name="JobDateTo" Background="#FF363636" Foreground="#FFF" IsReadOnly = "True" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left"  Margin="350,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
         <TextBlock x:Name="JobDateFromText" HorizontalAlignment="Left" Margin="134,381,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="From"/>
         <TextBlock x:Name="JobDateToText" HorizontalAlignment="Left"  Margin="305,381,0,0" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="50" FontSize="15" Foreground="White" Text="To"/>
-        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="ID" RenderTransformOrigin="0.593,3.5"/>
-        <TextBox x:Name="AddID" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="142,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="23,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Login" RenderTransformOrigin="0.593,3.5"/>
+        <TextBox x:Name="AddLogin" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="142,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="350,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Password" RenderTransformOrigin="0.593,3.5"/>
+        <TextBox x:Name="AddPassword" Background="#FF363636" Foreground="#FFF" FontSize="18" TextAlignment="Center" HorizontalAlignment="Left" Height="30" Margin="469,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="350,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White" Text="Position" RenderTransformOrigin="0.593,3.5"/>
+        <ListBox x:Name="PositionsList" Background="#FF363636" Foreground="#FFF" FontSize="18" HorizontalAlignment="Left" Height="32" Margin="469,207,0,0" VerticalAlignment="Top" Width="243" SelectionChanged="ListBox_SelectionChanged"/>
     </Grid>
 </Window>

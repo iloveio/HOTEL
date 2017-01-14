@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HumanResourcesLib;
 
 namespace StaffGUI
 {
@@ -36,10 +37,13 @@ namespace StaffGUI
 
         StaffManager staffManager;
 
-        public EmployeeProfileWindow()
+        User user;
+
+        public EmployeeProfileWindow(User user)
         {
             InitializeComponent();
             staffManager = new StaffManager();
+            this.user = user;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -46,13 +46,15 @@ namespace StaffGUI
 
         StaffManager staffManager;
 
+        IManager manager;
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Default constructor. </summary>
         ///
         /// <remarks>   Student, 19.12.2016. </remarks>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public EmployeeDataWindow(StaffManager staffManager)
+        public EmployeeDataWindow(IManager manager)
         {
             InitializeComponent();
 
@@ -79,9 +81,11 @@ namespace StaffGUI
 
             //datePicker.SelectedDate = DateTime.Now;
             //dyr = Director.GetInstance;
-            this.staffManager = staffManager;
+            staffManager = new StaffManager();
+            this.manager = manager;
 
-            browseEmployeeList.ItemsSource = staffManager.directorList[0].GetSupervisors();
+            if(staffManager.supervisorList != null)
+                browseEmployeeList.ItemsSource = staffManager.supervisorList;
             
         }
 
@@ -195,7 +199,7 @@ namespace StaffGUI
         {
             if (browseEmployeeList.SelectedIndex != -1)
             {
-                staffManager.directorList[0].GetSupervisors().RemoveAt(browseEmployeeList.SelectedIndex);
+                staffManager.supervisorList.RemoveAt(browseEmployeeList.SelectedIndex);
                 //staffManager.DeleteSupervisor(browseEmployeeList.)
                 browseEmployeeList.Items.Refresh();
                 editFirstName.Clear();
@@ -221,7 +225,7 @@ namespace StaffGUI
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Window addEmployeeView = new AddEmployeeWindow(browseEmployeeList, staffManager);
+            Window addEmployeeView = new AddEmployeeWindow(browseEmployeeList, manager);
             addEmployeeView.Show();
         }
 
@@ -240,9 +244,9 @@ namespace StaffGUI
             {
                 if (browseEmployeeList.SelectedIndex != -1)
                 {
-                    staffManager.directorList[0].GetSupervisors()[index].nameProperty = editFirstName.Text;
-                    staffManager.directorList[0].GetSupervisors()[index].lastNameProperty = editLastName.Text;
-                    staffManager.directorList[0].GetSupervisors()[index].Wage = float.Parse(editWage.Text);
+                    staffManager.supervisorList[index].nameProperty = editFirstName.Text;
+                    staffManager.supervisorList[index].lastNameProperty = editLastName.Text;
+                    staffManager.supervisorList[index].Wage = float.Parse(editWage.Text);
                     if (StatusesList.SelectedIndex != -1)
                     {
                         switch (StatusesList.SelectedIndex)
@@ -268,14 +272,14 @@ namespace StaffGUI
                         }
                         EmployeeStatus employeeStatus = new EmployeeStatus(status, DateTime.Parse(datePicker.Text), DateTime.Parse(datePickerTo.Text));
                         // EmployeeStatus employeeStatus = new EmployeeStatus(EmployeeStatusName.Working, new DateTime(2016, 12, 12), new DateTime(2016, 12, 12));
-                        staffManager.directorList[0].GetSupervisors()[index].EmployeeStatus = employeeStatus;
+                        staffManager.supervisorList[index].EmployeeStatus = employeeStatus;
                     }
                     //browseEmployeeList.InvalidateArrange();
                     //browseEmployeeList.UpdateLayout();
                     browseEmployeeList.Items.Refresh();
                     //isEditActive = -1;
                     //ExitButton.UpdateLayout();
-
+                    staffManager.SerializeSupervisor();
                     //staffManager.UpdateSupervisor(dyr.GetSupervisors()[index], new Supervisor(editFirstName.Text, editLastName.Text), float.Parse(editWage.Text), emplo)
                 }
             }
@@ -341,8 +345,9 @@ namespace StaffGUI
                 JobDateTo.Clear();
                 SupervisorField.Clear();
 
-                staffManager.directorList[0].GetSupervisors()[index].jobsProperty.RemoveAt(JobsListBrowse.SelectedIndex);
+                staffManager.supervisorList[index].jobsProperty.RemoveAt(JobsListBrowse.SelectedIndex);
                 JobsListBrowse.Items.Remove(JobsListBrowse.SelectedItem);
+                staffManager.SerializeSupervisor();
             }
         }
 
@@ -367,13 +372,15 @@ namespace StaffGUI
 
                 Job job = new Job(AddJobField.Text, dateFrom, dateTo);
 
-                staffManager.directorList[0].GetSupervisors()[index].jobsProperty.Add(job);
+                staffManager.supervisorList[index].jobsProperty.Add(job);
 
                 JobsListBrowse.Items.Add(item);
 
                 AddJobField.Text = "";
 
                 JobsListBrowse.UpdateLayout();
+
+                staffManager.SerializeSupervisor();
             }
 
         }
@@ -409,15 +416,15 @@ namespace StaffGUI
             JobDateTo.Clear();
             SupervisorField.Clear();
 
-            if (staffManager.directorList[0].GetSupervisors()[index].jobsProperty.Count != 0)
+            if (staffManager.supervisorList[index].jobsProperty.Count != 0)
             {
                 if (JobsListBrowse.SelectedIndex != -1)
                 {
-                    JobDateFrom.Text = staffManager.directorList[0].GetSupervisors()[index].jobsProperty[jobIndex].StartDate;
-                    JobDateTo.Text = staffManager.directorList[0].GetSupervisors()[index].jobsProperty[jobIndex].Deadline;
+                    JobDateFrom.Text = staffManager.supervisorList[index].jobsProperty[jobIndex].StartDate;
+                    JobDateTo.Text = staffManager.supervisorList[index].jobsProperty[jobIndex].Deadline;
 
-                    if (staffManager.directorList[0].GetSupervisors()[index].jobsProperty[jobIndex].JobSupervisor != null)
-                        SupervisorField.Text = staffManager.directorList[0].GetSupervisors()[index].jobsProperty[jobIndex].JobSupervisorName;
+                    if (staffManager.supervisorList[index].jobsProperty[jobIndex].JobSupervisor != null)
+                        SupervisorField.Text = staffManager.supervisorList[index].jobsProperty[jobIndex].JobSupervisorName;
                 }
 
 
@@ -461,22 +468,22 @@ namespace StaffGUI
             {
                 index = browseEmployeeList.SelectedIndex;
                 //editFirstName.DataContext = dyr.GetSupervisors()[index];
-                editFirstName.Text = staffManager.directorList[0].GetSupervisors()[index].nameProperty;
-                editLastName.Text = staffManager.directorList[0].GetSupervisors()[index].lastNameProperty;
+                editFirstName.Text = staffManager.supervisorList[index].nameProperty;
+                editLastName.Text = staffManager.supervisorList[index].lastNameProperty;
                 //StatusesList.SelectedItem = dyr.GetSupervisors()[index].employeeStatusName;
                 //var listBoxItem = (ListBoxItem)StatusesList.ItemContainerGenerator.ContainerFromIndex(2);
                 //listBoxItem.Focus();
-                datePicker.SelectedDate = staffManager.directorList[0].GetSupervisors()[index].employeeStatusDateFrom;
-                datePickerTo.SelectedDate = staffManager.directorList[0].GetSupervisors()[index].employeeStatusDateTo;
-                editWage.Text = staffManager.directorList[0].GetSupervisors()[index].wageProperty;
+                datePicker.SelectedDate = staffManager.supervisorList[index].employeeStatusDateFrom;
+                datePickerTo.SelectedDate = staffManager.supervisorList[index].employeeStatusDateTo;
+                editWage.Text = staffManager.supervisorList[index].wageProperty;
 
                 JobsListBrowse.Items.Clear();
                 JobsListBrowse.UpdateLayout();
                 //JobsListBrowse.ItemsSource = dyr.GetSupervisors()[index].jobsProperty;
-                for (int i = 0; i < staffManager.directorList[0].GetSupervisors()[index].Jobs.Count; i++)
+                for (int i = 0; i < staffManager.supervisorList[index].Jobs.Count; i++)
                 {
                     ListBoxItem item = new ListBoxItem();
-                    item.Content = staffManager.directorList[0].GetSupervisors()[index].jobsProperty[i].Description;
+                    item.Content = staffManager.supervisorList[index].jobsProperty[i].Description;
                     JobsListBrowse.Items.Add(item);
                 }
             }

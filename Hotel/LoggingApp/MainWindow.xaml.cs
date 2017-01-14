@@ -44,6 +44,7 @@ namespace LoggingApp
             if(userSession.Session.GetType() == typeof(Director) || userSession.Session.GetType() == typeof(Supervisor))
             {
                 StaffGUI.MainWindow staffWindow = new StaffGUI.MainWindow();
+                staffWindow.User = userSession.Session;
                 staffWindow.Show();
             }
             else
@@ -62,8 +63,8 @@ namespace LoggingApp
 
         private void kitchenButton_Click(object sender, RoutedEventArgs e)
         {
-            Kitchen.MainWindow kitchenWindow = new Kitchen.MainWindow();
-            kitchenWindow.Show();
+            //Kitchen.MainWindow kitchenWindow = new Kitchen.MainWindow();
+            //kitchenWindow.Show();
         }
         private void accountancyButton_Click(object sender, RoutedEventArgs e)
         {

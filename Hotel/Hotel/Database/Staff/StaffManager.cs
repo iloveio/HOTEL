@@ -188,8 +188,12 @@ namespace Hotel.Database
             //{
             //    serializer.Serialize(writer, supervisorList);
             //}
-            MyXmlSerializer<List<Supervisor>> ser = new MyXmlSerializer<List<Supervisor>>();
-            ser.WriteObject(@"./supervisorsXML.xml", supervisorList);
+            if(supervisorList != null)
+            {
+                MyXmlSerializer<List<Supervisor>> ser = new MyXmlSerializer<List<Supervisor>>();
+                ser.WriteObject(@"./supervisorsXML.xml", supervisorList);
+            }
+           
         }
 
         /// <summary>
