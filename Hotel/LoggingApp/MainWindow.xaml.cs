@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Transport;
 
 namespace LoggingApp
 {
@@ -48,13 +49,26 @@ namespace LoggingApp
                 {
                     EntertainmentApp.EntertainmentWindow entertainmentWindow = new EntertainmentApp.EntertainmentWindow();
                     entertainmentWindow.Show();
-                }     
-           
+                }
+                else
+                {
+                    MessageBox.Show("Nie Masz uprawnień do otworzenia tego modułu");
+                }
+
         }
 
         private void transportButton_Click(object sender, RoutedEventArgs e)
         {
             
+            if (userSession.Session.GetType() == typeof(Director) || IsEmployeeAuthorisedToEnter(Postion.Transportation, Postion.TransportationManager))
+            {
+                WpfApplication1.MainWindow main = new WpfApplication1.MainWindow();  //serio chłopaki WpfApplicatnion1 ??? xd
+                main.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nie Masz uprawnień do otworzenia tego modułu");
+            }
         }
 
         private void staffButton_Click(object sender, RoutedEventArgs e)
@@ -82,16 +96,16 @@ namespace LoggingApp
         private void kitchenButton_Click(object sender, RoutedEventArgs e)
         {
             
-            
-            if (userSession.Session.GetType() == typeof(Employee))
-            {
-                Employee tmp = (Employee)userSession.Session;
-                if ((IsEmployeeAuthorisedToEnter(Postion.KitchenManager, Postion.KitchenStaff)))
+                if (userSession.Session.GetType() == typeof(Director) || (IsEmployeeAuthorisedToEnter(Postion.KitchenManager, Postion.KitchenStaff)))
                 {
                     Kitchen.MainWindow kitchenWindow = new Kitchen.MainWindow();
                     kitchenWindow.Show();
                 }
-            }
+                 else
+                 {
+                     MessageBox.Show("Nie Masz uprawnień do otworzenia tego modułu");
+                 }
+
         }
         private void accountancyButton_Click(object sender, RoutedEventArgs e)
         {
