@@ -29,7 +29,10 @@ namespace LoggingApp
 
         private bool IsEmployeeAuthorisedToEnter(params Postion [] position )
         {
+
             Employee tmp = (Employee)userSession.Session;
+           
+           
             if (tmp.Position == position[0] || tmp.Position == position[1])
             {
                 return true;
@@ -41,16 +44,11 @@ namespace LoggingApp
         private void entertainmentButton_Click(object sender, RoutedEventArgs e)
         {
            
-            if(userSession.Session.GetType() == typeof(Employee))
-            {
-                Employee tmp = (Employee)userSession.Session;
-                if (IsEmployeeAuthorisedToEnter(Postion.EventMenager,Postion.EventStaff))
+                if (userSession.Session.GetType() == typeof(Director) || IsEmployeeAuthorisedToEnter(Postion.EventMenager,Postion.EventStaff))
                 {
                     EntertainmentApp.EntertainmentWindow entertainmentWindow = new EntertainmentApp.EntertainmentWindow();
                     entertainmentWindow.Show();
-                }
-            }
-            
+                }     
            
         }
 

@@ -37,17 +37,12 @@ namespace StaffGUI
 
         StaffManager staffManager;
 
-        IManager manager;
+        Director director;
 
         Employee employee;
 
         private int jobIndex = 0;
 
-        public User User
-        {
-            get { return User; }
-            set { manager = (IManager)value; }
-        }
 
         public EmployeeProfileWindow(User user)
         {
@@ -56,27 +51,37 @@ namespace StaffGUI
 
             if (user.GetType() == typeof(Director))
             {
-                manager = (IManager)user;
+                director = (Director)user;
+
+                AddFirstName.Text = director.nameProperty;
+                AddLastName.Text = director.lastNameProperty;
+
+
             }
-            if (user.GetType() == typeof(Employee))
+            if (user.GetType().IsSubclassOf(typeof(Employee)))
             {
                 employee = (Employee)user;
+
+                AddFirstName.Text = user.nameProperty;
+                AddLastName.Text = user.lastNameProperty;
+                AddWage.Text = employee.wageProperty;
+                EmployeeStatus.Text = employee.employeeStatusName;
+                StatusFrom.Text = employee.employeeStatusDateFrom.ToShortDateString();
+                StatusTo.Text = employee.employeeStatusDateTo.ToShortDateString();
+
+                for (int i = 0; i < employee.Jobs.Count; i++)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = employee.jobsProperty[i].Description;
+                    JobsList.Items.Add(item);
+                }
+
             }
             
 
-            AddFirstName.Text = user.nameProperty;
-            AddLastName.Text = user.lastNameProperty;
-            AddWage.Text = employee.wageProperty;
-            EmployeeStatus.Text = employee.employeeStatusName;
-            StatusFrom.Text = employee.employeeStatusDateFrom.ToShortDateString();
-            StatusTo.Text = employee.employeeStatusDateTo.ToShortDateString();
+            
 
-            for(int i=0; i<employee.Jobs.Count; i++)
-            {
-                ListBoxItem item = new ListBoxItem();
-                item.Content = employee.jobsProperty[i].Description;
-                JobsList.Items.Add(item);
-            }
+           
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
