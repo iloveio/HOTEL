@@ -168,7 +168,7 @@ namespace HumanResourcesLib
             return supervisors;
         }
 
-        public IEnumerable<Employee> GetAllEmployees()
+        public ICollection<Employee> GetAllEmployees()
         {
             return supervisors;
         }

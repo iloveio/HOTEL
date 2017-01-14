@@ -108,5 +108,10 @@ namespace LoggingApp
             this.Close();
         }
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            StaffGUI.EmployeeProfileWindow employeeProfile = new StaffGUI.EmployeeProfileWindow(this.userSession.Session);
+            employeeProfile.ShowDialog();
+        }
     }
 }

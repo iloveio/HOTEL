@@ -168,7 +168,7 @@ namespace HumanResourcesLib
             return name + " " + lastName;
         }
 
-        public IEnumerable<Employee> GetAllEmployees()
+        public ICollection<Employee> GetAllEmployees()
         {
             return this.employees;
         }

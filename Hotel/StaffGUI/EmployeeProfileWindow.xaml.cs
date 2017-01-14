@@ -53,8 +53,16 @@ namespace StaffGUI
         {
             InitializeComponent();
             staffManager = new StaffManager();
-            manager = (IManager)user;
-            employee = (Employee)user;
+
+            if (user.GetType() == typeof(Director))
+            {
+                manager = (IManager)user;
+            }
+            if (user.GetType() == typeof(Employee))
+            {
+                employee = (Employee)user;
+            }
+            
 
             AddFirstName.Text = user.nameProperty;
             AddLastName.Text = user.lastNameProperty;
