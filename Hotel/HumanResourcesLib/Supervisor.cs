@@ -167,6 +167,11 @@ namespace HumanResourcesLib
         {
             return name + " " + lastName;
         }
+
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return this.employees;
+        }
     }
      
 }

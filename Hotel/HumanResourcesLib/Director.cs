@@ -168,6 +168,11 @@ namespace HumanResourcesLib
             return supervisors;
         }
 
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return supervisors;
+        }
+
 
     }
 }
