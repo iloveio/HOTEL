@@ -27,11 +27,30 @@ namespace LoggingApp
             this.userSession = userSession;
         }
 
+        private bool IsEmployeeAuthorisedToEnter(params Postion [] position )
+        {
+            Employee tmp = (Employee)userSession.Session;
+            if (tmp.Position == position[0] || tmp.Position == position[1])
+            {
+                return true;
+            }
+            else
+                return false;
+        }
 
         private void entertainmentButton_Click(object sender, RoutedEventArgs e)
         {
-            EntertainmentApp.EntertainmentWindow entertainmentWindow = new EntertainmentApp.EntertainmentWindow();
-            entertainmentWindow.Show();
+            if(userSession.Session.GetType() == typeof(Employee))
+            {
+                Employee tmp = (Employee)userSession.Session;
+                if (IsEmployeeAuthorisedToEnter(Postion.EventMenager,Postion.EventStaff))
+                {
+                    EntertainmentApp.EntertainmentWindow entertainmentWindow = new EntertainmentApp.EntertainmentWindow();
+                    entertainmentWindow.Show();
+                }
+            }
+            
+           
         }
 
         private void transportButton_Click(object sender, RoutedEventArgs e)
@@ -62,8 +81,16 @@ namespace LoggingApp
 
         private void kitchenButton_Click(object sender, RoutedEventArgs e)
         {
-            Kitchen.MainWindow kitchenWindow = new Kitchen.MainWindow();
-            kitchenWindow.Show();
+            
+            if (userSession.Session.GetType() == typeof(Employee))
+            {
+                Employee tmp = (Employee)userSession.Session;
+                if ((IsEmployeeAuthorisedToEnter(Postion.KitchenManager, Postion.KitchenStaff)))
+                {
+                    Kitchen.MainWindow kitchenWindow = new Kitchen.MainWindow();
+                    kitchenWindow.Show();
+                }
+            }
         }
         private void accountancyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -72,6 +99,7 @@ namespace LoggingApp
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
+            this.userSession.EndSession();
             LoggingWindow loggingWindow = new LoggingWindow();
             loggingWindow.Show();
             this.Close();
