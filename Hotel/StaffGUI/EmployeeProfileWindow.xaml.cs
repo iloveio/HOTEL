@@ -45,7 +45,7 @@ namespace StaffGUI
 
         public User User
         {
-            get { return User; }
+            get { return null; }
             set { manager = (IManager)value; }
         }
 

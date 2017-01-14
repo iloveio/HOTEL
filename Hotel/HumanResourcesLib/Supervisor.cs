@@ -159,6 +159,9 @@ namespace HumanResourcesLib
         {
             this.subordinateFactory = new SubordinateFactory();
             Employee tmp = GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password, position);
+            if (employees == null)
+                employees = new List<Employee>();
+
             this.employees.Add(tmp);
             return tmp;
         }

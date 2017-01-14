@@ -153,6 +153,9 @@ namespace HumanResourcesLib
         {
             this.employeeFactory = new SupervisorFactory(new List<Employee>());
             Employee tmp = this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password, position);
+            if (supervisors == null)
+                supervisors = new List<Employee>();
+
             this.supervisors.Add(tmp);
             return tmp;
         }
