@@ -70,6 +70,7 @@ namespace StaffGUI
             EmployeeStatus.Text = employee.employeeStatusName;
             StatusFrom.Text = employee.employeeStatusDateFrom.ToShortDateString();
             StatusTo.Text = employee.employeeStatusDateTo.ToShortDateString();
+            EmployeeProfile.Text = employee.Position.ToString();
 
             for(int i=0; i<employee.Jobs.Count; i++)
             {
