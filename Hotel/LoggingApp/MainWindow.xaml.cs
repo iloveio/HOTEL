@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BookingApp;
 using Transport;
 
 namespace LoggingApp
@@ -88,9 +89,8 @@ namespace LoggingApp
 
         private void bookingButton_Click(object sender, RoutedEventArgs e)
         {
-            //BookingApp.App bookingWindow = new BookingApp.App();
-            //bookingWindow.InitializeComponent();
-            //bookingWindow.Run();
+            BookingWindow bookingWindow = new BookingWindow();
+            bookingWindow.Show();
         }
 
         private void kitchenButton_Click(object sender, RoutedEventArgs e)
