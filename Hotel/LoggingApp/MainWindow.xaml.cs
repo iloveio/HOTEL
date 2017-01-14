@@ -78,7 +78,7 @@ namespace LoggingApp
             {
                 StaffGUI.MainWindow staffWindow = new StaffGUI.MainWindow();
                 staffWindow.User = userSession.Session;
-                staffWindow.Show();
+                staffWindow.ShowDialog();
             }
             else
             {

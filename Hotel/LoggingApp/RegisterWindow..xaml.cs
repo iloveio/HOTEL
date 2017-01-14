@@ -19,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hotel.Database;
+using HumanResourcesLib;
 
 namespace LoggingApp
 {
@@ -58,7 +59,7 @@ namespace LoggingApp
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            Logging dane = new Logging();
+            Director dyr = new Director("","",1,new List<Employee>(),"","");
             try
             {
                 if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
@@ -69,7 +70,7 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.Name = firstNameTextBox.Text;
+                    dyr.nameProperty = firstNameTextBox.Text;
                 }
 
                 if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
@@ -80,7 +81,7 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.LastName = lastNameTextBox.Text;
+                    dyr.lastNameProperty = lastNameTextBox.Text;
                 }
 
 
@@ -92,7 +93,7 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.Login = loginTextBox.Text;
+                    dyr.Login = loginTextBox.Text;
                 }
 
                 if (passwordBox.Password.Length < 8)
@@ -103,11 +104,11 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.Password = passwordBox.Password;
+                    dyr.Password = passwordBox.Password;
                 }
 
                 StaffManager staff = new StaffManager();
-                staff.AddNewUser(dane);
+                staff.AddNewDirector(dyr);
                 MessageBox.Show("Zarejestrowano nowego użytkownika!");
                 this.Close();
             }
