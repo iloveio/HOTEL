@@ -37,13 +37,38 @@ namespace StaffGUI
 
         StaffManager staffManager;
 
-        User user;
+        IManager manager;
+
+        Employee employee;
+
+        private int jobIndex = 0;
+
+        public User User
+        {
+            get { return User; }
+            set { manager = (IManager)value; }
+        }
 
         public EmployeeProfileWindow(User user)
         {
             InitializeComponent();
             staffManager = new StaffManager();
-            this.user = user;
+            manager = (IManager)user;
+            employee = (Employee)user;
+
+            AddFirstName.Text = user.nameProperty;
+            AddLastName.Text = user.lastNameProperty;
+            AddWage.Text = employee.wageProperty;
+            EmployeeStatus.Text = employee.employeeStatusName;
+            StatusFrom.Text = employee.employeeStatusDateFrom.ToShortDateString();
+            StatusTo.Text = employee.employeeStatusDateTo.ToShortDateString();
+
+            for(int i=0; i<employee.Jobs.Count; i++)
+            {
+                ListBoxItem item = new ListBoxItem();
+                item.Content = employee.jobsProperty[i].Description;
+                JobsList.Items.Add(item);
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +96,19 @@ namespace StaffGUI
 
         private void JobsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            jobIndex = JobsList.SelectedIndex;
 
+            JobDateFrom.Clear();
+            JobDateTo.Clear();
+
+            if (employee.jobsProperty.Count != 0)
+            {
+                if (JobsList.SelectedIndex != -1)
+                {
+                    JobDateFrom.Text = employee.jobsProperty[jobIndex].StartDate;
+                    JobDateTo.Text = employee.jobsProperty[jobIndex].Deadline;
+                }
+            }
         }
     }
 }
