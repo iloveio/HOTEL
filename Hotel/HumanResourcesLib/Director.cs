@@ -32,6 +32,8 @@ namespace HumanResourcesLib
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     [DataContract]
+    [KnownType(typeof(Supervisor))]
+    [KnownType(typeof(Subordinate))]
     public partial class Director : User, IManager
     {
         /// <summary>   The supervisors. </summary>
