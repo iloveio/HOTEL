@@ -40,6 +40,7 @@ namespace LoggingApp
 
         private void entertainmentButton_Click(object sender, RoutedEventArgs e)
         {
+           
             if(userSession.Session.GetType() == typeof(Employee))
             {
                 Employee tmp = (Employee)userSession.Session;
@@ -63,6 +64,7 @@ namespace LoggingApp
             if(userSession.Session.GetType() == typeof(Director) || userSession.Session.GetType() == typeof(Supervisor))
             {
                 StaffGUI.MainWindow staffWindow = new StaffGUI.MainWindow();
+                staffWindow.User = userSession.Session;
                 staffWindow.Show();
             }
             else
@@ -81,6 +83,7 @@ namespace LoggingApp
 
         private void kitchenButton_Click(object sender, RoutedEventArgs e)
         {
+            
             
             if (userSession.Session.GetType() == typeof(Employee))
             {

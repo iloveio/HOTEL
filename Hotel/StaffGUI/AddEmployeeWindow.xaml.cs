@@ -4,6 +4,7 @@
 // summary:	Implements the add employee window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 using Hotel.Database;
 using HumanResourcesLib;
 using System;
@@ -48,6 +49,10 @@ namespace StaffGUI
 
         StaffManager staffManager;
 
+        Postion position;
+
+        IManager manager;
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Constructor. </summary>
         ///
@@ -56,13 +61,48 @@ namespace StaffGUI
         /// <param name="employeeList"> List of employees. </param>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public AddEmployeeWindow(ListBox employeeList, StaffManager staffManager)
+        public AddEmployeeWindow(ListBox employeeList, IManager manager)
         {
             InitializeComponent();
             //dyr = Director.GetInstance;
             jobs = new List<Job>();
             this.employeeList = employeeList;
-            this.staffManager = staffManager;
+            staffManager = new StaffManager();
+            this.manager = manager;
+
+            ListBoxItem item1 = new ListBoxItem();
+            ListBoxItem item2 = new ListBoxItem();
+            ListBoxItem item3 = new ListBoxItem();
+            ListBoxItem item4 = new ListBoxItem();
+            ListBoxItem item5 = new ListBoxItem();
+            ListBoxItem item6 = new ListBoxItem();
+            ListBoxItem item7 = new ListBoxItem();
+            ListBoxItem item8 = new ListBoxItem();
+            ListBoxItem item9 = new ListBoxItem();
+            ListBoxItem item10 = new ListBoxItem();
+
+            item1.Content = Postion.Accounting;
+            item2.Content = Postion.AccountingMenager;
+            item3.Content = Postion.EventMenager;
+            item4.Content = Postion.EventStaff;
+            item5.Content = Postion.KitchenManager;
+            item6.Content = Postion.KitchenStaff;
+            item7.Content = Postion.RoomService;
+            item8.Content = Postion.RoomServiceMenager;
+            item9.Content = Postion.Transportation;
+            item10.Content = Postion.TransportationManager;
+
+            PositionsList.Items.Add(item1);
+            PositionsList.Items.Add(item2);
+            PositionsList.Items.Add(item3);
+            PositionsList.Items.Add(item4);
+            PositionsList.Items.Add(item5);
+            PositionsList.Items.Add(item6);
+            PositionsList.Items.Add(item7);
+            PositionsList.Items.Add(item8);
+            PositionsList.Items.Add(item9);
+            PositionsList.Items.Add(item10);
+
 
             //sup = new Supervisor("Jan", "Kowalski", 1, new EmployeeStatus(EmployeeStatusName.Working, new DateTime(2016, 12, 6), new DateTime(2017, 1, 1)), new List<Employee>(), 1000, new List<Job>(), );
             //for future uses
@@ -195,7 +235,13 @@ namespace StaffGUI
         {
             //staffManager.directorList[0].GetFactory = new SupervisorFactory(new List<Employee>());
 
-            staffManager.directorList[0].GetSupervisors().Add(staffManager.directorList[0].HireAnEmployee(AddFirstName.Text, AddLastName.Text, UInt32.Parse(AddID.Text), new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, "testLogin", "qwerty123",Postion.KitchenManager));
+            Enum.TryParse(PositionsList.SelectedItem.ToString(), out position);
+
+
+            staffManager.AddNewSupervisor((Supervisor)manager.HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, AddLogin.Text, AddPassword.Text, position));
+            //staffManager.directorList[0].GetSupervisors().Add(staffManager.directorList[0].HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, AddLogin.Text, AddPassword.Text, position));       
+            staffManager.SerializeSupervisor();
+            staffManager.FillDataWithAllSupervisor();
             employeeList.Items.Refresh();
             Close();
         }

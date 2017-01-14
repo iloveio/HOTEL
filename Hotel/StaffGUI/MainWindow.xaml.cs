@@ -22,8 +22,15 @@ namespace StaffGUI
 
     public partial class MainWindow : Window
     {
-        Director dyr;
+        IManager manager;
         StaffManager staffManager;
+
+        public User User
+        {
+            get { return User; }
+            set { manager = (IManager)value; }
+        }
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Default constructor. </summary>
@@ -34,15 +41,23 @@ namespace StaffGUI
         public MainWindow()
         {
             InitializeComponent();
-            dyr = new Director("Jan", "Kowalski", 1, new List<Employee>(), "testLogin", "qwerty123");
+        }
 
-            Supervisor sup = new Supervisor("Zenek", "Martyniuk", 1, "testLogin11", "qwerty123");
+        public MainWindow(User user)
+        {
+            manager = (IManager)user;
+            //manager = new Director("Jan", "Kowalski", 1, new List<Employee>(), "testLogin", "qwerty123");
 
-            //dyr.GetSupervisors().Add(sup);
+            //Supervisor sup = new Supervisor("Zenek", "Martyniuk", 1, "testLogin11", "qwerty123");
+
+            //manager.HireAnEmployee("Zenek", "Martyniuk", 1, "testLogin11", "qwerty123", new List<Job>());
            
             staffManager = new StaffManager();
-            staffManager.AddNewDirector(dyr);
+            staffManager.AddNewDirector((Director)manager);
             staffManager.SerializeDirectors();
+            staffManager.SerializeJobs();
+            staffManager.SerializeSubordinates();
+            staffManager.SerializeSupervisor();
 
             /*dyr.GetFactory = new SupervisorFactory(new SubordinateFactory(), new List<Employee>());
             List<Job> jobs = new List<Job>();
@@ -64,7 +79,7 @@ namespace StaffGUI
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Close();
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,7 +93,7 @@ namespace StaffGUI
 
         private void ViewButton_Click(object sender, RoutedEventArgs e)
         {
-            Window employeeDataView = new EmployeeDataWindow(staffManager);
+            Window employeeDataView = new EmployeeDataWindow(manager);
             employeeDataView.Show();
         }
     }
