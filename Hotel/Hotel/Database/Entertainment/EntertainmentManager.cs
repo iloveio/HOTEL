@@ -55,8 +55,8 @@ namespace Hotel.Database
         {
             try
             {
-                MyXmlSerializer<List<InnerEntertainment>> serialzier = new MyXmlSerializer<List<InnerEntertainment>>();
-                innierEntertainmentList = serialzier.ReadObject(@"./organisedEventXML.xml");
+                MyXmlSerializer<List<OrganisedEvent>> serialzier = new MyXmlSerializer<List<OrganisedEvent>>();
+                organisedEventsList = serialzier.ReadObject(@"./organisedEventXML.xml");
             }
             catch (Exception ex)
             {

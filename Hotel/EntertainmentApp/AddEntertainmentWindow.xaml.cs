@@ -70,10 +70,10 @@ namespace EntertainmentApp
             float e = (float)Convert.ToDouble(cenaTextBox.Text);
             int g = Convert.ToInt32(maxGosciTextBox.Text);
             bool valid = float.TryParse(cenaTextBox.Text.ToString(), out e);
-            entWin.col.m_OrganisedEvents.Add(new OrganisedEvent
+            entWin.col.addToCollection(new OrganisedEvent
                 (nazwaTextBox.Text, e, g, datePickerStart.SelectedDate ?? DateTime.Now, datePickerEnd.SelectedDate ?? DateTime.Now, (Supervisor)managerComboBox.SelectedItem));
             if (!entIsNull)
-                entWin.col.m_OrganisedEvents.Remove(ent);
+                entWin.col.removeFromCollection(ent);
             Close();
         }
 

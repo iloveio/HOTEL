@@ -61,9 +61,9 @@ namespace EntertainmentApp
         {
             float e = (float)Convert.ToDouble(cenaTextBox.Text);
             bool valid = float.TryParse(cenaTextBox.Text.ToString(), out e);
-            entWin.col.m_InnerEntertainments.Add(new InnerEntertainment(nazwaTextBox.Text, e));
+            entWin.col.addToCollection(new InnerEntertainment(nazwaTextBox.Text, e));
             if (!entIsNull)
-                entWin.col.m_InnerEntertainments.Remove(ent);
+                entWin.col.removeFromCollection(ent);
             Close();
         }
 

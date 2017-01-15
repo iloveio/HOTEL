@@ -72,8 +72,10 @@ namespace EntertainmentApp
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if(OrganisedEvents.SelectedItem!=null)
-                col.m_OrganisedEvents.RemoveAt(OrganisedEvents.SelectedIndex);
+            if (OrganisedEvents.SelectedItem != null)
+            {
+                col.removeFromCollection(col.m_OrganisedEvents.ElementAt(OrganisedEvents.SelectedIndex));
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,7 +110,7 @@ namespace EntertainmentApp
         private void button4_Click(object sender, RoutedEventArgs e)
         {
             if(InnerEntertainments.SelectedItem != null)
-                col.m_InnerEntertainments.RemoveAt(InnerEntertainments.SelectedIndex);
+                col.removeFromCollection(col.m_InnerEntertainments.ElementAt(InnerEntertainments.SelectedIndex));
         }
 
         // edit

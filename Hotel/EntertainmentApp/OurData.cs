@@ -28,19 +28,8 @@ namespace EntertainmentApp
         public OurData()
         {
             m_RoomBookingManager = new RoomBookingManager();
-            m_RoomBookingManager.AddNewGuest(new Guest(1922313,"Angelo","Micheal","POLAND"));
-            m_RoomBookingManager.AddNewGuest(new Guest(2811313, "Halinka", "Chudzinka", "POLAND"));
             m_StaffManager = new StaffManager();
-            m_StaffManager.AddNewSupervisor(new Supervisor("Piotr", "Szynka", 0, "piosz", "admin123"));
-            m_StaffManager.AddNewSupervisor(new Supervisor("Bartosz", "Cham", 1, "bartch", "heH"));
             m_EntManager = new EntertainmentManager();
-            m_EntManager.AddNewInnierEntertainment(new InnerEntertainment("Basen", 10));
-            m_EntManager.AddNewInnierEntertainment(new InnerEntertainment("Kasyno", 45));
-            m_EntManager.AddNewInnierEntertainment(new InnerEntertainment("Spa", 100));
-            m_EntManager.AddNewInnierEntertainment(new InnerEntertainment("Siłownia", 8));
-            m_EntManager.AddNEwOrganisedEvent(new OrganisedEvent("Koncert Perfect", 6800, 350, new DateTime(2016, 12, 10), new DateTime(2016, 12, 10), new Supervisor("Piotr", "Szynka", 0, "piosz", "admin123")));
-            m_EntManager.AddNEwOrganisedEvent(new OrganisedEvent("Przyjęcie urodzinowe prezydenta", 15500, 100, new DateTime(2016, 04, 05), new DateTime(2016, 04, 05), new Supervisor("Piotr", "Szynka", 0, "piosz", "admin123")));
-            m_EntManager.AddNEwOrganisedEvent(new OrganisedEvent("Bal przebierańców", 3100, 500, new DateTime(2016, 10, 31), new DateTime(2016, 10, 31), new Supervisor("Piotr", "Szynka", 0, "piosz", "admin123")));
 
             m_OrganisedEvents = new ObservableCollection<OrganisedEvent>(m_EntManager.organisedEventsList);
             m_InnerEntertainments = new ObservableCollection<InnerEntertainment>(m_EntManager.innierEntertainmentList);
