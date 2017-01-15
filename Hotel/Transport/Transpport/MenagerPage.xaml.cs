@@ -52,7 +52,7 @@ namespace Transport.Transpport
         {
             Transportation tr = new Transportation();
             Transportation selected = (Transportation)listBox.SelectedItem;
-            Window po = new EditMenager();
+            Window po = new EditMenager(selected,tr);
             po.Show();
             man.Edit(selected, tr );
         }

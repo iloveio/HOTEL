@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="EditMenager" Height="300" Width="300">
     <Grid>
-        
+        <TextBox x:Name="Shop_View" HorizontalAlignment="Left" Height="25" Margin="53,10,0,0" TextWrapping="Wrap" Text="Shop View" VerticalAlignment="Top" Width="179" IsEnabled="False" TextAlignment="Center"/>
+        <Button x:Name="DodajDane" Content="Edytuj zlecenie" HorizontalAlignment="Left" Height="38" Margin="72,221,0,0" VerticalAlignment="Top" Width="122" RenderTransformOrigin="0.494,1.218" Click="DodajDane_Click"/>
+        <TextBox x:Name="DataViewZ" HorizontalAlignment="Left" Height="31" Margin="37,62,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" Width="95" TextAlignment="Center" IsEnabled="False" RenderTransformOrigin="0.57,-3.382"/>
+        <DatePicker x:Name="DateData" HorizontalAlignment="Left" Height="31" Margin="157,60,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+        </DatePicker>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="10,98,0,0" TextWrapping="Wrap" Text="Information" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="Dane" HorizontalAlignment="Left" Height="90" Margin="37,126,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="195"/>
     </Grid>
 </Window>
