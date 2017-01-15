@@ -78,7 +78,7 @@ namespace Hotel.Database
             try
             {
                 MyXmlSerializer<List<Guest>> serialzier = new MyXmlSerializer<List<Guest>>();
-                guestsList = serialzier.ReadObject(@"./guestXML");
+                guestsList = serialzier.ReadObject(@"./guestXML.xml");
             }
             catch (Exception ex)
             {
