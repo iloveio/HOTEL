@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+
 
 namespace Kitchen
 {
@@ -110,19 +113,19 @@ namespace Kitchen
         /// Limit the number the to-be-ordered ingredients. </summary>
         public bool numberOfIngredientsControl()
         {
-            List<string> ingredientsToOrder = new List<string>();
+            ingredientsToOrder = new List<Ingredient>();
             foreach (Ingredient ingredient in ingredients)
             {
-                if (ingredient.number < 5)
+                if (ingredient.number <= 5)
                 {
-                    ingredientsToOrder.Add(ingredient.name);
+                    ingredientsToOrder.Add(ingredient);
                 }
             }
 
             if (ingredientsToOrder.Count > 0)
             {
-                MessageBox.Show("Brak Skladnika!");
-                //SendIngredientsListToOrder(ingredientsToOrder);
+                //MessageBox.Show("Brak Skladnika!");
+                SendIngredientsListToOrder(ingredientsToOrder);
                 return false;
             }
             else return true;
@@ -132,9 +135,14 @@ namespace Kitchen
         /// <summary> 
         /// Send the list of ingredients' names that are to be ordered. </summary>
         /// <param name="ingredientsToOrder"> Names of ingredients to be ordered.</param>
-        private void SendIngredientsListToOrder(List<String> ingredientsToOrder )
+        private void SendIngredientsListToOrder(List<Ingredient> ingredientsToOrder )
         {
-            throw new NotImplementedException(); //TUTAAJ ZAIMPLEMENTOWAC WYSYLANIE DO TRANSPORTU
+
+            foreach (Ingredient ingredient in ingredientsToOrder)
+            {
+                ingredient.number += 35;
+            }
+            RefillIngredientsNumber(ingredientsToOrder);
         }
 
         public void RefillIngredientsNumber(List<Ingredient> ingredientsFromTransport)
@@ -144,7 +152,9 @@ namespace Kitchen
                 foreach (Ingredient ingredient in ingredients)
                 {
                     if (ingredient.name == shop.name)
+                    {
                         ingredient.number += shop.number;
+                    }
                 }
             }
             this.CheckIfCanSimulationGoOn();
@@ -163,6 +173,8 @@ namespace Kitchen
                 }
             }
         }
+
+        public List<Ingredient> ingredientsToOrder;
 
         /// <summary> 
         /// Collection of ingredients. </summary>

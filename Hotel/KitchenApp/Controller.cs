@@ -48,8 +48,9 @@ namespace Kitchen
         {
 
             timer = new DispatcherTimer();
-            timer.Tick += Timer_Tick;
-            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Interval = TimeSpan.FromSeconds(45);
+            timer.IsEnabled = true;
             timer.Start();
 
 
@@ -80,23 +81,60 @@ namespace Kitchen
         /// <param name="e"> Event arguments.</param>
         private void Timer_Tick(object sender, EventArgs e)
         {
-            List<string> missingIngredients = new List<string>();
-            kitchen.New_Bill_For_Customer(currentClientId);
-            int numbeOfRecipes = Controller.Instance.kitchen.cookBook.recipes.Count();
-            //MessageBox.Show("Number of recipes is: " + numbeOfRecipes);
-            List<string> dishNames = Controller.Instance.kitchen.cookBook.getDishNames();
-            Random rand = new Random();
-            int howMuchDishes = rand.Next(1, 8);
-            for (int i = 0; i < howMuchDishes; i++)
+            Ordering();
+            //List<string> missingIngredients = new List<string>();
+            //kitchen.New_Bill_For_Customer(currentClientId);
+            //int numbeOfRecipes = Controller.Instance.kitchen.cookBook.recipes.Count();
+            ////MessageBox.Show("Number of recipes is: " + numbeOfRecipes);
+            //List<string> dishNames = Controller.Instance.kitchen.cookBook.getDishNames();
+            //Random rand = new Random();
+            //int howMuchDishes = rand.Next(1, 8);
+            //for (int i = 0; i < howMuchDishes; i++)
+            //{
+            //    int recipeIndex = rand.Next(0, numbeOfRecipes);
+            //    missingIngredients.AddRange(kitchen.Order_Dish(dishNames[recipeIndex]));
+
+            //}
+            //if (!kitchen.fridge.numberOfIngredientsControl())
+            //{
+            //    timer.Stop();
+            //    timer = null;
+            //}
+
+            //currentClientId++;
+        }
+
+        private void Ordering()
+        {
+            if (timer != null)
             {
-                int recipeIndex = rand.Next(0, numbeOfRecipes);
-                missingIngredients.AddRange(kitchen.Order_Dish(dishNames[recipeIndex]));
-
-            }
-            if(!kitchen.fridge.numberOfIngredientsControl())
                 timer.Stop();
+            }
+            if (kitchen.fridge.numberOfIngredientsControl()) { 
+            List<string> missingIngredients = new List<string>();
+                kitchen.New_Bill_For_Customer(currentClientId);
+                int numbeOfRecipes = Controller.Instance.kitchen.cookBook.recipes.Count();
+                //MessageBox.Show("Number of recipes is: " + numbeOfRecipes);
+                List<string> dishNames = Controller.Instance.kitchen.cookBook.getDishNames();
+                Random rand = new Random();
+                int howMuchDishes = rand.Next(1, 8);
+                for (int i = 0; i < howMuchDishes; i++)
+                {
+                    int recipeIndex = rand.Next(0, numbeOfRecipes);
+                    missingIngredients.AddRange(kitchen.Order_Dish(dishNames[recipeIndex]));
 
-            currentClientId++;
+                }
+                if (!kitchen.fridge.numberOfIngredientsControl())
+                {
+                    timer.Stop();
+                    timer.IsEnabled = false;
+                    timer = null;
+                }
+
+                currentClientId++;
+            }
+            if(timer != null)
+                timer.Start();
         }
     }
 }

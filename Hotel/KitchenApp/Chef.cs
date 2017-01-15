@@ -49,7 +49,7 @@ namespace Kitchen
                         {
                             if (ing.number == 0)
                             {
-                                MessageBox.Show("Can't make dish" + dishName);
+                                //MessageBox.Show("Can't make dish" + dishName);
                                 return dish;
                             }
                         }
