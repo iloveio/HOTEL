@@ -4,22 +4,23 @@ using System.Linq;
 using System.Text;
 using Hotel.Database;
 using Transport.Transpport;
+using Kitchen;
 
 namespace Hotel.Transpport.Dane
 {
     public class Shop :Transport
     {
-        List<Object> produkt;
+        List<Ingredient> produkt;
         ShopWindow page;
         private TransportationManager menager;
-        public Shop(List<Object> prod)
+        public Shop(List<Ingredient> prod)
         {
             produkt = prod;
             page = new ShopWindow(this);
             menager = new TransportationManager();
         }
 
-        public Shop(List<Object> prod, TransportationManager men)
+        public Shop(List<Ingredient> prod, TransportationManager men)
         {
             produkt = prod;
             menager = men;
