@@ -24,11 +24,12 @@ namespace StaffGUI
     {
         IManager manager;
         StaffManager staffManager;
+        User user;
 
         public User User
         {
-            get { return User; }
-            set { manager = (IManager)value; }
+            get { return user; }
+            set { user = value; }
         }
 
 
@@ -41,11 +42,11 @@ namespace StaffGUI
         public MainWindow()
         {
             InitializeComponent();
-        }
+        
 
-        public MainWindow(User user)
-        {
-            manager = (IManager)user;
+       
+        
+            
             //manager = new Director("Jan", "Kowalski", 1, new List<Employee>(), "testLogin", "qwerty123");
 
             //Supervisor sup = new Supervisor("Zenek", "Martyniuk", 1, "testLogin11", "qwerty123");
@@ -79,6 +80,35 @@ namespace StaffGUI
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
+            manager = (IManager)User;
+
+            if (manager.GetType() == typeof(Supervisor))
+            {
+                Supervisor sup = (Supervisor)manager;
+                for (int i = 0; i < staffManager.supervisorList.Count; i++)
+                {
+                    if (sup.Login == staffManager.supervisorList[i].Login)
+                    {
+                        staffManager.supervisorList[i] = sup;
+                    }
+                }             
+                staffManager.SerializeSupervisor();
+            }
+
+            if (manager.GetType() == typeof(Director))
+            {
+                Director dyr = (Director)manager;
+                for (int i=0; i < staffManager.directorList.Count; i++)
+                {
+                    if(dyr.Login == staffManager?.directorList[i]?.Login)
+                    {
+                        staffManager.directorList[i] = dyr;
+                    }
+                }
+                staffManager.SerializeDirectors();
+            }
+            
+            
             Close();
         }
 
@@ -93,6 +123,8 @@ namespace StaffGUI
 
         private void ViewButton_Click(object sender, RoutedEventArgs e)
         {
+            manager = (IManager)User;
+
             Window employeeDataView = new EmployeeDataWindow(manager);
             employeeDataView.Show();
         }

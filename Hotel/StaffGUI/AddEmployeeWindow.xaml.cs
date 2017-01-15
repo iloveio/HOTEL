@@ -236,11 +236,23 @@ namespace StaffGUI
             //staffManager.directorList[0].GetFactory = new SupervisorFactory(new List<Employee>());
 
             Enum.TryParse(PositionsList.SelectedItem.ToString(), out position);
+            Employee emp;
 
+            emp = manager.HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, AddLogin.Text, AddPassword.Text, position);
+            if (emp.GetType() == typeof(Supervisor))
+            {
+                staffManager.AddNewSupervisor((Supervisor)emp);
+            }
 
-            staffManager.AddNewSupervisor((Supervisor)manager.HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, AddLogin.Text, AddPassword.Text, position));
+            if (emp.GetType() == typeof(Subordinate))
+            {
+                staffManager.AddNewSubordinate((Subordinate)emp);
+            }
+            //staffManager.AddNewSupervisor((Supervisor)manager.HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, AddLogin.Text, AddPassword.Text, position));
             //staffManager.directorList[0].GetSupervisors().Add(staffManager.directorList[0].HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, AddLogin.Text, AddPassword.Text, position));       
             staffManager.SerializeSupervisor();
+            staffManager.SerializeSubordinates();
+            staffManager.FillDataWithAllSubordinates();
             staffManager.FillDataWithAllSupervisor();
             employeeList.Items.Refresh();
             Close();
