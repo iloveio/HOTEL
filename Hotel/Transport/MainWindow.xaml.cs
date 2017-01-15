@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Kitchen;
 
 namespace WpfApplication1
 {
@@ -24,11 +25,11 @@ namespace WpfApplication1
     public partial class MainWindow : Window
     {
         TransportationManager tr;
-        List<Object> list;
+        List<Ingredient> list;
         public MainWindow()
         {
             InitializeComponent();
-            list = new List<object>();
+            list = new List<Ingredient>();
             tr = new TransportationManager();
         }
 

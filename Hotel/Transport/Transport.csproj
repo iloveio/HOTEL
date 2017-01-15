@@ -136,6 +136,10 @@
       <Project>{e269dc37-fecd-43aa-af77-1eed3f2b4fbb}</Project>
       <Name>Hotel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KitchenApp\Kitchen.csproj">
+      <Project>{8c97a2ff-01e0-4da2-b844-10df0f4bf704}</Project>
+      <Name>Kitchen</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
