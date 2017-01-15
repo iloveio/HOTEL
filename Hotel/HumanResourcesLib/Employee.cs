@@ -73,17 +73,17 @@ namespace HumanResourcesLib
         /// </returns>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public override bool Equals(object obj)
-        {
+        //public override bool Equals(object obj)
+        //{
 
-            Employee empObj = obj as Employee;
-            if (obj == null || GetType() != obj.GetType())
-            {
-                return false;
-            }
+        //    Employee empObj = obj as Employee;
+        //    if (obj == null || GetType() != obj.GetType())
+        //    {
+        //        return false;
+        //    }
 
-            return id.Equals(obj);
-        }
+        //    return id.Equals(obj);
+        //}
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Serves as the default hash function. </summary>

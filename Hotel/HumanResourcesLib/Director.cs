@@ -113,7 +113,13 @@ namespace HumanResourcesLib
 
         public void FireAnEmployee(Employee employee)
         {
-            this.supervisors.Remove(employee);
+            foreach (var item in supervisors)
+            {
+                if(item.Login == employee.Login)
+                {
+                    supervisors.Remove(item);
+                }
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
