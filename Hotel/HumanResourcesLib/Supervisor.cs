@@ -18,6 +18,7 @@ namespace HumanResourcesLib
     /// <remarks>   Student, 19.12.2016. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     [DataContract]
+    [KnownType(typeof(Subordinate))]
     public partial class Supervisor : Employee, IManager
     {
         /// <summary>   The employees. </summary>
@@ -171,7 +172,7 @@ namespace HumanResourcesLib
             return name + " " + lastName;
         }
 
-        public ICollection<Employee> GetAllEmployees()
+        public List<Employee> GetAllEmployees()
         {
             return this.employees;
         }

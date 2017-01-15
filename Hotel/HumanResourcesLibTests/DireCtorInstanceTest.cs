@@ -8,6 +8,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HumanResourcesLib;
 using System.Collections.Generic;
+using Hotel.Database;
 
 namespace HumanResourcesLibTests
 {
@@ -34,6 +35,28 @@ namespace HumanResourcesLibTests
         {
             Director dyr = new Director("asd", "asda", 1, new List<Employee>(), "asd", "asda");
             dyr.HireAnEmployee("1123", "qweq", 1, new EmployeeStatus(EmployeeStatusName.ErnedLeave, DateTime.Now, DateTime.Now), 11f, new List<Job>(), "aaa", "aa", Postion.Accounting);
+        }
+        [TestMethod]
+        public void SerializeDirectorWithSupervisorinList()
+        {
+            Director dyr = new Director("asd", "asda", 1, new List<Employee>(), "asd", "asda");
+            dyr.HireAnEmployee("1123", "qweq", 1, new EmployeeStatus(EmployeeStatusName.ErnedLeave, DateTime.Now, DateTime.Now), 11f, new List<Job>(), "aaa", "aa", Postion.Accounting);
+            StaffManager man = new StaffManager();
+            man.AddNewDirector(dyr);
+           
+        }
+
+        [TestMethod]
+        public void DerializeDirectorWithSupervisorinList()
+        {
+            Director dyr;
+    
+            StaffManager man = new StaffManager();
+
+            dyr = man.directorList[0];
+
+            Assert.AreEqual("qweq", dyr.GetSupervisors()[0].lastNameProperty);
+
         }
     }
 }
