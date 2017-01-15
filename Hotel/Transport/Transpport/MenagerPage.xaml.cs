@@ -28,6 +28,10 @@ namespace Transport.Transpport
         {
             InitializeComponent();
             man = men;
+            foreach(Transportation t in man.mengaerDatabase.transportationsList)
+            {
+                listBox.Items.Add(t);
+            }
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -39,7 +43,8 @@ namespace Transport.Transpport
         private void Finish_Click(object sender, RoutedEventArgs e)
         {
             Transportation selected = (Transportation)listBox.SelectedItem;
-           // man.Pay(selected.cost);
+            // man.Pay(selected.cost);
+            listBox.Items.RemoveAt(listBox.SelectedIndex);
             man.Delete(selected);
         }
 
@@ -55,6 +60,7 @@ namespace Transport.Transpport
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             Transportation selected = (Transportation)listBox.SelectedItem;
+            listBox.Items.RemoveAt(listBox.SelectedIndex);
             man.Delete(selected);
         }
     }
