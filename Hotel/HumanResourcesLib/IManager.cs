@@ -53,6 +53,6 @@ namespace HumanResourcesLib
 
         List<EmployeeStatus> CheckAllSubordinateStatus();
 
-        ICollection<Employee> GetAllEmployees();
+        List<Employee> GetAllEmployees();
     }
 }

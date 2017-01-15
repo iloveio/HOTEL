@@ -54,8 +54,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DireCtorInstanceTest.cs" />
+    <Compile Include="SuperVisorTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hotel\Hotel.csproj">
+      <Project>{e269dc37-fecd-43aa-af77-1eed3f2b4fbb}</Project>
+      <Name>Hotel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HumanResourcesLib\HumanResourcesLib.csproj">
       <Project>{4bf7395d-6627-4410-8078-2c1fe5fe7eca}</Project>
       <Name>HumanResourcesLib</Name>

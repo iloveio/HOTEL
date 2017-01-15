@@ -173,7 +173,7 @@ namespace HumanResourcesLib
             return supervisors;
         }
 
-        public ICollection<Employee> GetAllEmployees()
+        public List<Employee> GetAllEmployees()
         {
             return supervisors;
         }
