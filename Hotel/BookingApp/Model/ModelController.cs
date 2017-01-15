@@ -123,7 +123,7 @@ namespace BookingApp.Model
 
         public void CreateReservation(uint roomId, uint userId, DateTime reservationStart, DateTime reservationEnd)
         {
-            roomBookingManager.reservationList.Add(new Reservation(roomId, userId, reservationStart, reservationEnd));
+            roomBookingManager.AddNewReservation(new Reservation(roomId, userId, reservationStart, reservationEnd));
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,7 +134,7 @@ namespace BookingApp.Model
 
         public void CreateReservation(uint PESEL)
         {
-            roomBookingManager.reservationList.Add(new Reservation(SelectedRoomID, PESEL, StartDate, EndDate));
+            roomBookingManager.AddNewReservation(new Reservation(SelectedRoomID, PESEL, StartDate, EndDate));
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -149,7 +149,7 @@ namespace BookingApp.Model
         public void CreateGuest(uint pesel, string name, string surname, string placeOfBirth)
         {
             Guest guest = new Guest(pesel, name, surname, placeOfBirth);
-            roomBookingManager.guestsList.Add(guest);
+            roomBookingManager.AddNewGuest(guest);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,7 +160,7 @@ namespace BookingApp.Model
 
         public void CreateCleaningJob(string description)
         {
-            roomBookingManager.cleaningJobList.Add(new CleaningJob(GenerateCleaningJobID(), (int) SelectedRoomID,
+            roomBookingManager.AddNewCleaningJob(new CleaningJob(GenerateCleaningJobID(), (int)SelectedRoomID,
                 description));
         }
 
