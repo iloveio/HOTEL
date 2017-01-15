@@ -91,8 +91,9 @@ namespace StaffGUI
                     {
                         staffManager.supervisorList[i] = sup;
                     }
-                }             
-                staffManager.SerializeSupervisor();
+                }
+                if (sup != null)
+                    staffManager.SerializeSupervisor();
             }
 
             if (manager.GetType() == typeof(Director))
@@ -105,7 +106,8 @@ namespace StaffGUI
                         staffManager.directorList[i] = dyr;
                     }
                 }
-                staffManager.SerializeDirectors();
+                if(dyr != null)
+                    staffManager.SerializeDirectors();
             }
             
             

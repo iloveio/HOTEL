@@ -122,6 +122,16 @@ namespace Hotel.Database
         /// <summary>
         /// Fills the data with all directors.
         /// </summary>
+        private void EradicateNullUsers<T>(List<T> entity)
+        {
+            foreach (var item in entity.ToList())
+            {
+                if(item == null)
+                {
+                    entity.Remove(item);
+                }
+            }
+        }
         public void FillDataWithAllDirectors()
         {
 
@@ -183,7 +193,7 @@ namespace Hotel.Database
         /// </summary>
         public void SerializeDirectors()
         {
-
+            EradicateNullUsers<Director>(this.directorList);
             MyXmlSerializer<List<Director>> ser = new MyXmlSerializer<List<Director>>();
             ser.WriteObject(@"./directorXML.xml", directorList); 
 
@@ -194,7 +204,7 @@ namespace Hotel.Database
         /// </summary>
         public void SerializeJobs()
         {
-            
+            EradicateNullUsers<Job>(this.jobsList);
             MyXmlSerializer<List<Job>> ser = new MyXmlSerializer<List<Job>>();
             ser.WriteObject(@"./jobsXML.xml", jobsList);
         }
@@ -204,7 +214,7 @@ namespace Hotel.Database
         /// </summary>
         public void SerializeSubordinates()
         {
-
+            EradicateNullUsers<Subordinate>(this.subordinatesList);
             MyXmlSerializer<List<Subordinate>> ser = new MyXmlSerializer<List<Subordinate>>();
             ser.WriteObject(@"./subordinatesXML.xml", subordinatesList);
         }
@@ -221,6 +231,7 @@ namespace Hotel.Database
             //}
             if(supervisorList != null)
             {
+                EradicateNullUsers<Supervisor>(this.supervisorList);
                 MyXmlSerializer<List<Supervisor>> ser = new MyXmlSerializer<List<Supervisor>>();
                 ser.WriteObject(@"./supervisorsXML.xml", supervisorList);
             }

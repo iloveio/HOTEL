@@ -235,7 +235,10 @@ namespace StaffGUI
         {
             //staffManager.directorList[0].GetFactory = new SupervisorFactory(new List<Employee>());
 
-            Enum.TryParse(PositionsList.SelectedItem.ToString(), out position);
+            try
+            {
+                Enum.TryParse(PositionsList.SelectedItem.ToString(), out position);
+
             Employee emp;
 
             emp = manager.HireAnEmployee(AddFirstName.Text, AddLastName.Text, 0, new EmployeeStatus(EmployeeStatusName.Working, DateTime.Now, new DateTime(2017, 10, 10)), float.Parse(AddWage.Text), jobs, AddLogin.Text, AddPassword.Text, position);
@@ -256,6 +259,13 @@ namespace StaffGUI
             staffManager.FillDataWithAllSupervisor();
             employeeList.Items.Refresh();
             Close();
+            }
+            catch (NullReferenceException n)
+            {
+
+                MessageBox.Show("Musisz Wybrac Pole Position");
+               
+            }
         }
 
 
