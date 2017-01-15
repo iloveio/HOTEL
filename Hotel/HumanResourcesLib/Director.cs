@@ -113,7 +113,7 @@ namespace HumanResourcesLib
 
         public void FireAnEmployee(Employee employee)
         {
-            foreach (var item in supervisors)
+            foreach (var item in supervisors.ToList())
             {
                 if(item.Login == employee.Login)
                 {

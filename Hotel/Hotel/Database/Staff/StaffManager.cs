@@ -341,8 +341,16 @@ namespace Hotel.Database
         /// <param name="sub">The sub.</param>
         public void DeleteSubordinate(Subordinate sub)
         {
-            subordinatesList.Remove(sub);
+            foreach (var item in subordinatesList.ToList())
+            {
+                if (item.Login == sub.Login)
+                {
+                    subordinatesList.Remove(item);
+                }
+            }
+            //subordinatesList.Remove(sub);
             SerializeSubordinates();
+            SerializeSupervisor();
         }
 
         /// <summary>
@@ -351,8 +359,24 @@ namespace Hotel.Database
         /// <param name="sup">The sup.</param>
         public void DeleteSupervisor(Supervisor sup)
         {
-            supervisorList.Remove(sup);
+            foreach (var item in supervisorList.ToList())
+            {
+                if (item.Login == sup.Login)
+                {
+                    supervisorList.Remove(item);
+                }
+            }
+
+            /*foreach (var item in directorList.ToList())
+            {
+                if (item.Login == sup.Login)
+                {
+                    directorList.Remove(item);
+                }
+            }*/
+            //supervisorList.Remove(sup);
             SerializeSupervisor();
+            SerializeDirectors();
         }
 
         /// <summary>

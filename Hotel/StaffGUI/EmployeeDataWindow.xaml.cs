@@ -199,9 +199,24 @@ namespace StaffGUI
         {
             if (browseEmployeeList.SelectedIndex != -1)
             {
-                manager.FireAnEmployee((Employee)browseEmployeeList.SelectedItem);
-                staffManager.SerializeSubordinates();
-                staffManager.SerializeSupervisor();
+                Employee emp;
+                emp = (Employee)browseEmployeeList.SelectedItem;
+                manager.FireAnEmployee(emp);
+                if (emp.GetType() == typeof(Supervisor))
+                {
+                    staffManager.DeleteSupervisor((Supervisor)emp);
+                    staffManager.SerializeSupervisor();
+                    staffManager.FillDataWithAllSupervisor();
+                }
+
+                if (emp.GetType() == typeof(Subordinate))
+                {
+                    staffManager.DeleteSubordinate((Subordinate)emp);
+                    staffManager.SerializeSubordinates();
+                    staffManager.FillDataWithAllSubordinates();
+                }
+                
+                
                 //staffManager.supervisorList.RemoveAt(browseEmployeeList.SelectedIndex);
                 //staffManager.DeleteSupervisor(browseEmployeeList.)
                 browseEmployeeList.Items.Refresh();
