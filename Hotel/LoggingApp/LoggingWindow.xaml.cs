@@ -113,22 +113,22 @@ namespace LoggingApp
                 }
 
                 //AccessManager access = new AccessManager();
-                //if(access.CheckAuthorization(dane.Login, dane.Password) == dane)
-                // {
-                //     MessageBox.Show("Zalogowano pomyślnie!");
-                //     MainWindow mainWindow = new MainWindow();
-                //     mainWindow.Show();
-                //     this.Close();
-                // }
+                //if (access.CheckAuthorization(dane.Login, dane.Password) == dane)
+                //{
+                //    MessageBox.Show("Zalogowano pomyślnie!");
+                //    MainWindow mainWindow = new MainWindow();
+                //    mainWindow.Show();
+                //    this.Close();
+                //}
                 try
                 {
                     newSession.StartSession();
                 }
-                catch(NullReferenceException nullref)
-                {
+                 catch (NullReferenceException nullref)
+                 {
                     MessageBox.Show("Błedny Login lub Hasło");
                     throw;
-                }
+                 }
 
             MainWindow mainWindow = new MainWindow(newSession);
             mainWindow.Show();

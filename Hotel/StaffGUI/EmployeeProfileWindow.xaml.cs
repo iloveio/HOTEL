@@ -1,7 +1,7 @@
 ﻿////////////////////////////////////////////////////////////////////////////////////////////////////
-// file:	EmployeeProfileWindow.xaml.cs
+// file: EmployeeProfileWindow.xaml.cs
 //
-// summary:	Implements the employee profile window.xaml class
+// summary: Implements the employee profile window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using Hotel.Database;
@@ -42,37 +42,37 @@ namespace StaffGUI
         Employee employee;
 
         private int jobIndex = 0;
-
+        User user;
         public User User
         {
-            get { return null; }
-            set { manager = (IManager)value; }
+            get { return user; }
+            set { user = value; }
         }
 
         public EmployeeProfileWindow(User user)
         {
             InitializeComponent();
             staffManager = new StaffManager();
-
-            if (user.GetType() == typeof(Director))
+            this.user = user;
+            if (this.user.GetType() == typeof(Director))
             {
-                manager = (IManager)user;
+                manager = (IManager)this.user;
             }
-            if (user.GetType() == typeof(Employee))
+            if (this.user.GetType().IsSubclassOf(typeof(Employee)))
             {
-                employee = (Employee)user;
+                employee = (Employee)this.user;
             }
-            
 
-            AddFirstName.Text = user.nameProperty;
-            AddLastName.Text = user.lastNameProperty;
+
+            AddFirstName.Text = employee.nameProperty;
+            AddLastName.Text = employee.lastNameProperty;
             AddWage.Text = employee.wageProperty;
             EmployeeStatus.Text = employee.employeeStatusName;
             StatusFrom.Text = employee.employeeStatusDateFrom.ToShortDateString();
             StatusTo.Text = employee.employeeStatusDateTo.ToShortDateString();
             EmployeeProfile.Text = employee.Position.ToString();
 
-            for(int i=0; i<employee.Jobs.Count; i++)
+            for (int i = 0; i < employee.Jobs.Count; i++)
             {
                 ListBoxItem item = new ListBoxItem();
                 item.Content = employee.jobsProperty[i].Description;
@@ -121,4 +121,3 @@ namespace StaffGUI
         }
     }
 }
-
