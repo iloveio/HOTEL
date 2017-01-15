@@ -32,6 +32,8 @@ namespace HumanResourcesLib
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     [DataContract]
+    [KnownType(typeof(Supervisor))]
+    [KnownType(typeof(Subordinate))]
     public partial class Director : User, IManager
     {
         /// <summary>   The supervisors. </summary>
@@ -151,6 +153,9 @@ namespace HumanResourcesLib
         {
             this.employeeFactory = new SupervisorFactory(new List<Employee>());
             Employee tmp = this.GetFactory.CreateEmployee(name, lastName, id, employeeStatus, wage, jobs,login,password, position);
+            if (supervisors == null)
+                supervisors = new List<Employee>();
+
             this.supervisors.Add(tmp);
             return tmp;
         }
@@ -164,6 +169,11 @@ namespace HumanResourcesLib
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<Employee> GetSupervisors()
+        {
+            return supervisors;
+        }
+
+        public ICollection<Employee> GetAllEmployees()
         {
             return supervisors;
         }

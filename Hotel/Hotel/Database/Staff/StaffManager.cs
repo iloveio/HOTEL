@@ -79,13 +79,44 @@ namespace Hotel.Database
             supervisorList = new List<Supervisor>();
             employeeList = new List<Employee>();
             userList = new List<User>();
-            
-            FillDataWithAllDirectors();
-            FillDataWithAllJobs();
-            FillDataWithAllSubordinates();
-            FillDataWithAllSupervisor();
-            FillDataWithAllEmployee();
-            FillDataWithAllUser();
+
+            try
+            {
+                FillDataWithAllDirectors();
+            }
+            catch (FileNotFoundException e)
+            {
+                SerializeDirectors();     
+            }
+
+            try
+            {
+                FillDataWithAllJobs();
+            }
+            catch (FileNotFoundException e)
+            {
+                SerializeJobs();
+            }
+
+            try
+            {
+                FillDataWithAllSubordinates();
+            }
+            catch (FileNotFoundException e)
+            {
+
+                SerializeSubordinates();  
+            }
+
+            try
+            {
+                FillDataWithAllSupervisor();
+            }
+            catch (FileNotFoundException e)
+            {
+                SerializeSupervisor();
+            }
+
         }
 
         /// <summary>
@@ -188,8 +219,12 @@ namespace Hotel.Database
             //{
             //    serializer.Serialize(writer, supervisorList);
             //}
-            MyXmlSerializer<List<Supervisor>> ser = new MyXmlSerializer<List<Supervisor>>();
-            ser.WriteObject(@"./supervisorsXML.xml", supervisorList);
+            if(supervisorList != null)
+            {
+                MyXmlSerializer<List<Supervisor>> ser = new MyXmlSerializer<List<Supervisor>>();
+                ser.WriteObject(@"./supervisorsXML.xml", supervisorList);
+            }
+           
         }
 
         /// <summary>

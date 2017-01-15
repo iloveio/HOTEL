@@ -18,7 +18,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Liphsoft.Crypto.Argon2;
+using Hotel.Database;
+using HumanResourcesLib;
 
 namespace LoggingApp
 {
@@ -39,10 +40,8 @@ namespace LoggingApp
         public RegisterWindow()
         {
             InitializeComponent();
-            DataObject.AddPastingHandler(phoneNumberTextBox, OnPaste);
             firstNameTextBox.MaxLength = 20;
             lastNameTextBox.MaxLength = 20;
-            phoneNumberTextBox.MaxLength = 9;
             loginTextBox.MaxLength = 20;
             passwordBox.MaxLength = 20;
         }
@@ -60,8 +59,7 @@ namespace LoggingApp
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            Logging dane = new Logging();
-            PasswordHasher hasher = new PasswordHasher();
+            Director dyr = new Director("","",1,new List<Employee>(),"","");
             try
             {
                 if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
@@ -72,7 +70,7 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.FirstName = firstNameTextBox.Text;
+                    dyr.nameProperty = firstNameTextBox.Text;
                 }
 
                 if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
@@ -83,31 +81,9 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.LastName = lastNameTextBox.Text;
+                    dyr.lastNameProperty = lastNameTextBox.Text;
                 }
 
-                if (phoneNumberTextBox.GetLineLength(0) != 9)
-                {
-                    MessageBox.Show("Podaj prawidłowy numer telefonu");
-                    Exception exc = new Exception();
-                    throw exc;
-                }
-                else
-                {
-                    dane.PhoneNumber = Int32.Parse(phoneNumberTextBox.Text);
-
-                }
-
-                if (birthDatePicker.SelectedDate == null)
-                {
-                    MessageBox.Show("Podaj datę urodzenia");
-                    Exception exc = new Exception();
-                    throw exc;
-                }
-                else
-                {
-                    dane.BirthDate = birthDatePicker.SelectedDate.Value.ToShortDateString();
-                }
 
                 if (loginTextBox.Text.Length < 4)
                 {
@@ -117,7 +93,7 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.Login = loginTextBox.Text;
+                    dyr.Login = loginTextBox.Text;
                 }
 
                 if (passwordBox.Password.Length < 8)
@@ -128,10 +104,13 @@ namespace LoggingApp
                 }
                 else
                 {
-                    dane.Password = hasher.Hash(passwordBox.Password);
+                    dyr.Password = passwordBox.Password;
                 }
 
-                MessageBox.Show("Imię: " + dane.FirstName + "\nNazwisko: " + dane.LastName + "\nNumer telefonu: " + dane.PhoneNumber + "\nData urodzenia: " + dane.BirthDate + "\nLogin: " + dane.Login + "\nHasło: " + dane.Password);
+                StaffManager staff = new StaffManager();
+                staff.AddNewDirector(dyr);
+                MessageBox.Show("Zarejestrowano nowego użytkownika!");
+                this.Close();
             }
             catch (Exception)
             {

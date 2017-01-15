@@ -185,7 +185,7 @@ namespace HumanResourcesLib
         /// <value> The shorten jobs property. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string shortenJobsProperty { get { if (jobs.Count > 0) { return "have some tasks"; } else { return "no tasks"; } } set { } }
+        public string shortenJobsProperty { get { if (jobs?.Count > 0) { return "have some tasks"; } else { return "no tasks"; } } set { } }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the jobs property. </summary>
@@ -201,7 +201,7 @@ namespace HumanResourcesLib
         /// <value> The employee status property. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string employeeStatusProperty { get { return employeeStatus.StatusName.ToString()+":  from: "+employeeStatus.StatusBegining.ToShortDateString()+" to: "+employeeStatus.StatusEnd.ToShortDateString(); } set { } }
+        public string employeeStatusProperty { get { return employeeStatus?.StatusName.ToString()+":  from: "+employeeStatus?.StatusBegining.ToShortDateString()+" to: "+employeeStatus?.StatusEnd.ToShortDateString(); } set { } }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the name of the employee status. </summary>
@@ -209,7 +209,7 @@ namespace HumanResourcesLib
         /// <value> The name of the employee status. </value>
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string employeeStatusName { get { return employeeStatus.StatusName.ToString(); } set { } }
+        public string employeeStatusName { get { return employeeStatus?.StatusName.ToString(); } set { } }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets or sets the employee status date from. </summary>

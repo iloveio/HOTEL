@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{418E6CE7-C777-4292-917F-DBA3229EBF39}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LoggingApp</RootNamespace>
     <AssemblyName>LoggingApp</AssemblyName>
@@ -57,9 +57,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ISession.cs" />
     <Compile Include="Logging.cs" />
-    <Compile Include="LoggingWindow.xaml.cs" />
+    <Compile Include="LoggingWindow.xaml.cs">
+      <DependentUpon>LoggingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -73,7 +81,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RegisterWindow..xaml.cs" />
+    <Compile Include="RegisterWindow..xaml.cs">
+      <DependentUpon>RegisterWindow..xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserSession.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -87,18 +98,52 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="App.xaml">
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
+    </ApplicationDefinition>
     <Page Include="LoggingWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegisterWindow..xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookingApp\BookingApp.csproj">
+      <Project>{20c2c418-9434-4306-813e-b4b3dad641cd}</Project>
+      <Name>BookingApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntertainmentApp\EntertainmentApp.csproj">
+      <Project>{8cb98dee-f1ed-427a-8977-df942c8e77d3}</Project>
+      <Name>EntertainmentApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel\Hotel.csproj">
+      <Project>{e269dc37-fecd-43aa-af77-1eed3f2b4fbb}</Project>
+      <Name>Hotel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HumanResourcesLib\HumanResourcesLib.csproj">
+      <Project>{4bf7395d-6627-4410-8078-2c1fe5fe7eca}</Project>
+      <Name>HumanResourcesLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KitchenApp\Kitchen.csproj">
+      <Project>{8c97a2ff-01e0-4da2-b844-10df0f4bf704}</Project>
+      <Name>Kitchen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StaffGUI\StaffGUI.csproj">
+      <Project>{e973bfbf-1318-4c13-86e0-b2fb9c4a2401}</Project>
+      <Name>StaffGUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Transport\Transport.csproj">
+      <Project>{7478a262-f43a-45d2-863b-e85844237004}</Project>
+      <Name>Transport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

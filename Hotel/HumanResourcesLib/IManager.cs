@@ -52,5 +52,7 @@ namespace HumanResourcesLib
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         List<EmployeeStatus> CheckAllSubordinateStatus();
+
+        ICollection<Employee> GetAllEmployees();
     }
 }

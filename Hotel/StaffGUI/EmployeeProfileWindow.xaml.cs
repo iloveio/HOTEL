@@ -4,7 +4,7 @@
 // summary:	Implements the employee profile window.xaml class
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using Hotel.Database.Staff;
+using Hotel.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HumanResourcesLib;
 
 namespace StaffGUI
 {
@@ -36,10 +37,47 @@ namespace StaffGUI
 
         StaffManager staffManager;
 
-        public EmployeeProfileWindow()
+        IManager manager;
+
+        Employee employee;
+
+        private int jobIndex = 0;
+
+        public User User
+        {
+            get { return null; }
+            set { manager = (IManager)value; }
+        }
+
+        public EmployeeProfileWindow(User user)
         {
             InitializeComponent();
             staffManager = new StaffManager();
+
+            if (user.GetType() == typeof(Director))
+            {
+                manager = (IManager)user;
+            }
+            if (user.GetType() == typeof(Employee))
+            {
+                employee = (Employee)user;
+            }
+            
+
+            AddFirstName.Text = user.nameProperty;
+            AddLastName.Text = user.lastNameProperty;
+            AddWage.Text = employee.wageProperty;
+            EmployeeStatus.Text = employee.employeeStatusName;
+            StatusFrom.Text = employee.employeeStatusDateFrom.ToShortDateString();
+            StatusTo.Text = employee.employeeStatusDateTo.ToShortDateString();
+            EmployeeProfile.Text = employee.Position.ToString();
+
+            for(int i=0; i<employee.Jobs.Count; i++)
+            {
+                ListBoxItem item = new ListBoxItem();
+                item.Content = employee.jobsProperty[i].Description;
+                JobsList.Items.Add(item);
+            }
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,7 +105,20 @@ namespace StaffGUI
 
         private void JobsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            jobIndex = JobsList.SelectedIndex;
 
+            JobDateFrom.Clear();
+            JobDateTo.Clear();
+
+            if (employee.jobsProperty.Count != 0)
+            {
+                if (JobsList.SelectedIndex != -1)
+                {
+                    JobDateFrom.Text = employee.jobsProperty[jobIndex].StartDate;
+                    JobDateTo.Text = employee.jobsProperty[jobIndex].Deadline;
+                }
+            }
         }
     }
 }
+
